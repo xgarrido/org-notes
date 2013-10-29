@@ -306,7 +306,7 @@ Bayeux...
      static const uint32_t bit00   = 0x00000001;
 ...
 #+END_SRC
-*** TODO Falaise
+
 * Install @ pc-server
 ** Machine configuration
 #+BEGIN_SRC sh
