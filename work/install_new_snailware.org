@@ -1,0 +1,381 @@
+#+TITLE:  Install notes for SN@ilWare software
+#+AUTHOR: Xavier Garrido
+#+EMAIL:  xavier.garrido@lal.in2p3.fr
+#+DATE:   15/10/2013
+#+LATEX_CLASS: snemo-note
+
+* Install @ LAL
+** Preamble
+*** Configuration of =cmake=
+First you should specify an alias to the latest version of =cmake= by executing
+#+BEGIN_SRC sh
+  alias cmake=cmake28
+#+END_SRC
+You will get version 2.8.9 of =cmake=.
+*** Configuration of installation directory
+#+BEGIN_SRC sh
+  export SW_WORK_DIR=/exp/nemo/garrido/tmp
+#+END_SRC
+** Machine configuration
+#+BEGIN_SRC sh
+  uname -a
+  Linux nemo3.lal.in2p3.fr 2.6.32-220.13.1.el6.x86_64 #1 SMP Tue Apr 17 15:16:22 CDT 2012 x86_64 x86_64 x86_64 GNU/Linux
+#+END_SRC
+#+BEGIN_SRC sh
+  gcc --version
+  gcc (GCC) 4.7.2 20121015 (Red Hat 4.7.2-5)
+#+END_SRC
+
+** Cadfael
+*** Configuration
+To setup =Cadfael= simply do
+#+BEGIN_SRC sh
+  cmake                                                            \
+      -DCMAKE_INSTALL_PREFIX=${SW_WORK_DIR}/Cadfael/install \
+      -DCADFAEL_VERBOSE_BUILD=ON                                   \
+      -DCADFAEL_STEP_TARGETS=ON                                    \
+      -Dport/patchelf=ON                                           \
+      -Dport/gsl=ON                                                \
+      -Dport/clhep=ON                                              \
+      -Dport/boost=ON                                              \
+      -Dport/boost+regex=ON                                        \
+      -Dport/camp=ON                                               \
+      -Dport/xerces-c=ON                                           \
+      -Dport/geant4=ON                                             \
+      -Dport/geant4+gdml=ON                                        \
+      -Dport/geant4+x11=ON                                         \
+      -Dport/geant4+data=ON                                        \
+      -Dport/root=ON                                               \
+      -Dport/root+x11=ON                                           \
+      -Dport/root+asimage=ON                                       \
+      -Dport/root+mathmore=ON                                      \
+      -Dport/root+opengl=ON                                        \
+      ${SW_WORK_DIR}/Cadfael/trunk/
+#+END_SRC
+then execute the =make= command
+#+BEGIN_SRC sh
+  make
+#+END_SRC
+*** Ports status [8/8]
+
+- [X] patchelf
+- [X] GSL
+- [X] CLHEP
+- [X] boost
+- [X] camp
+- [X] xerces-c
+- [X] Geant4
+  - [X] =-Dport/geant4+gdml= will install Xerces-C
+  - [X] =-Dport/geant4+data=
+- [X] ROOT
+  - [X] =-Dport/root+mathmore=
+  - [X] =-Dport/root+opengl=
+** Bayeux
+*** Configuration
+To setup =Bayeux=, execute the following code
+#+BEGIN_SRC sh
+  cmake                                                    \
+      -DCMAKE_INSTALL_PREFIX=${SW_WORK_DIR}/Bayeux/install \
+      -DCMAKE_PREFIX_PATH=${SW_WORK_DIR}/Cadfael/install   \
+      -DBayeux_ENABLE_TESTING=ON                           \
+      -DBayeux_WITH_GEANT4=ON                              \
+      ${SW_WORK_DIR}/Bayeux/trunk/
+#+END_SRC
+
+To run the compilation process on several CPU cores do
+#+BEGIN_SRC sh
+  make -j8 install
+#+END_SRC
+*** Test programs [10/10]
+Adding option =-DBayeux_ENABLE_TESTING=ON= to the =cmake= command will enable
+the compilation of test programs. Then doing =make test= will launch each of
+the *237 test programs* and it will eventually shows some broken tests.
+
+- [X] datatools
+- [X] brio
+- [X] cuts
+- [X] genbb_help
+- [X] geomtools
+- [X] genvtx
+- [X] mygsl
+- [X] materials
+- [X] dpp
+- [X] mctools
+
+** Falaise
+*** Configuration
+To setup =Falaise= with an already version of =Bayeux= installed, do
+#+BEGIN_SRC sh
+  cmake                                                                                  \
+      -DCMAKE_INSTALL_PREFIX=${SW_WORK_DIR}/Falaise/install                              \
+      -DCMAKE_PREFIX_PATH="${SW_WORK_DIR}/Cadfael/install;${SW_WORK_DIR}/Bayeux/install" \
+      -DFalaise_ENABLE_TESTING=ON                                                        \
+      -DFalaise_BUILD_DOCS=ON                                                            \
+      -DFalaise_USE_SYSTEM_BAYEUX=ON                                                     \
+      ${SW_WORK_DIR}/Falaise/trunk
+#+END_SRC
+
+To run the compilation process on several CPU cores do
+#+BEGIN_SRC sh
+  make -j8 install
+#+END_SRC
+* Install @ laptop
+** Machine configuration
+#+BEGIN_SRC sh
+  uname -a
+  Linux garrido-laptop 3.11.4-1-ARCH #1 SMP PREEMPT Sat Oct 5 21:22:51 CEST 2013 x86_64 GNU/Linux
+#+END_SRC
+#+BEGIN_SRC sh
+  cmake --version
+  cmake version 2.8.12
+#+END_SRC
+
+** With =g++ (GCC) 4.8.1 20130725 (prerelease)=                   :noexport:
+*** Cadfael
+**** Checking out
+#+BEGIN_SRC sh
+  svn co https://nemo.lpc-caen.in2p3.fr/svn/Cadfael/trunk \
+      ~/Workdir/NEMO/supernemo/snware_test/cadfael/trunk
+#+END_SRC
+**** Configuration
+To setup =Cadfael= simply do
+#+BEGIN_SRC sh
+  cmake                                                                           \
+      -DCMAKE_INSTALL_PREFIX=~/Workdir/NEMO/supernemo/snware_test/cadfael/install \
+      -DCADFAEL_VERBOSE_BUILD=ON                                                  \
+      -DCADFAEL_STEP_TARGETS=ON                                                   \
+      -Dport/patchelf=ON                                                          \
+      -Dport/gsl=ON                                                               \
+      -Dport/clhep=ON                                                             \
+      -Dport/boost=ON                                                             \
+      -Dport/boost+regex=ON                                                       \
+      -Dport/camp=ON                                                              \
+      -Dport/xerces-c=ON                                                          \
+      -Dport/geant4=ON                                                            \
+      -Dport/geant4+gdml=ON                                                       \
+      -Dport/geant4+x11=ON                                                        \
+      -Dport/geant4+data=ON                                                       \
+      -Dport/root=ON                                                              \
+      -Dport/root+x11=ON                                                          \
+      -Dport/root+asimage=ON                                                      \
+      -Dport/root+mathmore=ON                                                     \
+      -Dport/root+opengl=ON                                                       \
+      ~/Workdir/NEMO/supernemo/snware_test/cadfael/trunk
+#+END_SRC
+then execute the =make= command
+#+BEGIN_SRC sh
+  make
+#+END_SRC
+**** Ports status [6/8]
+
+- [X] patchelf
+- [X] GSL
+- [X] CLHEP
+- [X] boost
+- [X] camp
+- [-] xerces-c
+- [ ] Geant4
+- [X] ROOT
+
+** With =g++ (GCC) 4.8.2=
+*** Cadfael
+**** Checking out
+#+BEGIN_SRC sh
+  svn co https://nemo.lpc-caen.in2p3.fr/svn/Cadfael/trunk \
+      ~/Workdir/NEMO/supernemo/snware_test/cadfael/trunk
+#+END_SRC
+**** Configuration
+To setup =Cadfael= simply do
+#+BEGIN_SRC sh
+  cmake                                                                           \
+      -DCMAKE_INSTALL_PREFIX=~/Workdir/NEMO/supernemo/snware_test/cadfael/install \
+      -DCADFAEL_VERBOSE_BUILD=ON                                                  \
+      -DCADFAEL_STEP_TARGETS=ON                                                   \
+      -Dport/patchelf=ON                                                          \
+      -Dport/gsl=ON                                                               \
+      -Dport/clhep=ON                                                             \
+      -Dport/boost=ON                                                             \
+      -Dport/boost+regex=ON                                                       \
+      -Dport/camp=ON                                                              \
+      -Dport/xerces-c=ON                                                          \
+      -Dport/geant4=ON                                                            \
+      -Dport/geant4+gdml=ON                                                       \
+      -Dport/geant4+x11=ON                                                        \
+      -Dport/geant4+data=ON                                                       \
+      -Dport/root=ON                                                              \
+      -Dport/root+x11=ON                                                          \
+      -Dport/root+asimage=ON                                                      \
+      -Dport/root+mathmore=ON                                                     \
+      -Dport/root+opengl=ON                                                       \
+      ~/Workdir/NEMO/supernemo/snware_test/cadfael/trunk
+#+END_SRC
+then execute the =make= command
+#+BEGIN_SRC sh
+  make
+#+END_SRC
+**** Ports status [7/8]
+
+- [X] patchelf
+- [X] GSL
+- [X] CLHEP
+- [X] boost (see [[Boost test error]] and fix)
+- [X] camp
+- [-] xerces-c
+- [X] Geant4
+- [X] ROOT
+
+**** Xerces-C test error
+#+BEGIN_SRC sh
+  Making check in samples
+  1099,1103c1099
+  < String expression test failed at line 5735
+  < String expression test failed at line 5746
+  < String expression test failed at line 5749
+  < String expression test failed at line 5752
+  < Test Failed
+  ---
+  > Test Run Successfully
+  make[3]: *** [check] Erreur 1
+  make[2]: *** [ports/xerces-c/xerces-c-prefix/src/xerces-c-stamp/xerces-c-test] Erreur 2
+  make[1]: *** [ports/xerces-c/CMakeFiles/xerces-c.dir/all] Erreur 2
+  make: *** [all] Erreur 2
+#+END_SRC
+
+The problem comes from =DTest= under =<xerces-c src
+dir>/tests/src/DOM/DOMTest/DTest.cpp= line 5680 where a preprocessor macro
+checks if 2 strings are "Xerces-C" equal. It fails at different place as =diff=
+exhibits. It is not clear what is going on. *Solution for the time being is to
+disable these tests and see if it may propagate to some other ports*
+**** Boost test error
+#+BEGIN_SRC sh
+Scanning dependencies of target test_boost
+[ 75%] Building CXX object test_boost/CMakeFiles/test_boost.dir/test_boost.cc.o
+/home/garrido/Workdir/NEMO/supernemo/snware_test/cadfael/trunk/testing/PostInstall/test_boost/test_boost.cc:13:16: erreur: expected ‘)’ before ‘i_’
+   foo(uint32_t i_, std::string s_) : i(i_), s(s_) {}
+                ^
+/home/garrido/Workdir/NEMO/supernemo/snware_test/cadfael/trunk/testing/PostInstall/test_boost/test_boost.cc:14:14: erreur: ‘uint32_t’ has not been declared
+   void set_i(uint32_t i_) { i = i_; }              ^
+#+END_SRC
+
+*Proposed fix is to explicitly set the typedef name of =uint32_t= since Boost
+ wraps if within a =boost= namepace*
+
+#+BEGIN_SRC c++
+  class foo
+  {
+  public:
+    foo() {}
+    foo(boost::uint32_t i_, std::string s_) : i(i_), s(s_) {}
+    void set_i(boost::uint32_t i_) { i = i_; }
+    void set_s(std::string s_) { s = s_; }
+    boost::uint32_t get_i() const { return i; }
+    const std::string & get_s() const { return s; }
+    void reset() { i = 0; s.clear(); }
+    void print() { std::cout << "{i="<< i << ";s='" << s << "'}\n"; }
+  private:
+    boost::uint32_t i;
+    std::string s;
+  };
+#+END_SRC
+*** Bayeux
+**** Checking out
+#+BEGIN_SRC sh
+  svn co https://nemo.lpc-caen.in2p3.fr/svn/Bayeux/trunk \
+      ~/Workdir/NEMO/supernemo/snware_test/bayeux/trunk
+#+END_SRC
+**** Configuration
+To setup =Bayeux= execute the following code
+#+BEGIN_SRC sh
+  cmake                                                                          \
+      -DCMAKE_INSTALL_PREFIX=~/Workdir/NEMO/supernemo/snware_test/bayeux/install \
+      -DCMAKE_PREFIX_PATH=~/Workdir/NEMO/supernemo/snware_test/cadfael/install   \
+      -DBayeux_ENABLE_TESTING=ON                                                 \
+      ~/Workdir/NEMO/supernemo/snware_test/bayeux/trunk
+#+END_SRC
+**** =datatools= error
+Basically the problem found in Boost with the unnamed typedef also arises in
+Bayeux...
+#+BEGIN_SRC sh
+  [  0%] Building CXX object source/CMakeFiles/Bayeux.dir/bxbayeux/src/the_introspectable.cc.o
+  In file included from /home/garrido/Workdir/NEMO/supernemo/snware_test/bayeux/build/BuildProducts/include/bayeux/datatools/properties.h:54:0,
+                   from /home/garrido/Workdir/NEMO/supernemo/snware_test/bayeux/build/BuildProducts/include/bayeux/datatools/properties-reflect.h:12,
+                   from /home/garrido/Workdir/NEMO/supernemo/snware_test/bayeux/build/BuildProducts/include/bayeux/datatools/the_introspectable.h:41,
+                   from /home/garrido/Workdir/NEMO/supernemo/snware_test/bayeux/trunk/source/bxbayeux/src/the_introspectable.cc:17:
+                   /home/garrido/Workdir/NEMO/supernemo/snware_test/bayeux/build/BuildProducts/include/bayeux/datatools/bit_mask.h:34:16: erreur: ‘uint32_t’ does not name a type
+     static const uint32_t bit00   = 0x00000001;
+...
+#+END_SRC
+* Install @ pc-server
+** Machine configuration
+#+BEGIN_SRC sh
+  uname -a
+  Linux pc-91089 3.11.0-12-generic #19-Ubuntu SMP Wed Oct 9 16:12:00 UTC 2013 i686 i686 i686 GNU/Linux
+#+END_SRC
+#+BEGIN_SRC sh
+  g++ --version | head -1
+  g++ (Ubuntu/Linaro 4.8.1-10ubuntu8) 4.8.1
+#+END_SRC
+#+BEGIN_SRC sh
+  cmake --version
+  cmake version 2.8.11.2
+#+END_SRC
+** Cadfael
+*** Configuration
+To setup =Cadfael= simply do
+#+BEGIN_SRC sh
+  cmake                                                                               \
+      -DCMAKE_INSTALL_PREFIX=/data/workdir/nemo/supernemo/snware_test/Cadfael/install \
+      -DCADFAEL_VERBOSE_BUILD=ON                                                      \
+      -DCADFAEL_STEP_TARGETS=ON                                                       \
+      -Dport/patchelf=ON                                                              \
+      -Dport/gsl=ON                                                                   \
+      -Dport/clhep=ON                                                                 \
+      -Dport/boost=ON                                                                 \
+      -Dport/boost+regex=ON                                                           \
+      -Dport/camp=ON                                                                  \
+      -Dport/xerces-c=ON                                                              \
+      -Dport/geant4=ON                                                                \
+      -Dport/geant4+gdml=ON                                                           \
+      -Dport/geant4+x11=ON                                                            \
+      -Dport/geant4+data=ON                                                           \
+      -Dport/root=ON                                                                  \
+      -Dport/root+x11=ON                                                              \
+      -Dport/root+asimage=ON                                                          \
+      -Dport/root+mathmore=ON                                                         \
+      -Dport/root+opengl=ON                                                           \
+      /data/workdir/nemo/supernemo/snware_test/Cadfael/trunk
+#+END_SRC
+then execute the =make= command
+#+BEGIN_SRC sh
+  make
+#+END_SRC
+*** Ports status [6/8]
+
+- [X] patchelf
+- [X] GSL
+- [-] CLHEP
+- [X] boost
+- [X] camp
+- [X] xerces-c
+- [ ] Geant4
+- [X] ROOT
+
+**** CLHEP test error
+*Need to have a look into the logs.*
+#+BEGIN_SRC sh
+  96% tests passed, 2 tests failed out of 47
+
+  Total Test time (real) =  18.38 sec
+
+  The following tests FAILED:
+           24 - testInstanceRestore (Failed)
+           29 - testBug58950 (Failed)
+  Errors while running CTest
+  make[4]: *** [test] Erreur 8
+  make[3]: *** [ports/clhep/clhep-prefix/src/clhep-stamp/clhep-test] Erreur 2
+  make[2]: *** [ports/clhep/CMakeFiles/clhep.dir/all] Erreur 2
+  make[1]: *** [ports/clhep/CMakeFiles/clhep.dir/rule] Erreur 2
+  make: *** [clhep] Erreur 2
+#+END_SRC
+
+** TODO Bayeux
