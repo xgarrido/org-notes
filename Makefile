@@ -14,6 +14,9 @@ all: publish
 publish:
 	@mkdir -p doc/stylesheets
 	@$(BATCH) --visit "README.org" --funcall org-notes-publish
+	@tar czvf /tmp/org-notes-publish.tar.gz index.html doc
+	@git checkout gh-pages
+	@tar xzvf /tmp/org-notes-publish.tar.gz
 	@rm -f README.el
 	@find doc -name "*.html~" | xargs rm
 
