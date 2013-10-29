@@ -19,8 +19,8 @@ publish:
 	@tar czvf /tmp/org-notes-publish.tar.gz index.html doc
 	@git checkout gh-pages
 	@tar xzvf /tmp/org-notes-publish.tar.gz
-	git status --porcelain
-	@if [ -n "$(git status --porcelain)" ]; then git commit -am "update doc" && git push;else echo "NOTICE: Nothing to push";fi
+	@STATUS=$(shell git status --porcelain)
+	test -n "$(git status --porcelain)" && git commit -am "update doc" && git push
 	@git checkout master
 
 clean:
