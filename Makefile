@@ -19,6 +19,7 @@ publish:
 	@tar czvf /tmp/org-notes-publish.tar.gz index.html doc
 	@git checkout gh-pages
 	@tar xzvf /tmp/org-notes-publish.tar.gz
+	@git checkout master
 
 clean:
 	@rm -rf doc index.html
