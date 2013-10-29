@@ -19,7 +19,7 @@ publish:
 	@tar czvf /tmp/org-notes-publish.tar.gz index.html doc
 	@git checkout gh-pages
 	@tar xzvf /tmp/org-notes-publish.tar.gz
-	@test -n "`git status --porcelain`" && git commit -am "update doc" && git push
+	@if [ -n "`git status --porcelain`" ]; then git commit -am "update doc" && git push; fi
 	@git checkout master
 
 clean:
