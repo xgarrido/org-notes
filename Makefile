@@ -15,11 +15,10 @@ publish:
 	@mkdir -p doc/stylesheets
 	@$(BATCH) --visit "README.org" --funcall org-notes-publish
 	@rm -f README.el
-	@find doc -name "*.html~" | xargs rm -f
+	@find doc -name *.*~ | xargs rm -f
 	@tar czvf /tmp/org-notes-publish.tar.gz index.html doc
 	@git checkout gh-pages
 	@tar xzvf /tmp/org-notes-publish.tar.gz
-	@find . -name *.*~ | xargs rm
 	@git commit -am "update documentation" && git push
 	@git checkout master
 
