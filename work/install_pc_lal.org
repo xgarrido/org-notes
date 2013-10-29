@@ -1,0 +1,286 @@
+#+TITLE:  Install PC from scratch
+#+AUTHOR: Xavier Garrido
+#+DATE:   2012-01-22
+#+EMAIL:  xavier.garrido@lal.in2p3.fr
+#+LATEX_HEADER: \setsansfont[Mapping=tex-text]{Myriad Pro}
+#+LATEX_HEADER: \setmonofont[Mapping=tex-text,Scale=MatchLowercase]{Inconsolata}
+#+LATEX_HEADER: \setromanfont[Mapping=tex-text, Numbers=OldStyle]{Minion Pro}
+
+* Install Ubuntu flavor distribution
+- [[http://www.ubuntu.com/][Ubuntu]]
+- [[http://xubuntu.org/][Xubuntu]]
+- [[http://www.kubuntu.org/][Kubuntu]]
+- [[http://www.linuxmint.com/][Linux Mint]]
+
+* Basic apt packages
+** Openssh
+To be able to remotely connect
+#+BEGIN_SRC sh
+  sudo apt-get install openssh-server
+#+END_SRC
+** CVS
+#+BEGIN_SRC sh
+  sudo apt-get install subversion git git-svn
+#+END_SRC
+** g++, Makefile, gfortran
+#+BEGIN_SRC sh
+  sudo apt-get install build-essential gfortran
+#+END_SRC
+* Homemade compilation
+** ccache
+[[http://ccache.samba.org/][ccache]] is used to "cache" the result of =g++= compilation. The compilation
+time is greatly reduced.
+#+BEGIN_SRC sh
+  export CCACHE_VERSION=3.1.9
+  cd /tmp
+  wget http://samba.org/ftp/ccache/ccache-${CCACHE_VERSION}.tar.gz
+  tar xzvf /tmp/ccache-${CCACHE_VERSION}.tar.gz
+  cd ccache-${CCACHE_VERSION}
+  ./configure && make && sudo make install
+#+END_SRC
+
+You can already use ccache by setting
+#+BEGIN_SRC sh
+  export CXX=ccache g++
+  export CC=ccache gcc
+#+END_SRC
+** cmake
+[[http://www.cmake.org/][cmake]] is quite deprecated in =apt-get= sources
+#+BEGIN_SRC sh
+  export CMAKE_VERSION=2.8.10.2
+  cd /tmp
+  wget http://www.cmake.org/files/v2.8/cmake-${CMAKE_VERSION}.tar.gz
+  tar xzvf /tmp/cmake-${CMAKE_VERSION}.tar.gz
+  cd cmake-${CMAKE_VERSION}
+  ./configure && make && sudo make install
+#+END_SRC
+
+** emacs
+[[http://www.gnu.org/software/emacs/][GNU Emacs]] is an extensible, customizable text editor—and more. At its core is an
+interpreter for Emacs Lisp, a dialect of the Lisp programming language with
+extensions to support text editing. Again, since =apt-get= packages are quite
+outdated, we download and install a pretty recent version of emacs.
+
+First install X11 development librairies.
+#+BEGIN_SRC sh
+  sudo apt-get install libgtk2.0-dev libgif-dev libpng12-dev libxpm-dev
+#+END_SRC
+
+Then go ahead by installing emacs.
+#+BEGIN_SRC sh
+  export EMACS_VERSION=24.2
+  cd /tmp
+  wget http://ftpmirror.gnu.org/emacs/emacs-${EMACS_VERSION}.tar.gz
+  tar xzvf emacs-${EMACS_VERSION}.tar.gz
+  cd emacs-${EMACS_VERSION}
+  ./configure --with-jpeg=no --with-tiff=no && make && sudo make install
+#+END_SRC
+
+Given that you are using all the =zsh= plugins downloaded by =antigen=, then you
+got a problem when you launch =emacs= which tells you that no emacs server are
+currently running. This is not a bug, this a feature. You can either run =emacs=
+by doing
+#+BEGIN_SRC sh
+  $ \emacs
+#+END_SRC
+or
+#+BEGIN_SRC sh :tangle no
+  $ relaunch_emacs_daemon && emacs
+#+END_SRC
+In the latest case, a =emacs= daemon will be launched first and then all the new
+=emacs= instances will be opened from the daemon. The interest of such behavior
+is that =emacs= will open almost instantanously.
+** git
+If the bundled version of =git= provided by =apt-get= package is a bit old, you
+can try to install your own version by checking out the =git= repository.
+#+BEGIN_SRC sh
+  cd /tmp
+  git clone git://git.kernel.org/pub/scm/git/git.git
+  cd git
+  make prefix=/usr/local all
+  sudo make prefix=/usr/local install
+#+END_SRC
+
+* zsh shell
+This part can be *skipped* if you prefer and use a different shell.
+
+Zsh is a powerful shell with much better completion implementation
+#+BEGIN_SRC sh
+  sudo apt-get install libncurses-dev
+  export ZSH_VERSION=5.0.0
+  cd /tmp
+  wget ftp://ftp.fu-berlin.de/pub/unix/shells/zsh/old/zsh-${ZSH_VERSION}.tar.gz
+  tar xzvf /tmp/zsh-${ZSH_VERSION}.tar.gz
+  cd zsh-${ZSH_VERSION}
+  ./configure && make && sudo make install
+#+END_SRC
+
+** Change default shell
+#+BEGIN_SRC sh
+  sudo sed -i -e '#^nemo# s#/bin/bash#/usr/local/bin/zsh#' /etc/passwd
+#+END_SRC
+** Download antigen plugin manager
+[[https://github.com/zsh-users/antigen][Antigen]] is a small set of functions that help you easily manage your
+shell (zsh) plugins, called bundles. The concept is pretty much the same as
+bundles in a typical vim+pathogen setup.
+#+BEGIN_SRC sh
+  git clone https://github.com/zsh-users/antigen.git ~/.config/zsh/antigen
+#+END_SRC
+** Download the following =.zshrc= file
+:PROPERTIES:
+:CUSTOM_ID: zshrc
+:END:
+
+#+BEGIN_SRC sh
+  wget --no-check-certificate https://raw.github.com/xgarrido/dotfiles/master/zshrc -O ~/.zshrc
+#+END_SRC
+
+After that open a new terminal in order to get all the changes. Antigen will
+proceed by downloading different zsh bundle sources, especially plugins
+related to SuperNEMO software.
+
+* SuperNEMO software
+To build SuperNEMO aggregators (i.e. Cadfael, Bayeux...) you can either follow
+the guidelines on the [[https://nemo.lpc-caen.in2p3.fr/wiki/SuperNEMO_SW][LPC wiki]] or, if you use =zsh= and you have downloaded the
+[[#zshrc][.zshrc]] file, you can use the =aggregator= command to install all
+aggregators. Actually there are some (constraining) prerequisites but the next
+lines describe the different steps.
+
+** Install required packages
+You will need some additionnal packages to make everything working well. Below
+you will find a list of packages to install.
+
+#+BEGIN_SRC sh
+  sudo apt-get install libbz2-dev python-dev libglu1-mesa-dev libmotif-dev libxmu-dev zlib1g-dev
+#+END_SRC
+
+** Moving svn to git
+All SuperNEMO software is stored and versionned under [[http://subversion.apache.org/][subversion]] centralized version
+control system. Besides its reliability, SVN offers less options and too
+"centralization" with respect to [[http://git-scm.com/][git]]. Using =git-svn= it is possible to use
+=git= and to keep the =svn= repository safe allowing bidirectional operations
+between the subversion repository and git. The two next items describe the
+needed steps to achieve such configuration. Of course, if you do not care about
+git/svn paradigm, you can skip this part and got to next section.
+*** Install [[http://golang.org/][go]]
+Go is an open source programming environment that makes it easy to build simple,
+reliable, and efficient software. This is needed because we will use later the
+=go-svn2git= binary to handle svn trunk/tags/branch within =git= CVS.
+
+#+BEGIN_SRC sh
+  sudo apt-get install golang
+#+END_SRC
+
+*** Install go-svn2git
+=go-svn2git= is a tiny utility for migrating projects from Subversion to Git
+while keeping the trunk, branches and tags where they should be. It uses git-svn
+to clone an svn repository and does some clean-up to make sure branches and tags
+are imported in a meaningful way, and that the code checked into master ends up
+being what's currently in your svn trunk rather than whichever svn branch your
+last commit was in. It is developed by [[https://github.com/sbinet/go-svn2git][Sébastien Binet]].
+
+#+BEGIN_SRC sh
+  export GOPATH=~/Development/go
+  export PATH=$GOPATH/bin:$PATH
+  go get github.com/sbinet/go-svn2git
+#+END_SRC
+
+All =go= programs are installed in the =GOPATH= environment variable. You can
+overload this value by exporting it to somewhere else.
+** Install aggregators
+If you have passed the previous steps, you can now use [[https://github.com/xgarrido/zsh-aggregator][zsh-aggregator]] utility
+and the =aggregator= command. The last thing you have to do is to define the
+=SNAILWARE_PRO_DIR= variable and set it to a directory of your choice. For
+example, to install all aggregators just do
+
+#+BEGIN_SRC sh
+  export SNAILWARE_PRO_DIR=~/SuperNEMO/snware
+  aggregator build all
+#+END_SRC
+
+On some machines, you can choose a different directory where to build aggregator
+and the place to install them. =SNAILWARE_PRO_DIR= is still the install
+directory but you can export the =SNAILWARE_BUILD_DIR= variable where the
+aggregator will be compiled and built. For example, on nemo machines, you can
+set-up aggregators like that
+
+#+BEGIN_SRC sh
+  export SNAILWARE_BUILD_DIR=/scratch/${USER}/SuperNEMO/snware
+  export SNAILWARE_PRO_DIR=/exp/nemo/${USER}/SuperNEMO/snware
+  aggregator build all
+#+END_SRC
+
+** SN@ilWare development
+Aggregators are fine but if you plan do develop some core or analysis programs
+you may need more flexibility to handle software components. [[https://github.com/xgarrido/zsh-snailware][zsh-snailware]]
+provides some commands to help in defining a development environment. Basically,
+you only need to set the =SNAILWARE_DEV_DIR= directory and then use the
+=snailware= command.
+
+For example, to install Bayeux components i.e. datatools, geomtools ... in a
+unique and well-structured directory, you can do
+
+#+BEGIN_SRC sh
+  export SNAILWARE_DEV_DIR=~/SuperNEMO/development
+  snailware git-checkout bayeux
+  snailware rebuild bayeux
+#+END_SRC
+
+You can also only install datatools and materials, for example
+
+#+BEGIN_SRC sh
+  snailware build datatools materials
+#+END_SRC
+
+In such a way, =snailware= command is a replacement of aggregator
+packages. Given that you have have installed one of the component, you can then
+source it
+
+#+BEGIN_SRC sh
+  snailware setup all
+#+END_SRC
+
+as well as you can dump the components status
+
+#+BEGIN_SRC sh
+  snailware status all
+#+END_SRC
+
+which gives a nice formated table output of the current status of each
+components.
+
+** Remarks
+1) If you decide to use =git-svn=, you are supposed to know and "master" =git=
+   command. If not a nice tutorial about =git= commands can be found at this
+   address http://try.github.com/.
+
+2) To locally commit you just have to =git commit= your change by stagging some
+   of the modified files. If you want to commit back to the svn repository you
+   should do =git svn rebase= to make sure nothing has been updated meanwhile
+   and then do =git svn dcommit=.
+
+3) The first time you =dcommit=, you may be in trouble due to username mismatch
+   between the svn username you use when checking out and the username you have
+   when commiting. The error looks like
+#+BEGIN_SRC sh
+  Access to '/svn/!svn/act/...' forbidden
+#+END_SRC
+To overcome this problem you should specify explicitly who is committing by
+doing
+
+#+BEGIN_SRC sh
+  git svn dcommit --username=your-username
+#+END_SRC
+
+2013-06-25 : Actually this methods does not seem to work. One way to get rid of
+this problem is to checkout/commit/update a svn repository using explicitly
+your username. Something like
+
+#+BEGIN_SRC sh
+  svn co http://someplace.org --username your-username
+#+END_SRC
+
+should work. Then go back to your work and try again to commit through =git
+svn=.
+
+* Footnotes

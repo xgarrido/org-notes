@@ -1,0 +1,247 @@
+#+TITLE: Notes on installing archlinux from scratch
+#+AUTHOR: Xavier Garrido
+#+DESCRIPTION: In this note, we describe the different operations for installing archlinux
+
+* After booting on archlinux ISO file
+Start loading the french keymap
+#+begin_src sh
+  loadkeys fr
+#+end_src
+
+* Create and format the partitions :
+First look if any partition is already present
+#+begin_src sh
+  fdisk -l
+#+end_src
+If yes, then either use them and go directly to the "Mounting" part
+or, format the disk using `fisk` or `cfdisk` utility.
+#+begin_src sh
+  fdisk /dev/sda
+#+end_src
+Different strategies can then be adopted (see
+https://wiki.archlinux.org/index.php/Partitioning). For the time
+being, I have adopted the following and pretty simple one :
+- a 20 Gb root partition
+- all the other bytes for the /home partition
+
+Example of `fdisk` partition :
+
+|-----------+------+----------+-----------+-----------+----+--------|
+| Device    | Boot |    Start |       End |    Blocks | Id | System |
+| /dev/sda1 | *    |     2048 |  39063551 |  19530752 | 83 | Linux  |
+| /dev/sda2 |      | 39063551 | 500118191 | 230527320 | 83 | Linux  |
+|-----------+------+----------+-----------+-----------+----+--------|
+
+Format partition is done with `mkfs` utility
+#+begin_src sh
+  mkfs.ext4 /dev/sda1
+  mkfs.ext4 /dev/sda2
+#+end_src
+
+* Mount the partitions
+#+begin_src sh
+  mount /dev/sda1 /mnt
+  mkdir /mnt/home && mount /dev/sda2 /mnt/home
+#+end_src
+* Connect to the internet
+Use the `wifi-menu` utility, choose the wifi name and set the WPA key
+
+* Install the base system
+#+begin_src sh
+  pacstrap /mnt base base_devel
+#+end_src
+
+* Configure the system
+** Generate a fstab
+#+begin_src sh
+  genfstab -p /mnt >> /mnt/etc/fstab
+#+end_src
+** Next `chroot` into our newly installed system
+#+begin_src sh
+  arch-chroot /mnt
+#+end_src
+** Symlink /etc/localtime
+#+begin_src sh
+  ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
+  hwclock --systohc --utc
+#+end_src
+** Uncomment the 'fr' lines in /etc/locale.gen file and generate it
+#+begin_src sh
+  locale-gen
+#+end_src
+** Finally do
+#+begin_src sh
+  echo LANG="fr_FR.UTF-8" > /etc/locale.conf
+  export LANG=fr_FR.UTF-8
+#+end_src
+* Configuring the Console Keymap
+#+begin_src sh
+  cd to /usr/share/kbd/keymaps/i386/azerty
+#+end_src
+Copy your default keymap (fr-pc.map.gz) to a new file fr-pc-personal.map.gz
+Gunzip the new map file
+Edit fr-pc-personal.map using your favorite editor.
+- Swap CapsLock with Escape (Vim)
+make keycode 1 = Caps_Lock and keycode 58 = Escape
+Gzip the map file
+Change the default keyboard layout file that will be used by editing
+=/etc/vconsole.conf= and adding KEYMAP=fr-pc-personal
+* Create a user account
+First set the root password
+#+begin_src sh
+  passwd
+#+end_src
+and install =sudo= command
+#+begin_src sh
+  pacman -S sudo
+#+end_src
+Once you've installed sudo, you can allow your new user to run it by
+editing your sudoers file:
+#+begin_src sh
+  EDITOR=nano visudo
+#+end_src
+Scroll down until you find this line and uncomment it:
+#+begin_src sh
+  %wheel ALL=(ALL) ALL
+#+end_src
+
+Before creating a user account, install zshell
+#+begin_src sh
+  pacman -S zsh
+#+end_src
+Create a user account
+#+begin_src sh
+  useradd -m -g users -G wheel,storage,power -s /bin/zsh garrido
+  passwd garrido
+#+end_src
+
+* Install your GRUB bootloader
+#+begin_src sh
+  pacman -S grub-bios
+  grub-install --target=i386-pc --recheck /dev/sda
+  cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo
+  /boot/grub/locale/en.mo
+#+end_src
+Target is always i386-pc even if the laptop/pc is a 64 bits machine
+
+Run
+#+begin_src sh
+grub-mkconfig -o /boot/grub/grub.cfg
+#+end_src
+
+* Setup your network
+#+begin_src sh
+pacman -S wireless_tools wpa_supplicant wpa_actiond dialog
+wifi-menu
+systemctl enable net-auto-wireless.service
+#+end_src
+
+* Exit, unmount partitions and reboot
+#+begin_src sh
+exit
+umount /mnt/home
+umount /mnt
+reboot
+#+end_src
+
+* Sound, video and mouse drivers
++ Get sound
+#+begin_src sh
+sudo pacman -S alsa-utils
+alsamixer
+speaker-test -c 2
+#+end_src
++ Install video driver (Intel)
+#+begin_src sh
+sudo pacman -S xf86-video-intel
+#+end_src
++ Install mouse driver
+#+begin_src sh
+sudo pacman -S xf86-input-synaptics
+#+end_src
+
+* X window
++ Install X window system
+#+begin_src sh
+sudo pacman -S xorg-server xorg-xinit xorg-server-utils
+#+end_src
++ Test default X environnement
+#+begin_src  sh
+sudo pacman -S xorg-twm xorg-xclock xterm
+startx
+#+end_src
+
+* Install and set Openbox
+#+begin_src sh
+sudo pacman -S openbox
+#+end_src
+#+begin_src sh
+mkdir -p ~/.config/openbox
+cp /etc/xdg/openbox/{rc.xml,menu.xml,autostart,environment}
+~/.config/openbox
+#+end_src
+
+Add the following line to ~/.xinitrc
+#+begin_src sh
+echo "exec openbox-session" > ~/.xinitrc
+#+end_src
+
+Install yaourt : add the following line into /etc/pacman.conf
+#+begin_src sh
+[archlinuxfr]
+Server = http://repo.archlinux.fr/$arch
+#+end_src
+Then do
+#+begin_src sh
+sudo pacman -Sy yaourt
+#+end_src
+
+#+begin_src sh
+yaourt -S openssh rsync
+#+end_src
+
+Install obconf, tint2 and hsetroot (wallpaper)
+#+begin_src sh
+sudo pacman -S obconf tint2 hsetroot
+#+end_src
+
+Install ubuntu-ttf font
+#+begin_src sh
+sudo pacman -S ttf-ubuntu-font-family
+#+end_src
+
+Install terminator
+#+begin_src sh
+sudo pacman -S terminator
+#+end_src
+
+Install emacs
+#+begin_src sh
+sudo pacman -S emacs
+#+end_src
+
+Install chromium
+#+begin_src sh
+sudo pacman -S chromium
+#+end_src
+
+Install xfce4 stuff
+#+begin_src sh
+sudo pacman -S xfce4-notifyd thunar xfce4-volman file-roller
+#end_src
+
+Install git and subversion
+#+begin_src sh
+sudo pacman -S git subversion
+#end_src
+
+Misc.
+#+begin_src sh
+sudo pacman -S unzip mlocate flashplugin
+#end_src
+
+* Openbox config
+* Zsh config
+#+begin_src sh
+git clone https://github.com/zsh-users/antigen.git
+#+end_src
