@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Notes on installing archlinux from scratch</title>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="description" content="In this note, we describe the different operations for installing archlinux"
+ />
+<link rel="stylesheet" href="../stylesheets/styles.css">
+                 <link rel="stylesheet" href="../stylesheets/org-pygments.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<a href="../../index.html">Retour menu principal</a>
+</div>
+<div id="content">
+<h1 class="title">Notes on installing archlinux from scratch</h1><hr/>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. After booting on archlinux ISO file</a></li>
+<li><a href="#sec-2">2. Create and format the partitions :</a></li>
+<li><a href="#sec-3">3. Mount the partitions</a></li>
+<li><a href="#sec-4">4. Connect to the internet</a></li>
+<li><a href="#sec-5">5. Install the base system</a></li>
+<li><a href="#sec-6">6. Configure the system</a>
+<ul>
+<li><a href="#sec-6-1">6.1. Generate a fstab</a></li>
+<li><a href="#sec-6-2">6.2. Next `chroot` into our newly installed system</a></li>
+<li><a href="#sec-6-3">6.3. Symlink /etc/localtime</a></li>
+<li><a href="#sec-6-4">6.4. Uncomment the &lsquo;fr&rsquo; lines in /etc/locale.gen file and generate it</a></li>
+<li><a href="#sec-6-5">6.5. Finally do</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7. Configuring the Console Keymap</a></li>
+<li><a href="#sec-8">8. Create a user account</a></li>
+<li><a href="#sec-9">9. Install your GRUB bootloader</a></li>
+<li><a href="#sec-10">10. Setup your network</a></li>
+<li><a href="#sec-11">11. Exit, unmount partitions and reboot</a></li>
+<li><a href="#sec-12">12. Sound, video and mouse drivers</a></li>
+<li><a href="#sec-13">13. X window</a></li>
+<li><a href="#sec-14">14. Install and set Openbox</a></li>
+<li><a href="#sec-15">15. Openbox config</a></li>
+<li><a href="#sec-16">16. Zsh config</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> After booting on archlinux ISO file</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Start loading the french keymap
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">loadkeys fr
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Create and format the partitions :</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+First look if any partition is already present
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">fdisk -l
+</pre>
+</div>
+<p>
+If yes, then either use them and go directly to the &ldquo;Mounting&rdquo; part
+or, format the disk using `fisk` or `cfdisk` utility.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">fdisk /dev/sda
+</pre>
+</div>
+<p>
+Different strategies can then be adopted (see
+<a href="https://wiki.archlinux.org/index.php/Partitioning">https://wiki.archlinux.org/index.php/Partitioning</a>). For the time
+being, I have adopted the following and pretty simple one :
+</p>
+<ul class="org-ul">
+<li>a 20 Gb root partition
+</li>
+<li>all the other bytes for the /home partition
+</li>
+</ul>
+
+<p>
+Example of `fdisk` partition :
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Device</td>
+<td class="left">Boot</td>
+<td class="right">Start</td>
+<td class="right">End</td>
+<td class="right">Blocks</td>
+<td class="right">Id</td>
+<td class="left">System</td>
+</tr>
+
+<tr>
+<td class="left">/dev/sda1</td>
+<td class="left">*</td>
+<td class="right">2048</td>
+<td class="right">39063551</td>
+<td class="right">19530752</td>
+<td class="right">83</td>
+<td class="left">Linux</td>
+</tr>
+
+<tr>
+<td class="left">/dev/sda2</td>
+<td class="left">&#xa0;</td>
+<td class="right">39063551</td>
+<td class="right">500118191</td>
+<td class="right">230527320</td>
+<td class="right">83</td>
+<td class="left">Linux</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Format partition is done with `mkfs` utility
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">mkfs.ext4 /dev/sda1
+mkfs.ext4 /dev/sda2
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Mount the partitions</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+
+<pre class="src src-sh">mount /dev/sda1 /mnt
+mkdir /mnt/home &amp;&amp; mount /dev/sda2 /mnt/home
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Connect to the internet</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Use the `wifi-menu` utility, choose the wifi name and set the WPA key
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Install the base system</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+
+<pre class="src src-sh">pacstrap /mnt base base_devel
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Configure the system</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> Generate a fstab</h3>
+<div class="outline-text-3" id="text-6-1">
+<div class="org-src-container">
+
+<pre class="src src-sh">genfstab -p /mnt &gt;&gt; /mnt/etc/fstab
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> Next `chroot` into our newly installed system</h3>
+<div class="outline-text-3" id="text-6-2">
+<div class="org-src-container">
+
+<pre class="src src-sh">arch-chroot /mnt
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> Symlink /etc/localtime</h3>
+<div class="outline-text-3" id="text-6-3">
+<div class="org-src-container">
+
+<pre class="src src-sh">ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
+hwclock --systohc --utc
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6-4" class="outline-3">
+<h3 id="sec-6-4"><span class="section-number-3">6.4</span> Uncomment the &lsquo;fr&rsquo; lines in /etc/locale.gen file and generate it</h3>
+<div class="outline-text-3" id="text-6-4">
+<div class="org-src-container">
+
+<pre class="src src-sh">locale-gen
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6-5" class="outline-3">
+<h3 id="sec-6-5"><span class="section-number-3">6.5</span> Finally do</h3>
+<div class="outline-text-3" id="text-6-5">
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="org-builtin">echo</span> <span class="org-variable-name">LANG</span>=<span class="org-string">"fr_FR.UTF-8"</span> &gt; /etc/locale.conf
+<span class="org-builtin">export</span> <span class="org-variable-name">LANG</span>=fr_FR.UTF-8
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Configuring the Console Keymap</h2>
+<div class="outline-text-2" id="text-7">
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="org-builtin">cd</span> to /usr/share/kbd/keymaps/i386/azerty
+</pre>
+</div>
+<p>
+Copy your default keymap (fr-pc.map.gz) to a new file fr-pc-personal.map.gz
+Gunzip the new map file
+Edit fr-pc-personal.map using your favorite editor.
+</p>
+<ul class="org-ul">
+<li>Swap CapsLock with Escape (Vim)
+</li>
+</ul>
+<p>
+make keycode 1 = Caps<sub>Lock</sub> and keycode 58 = Escape
+Gzip the map file
+Change the default keyboard layout file that will be used by editing
+<code>/etc/vconsole.conf</code> and adding KEYMAP=fr-pc-personal
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Create a user account</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+First set the root password
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">passwd
+</pre>
+</div>
+<p>
+and install <code>sudo</code> command
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">pacman -S sudo
+</pre>
+</div>
+<p>
+Once you&rsquo;ve installed sudo, you can allow your new user to run it by
+editing your sudoers file:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="org-variable-name">EDITOR</span>=nano visudo
+</pre>
+</div>
+<p>
+Scroll down until you find this line and uncomment it:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">%wheel <span class="org-variable-name">ALL</span>=(ALL) ALL
+</pre>
+</div>
+
+<p>
+Before creating a user account, install zshell
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">pacman -S zsh
+</pre>
+</div>
+<p>
+Create a user account
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">useradd -m -g users -G wheel,storage,power -s /bin/zsh garrido
+passwd garrido
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> Install your GRUB bootloader</h2>
+<div class="outline-text-2" id="text-9">
+<div class="org-src-container">
+
+<pre class="src src-sh">pacman -S grub-bios
+grub-install --target=i386-pc --recheck /dev/sda
+cp /usr/share/locale/en<span class="org-string">\@</span>quot/LC_MESSAGES/grub.mo
+/boot/grub/locale/en.mo
+</pre>
+</div>
+<p>
+Target is always i386-pc even if the laptop/pc is a 64 bits machine
+</p>
+
+<p>
+Run
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">grub-mkconfig -o /boot/grub/grub.cfg
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> Setup your network</h2>
+<div class="outline-text-2" id="text-10">
+<div class="org-src-container">
+
+<pre class="src src-sh">pacman -S wireless_tools wpa_supplicant wpa_actiond dialog
+wifi-menu
+systemctl enable net-auto-wireless.service
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> Exit, unmount partitions and reboot</h2>
+<div class="outline-text-2" id="text-11">
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="org-keyword">exit</span>
+umount /mnt/home
+umount /mnt
+reboot
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> Sound, video and mouse drivers</h2>
+<div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li>Get sound
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo pacman -S alsa-utils
+alsamixer
+speaker-test -c 2
+</pre>
+</div>
+<ul class="org-ul">
+<li>Install video driver (Intel)
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo pacman -S xf86-video-intel
+</pre>
+</div>
+<ul class="org-ul">
+<li>Install mouse driver
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo pacman -S xf86-input-synaptics
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> X window</h2>
+<div class="outline-text-2" id="text-13">
+<ul class="org-ul">
+<li>Install X window system
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo pacman -S xorg-server xorg-xinit xorg-server-utils
+</pre>
+</div>
+<ul class="org-ul">
+<li>Test default X environnement
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo pacman -S xorg-twm xorg-xclock xterm
+startx
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14"><span class="section-number-2">14</span> Install and set Openbox</h2>
+<div class="outline-text-2" id="text-14">
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo pacman -S openbox
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-sh">mkdir -p ~/.config/openbox
+cp /etc/xdg/openbox/{rc.xml,menu.xml,autostart,environment}
+~/.config/openbox
+</pre>
+</div>
+
+<p>
+Add the following line to ~/.xinitrc
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="org-builtin">echo</span> <span class="org-string">"exec openbox-session"</span> &gt; ~/.xinitrc
+</pre>
+</div>
+
+<p>
+Install yaourt : add the following line into /etc/pacman.conf
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">[archlinuxfr]
+<span class="org-variable-name">Server</span> = http://repo.archlinux.fr/$<span class="org-variable-name">arch</span>
+</pre>
+</div>
+<p>
+Then do
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo pacman -Sy yaourt
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">yaourt -S openssh rsync
+</pre>
+</div>
+
+<p>
+Install obconf, tint2 and hsetroot (wallpaper)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo pacman -S obconf tint2 hsetroot
+</pre>
+</div>
+
+<p>
+Install ubuntu-ttf font
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo pacman -S ttf-ubuntu-font-family
+</pre>
+</div>
+
+<p>
+Install terminator
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo pacman -S terminator
+</pre>
+</div>
+
+<p>
+Install emacs
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo pacman -S emacs
+</pre>
+</div>
+
+<p>
+Install chromium
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo pacman -S chromium
+</pre>
+</div>
+
+<p>
+Install xfce4 stuff
+#+begin<sub>src</sub> sh
+sudo pacman -S xfce4-notifyd thunar xfce4-volman file-roller
+#end<sub>src</sub>
+</p>
+
+<p>
+Install git and subversion
+#+begin<sub>src</sub> sh
+sudo pacman -S git subversion
+#end<sub>src</sub>
+</p>
+
+<p>
+Misc.
+#+begin<sub>src</sub> sh
+sudo pacman -S unzip mlocate flashplugin
+#end<sub>src</sub>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15"><span class="section-number-2">15</span> Openbox config</h2>
+</div>
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16"><span class="section-number-2">16</span> Zsh config</h2>
+<div class="outline-text-2" id="text-16">
+<div class="org-src-container">
+
+<pre class="src src-sh">git clone https://github.com/zsh-users/antigen.git
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

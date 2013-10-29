@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Install PC from scratch</title>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" href="../stylesheets/styles.css">
+                 <link rel="stylesheet" href="../stylesheets/org-pygments.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<a href="../../index.html">Retour menu principal</a>
+</div>
+<div id="content">
+<h1 class="title">Install PC from scratch</h1><hr/>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Install Ubuntu flavor distribution</a></li>
+<li><a href="#sec-2">2. Basic apt packages</a>
+<ul>
+<li><a href="#sec-2-1">2.1. Openssh</a></li>
+<li><a href="#sec-2-2">2.2. CVS</a></li>
+<li><a href="#sec-2-3">2.3. g++, Makefile, gfortran</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Homemade compilation</a>
+<ul>
+<li><a href="#sec-3-1">3.1. ccache</a></li>
+<li><a href="#sec-3-2">3.2. cmake</a></li>
+<li><a href="#sec-3-3">3.3. emacs</a></li>
+<li><a href="#sec-3-4">3.4. git</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. zsh shell</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Change default shell</a></li>
+<li><a href="#sec-4-2">4.2. Download antigen plugin manager</a></li>
+<li><a href="#zshrc">4.3. Download the following <code>.zshrc</code> file</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. SuperNEMO software</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Install required packages</a></li>
+<li><a href="#sec-5-2">5.2. Moving svn to git</a>
+<ul>
+<li><a href="#sec-5-2-1">Install go</a></li>
+<li><a href="#sec-5-2-2">Install go-svn2git</a></li>
+</ul>
+</li>
+<li><a href="#sec-5-3">5.3. Install aggregators</a></li>
+<li><a href="#sec-5-4">5.4. SN@ilWare development</a></li>
+<li><a href="#sec-5-5">5.5. Remarks</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Install Ubuntu flavor distribution</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><a href="http://www.ubuntu.com/">Ubuntu</a>
+</li>
+<li><a href="http://xubuntu.org/">Xubuntu</a>
+</li>
+<li><a href="http://www.kubuntu.org/">Kubuntu</a>
+</li>
+<li><a href="http://www.linuxmint.com/">Linux Mint</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Basic apt packages</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Openssh</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+To be able to remotely connect
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo apt-get install openssh-server
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> CVS</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo apt-get install subversion git git-svn
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> g++, Makefile, gfortran</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo apt-get install build-essential gfortran
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Homemade compilation</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> ccache</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+<a href="http://ccache.samba.org/">ccache</a> is used to &ldquo;cache&rdquo; the result of <code>g++</code> compilation. The compilation
+time is greatly reduced.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="org-builtin">export</span> <span class="org-variable-name">CCACHE_VERSION</span>=3.1.9
+<span class="org-builtin">cd</span> /tmp
+wget http://samba.org/ftp/ccache/ccache-${<span class="org-variable-name">CCACHE_VERSION</span>}.tar.gz
+tar xzvf /tmp/ccache-${<span class="org-variable-name">CCACHE_VERSION</span>}.tar.gz
+<span class="org-builtin">cd</span> ccache-${<span class="org-variable-name">CCACHE_VERSION</span>}
+./configure &amp;&amp; make &amp;&amp; sudo make install
+</pre>
+</div>
+
+<p>
+You can already use ccache by setting
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="org-builtin">export</span> <span class="org-variable-name">CXX</span>=ccache g++
+<span class="org-builtin">export</span> <span class="org-variable-name">CC</span>=ccache gcc
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> cmake</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+<a href="http://www.cmake.org/">cmake</a> is quite deprecated in <code>apt-get</code> sources
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="org-builtin">export</span> <span class="org-variable-name">CMAKE_VERSION</span>=2.8.10.2
+<span class="org-builtin">cd</span> /tmp
+wget http://www.cmake.org/files/v2.8/cmake-${<span class="org-variable-name">CMAKE_VERSION</span>}.tar.gz
+tar xzvf /tmp/cmake-${<span class="org-variable-name">CMAKE_VERSION</span>}.tar.gz
+<span class="org-builtin">cd</span> cmake-${<span class="org-variable-name">CMAKE_VERSION</span>}
+./configure &amp;&amp; make &amp;&amp; sudo make install
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> emacs</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+<a href="http://www.gnu.org/software/emacs/">GNU Emacs</a> is an extensible, customizable text editor—and more. At its core is an
+interpreter for Emacs Lisp, a dialect of the Lisp programming language with
+extensions to support text editing. Again, since <code>apt-get</code> packages are quite
+outdated, we download and install a pretty recent version of emacs.
+</p>
+
+<p>
+First install X11 development librairies.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo apt-get install libgtk2.0-dev libgif-dev libpng12-dev libxpm-dev
+</pre>
+</div>
+
+<p>
+Then go ahead by installing emacs.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="org-builtin">export</span> <span class="org-variable-name">EMACS_VERSION</span>=24.2
+<span class="org-builtin">cd</span> /tmp
+wget http://ftpmirror.gnu.org/emacs/emacs-${<span class="org-variable-name">EMACS_VERSION</span>}.tar.gz
+tar xzvf emacs-${<span class="org-variable-name">EMACS_VERSION</span>}.tar.gz
+<span class="org-builtin">cd</span> emacs-${<span class="org-variable-name">EMACS_VERSION</span>}
+./configure --with-jpeg=no --with-tiff=no &amp;&amp; make &amp;&amp; sudo make install
+</pre>
+</div>
+
+<p>
+Given that you are using all the <code>zsh</code> plugins downloaded by <code>antigen</code>, then you
+got a problem when you launch <code>emacs</code> which tells you that no emacs server are
+currently running. This is not a bug, this a feature. You can either run <code>emacs</code>
+by doing
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">$ \emacs
+</pre>
+</div>
+<p>
+or
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">$ relaunch_emacs_daemon &amp;&amp; emacs
+</pre>
+</div>
+<p>
+In the latest case, a <code>emacs</code> daemon will be launched first and then all the new
+<code>emacs</code> instances will be opened from the daemon. The interest of such behavior
+is that <code>emacs</code> will open almost instantanously.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> git</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+If the bundled version of <code>git</code> provided by <code>apt-get</code> package is a bit old, you
+can try to install your own version by checking out the <code>git</code> repository.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="org-builtin">cd</span> /tmp
+git clone git://git.kernel.org/pub/scm/git/git.git
+<span class="org-builtin">cd</span> git
+make <span class="org-variable-name">prefix</span>=/usr/local all
+sudo make <span class="org-variable-name">prefix</span>=/usr/local install
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> zsh shell</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+This part can be <b>skipped</b> if you prefer and use a different shell.
+</p>
+
+<p>
+Zsh is a powerful shell with much better completion implementation
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo apt-get install libncurses-dev
+<span class="org-builtin">export</span> <span class="org-variable-name">ZSH_VERSION</span>=5.0.0
+<span class="org-builtin">cd</span> /tmp
+wget ftp://ftp.fu-berlin.de/pub/unix/shells/zsh/old/zsh-${<span class="org-variable-name">ZSH_VERSION</span>}.tar.gz
+tar xzvf /tmp/zsh-${<span class="org-variable-name">ZSH_VERSION</span>}.tar.gz
+<span class="org-builtin">cd</span> zsh-${<span class="org-variable-name">ZSH_VERSION</span>}
+./configure &amp;&amp; make &amp;&amp; sudo make install
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Change default shell</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo sed -i -e <span class="org-string">'#^nemo# s#/bin/bash#/usr/local/bin/zsh#'</span> /etc/passwd
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Download antigen plugin manager</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+<a href="https://github.com/zsh-users/antigen">Antigen</a> is a small set of functions that help you easily manage your
+shell (zsh) plugins, called bundles. The concept is pretty much the same as
+bundles in a typical vim+pathogen setup.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">git clone https://github.com/zsh-users/antigen.git ~/.config/zsh/antigen
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-zshrc" class="outline-3">
+<h3 id="zshrc"><a id="sec-4-3" name="sec-4-3"></a><span class="section-number-3">4.3</span> Download the following <code>.zshrc</code> file</h3>
+<div class="outline-text-3" id="text-zshrc">
+<div class="org-src-container">
+
+<pre class="src src-sh">wget --no-check-certificate https://raw.github.com/xgarrido/dotfiles/master/zshrc -O ~/.zshrc
+</pre>
+</div>
+
+<p>
+After that open a new terminal in order to get all the changes. Antigen will
+proceed by downloading different zsh bundle sources, especially plugins
+related to SuperNEMO software.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> SuperNEMO software</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+To build SuperNEMO aggregators (i.e. Cadfael, Bayeux&#x2026;) you can either follow
+the guidelines on the <a href="https://nemo.lpc-caen.in2p3.fr/wiki/SuperNEMO_SW">LPC wiki</a> or, if you use <code>zsh</code> and you have downloaded the
+<a href="#zshrc">.zshrc</a> file, you can use the <code>aggregator</code> command to install all
+aggregators. Actually there are some (constraining) prerequisites but the next
+lines describe the different steps.
+</p>
+</div>
+
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Install required packages</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+You will need some additionnal packages to make everything working well. Below
+you will find a list of packages to install.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo apt-get install libbz2-dev python-dev libglu1-mesa-dev libmotif-dev libxmu-dev zlib1g-dev
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Moving svn to git</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+All SuperNEMO software is stored and versionned under <a href="http://subversion.apache.org/">subversion</a> centralized version
+control system. Besides its reliability, SVN offers less options and too
+&ldquo;centralization&rdquo; with respect to <a href="http://git-scm.com/">git</a>. Using <code>git-svn</code> it is possible to use
+<code>git</code> and to keep the <code>svn</code> repository safe allowing bidirectional operations
+between the subversion repository and git. The two next items describe the
+needed steps to achieve such configuration. Of course, if you do not care about
+git/svn paradigm, you can skip this part and got to next section.
+</p>
+</div>
+<div id="outline-container-sec-5-2-1" class="outline-4">
+<h4 id="sec-5-2-1">Install <a href="http://golang.org/">go</a></h4>
+<div class="outline-text-4" id="text-5-2-1">
+<p>
+Go is an open source programming environment that makes it easy to build simple,
+reliable, and efficient software. This is needed because we will use later the
+<code>go-svn2git</code> binary to handle svn trunk/tags/branch within <code>git</code> CVS.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo apt-get install golang
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-2-2" class="outline-4">
+<h4 id="sec-5-2-2">Install go-svn2git</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<p>
+<code>go-svn2git</code> is a tiny utility for migrating projects from Subversion to Git
+while keeping the trunk, branches and tags where they should be. It uses git-svn
+to clone an svn repository and does some clean-up to make sure branches and tags
+are imported in a meaningful way, and that the code checked into master ends up
+being what&rsquo;s currently in your svn trunk rather than whichever svn branch your
+last commit was in. It is developed by <a href="https://github.com/sbinet/go-svn2git">Sébastien Binet</a>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="org-builtin">export</span> <span class="org-variable-name">GOPATH</span>=~/Development/go
+<span class="org-builtin">export</span> <span class="org-variable-name">PATH</span>=$<span class="org-variable-name">GOPATH</span>/bin:$<span class="org-variable-name">PATH</span>
+go get github.com/sbinet/go-svn2git
+</pre>
+</div>
+
+<p>
+All <code>go</code> programs are installed in the <code>GOPATH</code> environment variable. You can
+overload this value by exporting it to somewhere else.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Install aggregators</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+If you have passed the previous steps, you can now use <a href="https://github.com/xgarrido/zsh-aggregator">zsh-aggregator</a> utility
+and the <code>aggregator</code> command. The last thing you have to do is to define the
+<code>SNAILWARE_PRO_DIR</code> variable and set it to a directory of your choice. For
+example, to install all aggregators just do
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="org-builtin">export</span> <span class="org-variable-name">SNAILWARE_PRO_DIR</span>=~/SuperNEMO/snware
+aggregator build all
+</pre>
+</div>
+
+<p>
+On some machines, you can choose a different directory where to build aggregator
+and the place to install them. <code>SNAILWARE_PRO_DIR</code> is still the install
+directory but you can export the <code>SNAILWARE_BUILD_DIR</code> variable where the
+aggregator will be compiled and built. For example, on nemo machines, you can
+set-up aggregators like that
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="org-builtin">export</span> <span class="org-variable-name">SNAILWARE_BUILD_DIR</span>=/scratch/${<span class="org-variable-name">USER</span>}/SuperNEMO/snware
+<span class="org-builtin">export</span> <span class="org-variable-name">SNAILWARE_PRO_DIR</span>=/exp/nemo/${<span class="org-variable-name">USER</span>}/SuperNEMO/snware
+aggregator build all
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> SN@ilWare development</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+Aggregators are fine but if you plan do develop some core or analysis programs
+you may need more flexibility to handle software components. <a href="https://github.com/xgarrido/zsh-snailware">zsh-snailware</a>
+provides some commands to help in defining a development environment. Basically,
+you only need to set the <code>SNAILWARE_DEV_DIR</code> directory and then use the
+<code>snailware</code> command.
+</p>
+
+<p>
+For example, to install Bayeux components i.e. datatools, geomtools &#x2026; in a
+unique and well-structured directory, you can do
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="org-builtin">export</span> <span class="org-variable-name">SNAILWARE_DEV_DIR</span>=~/SuperNEMO/development
+snailware git-checkout bayeux
+snailware rebuild bayeux
+</pre>
+</div>
+
+<p>
+You can also only install datatools and materials, for example
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">snailware build datatools materials
+</pre>
+</div>
+
+<p>
+In such a way, <code>snailware</code> command is a replacement of aggregator
+packages. Given that you have have installed one of the component, you can then
+source it
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">snailware setup all
+</pre>
+</div>
+
+<p>
+as well as you can dump the components status
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">snailware status all
+</pre>
+</div>
+
+<p>
+which gives a nice formated table output of the current status of each
+components.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-5" class="outline-3">
+<h3 id="sec-5-5"><span class="section-number-3">5.5</span> Remarks</h3>
+<div class="outline-text-3" id="text-5-5">
+<ol class="org-ol">
+<li>If you decide to use <code>git-svn</code>, you are supposed to know and &ldquo;master&rdquo; <code>git</code>
+command. If not a nice tutorial about <code>git</code> commands can be found at this
+address <a href="http://try.github.com/">http://try.github.com/</a>.
+</li>
+
+<li>To locally commit you just have to <code>git commit</code> your change by stagging some
+of the modified files. If you want to commit back to the svn repository you
+should do <code>git svn rebase</code> to make sure nothing has been updated meanwhile
+and then do <code>git svn dcommit</code>.
+</li>
+
+<li>The first time you <code>dcommit</code>, you may be in trouble due to username mismatch
+between the svn username you use when checking out and the username you have
+when commiting. The error looks like
+</li>
+</ol>
+<div class="org-src-container">
+
+<pre class="src src-sh">Access to <span class="org-string">'/svn/!svn/act/...'</span> forbidden
+</pre>
+</div>
+<p>
+To overcome this problem you should specify explicitly who is committing by
+doing
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git svn dcommit --username=your-username
+</pre>
+</div>
+
+<p>
+2013-06-25 : Actually this methods does not seem to work. One way to get rid of
+this problem is to checkout/commit/update a svn repository using explicitly
+your username. Something like
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">svn co http://someplace.org --username your-username
+</pre>
+</div>
+
+<p>
+should work. Then go back to your work and try again to commit through <code>git
+svn</code>.
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
