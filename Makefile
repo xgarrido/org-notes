@@ -21,7 +21,7 @@ publish:
 	@tar xzvf /tmp/org-notes-publish.tar.gz
 	@git commit -am "update documentation"
 	@git push
-	@git checkout master
+	#@git checkout master
 
 clean:
 	@rm -rf doc index.html
