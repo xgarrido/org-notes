@@ -19,7 +19,8 @@ publish:
 	@tar czvf /tmp/org-notes-publish.tar.gz index.html doc
 	@git checkout gh-pages
 	@tar xzvf /tmp/org-notes-publish.tar.gz
-	@git commit -am "update documentation" && git push
+	@git commit -am "update documentation"
+	@git push
 	@git checkout master
 
 clean:
