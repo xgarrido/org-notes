@@ -17,6 +17,7 @@ publish:
 	@tar czvf /tmp/org-notes-publish.tar.gz index.html doc
 	@git checkout gh-pages
 	@tar xzvf /tmp/org-notes-publish.tar.gz
+	@find . -name *.*~ | xargs rm
 	@git commit -am "update documentation" && git push
 	@git checkout master
 	@rm -f README.el
