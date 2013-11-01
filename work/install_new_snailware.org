@@ -31,26 +31,26 @@ You will get version 2.8.9 of =cmake=.
 *** Configuration
 To setup =Cadfael= simply do
 #+BEGIN_SRC sh
-  cmake                                                            \
+  cmake                                                     \
       -DCMAKE_INSTALL_PREFIX=${SW_WORK_DIR}/Cadfael/install \
-      -DCADFAEL_VERBOSE_BUILD=ON                                   \
-      -DCADFAEL_STEP_TARGETS=ON                                    \
-      -Dport/patchelf=ON                                           \
-      -Dport/gsl=ON                                                \
-      -Dport/clhep=ON                                              \
-      -Dport/boost=ON                                              \
-      -Dport/boost+regex=ON                                        \
-      -Dport/camp=ON                                               \
-      -Dport/xerces-c=ON                                           \
-      -Dport/geant4=ON                                             \
-      -Dport/geant4+gdml=ON                                        \
-      -Dport/geant4+x11=ON                                         \
-      -Dport/geant4+data=ON                                        \
-      -Dport/root=ON                                               \
-      -Dport/root+x11=ON                                           \
-      -Dport/root+asimage=ON                                       \
-      -Dport/root+mathmore=ON                                      \
-      -Dport/root+opengl=ON                                        \
+      -DCADFAEL_VERBOSE_BUILD=ON                            \
+      -DCADFAEL_STEP_TARGETS=ON                             \
+      -Dport/patchelf=ON                                    \
+      -Dport/gsl=ON                                         \
+      -Dport/clhep=ON                                       \
+      -Dport/boost=ON                                       \
+      -Dport/boost+regex=ON                                 \
+      -Dport/camp=ON                                        \
+      -Dport/xerces-c=ON                                    \
+      -Dport/geant4=ON                                      \
+      -Dport/geant4+gdml=ON                                 \
+      -Dport/geant4+x11=ON                                  \
+      -Dport/geant4+data=ON                                 \
+      -Dport/root=ON                                        \
+      -Dport/root+x11=ON                                    \
+      -Dport/root+asimage=ON                                \
+      -Dport/root+mathmore=ON                               \
+      -Dport/root+opengl=ON                                 \
       ${SW_WORK_DIR}/Cadfael/trunk/
 #+END_SRC
 then execute the =make= command
