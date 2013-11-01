@@ -1,7 +1,7 @@
 #+TITLE: Todo List
 #+DESCRIPTION: List of tasks to be done asap
 
-* Tasks [6/15]
+* Tasks [8/16]
 ** DONE Check if std::abs will not generate warning or use std::fabs to get a proper double
 Always use =std::abs= see [[http://stackoverflow.com/questions/3118165/when-do-i-use-fabs-and-when-is-it-sufficient-to-use-stdabs][this stackoverflow post]].
 CLOSED: [2013-08-30 ven. 18:16]
@@ -56,19 +56,29 @@ CLOSED: [2013-09-07 sam. 17:54]
 
 ** TODO See if =genbb= compilation warnings are not showing possible bug
 [2013-09-05 jeu.]
+
 When using full warning flags for C++ compilation, =genbb= compilation shows
 unused "label". This may exhibits some problem when automatic conversion from
 fortran to C++.
-** TODO WTF the reflector is made of lab_air ?
+** DONE WTF the reflector is made of lab_air ?
+CLOSED: [2013-11-01 ven. 19:06]
   [2013-09-08 dim.]
   [[file:~/Workdir/NEMO/supernemo/development/falaise/sngeometry/__install-Linux-x86_64/share/sngeometry/resources/setups/bipo3/config_2.0/optical_module.geom::#material.ref%20:%20string%20%3D%20"snemo::aluminium"][file:~/Workdir/NEMO/supernemo/development/falaise/sngeometry/__install-Linux-x86_64/share/sngeometry/resources/setups/bipo3/config_2.0/optical_module.geom::#material.ref : string = "snemo::aluminium"]]
 ** TODO Look into [[http://www.howardism.org/Technical/LP/dot-emacs.html]] and catch template example to generate org file
   [2013-09-27 ven.]
-** TODO Check why data generated with Bayeux on nemo3 generates archive exception through =snemo_event_brower=
+** DONE Check why data generated with Bayeux on nemo3 generates archive exception through =snemo_event_brower=
+CLOSED: [2013-11-01 ven. 19:07]
   [2013-10-22 mar.]
   [[file:~/Workdir/NEMO/supernemo/snware/cadfael/build/master/Source/boost-1.51.0/libs/serialization/src/archive_exception.cpp::m_msg%20%3D%20"unsupported%20version"%3B][file:~/Workdir/NEMO/supernemo/snware/cadfael/build/master/Source/boost-1.51.0/libs/serialization/src/archive_exception.cpp::m_msg = "unsupported version";]]
+** TODO Create a skeleton for lone SN@ilWare module
+  [2013-11-01 ven.]
+
+The idea is to build a package containing one SN@ilWare module (and thus doing
+one thing)[1] and to provide a README org file containing a skeleton with
+explanation and a minimal embedded SN@ailWare configuration.
 
 
+[1] we can imagine to group several module given their purposes
 * Teaching
 ** DONE Faire une affiche pour ECP
 CLOSED: [2013-09-08 dim. 14:16]
