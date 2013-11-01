@@ -1,4 +1,5 @@
-#+TITLE: Starter Kit Todo List
+#+TITLE: Todo List
+#+DESCRIPTION: List of tasks to be done asap
 
 * Tasks [6/15]
 ** DONE Check if std::abs will not generate warning or use std::fabs to get a proper double
