@@ -88,6 +88,7 @@ explanation and a minimal embedded SN@ilWare configuration.
 ** TODO Check why =mygsl::histogram= gets empty bins
   [2013-11-02 sam.]
   [[file:~/Workdir/NEMO/supernemo/development/bayeux/dpp/src/histogram_service.cc::double%20bin_content%20%3D%20h1d_.get%20(bin_index)%3B][file:~/Workdir/NEMO/supernemo/development/bayeux/dpp/src/histogram_service.cc::double bin_content = h1d_.get (bin_index);]]
+
 * Teaching
 ** DONE Faire une affiche pour ECP
 CLOSED: [2013-09-08 dim. 14:16]
