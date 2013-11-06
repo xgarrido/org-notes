@@ -3,11 +3,12 @@
 #+EMAIL:  xavier.garrido@lal.in2p3.fr
 #+DATE:   15/10/2013
 #+DESCRIPTION: Quick notes on how to install new SN@ilWare software on different machines
+#+OPTIONS: ^:{}
 #+LATEX_CLASS: snemo-note
 
-* Install @ LAL
+* Install @ LAL :noexport:
 ** Preamble
-*** Configuration of =cmake=
+*** Configuration of =cmake=                                   :deprecated:
 First you should specify an alias to the latest version of =cmake= by executing
 #+BEGIN_SRC sh
   alias cmake=cmake28
@@ -145,7 +146,7 @@ You will get version 2.8.10.2 of =cmake=.
 *** Machine configuration
 #+BEGIN_SRC sh
   uname -a
- Linux ccage031 2.6.32-358.14.1.el6.x86_64 #1 SMP Tue Jul 16 14:24:33 CDT 2013 x86_64 x86_64 x86_64 GNU/Linux
+  Linux ccage031 2.6.32-358.14.1.el6.x86_64 #1 SMP Tue Jul 16 14:24:33 CDT 2013 x86_64 x86_64 x86_64 GNU/Linux
 #+END_SRC
 #+BEGIN_SRC sh
   gcc --version | head -1
@@ -161,7 +162,7 @@ You will get version 2.8.10.2 of =cmake=.
 *** Configuration
 To setup =Cadfael=, first create the following directory
 #+BEGIN_SRC sh
-  mkdir ${SW_WORK_DIR}/Cadfael/build && cd ${SW_WORK_DIR}/Cadfael/build
+  mkdir -p ${SW_WORK_DIR}/Cadfael/build && cd ${SW_WORK_DIR}/Cadfael/build
 #+END_SRC
 Then simply do
 #+BEGIN_SRC sh
@@ -191,22 +192,102 @@ then execute the =make= command
 #+BEGIN_SRC sh
   make
 #+END_SRC
-*** Ports status [0/8]
+*** Ports status [8/8]
 
-- [ ] patchelf
-- [ ] GSL
-- [ ] CLHEP
-- [ ] boost
-- [ ] camp
-- [ ] xerces-c
-- [ ] Geant4
-  - [ ] =-Dport/geant4+gdml= will install Xerces-C
-  - [ ] =-Dport/geant4+data=
-- [ ] ROOT
-  - [] =-Dport/root+mathmore=
-  - [] =-Dport/root+opengl=
+- [X] patchelf
+- [X] GSL
+- [X] CLHEP
+- [X] boost
+- [X] camp
+- [X] xerces-c
+- [X] Geant4
+  - [X] =-Dport/geant4+gdml= will install Xerces-C
+  - [X] =-Dport/geant4+data=
+- [X] ROOT
+  - [X] =-Dport/root+mathmore=
+  - [X] =-Dport/root+opengl=
 
-* Install @ laptop
+** Bayeux
+*** Checking out
+#+BEGIN_SRC sh
+  svn co https://nemo.lpc-caen.in2p3.fr/svn/Bayeux/trunk \
+      ${SW_WORK_DIR}/Bayeux/trunk
+#+END_SRC
+*** Configuration
+To setup =Bayeux=, first create the following directory
+#+BEGIN_SRC sh
+  mkdir -p ${SW_WORK_DIR}/Bayeux/build && cd ${SW_WORK_DIR}/Bayeux/build
+#+END_SRC
+Then simply do
+#+BEGIN_SRC sh
+  cmake                                                    \
+      -DCMAKE_INSTALL_PREFIX=${SW_WORK_DIR}/Bayeux/install \
+      -DCMAKE_PREFIX_PATH=${SW_WORK_DIR}/Cadfael/install   \
+      -DBayeux_ENABLE_TESTING=ON                           \
+      -DBayeux_WITH_GEANT4=ON                              \
+      ${SW_WORK_DIR}/Bayeux/trunk/
+#+END_SRC
+
+To run the compilation process on several CPU cores do
+#+BEGIN_SRC sh
+  make -j6 install
+#+END_SRC
+*** Test programs [10/10]
+Adding option =-DBayeux_ENABLE_TESTING=ON= to the =cmake= command will enable
+the compilation of test programs. Then doing =make test= will launch each of
+the *238 test programs* and it will eventually shows some broken tests.
+
+- [X] datatools
+- [X] brio
+- [X] cuts
+- [X] genbb_help
+- [X] geomtools
+- [X] genvtx
+- [X] mygsl
+- [X] materials
+- [X] dpp
+- [X] mctools
+** Falaise
+*** Checking out
+#+BEGIN_SRC sh
+  svn co https://nemo.lpc-caen.in2p3.fr/svn/Falaise/trunk \
+      ${SW_WORK_DIR}/Falaise/trunk
+#+END_SRC
+*** Configuration
+To setup =Falaise= with an already version of =Bayeux= installed, first create
+the following directory
+#+BEGIN_SRC sh
+  mkdir -p ${SW_WORK_DIR}/Falaise/build && cd ${SW_WORK_DIR}/Falaise/build
+#+END_SRC
+Then configure =Falaise=
+#+BEGIN_SRC sh
+  cmake                                                                                  \
+      -DCMAKE_INSTALL_PREFIX=${SW_WORK_DIR}/Falaise/install                              \
+      -DCMAKE_PREFIX_PATH="${SW_WORK_DIR}/Cadfael/install;${SW_WORK_DIR}/Bayeux/install" \
+      -DFalaise_ENABLE_TESTING=ON                                                        \
+      -DFalaise_BUILD_DOCS=OFF                                                           \
+      -DFalaise_USE_SYSTEM_BAYEUX=ON                                                     \
+      ${SW_WORK_DIR}/Falaise/trunk
+#+END_SRC
+
+*Remark:* =doxygen= version @ Lyon is 1.6 which does not fulfill requirements
+for building =Falaise= documentation.
+
+To run the compilation process on several CPU cores do
+#+BEGIN_SRC sh
+  make -j6 install
+#+END_SRC
+
+*** Basic tests
+#+BEGIN_SRC sh
+  cd ${SW_WORK_DIR}/Falaise/build
+  ./BuildProducts/bin/flsimulate -n 10 -o /tmp/${USER}/snemo_tc_muons_roof.xml
+  ./BuildProducts/bin/flreconstruct -i /tmp/${USER}/snemo_tc_muons_roof.xml
+#+END_SRC
+
+Tests successfully passed.
+
+* Install @ laptop :noexport:
 ** Machine configuration
 #+BEGIN_SRC sh
   uname -a
@@ -393,7 +474,7 @@ Bayeux...
 ...
 #+END_SRC
 *** TODO Falaise
-* Install @ pc-server
+* Install @ pc-server :noexport:
 ** Machine configuration
 #+BEGIN_SRC sh
   uname -a
