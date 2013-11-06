@@ -17,7 +17,7 @@ You will get version 2.8.9 of =cmake=.
 #+BEGIN_SRC sh
   export SW_WORK_DIR=/exp/nemo/garrido/tmp
 #+END_SRC
-** Machine configuration
+*** Machine configuration
 #+BEGIN_SRC sh
   uname -a
   Linux nemo3.lal.in2p3.fr 2.6.32-220.13.1.el6.x86_64 #1 SMP Tue Apr 17 15:16:22 CDT 2012 x86_64 x86_64 x86_64 GNU/Linux
@@ -28,8 +28,17 @@ You will get version 2.8.9 of =cmake=.
 #+END_SRC
 
 ** Cadfael
+*** Checking out
+#+BEGIN_SRC sh
+  svn co https://nemo.lpc-caen.in2p3.fr/svn/Cadfael/trunk \
+      ${SW_WORK_DIR}/Cadfael/trunk
+#+END_SRC
 *** Configuration
-To setup =Cadfael= simply do
+To setup =Cadfael=, first create the following directory
+#+BEGIN_SRC sh
+  mkdir ${SW_WORK_DIR}/Cadfael/build && cd ${SW_WORK_DIR}/Cadfael/build
+#+END_SRC
+Then simply do
 #+BEGIN_SRC sh
   cmake                                                     \
       -DCMAKE_INSTALL_PREFIX=${SW_WORK_DIR}/Cadfael/install \
@@ -120,6 +129,83 @@ To run the compilation process on several CPU cores do
 #+BEGIN_SRC sh
   make -j8 install
 #+END_SRC
+* Install @ CC
+** Preamble
+*** Configuration of =cmake=
+First you should use a more decent version of =cmake= by doing
+#+BEGIN_SRC sh
+  source $THRONG_DIR/sw/config/SL6.4/nemo_basic_sw_setup-1.0.bash
+  do_nemo_basics_sw_setup_1
+#+END_SRC
+You will get version 2.8.10.2 of =cmake=.
+*** Configuration of installation directory
+#+BEGIN_SRC sh
+  export SW_WORK_DIR=/sps/nemo/scratch/garrido/tmp
+#+END_SRC
+*** Machine configuration
+#+BEGIN_SRC sh
+  uname -a
+ Linux ccage031 2.6.32-358.14.1.el6.x86_64 #1 SMP Tue Jul 16 14:24:33 CDT 2013 x86_64 x86_64 x86_64 GNU/Linux
+#+END_SRC
+#+BEGIN_SRC sh
+  gcc --version | head -1
+  gcc (GCC) 4.4.7 20120313 (Red Hat 4.4.7-3)
+#+END_SRC
+
+** Cadfael
+*** Checking out
+#+BEGIN_SRC sh
+  svn co https://nemo.lpc-caen.in2p3.fr/svn/Cadfael/trunk \
+      ${SW_WORK_DIR}/Cadfael/trunk
+#+END_SRC
+*** Configuration
+To setup =Cadfael=, first create the following directory
+#+BEGIN_SRC sh
+  mkdir ${SW_WORK_DIR}/Cadfael/build && cd ${SW_WORK_DIR}/Cadfael/build
+#+END_SRC
+Then simply do
+#+BEGIN_SRC sh
+  cmake                                                     \
+      -DCMAKE_INSTALL_PREFIX=${SW_WORK_DIR}/Cadfael/install \
+      -DCADFAEL_VERBOSE_BUILD=ON                            \
+      -DCADFAEL_STEP_TARGETS=ON                             \
+      -Dport/patchelf=ON                                    \
+      -Dport/gsl=ON                                         \
+      -Dport/clhep=ON                                       \
+      -Dport/boost=ON                                       \
+      -Dport/boost+regex=ON                                 \
+      -Dport/camp=ON                                        \
+      -Dport/xerces-c=ON                                    \
+      -Dport/geant4=ON                                      \
+      -Dport/geant4+gdml=ON                                 \
+      -Dport/geant4+x11=ON                                  \
+      -Dport/geant4+data=ON                                 \
+      -Dport/root=ON                                        \
+      -Dport/root+x11=ON                                    \
+      -Dport/root+asimage=ON                                \
+      -Dport/root+mathmore=ON                               \
+      -Dport/root+opengl=ON                                 \
+      ${SW_WORK_DIR}/Cadfael/trunk/
+#+END_SRC
+then execute the =make= command
+#+BEGIN_SRC sh
+  make
+#+END_SRC
+*** Ports status [0/8]
+
+- [ ] patchelf
+- [ ] GSL
+- [ ] CLHEP
+- [ ] boost
+- [ ] camp
+- [ ] xerces-c
+- [ ] Geant4
+  - [ ] =-Dport/geant4+gdml= will install Xerces-C
+  - [ ] =-Dport/geant4+data=
+- [ ] ROOT
+  - [] =-Dport/root+mathmore=
+  - [] =-Dport/root+opengl=
+
 * Install @ laptop
 ** Machine configuration
 #+BEGIN_SRC sh
@@ -259,7 +345,7 @@ Scanning dependencies of target test_boost
 #+END_SRC
 
 *Proposed fix is to explicitly set the typedef name of =uint32_t= since Boost
- wraps if within a =boost= namepace*
+ wraps it within a =boost= namepace*
 
 #+BEGIN_SRC c++
   class foo
