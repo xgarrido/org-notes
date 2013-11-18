@@ -67,7 +67,7 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Tasks <code>[6/15]</code></a>
+<li><a href="#sec-1">1. Tasks <code>[9/17]</code></a>
 <ul>
 <li><a href="#sec-1-1">1.1. Check if std::abs will not generate warning or use std::fabs to get a proper double</a></li>
 <li><a href="#sec-1-2">1.2. Fix the problem with serialization of <code>tracker_trajectory_data</code> that occurs on LAL/CCALI machines</a></li>
@@ -84,6 +84,8 @@ for the JavaScript code in this tag.
 <li><a href="#sec-1-13">1.13. WTF the reflector is made of lab<sub>air</sub> ?</a></li>
 <li><a href="#sec-1-14">1.14. Look into and catch template example to generate org file</a></li>
 <li><a href="#sec-1-15">1.15. Check why data generated with Bayeux on nemo3 generates archive exception through <code>snemo_event_brower</code></a></li>
+<li><a href="#sec-1-16">1.16. Create a skeleton for lone SN@ilWare module</a></li>
+<li><a href="#sec-1-17">1.17. Check why <code>mygsl::histogram</code> gets empty bins</a></li>
 </ul>
 </li>
 <li><a href="#sec-2">2. Teaching</a>
@@ -101,7 +103,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Tasks <code>[6/15]</code></h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> Tasks <code>[9/17]</code></h2>
 <div class="outline-text-2" id="text-1">
 </div><div id="outline-container-sec-1-1" class="outline-3">
 <h3 id="sec-1-1"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Check if std::abs will not generate warning or use std::fabs to get a proper double</h3>
@@ -211,23 +213,25 @@ Locators:</a>
 <div class="outline-text-3" id="text-1-12">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">[2013-09-05 jeu.]</span></span>
+</p>
+
+<p>
 When using full warning flags for C++ compilation, <code>genbb</code> compilation shows
 unused &ldquo;label&rdquo;. This may exhibits some problem when automatic conversion from
 fortran to C++.
 </p>
 </div>
 </div>
-
 <div id="outline-container-sec-1-13" class="outline-3">
-<h3 id="sec-1-13"><span class="section-number-3">1.13</span> <span class="todo TODO">TODO</span> WTF the reflector is made of lab<sub>air</sub> ?</h3>
+<h3 id="sec-1-13"><span class="section-number-3">1.13</span> <span class="done DONE">DONE</span> WTF the reflector is made of lab<sub>air</sub> ?</h3>
 <div class="outline-text-3" id="text-1-13">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">[2013-09-08 dim.]</span></span>
-<a href="file:///home/garrido/Workdir/NEMO/supernemo/development/falaise/sngeometry/__install-Linux-x86_64/share/sngeometry/resources/setups/bipo3/config_2.0/optical_module.geom#material.ref%20:%20string%20%3D%20"snemo::aluminium""><a href="file:///home/garrido/Workdir/NEMO/supernemo/development/falaise/sngeometry/__install-Linux-x86_64/share/sngeometry/resources/setups/bipo3/config_2.0/optical_module.geom#material.ref">file:///home/garrido/Workdir/NEMO/supernemo/development/falaise/sngeometry/__install-Linux-x86_64/share/sngeometry/resources/setups/bipo3/config_2.0/optical_module.geom#material.ref</a> : string = &ldquo;snemo::aluminium&rdquo;</a>
+<a href="file:///home/garrido/Workdir/NEMO/supernemo/development/falaise/sngeometry/__install-Linux-x86_64/share/sngeometry/resources/setups/bipo3/config_2.0/optical_module.geom#material.ref%20:%20string%20%3D%20"snemo::aluminium""><a href="file:///home/garrido/Workdir/NEMO/supernemo/development/falaise/sngeometry/__install-Linux-x86_64/share/sngeometry/resources/setups/bipo3/config_2.0/optical_module.geom#material.ref">file:///home/garrido/Workdir/NEMO/supernemo/development/falaise/sngeometry/__install-Linux-x86_64/share/sngeometry/resources/setups/bipo3/config_2.0/optical_module.geom#material.ref</a> :
+string = &ldquo;snemo::aluminium&rdquo;</a>
 </p>
 </div>
 </div>
-
 <div id="outline-container-sec-1-14" class="outline-3">
 <h3 id="sec-1-14"><span class="section-number-3">1.14</span> <span class="todo TODO">TODO</span> Look into <a href="http://www.howardism.org/Technical/LP/dot-emacs.html">http://www.howardism.org/Technical/LP/dot-emacs.html</a> and catch template example to generate org file</h3>
 <div class="outline-text-3" id="text-1-14">
@@ -236,9 +240,8 @@ fortran to C++.
 </p>
 </div>
 </div>
-
 <div id="outline-container-sec-1-15" class="outline-3">
-<h3 id="sec-1-15"><span class="section-number-3">1.15</span> <span class="todo TODO">TODO</span> Check why data generated with Bayeux on nemo3 generates archive exception through <code>snemo_event_brower</code></h3>
+<h3 id="sec-1-15"><span class="section-number-3">1.15</span> <span class="done DONE">DONE</span> Check why data generated with Bayeux on nemo3 generates archive exception through <code>snemo_event_brower</code></h3>
 <div class="outline-text-3" id="text-1-15">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">[2013-10-22 mar.]</span></span>
@@ -246,8 +249,30 @@ fortran to C++.
 </p>
 </div>
 </div>
-</div>
+<div id="outline-container-sec-1-16" class="outline-3">
+<h3 id="sec-1-16"><span class="section-number-3">1.16</span> <span class="done DONE">DONE</span> Create a skeleton for lone SN@ilWare module</h3>
+<div class="outline-text-3" id="text-1-16">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2013-11-01 ven.]</span></span>
+</p>
 
+<p>
+The idea is to build a package containing one SN@ilWare module (and thus doing
+one thing)<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup> and to provide a README org file containing a skeleton with
+explanation and a minimal embedded SN@ilWare configuration.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-17" class="outline-3">
+<h3 id="sec-1-17"><span class="section-number-3">1.17</span> <span class="todo TODO">TODO</span> Check why <code>mygsl::histogram</code> gets empty bins</h3>
+<div class="outline-text-3" id="text-1-17">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2013-11-02 sam.]</span></span>
+<a href="file:///home/garrido/Workdir/NEMO/supernemo/development/bayeux/dpp/src/histogram_service.cc"><a href="file:///home/garrido/Workdir/NEMO/supernemo/development/bayeux/dpp/src/histogram_service.cc">file:///home/garrido/Workdir/NEMO/supernemo/development/bayeux/dpp/src/histogram_service.cc</a> bin<sub>content</sub> = h1d_.get (bin<sub>index</sub>);</a>
+</p>
+</div>
+</div>
+</div>
 <div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2"><span class="section-number-2">2</span> Teaching</h2>
 <div class="outline-text-2" id="text-2">
@@ -273,6 +298,16 @@ le nom de Luz + une copie du DNI de Luz et expliquer où se situe l&rsquo;erreur
 </div>
 </div>
 </div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+we can imagine to group several module given their purposes
+</p></div>
+
+
 </div>
+</div></div>
 </body>
 </html>

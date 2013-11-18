@@ -67,56 +67,36 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Install @ LAL</a>
+<li><a href="#sec-1">1. Install @ CC</a>
 <ul>
 <li><a href="#sec-1-1">1.1. Preamble</a>
 <ul>
 <li><a href="#sec-1-1-1">Configuration of <code>cmake</code></a></li>
 <li><a href="#sec-1-1-2">Configuration of installation directory</a></li>
+<li><a href="#sec-1-1-3">Machine configuration</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-2">1.2. Machine configuration</a></li>
-<li><a href="#sec-1-3">1.3. Cadfael</a>
+<li><a href="#sec-1-2">1.2. Cadfael</a>
 <ul>
-<li><a href="#sec-1-3-1">Configuration</a></li>
-<li><a href="#sec-1-3-2">Ports status <code>[8/8]</code></a></li>
+<li><a href="#sec-1-2-1">Checking out</a></li>
+<li><a href="#sec-1-2-2">Configuration</a></li>
+<li><a href="#sec-1-2-3">Ports status <code>[8/8]</code></a></li>
 </ul>
 </li>
-<li><a href="#sec-1-4">1.4. Bayeux</a>
+<li><a href="#sec-1-3">1.3. Bayeux</a>
 <ul>
-<li><a href="#sec-1-4-1">Configuration</a></li>
-<li><a href="#sec-1-4-2">Test programs <code>[10/10]</code></a></li>
+<li><a href="#sec-1-3-1">Checking out</a></li>
+<li><a href="#sec-1-3-2">Configuration</a></li>
+<li><a href="#sec-1-3-3">Test programs <code>[10/10]</code></a></li>
 </ul>
 </li>
-<li><a href="#sec-1-5">1.5. Falaise</a>
+<li><a href="#sec-1-4">1.4. Falaise</a>
 <ul>
-<li><a href="#sec-1-5-1">Configuration</a></li>
+<li><a href="#sec-1-4-1">Checking out</a></li>
+<li><a href="#sec-1-4-2">Configuration</a></li>
+<li><a href="#sec-1-4-3">Basic tests</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#sec-2">2. Install @ laptop</a>
-<ul>
-<li><a href="#sec-2-1">2.1. Machine configuration</a></li>
-<li><a href="#sec-2-2">2.2. With <code>g++ (GCC) 4.8.2</code></a>
-<ul>
-<li><a href="#sec-2-2-1">Cadfael</a></li>
-<li><a href="#sec-2-2-2">Bayeux</a></li>
-<li><a href="#sec-2-2-3">Falaise</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#sec-3">3. Install @ pc-server</a>
-<ul>
-<li><a href="#sec-3-1">3.1. Machine configuration</a></li>
-<li><a href="#sec-3-2">3.2. Cadfael</a>
-<ul>
-<li><a href="#sec-3-2-1">Configuration</a></li>
-<li><a href="#sec-3-2-2">Ports status <code>[6/8]</code></a></li>
-</ul>
-</li>
-<li><a href="#sec-3-3">3.3. Bayeux</a></li>
 </ul>
 </li>
 </ul>
@@ -124,7 +104,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Install @ LAL</h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> Install @ CC</h2>
 <div class="outline-text-2" id="text-1">
 </div><div id="outline-container-sec-1-1" class="outline-3">
 <h3 id="sec-1-1"><span class="section-number-3">1.1</span> Preamble</h3>
@@ -133,15 +113,16 @@ for the JavaScript code in this tag.
 <h4 id="sec-1-1-1">Configuration of <code>cmake</code></h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
-First you should specify an alias to the latest version of <code>cmake</code> by executing
+First you should use a more decent version of <code>cmake</code> by doing
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh"><span class="org-builtin">alias</span> <span class="org-variable-name">cmake</span>=cmake28
+<pre class="src src-sh"><span class="org-builtin">source</span> $<span class="org-variable-name">THRONG_DIR</span>/sw/config/SL6.4/nemo_basic_sw_setup-1.0.bash
+do_nemo_basics_sw_setup_1
 </pre>
 </div>
 <p>
-You will get version 2.8.9 of <code>cmake</code>.
+You will get version 2.8.10.2 of <code>cmake</code>.
 </p>
 </div>
 </div>
@@ -151,38 +132,58 @@ You will get version 2.8.9 of <code>cmake</code>.
 <div class="outline-text-4" id="text-1-1-2">
 <div class="org-src-container">
 
-<pre class="src src-sh"><span class="org-builtin">export</span> <span class="org-variable-name">SW_WORK_DIR</span>=/exp/nemo/garrido/tmp
+<pre class="src src-sh"><span class="org-builtin">export</span> <span class="org-variable-name">SW_WORK_DIR</span>=/sps/nemo/scratch/garrido/tmp
 </pre>
 </div>
 </div>
 </div>
-</div>
 
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Machine configuration</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-sec-1-1-3" class="outline-4">
+<h4 id="sec-1-1-3">Machine configuration</h4>
+<div class="outline-text-4" id="text-1-1-3">
 <div class="org-src-container">
 
 <pre class="src src-sh">uname -a
-Linux nemo3.lal.in2p3.fr 2.6.32-220.13.1.el6.x86_64 <span class="org-comment-delimiter">#</span><span class="org-comment">1 SMP Tue Apr 17 15:16:22 CDT 2012 x86_64 x86_64 x86_64 GNU/Linux</span>
+Linux ccage031 2.6.32-358.14.1.el6.x86_64 <span class="org-comment-delimiter">#</span><span class="org-comment">1 SMP Tue Jul 16 14:24:33 CDT 2013 x86_64 x86_64 x86_64 GNU/Linux</span>
 </pre>
 </div>
 <div class="org-src-container">
 
-<pre class="src src-sh">gcc --version
-<span class="org-function-name">gcc</span> (GCC) 4.7.2 20121015 (Red Hat 4.7.2-5)
+<pre class="src src-sh">gcc --version | head -1
+<span class="org-function-name">gcc</span> (GCC) 4.4.7 20120313 (Red Hat 4.4.7-3)
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Cadfael</h3>
-<div class="outline-text-3" id="text-1-3">
-</div><div id="outline-container-sec-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1">Configuration</h4>
-<div class="outline-text-4" id="text-1-3-1">
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Cadfael</h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1">Checking out</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<div class="org-src-container">
+
+<pre class="src src-sh">svn co https://nemo.lpc-caen.in2p3.fr/svn/Cadfael/trunk <span class="org-sh-escaped-newline">\</span>
+    ${<span class="org-variable-name">SW_WORK_DIR</span>}/Cadfael/trunk
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2">Configuration</h4>
+<div class="outline-text-4" id="text-1-2-2">
 <p>
-To setup <code>Cadfael</code> simply do
+To setup <code>Cadfael</code>, first create the following directory
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">mkdir -p ${<span class="org-variable-name">SW_WORK_DIR</span>}/Cadfael/build &amp;&amp; <span class="org-builtin">cd</span> ${<span class="org-variable-name">SW_WORK_DIR</span>}/Cadfael/build
+</pre>
+</div>
+<p>
+Then simply do
 </p>
 <div class="org-src-container">
 
@@ -220,9 +221,9 @@ then execute the <code>make</code> command
 </div>
 </div>
 
-<div id="outline-container-sec-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2">Ports status <code>[8/8]</code></h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-sec-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3">Ports status <code>[8/8]</code></h4>
+<div class="outline-text-4" id="text-1-2-3">
 <ul class="org-ul">
 <li><code>[X]</code> patchelf
 </li>
@@ -256,15 +257,34 @@ then execute the <code>make</code> command
 </div>
 </div>
 </div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Bayeux</h3>
+<div class="outline-text-3" id="text-1-3">
+</div><div id="outline-container-sec-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1">Checking out</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<div class="org-src-container">
 
-<div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Bayeux</h3>
-<div class="outline-text-3" id="text-1-4">
-</div><div id="outline-container-sec-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1">Configuration</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<pre class="src src-sh">svn co https://nemo.lpc-caen.in2p3.fr/svn/Bayeux/trunk <span class="org-sh-escaped-newline">\</span>
+    ${<span class="org-variable-name">SW_WORK_DIR</span>}/Bayeux/trunk
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2">Configuration</h4>
+<div class="outline-text-4" id="text-1-3-2">
 <p>
-To setup <code>Bayeux</code>, execute the following code
+To setup <code>Bayeux</code>, first create the following directory
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">mkdir -p ${<span class="org-variable-name">SW_WORK_DIR</span>}/Bayeux/build &amp;&amp; <span class="org-builtin">cd</span> ${<span class="org-variable-name">SW_WORK_DIR</span>}/Bayeux/build
+</pre>
+</div>
+<p>
+Then simply do
 </p>
 <div class="org-src-container">
 
@@ -282,19 +302,19 @@ To run the compilation process on several CPU cores do
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">make -j8 install
+<pre class="src src-sh">make -j6 install
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2">Test programs <code>[10/10]</code></h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-sec-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3">Test programs <code>[10/10]</code></h4>
+<div class="outline-text-4" id="text-1-3-3">
 <p>
 Adding option <code>-DBayeux_ENABLE_TESTING=ON</code> to the <code>cmake</code> command will enable
 the compilation of test programs. Then doing <code>make test</code> will launch each of
-the <b>237 test programs</b> and it will eventually shows some broken tests.
+the <b>238 test programs</b> and it will eventually shows some broken tests.
 </p>
 
 <ul class="org-ul">
@@ -304,7 +324,7 @@ the <b>237 test programs</b> and it will eventually shows some broken tests.
 </li>
 <li><code>[X]</code> cuts
 </li>
-<li><code>[X]</code> genbb<sub>help</sub>
+<li><code>[X]</code> genbb_help
 </li>
 <li><code>[X]</code> geomtools
 </li>
@@ -322,14 +342,36 @@ the <b>237 test programs</b> and it will eventually shows some broken tests.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Falaise</h3>
-<div class="outline-text-3" id="text-1-5">
-</div><div id="outline-container-sec-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1">Configuration</h4>
-<div class="outline-text-4" id="text-1-5-1">
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Falaise</h3>
+<div class="outline-text-3" id="text-1-4">
+</div><div id="outline-container-sec-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1">Checking out</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<div class="org-src-container">
+
+<pre class="src src-sh">svn co https://nemo.lpc-caen.in2p3.fr/svn/Falaise/trunk <span class="org-sh-escaped-newline">\</span>
+    ${<span class="org-variable-name">SW_WORK_DIR</span>}/Falaise/trunk
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2">Configuration</h4>
+<div class="outline-text-4" id="text-1-4-2">
 <p>
-To setup <code>Falaise</code> with an already version of <code>Bayeux</code> installed, do
+To setup <code>Falaise</code> with an already version of <code>Bayeux</code> installed, first create
+the following directory
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">mkdir -p ${<span class="org-variable-name">SW_WORK_DIR</span>}/Falaise/build &amp;&amp; <span class="org-builtin">cd</span> ${<span class="org-variable-name">SW_WORK_DIR</span>}/Falaise/build
+</pre>
+</div>
+<p>
+Then configure <code>Falaise</code>
 </p>
 <div class="org-src-container">
 
@@ -337,370 +379,43 @@ To setup <code>Falaise</code> with an already version of <code>Bayeux</code> ins
     -DCMAKE_INSTALL_PREFIX=${<span class="org-variable-name">SW_WORK_DIR</span>}/Falaise/install                              <span class="org-sh-escaped-newline">\</span>
     -DCMAKE_PREFIX_PATH=<span class="org-string">"${SW_WORK_DIR}/Cadfael/install;${SW_WORK_DIR}/Bayeux/install"</span> <span class="org-sh-escaped-newline">\</span>
     -DFalaise_ENABLE_TESTING=ON                                                        <span class="org-sh-escaped-newline">\</span>
-    -DFalaise_BUILD_DOCS=ON                                                            <span class="org-sh-escaped-newline">\</span>
+    -DFalaise_BUILD_DOCS=OFF                                                           <span class="org-sh-escaped-newline">\</span>
     -DFalaise_USE_SYSTEM_BAYEUX=ON                                                     <span class="org-sh-escaped-newline">\</span>
     ${<span class="org-variable-name">SW_WORK_DIR</span>}/Falaise/trunk
 </pre>
 </div>
 
 <p>
+<b>Remark:</b> <code>doxygen</code> version @ Lyon is 1.6 which does not fulfill requirements
+for building <code>Falaise</code> documentation.
+</p>
+
+<p>
 To run the compilation process on several CPU cores do
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">make -j8 install
+<pre class="src src-sh">make -j6 install
 </pre>
 </div>
 </div>
 </div>
-</div>
-</div>
-
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Install @ laptop</h2>
-<div class="outline-text-2" id="text-2">
-</div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Machine configuration</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-sec-1-4-3" class="outline-4">
+<h4 id="sec-1-4-3">Basic tests</h4>
+<div class="outline-text-4" id="text-1-4-3">
 <div class="org-src-container">
 
-<pre class="src src-sh">uname -a
-Linux garrido-laptop 3.11.4-1-ARCH <span class="org-comment-delimiter">#</span><span class="org-comment">1 SMP PREEMPT Sat Oct 5 21:22:51 CEST 2013 x86_64 GNU/Linux</span>
-</pre>
-</div>
-<div class="org-src-container">
-
-<pre class="src src-sh">cmake --version
-cmake version 2.8.12
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> With <code>g++ (GCC) 4.8.2</code></h3>
-<div class="outline-text-3" id="text-2-2">
-</div><div id="outline-container-sec-2-2-1" class="outline-4">
-<h4 id="sec-2-2-1">Cadfael</h4>
-<div class="outline-text-4" id="text-2-2-1">
-</div><ul class="org-ul"><li>Checking out<br  /><div class="outline-text-5" id="text-2-2-1-1">
-<div class="org-src-container">
-
-<pre class="src src-sh">svn co https://nemo.lpc-caen.in2p3.fr/svn/Cadfael/trunk <span class="org-sh-escaped-newline">\</span>
-    ~/Workdir/NEMO/supernemo/snware_test/cadfael/trunk
-</pre>
-</div>
-</div>
-</li>
-
-<li>Configuration<br  /><div class="outline-text-5" id="text-2-2-1-2">
-<p>
-To setup <code>Cadfael</code> simply do
-</p>
-<div class="org-src-container">
-
-<pre class="src src-sh">cmake                                                                           <span class="org-sh-escaped-newline">\</span>
-    -DCMAKE_INSTALL_PREFIX=~/Workdir/NEMO/supernemo/snware_test/cadfael/install <span class="org-sh-escaped-newline">\</span>
-    -DCADFAEL_VERBOSE_BUILD=ON                                                  <span class="org-sh-escaped-newline">\</span>
-    -DCADFAEL_STEP_TARGETS=ON                                                   <span class="org-sh-escaped-newline">\</span>
-    -Dport/patchelf=ON                                                          <span class="org-sh-escaped-newline">\</span>
-    -Dport/gsl=ON                                                               <span class="org-sh-escaped-newline">\</span>
-    -Dport/clhep=ON                                                             <span class="org-sh-escaped-newline">\</span>
-    -Dport/boost=ON                                                             <span class="org-sh-escaped-newline">\</span>
-    -Dport/boost+<span class="org-variable-name">regex</span>=ON                                                       <span class="org-sh-escaped-newline">\</span>
-    -Dport/camp=ON                                                              <span class="org-sh-escaped-newline">\</span>
-    -Dport/xerces-c=ON                                                          <span class="org-sh-escaped-newline">\</span>
-    -Dport/geant4=ON                                                            <span class="org-sh-escaped-newline">\</span>
-    -Dport/geant4+<span class="org-variable-name">gdml</span>=ON                                                       <span class="org-sh-escaped-newline">\</span>
-    -Dport/geant4+<span class="org-variable-name">x11</span>=ON                                                        <span class="org-sh-escaped-newline">\</span>
-    -Dport/geant4+<span class="org-variable-name">data</span>=ON                                                       <span class="org-sh-escaped-newline">\</span>
-    -Dport/root=ON                                                              <span class="org-sh-escaped-newline">\</span>
-    -Dport/root+<span class="org-variable-name">x11</span>=ON                                                          <span class="org-sh-escaped-newline">\</span>
-    -Dport/root+<span class="org-variable-name">asimage</span>=ON                                                      <span class="org-sh-escaped-newline">\</span>
-    -Dport/root+<span class="org-variable-name">mathmore</span>=ON                                                     <span class="org-sh-escaped-newline">\</span>
-    -Dport/root+<span class="org-variable-name">opengl</span>=ON                                                       <span class="org-sh-escaped-newline">\</span>
-    ~/Workdir/NEMO/supernemo/snware_test/cadfael/trunk
-</pre>
-</div>
-<p>
-then execute the <code>make</code> command
-</p>
-<div class="org-src-container">
-
-<pre class="src src-sh">make
-</pre>
-</div>
-</div>
-</li>
-
-<li>Ports status <code>[7/8]</code><br  /><div class="outline-text-5" id="text-2-2-1-3">
-<ul class="org-ul">
-<li><code>[X]</code> patchelf
-</li>
-<li><code>[X]</code> GSL
-</li>
-<li><code>[X]</code> CLHEP
-</li>
-<li><code>[X]</code> boost (see <a href="#sec-2-2-1-5">Boost test error</a> and fix)
-</li>
-<li><code>[X]</code> camp
-</li>
-<li><code>[-]</code> xerces-c
-</li>
-<li><code>[X]</code> Geant4
-</li>
-<li><code>[X]</code> ROOT
-</li>
-</ul>
-</div>
-</li>
-<li>Xerces-C test error<br  /><div class="outline-text-5" id="text-2-2-1-4">
-<div class="org-src-container">
-
-<pre class="src src-sh">Making check<span class="org-keyword"> in</span> samples
-1099,1103c1099
-&lt; String expression test failed at line 5735
-&lt; String expression test failed at line 5746
-&lt; String expression test failed at line 5749
-&lt; String expression test failed at line 5752
-&lt; Test Failed
----
-&gt; Test Run Successfully
-make[3]: *** [check] Erreur 1
-make[2]: *** [ports/xerces-c/xerces-c-prefix/src/xerces-c-stamp/xerces-c-test] Erreur 2
-make[1]: *** [ports/xerces-c/CMakeFiles/xerces-c.dir/all] Erreur 2
-make: *** [all] Erreur 2
+<pre class="src src-sh"><span class="org-builtin">cd</span> ${<span class="org-variable-name">SW_WORK_DIR</span>}/Falaise/build
+./BuildProducts/bin/flsimulate -n 10 -o /tmp/${<span class="org-variable-name">USER</span>}/snemo_tc_muons_roof.xml
+./BuildProducts/bin/flreconstruct -i /tmp/${<span class="org-variable-name">USER</span>}/snemo_tc_muons_roof.xml
 </pre>
 </div>
 
 <p>
-The problem comes from <code>DTest</code> under <code>&lt;xerces-c src
-dir&gt;/tests/src/DOM/DOMTest/DTest.cpp</code> line 5680 where a preprocessor macro
-checks if 2 strings are &ldquo;Xerces-C&rdquo; equal. It fails at different place as <code>diff</code>
-exhibits. It is not clear what is going on. <b>Solution for the time being is to
-disable these tests and see if it may propagate to some other ports</b>
+Tests successfully passed.
 </p>
 </div>
-</li>
-
-<li>Boost test error<br  /><div class="outline-text-5" id="text-2-2-1-5">
-<div class="org-src-container">
-
-<pre class="src src-sh">Scanning dependencies of target test_boost
-[ 75%] Building CXX object test_boost/CMakeFiles/test_boost.dir/test_boost.cc.o
-/home/garrido/Workdir/NEMO/supernemo/snware_test/cadfael/trunk/testing/PostInstall/test_boost/test_boost.cc:13:16: erreur: expected &#8216;)&#8217; before &#8216;i_&#8217;
-   foo(uint32_t i_, std::string s_) : i(i_), s(s_) {}
-                ^
-/home/garrido/Workdir/NEMO/supernemo/snware_test/cadfael/trunk/testing/PostInstall/test_boost/test_boost.cc:14:14: erreur: &#8216;uint32_t&#8217; has not been declared
-   void set_i(uint32_t i_) { <span class="org-variable-name">i</span> = i_; }              ^
-</pre>
 </div>
-
-<p>
-<b>Proposed fix is to explicitly set the typedef name of <code>uint32_t</code> since Boost
- wraps if within a <code>boost</code> namepace</b>
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-c++"><span class="org-keyword">class</span> <span class="org-type">foo</span>
-{
-<span class="org-keyword">public</span>:
-  <span class="org-function-name">foo</span>() {}
-  <span class="org-function-name">foo</span>(<span class="org-constant">boost</span>::<span class="org-type">uint32_t</span> <span class="org-variable-name">i_</span>, <span class="org-constant">std</span>::<span class="org-type">string</span> <span class="org-variable-name">s_</span>) : i(i_), s(s_) {}
-  <span class="org-type">void</span> <span class="org-function-name">set_i</span>(<span class="org-constant">boost</span>::<span class="org-type">uint32_t</span> <span class="org-variable-name">i_</span>) { i = i_; }
-  <span class="org-type">void</span> <span class="org-function-name">set_s</span>(<span class="org-constant">std</span>::<span class="org-type">string</span> <span class="org-variable-name">s_</span>) { s = s_; }
-  <span class="org-constant">boost</span>::<span class="org-type">uint32_t</span> <span class="org-function-name">get_i</span>() <span class="org-keyword">const</span> { <span class="org-keyword">return</span> i; }
-  <span class="org-keyword">const</span> <span class="org-constant">std</span>::<span class="org-type">string</span> &amp; <span class="org-function-name">get_s</span>() <span class="org-keyword">const</span> { <span class="org-keyword">return</span> s; }
-  <span class="org-type">void</span> <span class="org-function-name">reset</span>() { i = 0; s.clear(); }
-  <span class="org-type">void</span> <span class="org-function-name">print</span>() { <span class="org-constant">std</span>::cout &lt;&lt; <span class="org-string">"{i="</span>&lt;&lt; i &lt;&lt; <span class="org-string">";s='"</span> &lt;&lt; s &lt;&lt; <span class="org-string">"'}\n"</span>; }
-<span class="org-keyword">private</span>:
-  <span class="org-constant">boost</span>::<span class="org-type">uint32_t</span> <span class="org-variable-name">i</span>;
-  <span class="org-constant">std</span>::<span class="org-type">string</span> <span class="org-variable-name">s</span>;
-};
-</pre>
-</div>
-</div>
-</li></ul>
-</div>
-
-<div id="outline-container-sec-2-2-2" class="outline-4">
-<h4 id="sec-2-2-2">Bayeux</h4>
-<div class="outline-text-4" id="text-2-2-2">
-</div><ul class="org-ul"><li>Checking out<br  /><div class="outline-text-5" id="text-2-2-2-1">
-<div class="org-src-container">
-
-<pre class="src src-sh">svn co https://nemo.lpc-caen.in2p3.fr/svn/Bayeux/trunk <span class="org-sh-escaped-newline">\</span>
-    ~/Workdir/NEMO/supernemo/snware_test/bayeux/trunk
-</pre>
-</div>
-</div>
-</li>
-
-<li>Configuration<br  /><div class="outline-text-5" id="text-2-2-2-2">
-<p>
-To setup <code>Bayeux</code> execute the following code
-</p>
-<div class="org-src-container">
-
-<pre class="src src-sh">cmake                                                                          <span class="org-sh-escaped-newline">\</span>
-    -DCMAKE_INSTALL_PREFIX=~/Workdir/NEMO/supernemo/snware_test/bayeux/install <span class="org-sh-escaped-newline">\</span>
-    -DCMAKE_PREFIX_PATH=~/Workdir/NEMO/supernemo/snware_test/cadfael/install   <span class="org-sh-escaped-newline">\</span>
-    -DBayeux_ENABLE_TESTING=ON                                                 <span class="org-sh-escaped-newline">\</span>
-    ~/Workdir/NEMO/supernemo/snware_test/bayeux/trunk
-</pre>
-</div>
-</div>
-</li>
-
-<li><code>datatools</code> error<br  /><div class="outline-text-5" id="text-2-2-2-3">
-<p>
-Basically the problem found in Boost with the unnamed typedef also arises in
-Bayeux&#x2026;
-</p>
-<div class="org-src-container">
-
-<pre class="src src-sh">  [  0%] Building CXX object source/CMakeFiles/Bayeux.dir/bxbayeux/src/the_introspectable.cc.o
-  In file included from /home/garrido/Workdir/NEMO/supernemo/snware_test/bayeux/build/BuildProducts/include/bayeux/datatools/properties.h:54:0,
-                   from /home/garrido/Workdir/NEMO/supernemo/snware_test/bayeux/build/BuildProducts/include/bayeux/datatools/properties-reflect.h:12,
-                   from /home/garrido/Workdir/NEMO/supernemo/snware_test/bayeux/build/BuildProducts/include/bayeux/datatools/the_introspectable.h:41,
-                   from /home/garrido/Workdir/NEMO/supernemo/snware_test/bayeux/trunk/source/bxbayeux/src/the_introspectable.cc:17:
-                   /home/garrido/Workdir/NEMO/supernemo/snware_test/bayeux/build/BuildProducts/include/bayeux/datatools/bit_mask.h:34:16: erreur: &#8216;uint32_t&#8217; does not name a type
-     static const uint32_t <span class="org-variable-name">bit00</span>   = 0x00000001;
-...
-</pre>
-</div>
-</div>
-</li></ul>
-</div>
-
-<div id="outline-container-sec-2-2-3" class="outline-4">
-<h4 id="sec-2-2-3"><span class="todo TODO">TODO</span> Falaise</h4>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Install @ pc-server</h2>
-<div class="outline-text-2" id="text-3">
-</div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Machine configuration</h3>
-<div class="outline-text-3" id="text-3-1">
-<div class="org-src-container">
-
-<pre class="src src-sh">uname -a
-Linux pc-91089 3.11.0-12-generic <span class="org-comment-delimiter">#</span><span class="org-comment">19-Ubuntu SMP Wed Oct 9 16:12:00 UTC 2013 i686 i686 i686 GNU/Linux</span>
-</pre>
-</div>
-<div class="org-src-container">
-
-<pre class="src src-sh">g++ --version | head -1
-g++ (Ubuntu/Linaro 4.8.1-10ubuntu8) 4.8.1
-</pre>
-</div>
-<div class="org-src-container">
-
-<pre class="src src-sh">cmake --version
-cmake version 2.8.11.2
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Cadfael</h3>
-<div class="outline-text-3" id="text-3-2">
-</div><div id="outline-container-sec-3-2-1" class="outline-4">
-<h4 id="sec-3-2-1">Configuration</h4>
-<div class="outline-text-4" id="text-3-2-1">
-<p>
-To setup <code>Cadfael</code> simply do
-</p>
-<div class="org-src-container">
-
-<pre class="src src-sh">cmake                                                                               <span class="org-sh-escaped-newline">\</span>
-    -DCMAKE_INSTALL_PREFIX=/data/workdir/nemo/supernemo/snware_test/Cadfael/install <span class="org-sh-escaped-newline">\</span>
-    -DCADFAEL_VERBOSE_BUILD=ON                                                      <span class="org-sh-escaped-newline">\</span>
-    -DCADFAEL_STEP_TARGETS=ON                                                       <span class="org-sh-escaped-newline">\</span>
-    -Dport/patchelf=ON                                                              <span class="org-sh-escaped-newline">\</span>
-    -Dport/gsl=ON                                                                   <span class="org-sh-escaped-newline">\</span>
-    -Dport/clhep=ON                                                                 <span class="org-sh-escaped-newline">\</span>
-    -Dport/boost=ON                                                                 <span class="org-sh-escaped-newline">\</span>
-    -Dport/boost+<span class="org-variable-name">regex</span>=ON                                                           <span class="org-sh-escaped-newline">\</span>
-    -Dport/camp=ON                                                                  <span class="org-sh-escaped-newline">\</span>
-    -Dport/xerces-c=ON                                                              <span class="org-sh-escaped-newline">\</span>
-    -Dport/geant4=ON                                                                <span class="org-sh-escaped-newline">\</span>
-    -Dport/geant4+<span class="org-variable-name">gdml</span>=ON                                                           <span class="org-sh-escaped-newline">\</span>
-    -Dport/geant4+<span class="org-variable-name">x11</span>=ON                                                            <span class="org-sh-escaped-newline">\</span>
-    -Dport/geant4+<span class="org-variable-name">data</span>=ON                                                           <span class="org-sh-escaped-newline">\</span>
-    -Dport/root=ON                                                                  <span class="org-sh-escaped-newline">\</span>
-    -Dport/root+<span class="org-variable-name">x11</span>=ON                                                              <span class="org-sh-escaped-newline">\</span>
-    -Dport/root+<span class="org-variable-name">asimage</span>=ON                                                          <span class="org-sh-escaped-newline">\</span>
-    -Dport/root+<span class="org-variable-name">mathmore</span>=ON                                                         <span class="org-sh-escaped-newline">\</span>
-    -Dport/root+<span class="org-variable-name">opengl</span>=ON                                                           <span class="org-sh-escaped-newline">\</span>
-    /data/workdir/nemo/supernemo/snware_test/Cadfael/trunk
-</pre>
-</div>
-<p>
-then execute the <code>make</code> command
-</p>
-<div class="org-src-container">
-
-<pre class="src src-sh">make
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-3-2-2" class="outline-4">
-<h4 id="sec-3-2-2">Ports status <code>[6/8]</code></h4>
-<div class="outline-text-4" id="text-3-2-2">
-<ul class="org-ul">
-<li><code>[X]</code> patchelf
-</li>
-<li><code>[X]</code> GSL
-</li>
-<li><code>[-]</code> CLHEP
-</li>
-<li><code>[X]</code> boost
-</li>
-<li><code>[X]</code> camp
-</li>
-<li><code>[X]</code> xerces-c
-</li>
-<li><code>[&#xa0;]</code> Geant4
-</li>
-<li><code>[X]</code> ROOT
-</li>
-</ul>
-</div>
-
-<ul class="org-ul"><li>CLHEP test error<br  /><div class="outline-text-5" id="text-3-2-2-1">
-<p>
-<b>Need to have a look into the logs.</b>
-</p>
-<div class="org-src-container">
-
-<pre class="src src-sh">96% tests passed, 2 tests failed out of 47
-
-Total Test time (real) =  18.38 sec
-
-The following tests FAILED:
-         24 - testInstanceRestore (Failed)
-         29 - testBug58950 (Failed)
-Errors while running CTest
-make[4]: *** [test] Erreur 8
-make[3]: *** [ports/clhep/clhep-prefix/src/clhep-stamp/clhep-test] Erreur 2
-make[2]: *** [ports/clhep/CMakeFiles/clhep.dir/all] Erreur 2
-make[1]: *** [ports/clhep/CMakeFiles/clhep.dir/rule] Erreur 2
-make: *** [clhep] Erreur 2
-</pre>
-</div>
-</div>
-</li></ul>
-</div>
-</div>
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3"><span class="section-number-3">3.3</span> <span class="todo TODO">TODO</span> Bayeux</h3>
 </div>
 </div>
 </div>
