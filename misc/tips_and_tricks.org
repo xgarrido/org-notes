@@ -1,0 +1,18 @@
+#+TITLE: Tips & Tricks
+#+DESCRIPTION: Tips & tricks and web links
+
+* Emacs
+** Using tramp connection with a different port
+#+BEGIN_SRC emacs-lisp
+  C-x C-f /ssh:test@host#2222:/tmp
+#+END_SRC
+* Network
+** Port forward
+At home, the association between =xgarrido.dyndns.org= address with the local IP
+must be done by adding
+
+#+BEGIN_SRC sh
+192.168.1.77 xgarrido.dyndns.org
+#+END_SRC
+
+in =/etc/hosts= file.
