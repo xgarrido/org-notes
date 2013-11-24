@@ -416,13 +416,13 @@ exhibits. It is not clear what is going on. *Solution for the time being is to
 disable these tests and see if it may propagate to some other ports*
 **** Boost test error
 #+BEGIN_SRC sh
-Scanning dependencies of target test_boost
-[ 75%] Building CXX object test_boost/CMakeFiles/test_boost.dir/test_boost.cc.o
-/home/garrido/Workdir/NEMO/supernemo/snware_test/cadfael/trunk/testing/PostInstall/test_boost/test_boost.cc:13:16: erreur: expected ‘)’ before ‘i_’
-   foo(uint32_t i_, std::string s_) : i(i_), s(s_) {}
-                ^
-/home/garrido/Workdir/NEMO/supernemo/snware_test/cadfael/trunk/testing/PostInstall/test_boost/test_boost.cc:14:14: erreur: ‘uint32_t’ has not been declared
-   void set_i(uint32_t i_) { i = i_; }              ^
+  Scanning dependencies of target test_boost
+  [ 75%] Building CXX object test_boost/CMakeFiles/test_boost.dir/test_boost.cc.o
+  /home/garrido/Workdir/NEMO/supernemo/snware_test/cadfael/trunk/testing/PostInstall/test_boost/test_boost.cc:13:16: erreur: expected ‘)’ before ‘i_’
+     foo(uint32_t i_, std::string s_) : i(i_), s(s_) {}
+                  ^
+  /home/garrido/Workdir/NEMO/supernemo/snware_test/cadfael/trunk/testing/PostInstall/test_boost/test_boost.cc:14:14: erreur: ‘uint32_t’ has not been declared
+     void set_i(uint32_t i_) { i = i_; }              ^
 #+END_SRC
 
 *Proposed fix is to explicitly set the typedef name of =uint32_t= since Boost
@@ -445,6 +445,13 @@ Scanning dependencies of target test_boost
     std::string s;
   };
 #+END_SRC
+
+Maybe another fix or check will be to patch the =cstdint.hpp= file following
+this commit https://svn.boost.org/trac/boost/changeset/84950
+
+- check in boost 1.55.0 and *fix already implemented*
+- but Cadfael uses boost 1.53.0 for which *fix is not implemented !*
+
 *** Bayeux
 **** Checking out
 #+BEGIN_SRC sh
