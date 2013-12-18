@@ -298,53 +298,6 @@ Tests successfully passed.
   cmake version 2.8.12
 #+END_SRC
 
-** With =g++ (GCC) 4.8.1 20130725 (prerelease)=                   :noexport:
-*** Cadfael
-**** Checking out
-#+BEGIN_SRC sh
-  svn co https://nemo.lpc-caen.in2p3.fr/svn/Cadfael/trunk \
-      ~/Workdir/NEMO/supernemo/snware_test/cadfael/trunk
-#+END_SRC
-**** Configuration
-To setup =Cadfael= simply do
-#+BEGIN_SRC sh
-  cmake                                                                           \
-      -DCMAKE_INSTALL_PREFIX=~/Workdir/NEMO/supernemo/snware_test/cadfael/install \
-      -DCADFAEL_VERBOSE_BUILD=ON                                                  \
-      -DCADFAEL_STEP_TARGETS=ON                                                   \
-      -Dport/patchelf=ON                                                          \
-      -Dport/gsl=ON                                                               \
-      -Dport/clhep=ON                                                             \
-      -Dport/boost=ON                                                             \
-      -Dport/boost+regex=ON                                                       \
-      -Dport/camp=ON                                                              \
-      -Dport/xerces-c=ON                                                          \
-      -Dport/geant4=ON                                                            \
-      -Dport/geant4+gdml=ON                                                       \
-      -Dport/geant4+x11=ON                                                        \
-      -Dport/geant4+data=ON                                                       \
-      -Dport/root=ON                                                              \
-      -Dport/root+x11=ON                                                          \
-      -Dport/root+asimage=ON                                                      \
-      -Dport/root+mathmore=ON                                                     \
-      -Dport/root+opengl=ON                                                       \
-      ~/Workdir/NEMO/supernemo/snware_test/cadfael/trunk
-#+END_SRC
-then execute the =make= command
-#+BEGIN_SRC sh
-  make
-#+END_SRC
-**** Ports status [6/8]
-
-- [X] patchelf
-- [X] GSL
-- [X] CLHEP
-- [X] boost
-- [X] camp
-- [-] xerces-c
-- [ ] Geant4
-- [X] ROOT
-
 ** With =g++ (GCC) 4.8.2=
 *** Cadfael
 **** Checking out
@@ -356,7 +309,7 @@ then execute the =make= command
 To setup =Cadfael= simply do
 #+BEGIN_SRC sh
   cmake                                                                           \
-      -DCMAKE_INSTALL_PREFIX=~/Workdir/NEMO/supernemo/snware_test/cadfael/install \
+      -DCMAKE_INSTALL_PREFIX=~/Workdir/NEMO/supernemo/new_snware/cadfael/install  \
       -DCADFAEL_VERBOSE_BUILD=ON                                                  \
       -DCADFAEL_STEP_TARGETS=ON                                                   \
       -Dport/patchelf=ON                                                          \
@@ -375,7 +328,7 @@ To setup =Cadfael= simply do
       -Dport/root+asimage=ON                                                      \
       -Dport/root+mathmore=ON                                                     \
       -Dport/root+opengl=ON                                                       \
-      ~/Workdir/NEMO/supernemo/snware_test/cadfael/trunk
+      ~/Workdir/NEMO/supernemo/new_snware/cadfael/trunk
 #+END_SRC
 then execute the =make= command
 #+BEGIN_SRC sh
@@ -415,71 +368,45 @@ checks if 2 strings are "Xerces-C" equal. It fails at different place as =diff=
 exhibits. It is not clear what is going on. *Solution for the time being is to
 disable these tests and see if it may propagate to some other ports*
 **** Boost test error
-#+BEGIN_SRC sh
-  Scanning dependencies of target test_boost
-  [ 75%] Building CXX object test_boost/CMakeFiles/test_boost.dir/test_boost.cc.o
-  /home/garrido/Workdir/NEMO/supernemo/snware_test/cadfael/trunk/testing/PostInstall/test_boost/test_boost.cc:13:16: erreur: expected ‘)’ before ‘i_’
-     foo(uint32_t i_, std::string s_) : i(i_), s(s_) {}
-                  ^
-  /home/garrido/Workdir/NEMO/supernemo/snware_test/cadfael/trunk/testing/PostInstall/test_boost/test_boost.cc:14:14: erreur: ‘uint32_t’ has not been declared
-     void set_i(uint32_t i_) { i = i_; }              ^
-#+END_SRC
 
-*Proposed fix is to explicitly set the typedef name of =uint32_t= since Boost
- wraps it within a =boost= namepace*
-
-#+BEGIN_SRC c++
-  class foo
-  {
-  public:
-    foo() {}
-    foo(boost::uint32_t i_, std::string s_) : i(i_), s(s_) {}
-    void set_i(boost::uint32_t i_) { i = i_; }
-    void set_s(std::string s_) { s = s_; }
-    boost::uint32_t get_i() const { return i; }
-    const std::string & get_s() const { return s; }
-    void reset() { i = 0; s.clear(); }
-    void print() { std::cout << "{i="<< i << ";s='" << s << "'}\n"; }
-  private:
-    boost::uint32_t i;
-    std::string s;
-  };
-#+END_SRC
-
-Maybe another fix or check will be to patch the =cstdint.hpp= file following
-this commit https://svn.boost.org/trac/boost/changeset/84950
+A fix will be to patch the =cstdint.hpp= file following this commit
+https://svn.boost.org/trac/boost/changeset/84950
 
 - check in boost 1.55.0 and *fix already implemented*
-- but Cadfael uses boost 1.53.0 for which *fix is not implemented !*
+- but Cadfael uses boost 1.53.0 for which *fix is not implemented ! \rightarrow
+  thiw works*
 
++Fixed since Cadfael ahs moved to Boost 1.55.0+
 *** Bayeux
 **** Checking out
 #+BEGIN_SRC sh
   svn co https://nemo.lpc-caen.in2p3.fr/svn/Bayeux/trunk \
-      ~/Workdir/NEMO/supernemo/snware_test/bayeux/trunk
+      ~/Workdir/NEMO/supernemo/new_snware/bayeux/repo
 #+END_SRC
 **** Configuration
 To setup =Bayeux= execute the following code
 #+BEGIN_SRC sh
-  cmake                                                                          \
-      -DCMAKE_INSTALL_PREFIX=~/Workdir/NEMO/supernemo/snware_test/bayeux/install \
-      -DCMAKE_PREFIX_PATH=~/Workdir/NEMO/supernemo/snware_test/cadfael/install   \
-      -DBayeux_ENABLE_TESTING=ON                                                 \
-      ~/Workdir/NEMO/supernemo/snware_test/bayeux/trunk
+  cmake                                                                         \
+      -DCMAKE_INSTALL_PREFIX=~/Workdir/NEMO/supernemo/new_snware/bayeux/install \
+      -DCMAKE_PREFIX_PATH=~/Workdir/NEMO/supernemo/new_snware/cadfael/install   \
+      -DBayeux_ENABLE_TESTING=ON                                                \
+      -DBayeux_WITH_GEANT4=ON                                                   \
+      -G Ninja -DCMAKE_MAKE_PROGRAM=$(pkgtools__get_binary_path ninja)          \
+      ~/Workdir/NEMO/supernemo/new_snware/bayeux/repo
 #+END_SRC
-**** =datatools= error
-Basically the problem found in Boost with the unnamed typedef also arises in
-Bayeux...
-#+BEGIN_SRC sh
-  [  0%] Building CXX object source/CMakeFiles/Bayeux.dir/bxbayeux/src/the_introspectable.cc.o
-  In file included from /home/garrido/Workdir/NEMO/supernemo/snware_test/bayeux/build/BuildProducts/include/bayeux/datatools/properties.h:54:0,
-                   from /home/garrido/Workdir/NEMO/supernemo/snware_test/bayeux/build/BuildProducts/include/bayeux/datatools/properties-reflect.h:12,
-                   from /home/garrido/Workdir/NEMO/supernemo/snware_test/bayeux/build/BuildProducts/include/bayeux/datatools/the_introspectable.h:41,
-                   from /home/garrido/Workdir/NEMO/supernemo/snware_test/bayeux/trunk/source/bxbayeux/src/the_introspectable.cc:17:
-                   /home/garrido/Workdir/NEMO/supernemo/snware_test/bayeux/build/BuildProducts/include/bayeux/datatools/bit_mask.h:34:16: erreur: ‘uint32_t’ does not name a type
-     static const uint32_t bit00   = 0x00000001;
-...
-#+END_SRC
+**** Test programs [10/10]
+
+- [X] datatools
+- [X] brio
+- [X] cuts
+- [X] genbb_help
+- [X] geomtools
+- [X] genvtx
+- [X] mygsl
+- [X] materials
+- [X] dpp
+- [X] mctools
+
 *** TODO Falaise
 * Install @ pc-server :noexport:
 ** Machine configuration
