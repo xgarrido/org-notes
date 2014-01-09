@@ -3,7 +3,7 @@
 #+EMAIL:  xavier.garrido@lal.in2p3.fr
 #+DATE:   15/10/2013
 #+DESCRIPTION: Quick notes on how to install new SN@ilWare software on different machines
-#+OPTIONS: ^:{}
+#+OPTIONS: ^:{} email:nil
 #+LATEX_CLASS: snemo-note
 
 * Install @ LAL :noexport:
@@ -130,7 +130,16 @@ To run the compilation process on several CPU cores do
 #+BEGIN_SRC sh
   make -j8 install
 #+END_SRC
-* Install @ CC
+*** Basic tests
+#+BEGIN_SRC sh
+  cd ${SW_WORK_DIR}/Falaise/build
+  ./BuildProducts/bin/flsimulate -n 10 -o /tmp/${USER}/snemo_tc_muons_roof.xml
+  ./BuildProducts/bin/flreconstruct -i /tmp/${USER}/snemo_tc_muons_roof.xml
+#+END_SRC
+
+Tests successfully passed.
+
+* Install @ CC :noexport:
 ** Preamble
 *** Configuration of =cmake=
 First you should use a more decent version of =cmake= by doing
@@ -573,23 +582,168 @@ then execute the =make= command
 #+BEGIN_SRC sh
   make
 #+END_SRC
-*** Ports status [6/8]
+*** Ports status [7/8]
 
 - [X] patchelf
 - [X] GSL
-- [X] CLHEP
+- [ ] CLHEP (see below)
 - [X] boost
 - [X] camp
 - [X] xerces-c
-- [ ] Geant4
-  - [ ] =-Dport/geant4+gdml= will install Xerces-C
-  - [ ] =-Dport/geant4+data=
-- [ ] ROOT
-  - [ ] =-Dport/root+mathmore=
-  - [ ] =-Dport/root+opengl=
+- [X] Geant4
+  - [X] =-Dport/geant4+gdml= will install Xerces-C
+  - [X] =-Dport/geant4+data=
+- [X] ROOT
+  - [X] =-Dport/root+mathmore=
+  - [X] =-Dport/root+opengl=
 
 **** CLHEP test error
 I had to disable the tests of CLHEP since one of them was failing and thus
 stopping the compilation of other ports. To remove test, I have commented two
 lines (line 38 & 39) located in file
 =$SW_WORK_DIR/Cadfael/trunk/ports/clhep/CMakeLists.txt=.
+** Bayeux
+*** Checking out
+#+BEGIN_SRC sh
+  svn co https://nemo.lpc-caen.in2p3.fr/svn/Bayeux/trunk \
+      ${SW_WORK_DIR}/Bayeux/trunk
+#+END_SRC
+*** Configuration
+To setup =Bayeux=, first create the following directory
+#+BEGIN_SRC sh
+  mkdir -p ${SW_WORK_DIR}/Bayeux/build && cd ${SW_WORK_DIR}/Bayeux/build
+#+END_SRC
+Then simply do
+#+BEGIN_SRC sh
+  cmake                                             \
+      -DCMAKE_INSTALL_PREFIX=${SW_WORK_DIR}/install \
+      -DCMAKE_PREFIX_PATH=${SW_WORK_DIR}/install    \
+      -DBayeux_ENABLE_TESTING=ON                    \
+      -DBayeux_WITH_GEANT4=ON                       \
+      ${SW_WORK_DIR}/Bayeux/trunk/
+#+END_SRC
+
+To run the compilation process do
+#+BEGIN_SRC sh
+  make install
+#+END_SRC
+*** Test programs [9/10]
+Adding option =-DBayeux_ENABLE_TESTING=ON= to the =cmake= command will enable
+the compilation of test programs. Then doing =make test= will launch each of
+the *238 test programs* and it will eventually shows some broken tests.
+
+- [X] datatools
+- [X] brio
+- [X] cuts
+- [X] genbb_help
+- [X] geomtools
+- [X] genvtx
+- [X] mygsl
+- [X] materials
+- [X] dpp
+- [ ] mctools (see below)
+
+**** =mctools= compilation error
+Compilation of =mctools= component generates the following error
+#+BEGIN_SRC sh
+  Building CXX object source/CMakeFiles/Bayeux_mctools_geant4.dir/bxmctools/src/g4/primary_generator.cc.o
+  /mnt/xwscratch/snailware/software/Bayeux/trunk/source/bxmctools/src/g4/primary_generator.cc: In member function ‘void mctools::g4::primary_generator::_generate_event(G4Event*)’:
+  /mnt/xwscratch/snailware/software/Bayeux/trunk/source/bxmctools/src/g4/primary_generator.cc:365: error: ISO C++ says that these are ambiguous, even though the worst conversion for the first is better than the worst conversion for the second:
+  /usr/lib/gcc/i386-redhat-linux/4.1.2/../../../../include/c++/4.1.2/bits/basic_string.h:702: note: candidate 1: typename _Alloc::rebind<_CharT>::other::reference std::basic_string<_CharT, _Traits, _Alloc>::operator[](typename _Alloc::rebind<_CharT>::other::size_type) [with _CharT = char, _Traits = std::char_traits<char>, _Alloc = std::allocator<char>]
+  /mnt/xwscratch/snailware/software/Bayeux/trunk/source/bxmctools/src/g4/primary_generator.cc:365: note: candidate 2: operator[](const char*, int) <built-in>
+  make[2]: *** [source/CMakeFiles/Bayeux_mctools_geant4.dir/bxmctools/src/g4/primary_generator.cc.o] Error 1
+  make[1]: *** [source/CMakeFiles/Bayeux_mctools_geant4.dir/all] Error 2
+  make: *** [all] Error 2
+#+END_SRC
+I guess this is related to =g++= version which is too old and does not handle
+properly implicit cast. To overpass this problem, I changed line 365 of
+=$SW_WORK_DIR/Bayeux/trunk/source/bxmctools/src/g4/primary_generator.cc= by
+replacing the =G4string= type by a =std::string= type. Then I also changed the
+declaration line 376 to something like
+#+BEGIN_SRC c++
+  G4ParticleDefinition * g4_particle = particle_table->FindParticle ((G4String)g4_particle_name);
+#+END_SRC
+** Falaise
+*** Checking out
+#+BEGIN_SRC sh
+  svn co https://nemo.lpc-caen.in2p3.fr/svn/Falaise/trunk \
+      ${SW_WORK_DIR}/Falaise/trunk
+#+END_SRC
+*** Configuration
+To setup =Falaise= with an already version of =Bayeux= installed, first create
+the following directory
+#+BEGIN_SRC sh
+  mkdir -p ${SW_WORK_DIR}/Falaise/build && cd ${SW_WORK_DIR}/Falaise/build
+#+END_SRC
+Then configure =Falaise=
+#+BEGIN_SRC sh
+  cmake                                             \
+      -DCMAKE_INSTALL_PREFIX=${SW_WORK_DIR}/install \
+      -DCMAKE_PREFIX_PATH=${SW_WORK_DIR}/install    \
+      -DFalaise_ENABLE_TESTING=ON                   \
+      -DFalaise_BUILD_DOCS=OFF                      \
+      -DFalaise_USE_SYSTEM_BAYEUX=ON                \
+      ${SW_WORK_DIR}/Falaise/trunk
+#+END_SRC
+
+To run the compilation process do
+#+BEGIN_SRC sh
+  make install
+#+END_SRC
+
+*** Basic tests
+#+BEGIN_SRC sh
+  export PATH=${SW_WORK_DIR}/install/bin:$PATH
+  flsimulate -n 10 -o /tmp/${USER}/snemo_tc_muons_roof.xml
+  flreconstruct -i /tmp/${USER}/snemo_tc_muons_roof.xml
+#+END_SRC
+
+Tests successfully passed.
+** Final tests
+Every binaries have been placed within
+=/mnt/xwscratch/snailware/software/install= directory. It means that all the
+relevant parts /i.e./ library, configuration files, executables of the software
+may be found here. To make use of the useful binaries for SuperNEMO simulation
+and reconstruction, one has to export the =bin= directory to the =PATH=
+environment variable:
+#+BEGIN_SRC sh
+  export PATH=/mnt/xwscratch/snailware/software/install/bin:$PATH
+#+END_SRC
+Then, the =flsimulate= program and the =flreconstruct= program can be execute
+from everywhere.
+
+To test each of them, you can do
+#+BEGIN_SRC sh
+  flsimulate -n 10 -o /tmp/${USER}/snemo_output.xml
+#+END_SRC
+This will generate 10 events and store the result of the simulation in the
+=/tmp/${USER}/snemo_output.xml= file. To perform reconstruction of the previous
+set of simulated data, you can do
+#+BEGIN_SRC sh
+  flreconstruct -i /tmp/${USER}/snemo_output.xml
+#+END_SRC
+This will dump some information related to simulated data. Making both of them
+working means that everything has been installed properly.
+
+#+LATEX: \vspace{10pt}
+*Remark:*
+Since binaries use =rpath= technique to embeds library path[fn:1], binaries may
+be moved to other place without breaking link paths. It seems to work with
+Bayeux components but for the 2 interesting Falaise binaries, namely
+=flsimulate= and =flreconstruct=, it seems to have some bad hard-coded path
+within these binaries. For example, if I moved the former binaries to the
+=$HOME= directory, then running =$HOME/flsimulate --help= command gives the
+following error
+#+BEGIN_SRC sh
+  terminate called after throwing an instance of 'boost::filesystem::filesystem_error'
+    what():  boost::filesystem::canonical: No such file or directory: "/home/vmuser/../share/Falaise-1.0.0"
+  Aborted
+#+END_SRC
+Clearly, there is a reference to a relative path from where the executable is
+used.
+
+* Footnotes
+
+[fn:1] rpath is a term in programming which refers to a run-time search path
+hard-coded in an executable file or library, used during dynamic linking to find
+the libraries the executable or library requires.
