@@ -1,5 +1,6 @@
 #+TITLE: Tips & Tricks
 #+DESCRIPTION: Tips & tricks and web links
+#+OPTIONS: ^:{}
 
 * Emacs
 ** Using tramp connection with a different port
