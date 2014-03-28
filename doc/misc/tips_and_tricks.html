@@ -77,6 +77,7 @@ for the JavaScript code in this tag.
 <li><a href="#sec-2-1">2.1. Port forward</a></li>
 </ul>
 </li>
+<li><a href="#sec-3">3. Plotting with python/matplotlib</a></li>
 </ul>
 </div>
 </div>
@@ -116,6 +117,69 @@ must be done by adding
 <p>
 in <code>/etc/hosts</code> file.
 </p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Plotting with python/matplotlib</h2>
+<div class="outline-text-2" id="text-3">
+<table id="delsee" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">airmass</th>
+<th scope="col" class="right">zenith<sub>seeing</sub></th>
+<th scope="col" class="right">delivered<sub>seeing</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="right">1.3</td>
+<td class="right">0.95</td>
+<td class="right">1.1119612</td>
+</tr>
+
+<tr>
+<td class="right">1.3</td>
+<td class="right">1.0</td>
+<td class="right">1.1704854</td>
+</tr>
+
+<tr>
+<td class="right">1.3</td>
+<td class="right">1.1</td>
+<td class="right">1.2875340</td>
+</tr>
+
+<tr>
+<td class="right">1.3</td>
+<td class="right">1.2</td>
+<td class="right">1.4045825</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span class="org-keyword">import</span> matplotlib.pyplot <span class="org-keyword">as</span> plt
+
+<span class="org-variable-name">x</span>, <span class="org-variable-name">y</span>, <span class="org-variable-name">z</span> = <span class="org-builtin">zip</span>(*delsee)
+
+<span class="org-variable-name">fig</span> = plt.figure()
+<span class="org-variable-name">axes</span> = fig.add_subplot(1,1,1)
+axes.plot(y, z, marker=<span class="org-string">'o'</span>)
+fig.savefig(fname)
+
+<span class="org-keyword">return</span> fname
+</pre>
 </div>
 </div>
 </div>
