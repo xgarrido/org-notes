@@ -1,39 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-  <head>
-    <title>org notes</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <link rel="stylesheet" href="./doc/stylesheets/styles.css">
-      <link rel="stylesheet" href="./doc/stylesheets/org-pygments.css">
-        <style media="screen" type="text/css">
-          #preamble {
-          float:left;
-          font-size:1em;
-          width:200px;
-          padding:50px 0 0px 0;
-          }
-        </style>
-      </head>
-      <body>
-        <div id="preamble" class="status">
+<head>
+<title>Org-notes</title>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Xavier Garrido" />
+<link rel="stylesheet" href="css/styles.css" />
+               <link rel="stylesheet" href="css/org-pygments.css" />
+               <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
 
-        </div>
-        <div id="content">
-          <h1 class="title">Org notes</h1><hr/>
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
-   <p>
-     <h2 style="text-transform:uppercase; font-size:0.9em; color:#777777">misc</h2>
-     <p><a href="doc/misc/orgmode_cheatsheet.html"> Markup Cheat sheet for Org-mode</a></p>
-     <p><a href="doc/misc/tips_and_tricks.html"> Tips & Tricks</a> Tips & tricks and web links</p>
-     <p><a href="doc/misc/todo-list.html"> Todo List</a> List of tasks to be done asap</p>
-     <h2 style="text-transform:uppercase; font-size:0.9em; color:#777777">work</h2>
-     <p><a href="doc/work/archlinux_install.html"> Notes on installing archlinux from scratch</a> In this note, we describe the different operations for installing archlinux</p>
-     <p><a href="doc/work/install_new_snailware.html">  Install notes for SN@ilWare software</a> Quick notes on how to install new SN@ilWare software on different machines</p>
-     <p><a href="doc/work/install_pc_lal.html">  Install PC from scratch</a></p>
-     
-   </p>
-        </div>
-      </body>
-    </html>
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script><script type="text/javascript">
+  function displayTOC() {
+      var first = document.getElementById("text-table-of-contents").innerHTML;
+      if (first != "") {
+          var maincontent = '<a class="button"><i class="fa fa-list"></i></a>'
+          maincontent += "<div>" + first + "</div>";
+          document.getElementById("toc").innerHTML = maincontent;
+      } else {
+          document.getElementById("toc").style.display = "none";
+      }
+     }
+  function randomLinkColor() {
+      var colors = ['#67ad00', '#D5BC23', '#FF9927', '#FF2D27', '#AB0045', '#B81FC8'];
+      var random_color = colors[Math.floor(Math.random() * colors.length)];
+      var elements = document.querySelectorAll('a');
+      [].slice.call(elements).forEach(function(elem) {
+          //elem.style.color = random_color;
+      });
+  }
+  </script>
+</head>
+<body onload="randomLinkColor();displayTOC();"><div id="toc"></div>
+<div id="content">
+<h1 class="title">Org-notes</h1>
+<p>
+This repository contains several quick notes.
+</p>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Misc/</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<a href="./misc/orgmode_cheatsheet.html"> Markup Cheat sheet for Org-mode</a> 
+</p>
+
+<p>
+<a href="./misc/tips_and_tricks.html"> Tips &amp; Tricks</a>  Tips &amp; tricks and web links
+</p>
+
+<p>
+<a href="./misc/todo-list.html"> Todo List</a>  List of tasks to be done asap
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Work/</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+<a href="./work/archlinux_install.html"> Notes on installing archlinux from scratch</a>  In this note, we describe the different operations for installing archlinux
+</p>
+
+<p>
+<a href="./work/install_new_snailware.html">  Install notes for SN@ilWare software</a>  Quick notes on how to install new SN@ilWare software on different machines
+</p>
+
+<p>
+<a href="./work/install_pc_lal.html">  Install PC from scratch</a> 
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+File under <i class="fa fa-github-alt"></i> version control - commit <a href="https://github.com/xgarrido/org-notes/commit/4d1f5b91acc5820528ba178af9653be60d7ac94a">4d1f5b9</a> - 2014-04-28
+</div>
+</body>
+</html>
