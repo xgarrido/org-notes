@@ -6,10 +6,12 @@
 <title>Notes on installing archlinux from scratch</title>
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Xavier Garrido" />
 <meta  name="description" content="In this note, we describe the different operations for installing archlinux"
  />
-<link rel="stylesheet" href="../stylesheets/styles.css">
-                 <link rel="stylesheet" href="../stylesheets/org-pygments.css">
+<link rel="stylesheet" href="../css/styles.css" />
+               <link rel="stylesheet" href="../css/org-pygments.css" />
+               <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -55,16 +57,32 @@ for the JavaScript code in this tag.
      target.className = elem.cacheClassTarget;
  }
 /*]]>*///-->
-</script>
+</script><script type="text/javascript">
+  function displayTOC() {
+      var first = document.getElementById("text-table-of-contents").innerHTML;
+      if (first != "") {
+          var maincontent = '<a class="button"><i class="fa fa-list"></i></a>'
+          maincontent += "<div>" + first + "</div>";
+          document.getElementById("toc").innerHTML = maincontent;
+      } else {
+          document.getElementById("toc").style.display = "none";
+      }
+     }
+  function randomLinkColor() {
+      var colors = ['#67ad00', '#D5BC23', '#FF9927', '#FF2D27', '#AB0045', '#B81FC8'];
+      var random_color = colors[Math.floor(Math.random() * colors.length)];
+      var elements = document.querySelectorAll('a');
+      [].slice.call(elements).forEach(function(elem) {
+          //elem.style.color = random_color;
+      });
+  }
+  </script>
 </head>
-<body>
-<div id="preamble" class="status">
-<a href="../../index.html">Retour menu principal</a>
-</div>
+<body onload="randomLinkColor();displayTOC();"><div id="toc"></div>
 <div id="content">
-<h1 class="title">Notes on installing archlinux from scratch</h1><hr/>
+<h1 class="title">Notes on installing archlinux from scratch</h1>
 <div id="table-of-contents">
-<h2>Table of Contents</h2>
+<h2></h2>
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#sec-1">1. After booting on archlinux ISO file</a></li>
@@ -77,7 +95,7 @@ for the JavaScript code in this tag.
 <li><a href="#sec-6-1">6.1. Generate a fstab</a></li>
 <li><a href="#sec-6-2">6.2. Next `chroot` into our newly installed system</a></li>
 <li><a href="#sec-6-3">6.3. Symlink /etc/localtime</a></li>
-<li><a href="#sec-6-4">6.4. Uncomment the &lsquo;fr&rsquo; lines in /etc/locale.gen file and generate it</a></li>
+<li><a href="#sec-6-4">6.4. Uncomment the 'fr' lines in /etc/locale.gen file and generate it</a></li>
 <li><a href="#sec-6-5">6.5. Finally do</a></li>
 </ul>
 </li>
@@ -108,6 +126,7 @@ Start loading the french keymap
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2"><span class="section-number-2">2</span> Create and format the partitions :</h2>
 <div class="outline-text-2" id="text-2">
@@ -120,7 +139,7 @@ First look if any partition is already present
 </pre>
 </div>
 <p>
-If yes, then either use them and go directly to the &ldquo;Mounting&rdquo; part
+If yes, then either use them and go directly to the "Mounting" part
 or, format the disk using `fisk` or `cfdisk` utility.
 </p>
 <div class="org-src-container">
@@ -144,7 +163,7 @@ being, I have adopted the following and pretty simple one :
 Example of `fdisk` partition :
 </p>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="void">
 
 
 <colgroup>
@@ -206,6 +225,7 @@ mkfs.ext4 /dev/sda2
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3"><span class="section-number-2">3</span> Mount the partitions</h2>
 <div class="outline-text-2" id="text-3">
@@ -217,7 +237,6 @@ mkdir /mnt/home &amp;&amp; mount /dev/sda2 /mnt/home
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4"><span class="section-number-2">4</span> Connect to the internet</h2>
 <div class="outline-text-2" id="text-4">
@@ -226,6 +245,7 @@ Use the `wifi-menu` utility, choose the wifi name and set the WPA key
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-5" class="outline-2">
 <h2 id="sec-5"><span class="section-number-2">5</span> Install the base system</h2>
 <div class="outline-text-2" id="text-5">
@@ -236,6 +256,7 @@ Use the `wifi-menu` utility, choose the wifi name and set the WPA key
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-6" class="outline-2">
 <h2 id="sec-6"><span class="section-number-2">6</span> Configure the system</h2>
 <div class="outline-text-2" id="text-6">
@@ -249,7 +270,6 @@ Use the `wifi-menu` utility, choose the wifi name and set the WPA key
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-6-2" class="outline-3">
 <h3 id="sec-6-2"><span class="section-number-3">6.2</span> Next `chroot` into our newly installed system</h3>
 <div class="outline-text-3" id="text-6-2">
@@ -260,7 +280,6 @@ Use the `wifi-menu` utility, choose the wifi name and set the WPA key
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-6-3" class="outline-3">
 <h3 id="sec-6-3"><span class="section-number-3">6.3</span> Symlink /etc/localtime</h3>
 <div class="outline-text-3" id="text-6-3">
@@ -272,9 +291,8 @@ hwclock --systohc --utc
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-6-4" class="outline-3">
-<h3 id="sec-6-4"><span class="section-number-3">6.4</span> Uncomment the &lsquo;fr&rsquo; lines in /etc/locale.gen file and generate it</h3>
+<h3 id="sec-6-4"><span class="section-number-3">6.4</span> Uncomment the 'fr' lines in /etc/locale.gen file and generate it</h3>
 <div class="outline-text-3" id="text-6-4">
 <div class="org-src-container">
 
@@ -283,7 +301,6 @@ hwclock --systohc --utc
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-6-5" class="outline-3">
 <h3 id="sec-6-5"><span class="section-number-3">6.5</span> Finally do</h3>
 <div class="outline-text-3" id="text-6-5">
@@ -296,7 +313,6 @@ hwclock --systohc --utc
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-7" class="outline-2">
 <h2 id="sec-7"><span class="section-number-2">7</span> Configuring the Console Keymap</h2>
 <div class="outline-text-2" id="text-7">
@@ -322,7 +338,6 @@ Change the default keyboard layout file that will be used by editing
 </p>
 </div>
 </div>
-
 <div id="outline-container-sec-8" class="outline-2">
 <h2 id="sec-8"><span class="section-number-2">8</span> Create a user account</h2>
 <div class="outline-text-2" id="text-8">
@@ -343,7 +358,7 @@ and install <code>sudo</code> command
 </pre>
 </div>
 <p>
-Once you&rsquo;ve installed sudo, you can allow your new user to run it by
+Once you've installed sudo, you can allow your new user to run it by
 editing your sudoers file:
 </p>
 <div class="org-src-container">
@@ -379,6 +394,7 @@ passwd garrido
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-9" class="outline-2">
 <h2 id="sec-9"><span class="section-number-2">9</span> Install your GRUB bootloader</h2>
 <div class="outline-text-2" id="text-9">
@@ -404,6 +420,7 @@ Run
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-10" class="outline-2">
 <h2 id="sec-10"><span class="section-number-2">10</span> Setup your network</h2>
 <div class="outline-text-2" id="text-10">
@@ -416,6 +433,7 @@ systemctl enable net-auto-wireless.service
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-11" class="outline-2">
 <h2 id="sec-11"><span class="section-number-2">11</span> Exit, unmount partitions and reboot</h2>
 <div class="outline-text-2" id="text-11">
@@ -429,6 +447,7 @@ reboot
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-12" class="outline-2">
 <h2 id="sec-12"><span class="section-number-2">12</span> Sound, video and mouse drivers</h2>
 <div class="outline-text-2" id="text-12">
@@ -463,6 +482,7 @@ speaker-test -c 2
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-13" class="outline-2">
 <h2 id="sec-13"><span class="section-number-2">13</span> X window</h2>
 <div class="outline-text-2" id="text-13">
@@ -487,6 +507,7 @@ startx
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-14" class="outline-2">
 <h2 id="sec-14"><span class="section-number-2">14</span> Install and set Openbox</h2>
 <div class="outline-text-2" id="text-14">
@@ -583,26 +604,33 @@ Install chromium
 
 <p>
 Install xfce4 stuff
-#+begin<sub>src</sub> sh
-sudo pacman -S xfce4-notifyd thunar xfce4-volman file-roller
-#end<sub>src</sub>
 </p>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo pacman -S xfce4-notifyd thunar xfce4-volman file-roller
+</pre>
+</div>
 
 <p>
 Install git and subversion
-#+begin<sub>src</sub> sh
-sudo pacman -S git subversion
-#end<sub>src</sub>
 </p>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo pacman -S git subversion
+</pre>
+</div>
 
 <p>
 Misc.
-#+begin<sub>src</sub> sh
-sudo pacman -S unzip mlocate flashplugin
-#end<sub>src</sub>
 </p>
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo pacman -S unzip mlocate flashplugin
+</pre>
 </div>
 </div>
+</div>
+
 <div id="outline-container-sec-15" class="outline-2">
 <h2 id="sec-15"><span class="section-number-2">15</span> Openbox config</h2>
 </div>
@@ -616,6 +644,9 @@ sudo pacman -S unzip mlocate flashplugin
 </div>
 </div>
 </div>
+</div>
+<div id="postamble" class="status">
+File under <i class="fa fa-github-alt"></i> version control - commit <a href="https://github.com/xgarrido/org-notes/commit/4d1f5b91acc5820528ba178af9653be60d7ac94a">4d1f5b9</a> - 2014-04-28
 </div>
 </body>
 </html>

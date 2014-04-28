@@ -8,8 +8,9 @@
 <meta  name="generator" content="Org-mode" />
 <meta  name="description" content="Tips &amp; tricks and web links"
  />
-<link rel="stylesheet" href="../stylesheets/styles.css">
-                 <link rel="stylesheet" href="../stylesheets/org-pygments.css">
+<link rel="stylesheet" href="../css/styles.css" />
+               <link rel="stylesheet" href="../css/org-pygments.css" />
+               <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -55,16 +56,32 @@ for the JavaScript code in this tag.
      target.className = elem.cacheClassTarget;
  }
 /*]]>*///-->
-</script>
+</script><script type="text/javascript">
+  function displayTOC() {
+      var first = document.getElementById("text-table-of-contents").innerHTML;
+      if (first != "") {
+          var maincontent = '<a class="button"><i class="fa fa-list"></i></a>'
+          maincontent += "<div>" + first + "</div>";
+          document.getElementById("toc").innerHTML = maincontent;
+      } else {
+          document.getElementById("toc").style.display = "none";
+      }
+     }
+  function randomLinkColor() {
+      var colors = ['#67ad00', '#D5BC23', '#FF9927', '#FF2D27', '#AB0045', '#B81FC8'];
+      var random_color = colors[Math.floor(Math.random() * colors.length)];
+      var elements = document.querySelectorAll('a');
+      [].slice.call(elements).forEach(function(elem) {
+          //elem.style.color = random_color;
+      });
+  }
+  </script>
 </head>
-<body>
-<div id="preamble" class="status">
-<a href="../../index.html">Retour menu principal</a>
-</div>
+<body onload="randomLinkColor();displayTOC();"><div id="toc"></div>
 <div id="content">
-<h1 class="title">Tips &amp; Tricks</h1><hr/>
+<h1 class="title">Tips &amp; Tricks</h1>
 <div id="table-of-contents">
-<h2>Table of Contents</h2>
+<h2></h2>
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#sec-1">1. Emacs</a>
@@ -96,7 +113,6 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2"><span class="section-number-2">2</span> Network</h2>
 <div class="outline-text-2" id="text-2">
@@ -120,10 +136,11 @@ in <code>/etc/hosts</code> file.
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3"><span class="section-number-2">3</span> Plotting with python/matplotlib</h2>
 <div class="outline-text-2" id="text-3">
-<table id="delsee" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="delsee" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="void">
 
 
 <colgroup>
@@ -183,6 +200,9 @@ fig.savefig(fname)
 </div>
 </div>
 </div>
+</div>
+<div id="postamble" class="status">
+File under <i class="fa fa-github-alt"></i> version control - commit <a href="https://github.com/xgarrido/org-notes/commit/4d1f5b91acc5820528ba178af9653be60d7ac94a">4d1f5b9</a> - 2014-04-28
 </div>
 </body>
 </html>
