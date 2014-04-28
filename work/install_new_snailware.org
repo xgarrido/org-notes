@@ -6,7 +6,7 @@
 #+OPTIONS: ^:{} email:nil
 #+LATEX_CLASS: snemo-note
 
-* Install @ LAL :noexport:
+* Install @ LAL
 ** Preamble
 *** Configuration of =cmake=                                   :deprecated:
 First you should specify an alias to the latest version of =cmake= by executing
@@ -139,7 +139,7 @@ To run the compilation process on several CPU cores do
 
 Tests successfully passed.
 
-* Install @ CC :noexport:
+* Install @ CC
 ** Preamble
 *** Configuration of =cmake=
 First you should use a more decent version of =cmake= by doing
@@ -296,7 +296,7 @@ To run the compilation process on several CPU cores do
 
 Tests successfully passed.
 
-* Install @ laptop :noexport:
+* Install @ laptop
 ** Machine configuration
 #+BEGIN_SRC sh
   uname -a
@@ -417,7 +417,7 @@ To setup =Bayeux= execute the following code
 - [X] mctools
 
 *** TODO Falaise
-* Install @ pc-server :noexport:
+* Install @ pc-server
 ** Machine configuration
 #+BEGIN_SRC sh
   uname -a
