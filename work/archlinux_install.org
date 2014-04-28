@@ -4,20 +4,20 @@
 
 * After booting on archlinux ISO file
 Start loading the french keymap
-#+begin_src sh
+#+BEGIN_SRC sh
   loadkeys fr
-#+end_src
+#+END_SRC
 
 * Create and format the partitions :
 First look if any partition is already present
-#+begin_src sh
+#+BEGIN_SRC sh
   fdisk -l
-#+end_src
+#+END_SRC
 If yes, then either use them and go directly to the "Mounting" part
 or, format the disk using `fisk` or `cfdisk` utility.
-#+begin_src sh
+#+BEGIN_SRC sh
   fdisk /dev/sda
-#+end_src
+#+END_SRC
 Different strategies can then be adopted (see
 https://wiki.archlinux.org/index.php/Partitioning). For the time
 being, I have adopted the following and pretty simple one :
@@ -33,51 +33,51 @@ Example of `fdisk` partition :
 |-----------+------+----------+-----------+-----------+----+--------|
 
 Format partition is done with `mkfs` utility
-#+begin_src sh
+#+BEGIN_SRC sh
   mkfs.ext4 /dev/sda1
   mkfs.ext4 /dev/sda2
-#+end_src
+#+END_SRC
 
 * Mount the partitions
-#+begin_src sh
+#+BEGIN_SRC sh
   mount /dev/sda1 /mnt
   mkdir /mnt/home && mount /dev/sda2 /mnt/home
-#+end_src
+#+END_SRC
 * Connect to the internet
 Use the `wifi-menu` utility, choose the wifi name and set the WPA key
 
 * Install the base system
-#+begin_src sh
+#+BEGIN_SRC sh
   pacstrap /mnt base base_devel
-#+end_src
+#+END_SRC
 
 * Configure the system
 ** Generate a fstab
-#+begin_src sh
+#+BEGIN_SRC sh
   genfstab -p /mnt >> /mnt/etc/fstab
-#+end_src
+#+END_SRC
 ** Next `chroot` into our newly installed system
-#+begin_src sh
+#+BEGIN_SRC sh
   arch-chroot /mnt
-#+end_src
+#+END_SRC
 ** Symlink /etc/localtime
-#+begin_src sh
+#+BEGIN_SRC sh
   ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
   hwclock --systohc --utc
-#+end_src
+#+END_SRC
 ** Uncomment the 'fr' lines in /etc/locale.gen file and generate it
-#+begin_src sh
+#+BEGIN_SRC sh
   locale-gen
-#+end_src
+#+END_SRC
 ** Finally do
-#+begin_src sh
+#+BEGIN_SRC sh
   echo LANG="fr_FR.UTF-8" > /etc/locale.conf
   export LANG=fr_FR.UTF-8
-#+end_src
+#+END_SRC
 * Configuring the Console Keymap
-#+begin_src sh
+#+BEGIN_SRC sh
   cd to /usr/share/kbd/keymaps/i386/azerty
-#+end_src
+#+END_SRC
 Copy your default keymap (fr-pc.map.gz) to a new file fr-pc-personal.map.gz
 Gunzip the new map file
 Edit fr-pc-personal.map using your favorite editor.
@@ -88,160 +88,160 @@ Change the default keyboard layout file that will be used by editing
 =/etc/vconsole.conf= and adding KEYMAP=fr-pc-personal
 * Create a user account
 First set the root password
-#+begin_src sh
+#+BEGIN_SRC sh
   passwd
-#+end_src
+#+END_SRC
 and install =sudo= command
-#+begin_src sh
+#+BEGIN_SRC sh
   pacman -S sudo
-#+end_src
+#+END_SRC
 Once you've installed sudo, you can allow your new user to run it by
 editing your sudoers file:
-#+begin_src sh
+#+BEGIN_SRC sh
   EDITOR=nano visudo
-#+end_src
+#+END_SRC
 Scroll down until you find this line and uncomment it:
-#+begin_src sh
+#+BEGIN_SRC sh
   %wheel ALL=(ALL) ALL
-#+end_src
+#+END_SRC
 
 Before creating a user account, install zshell
-#+begin_src sh
+#+BEGIN_SRC sh
   pacman -S zsh
-#+end_src
+#+END_SRC
 Create a user account
-#+begin_src sh
+#+BEGIN_SRC sh
   useradd -m -g users -G wheel,storage,power -s /bin/zsh garrido
   passwd garrido
-#+end_src
+#+END_SRC
 
 * Install your GRUB bootloader
-#+begin_src sh
+#+BEGIN_SRC sh
   pacman -S grub-bios
   grub-install --target=i386-pc --recheck /dev/sda
   cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo
   /boot/grub/locale/en.mo
-#+end_src
+#+END_SRC
 Target is always i386-pc even if the laptop/pc is a 64 bits machine
 
 Run
-#+begin_src sh
+#+BEGIN_SRC sh
 grub-mkconfig -o /boot/grub/grub.cfg
-#+end_src
+#+END_SRC
 
 * Setup your network
-#+begin_src sh
+#+BEGIN_SRC sh
 pacman -S wireless_tools wpa_supplicant wpa_actiond dialog
 wifi-menu
 systemctl enable net-auto-wireless.service
-#+end_src
+#+END_SRC
 
 * Exit, unmount partitions and reboot
-#+begin_src sh
+#+BEGIN_SRC sh
 exit
 umount /mnt/home
 umount /mnt
 reboot
-#+end_src
+#+END_SRC
 
 * Sound, video and mouse drivers
 + Get sound
-#+begin_src sh
-sudo pacman -S alsa-utils
-alsamixer
-speaker-test -c 2
-#+end_src
+#+BEGIN_SRC sh
+  sudo pacman -S alsa-utils
+  alsamixer
+  speaker-test -c 2
+#+END_SRC
 + Install video driver (Intel)
-#+begin_src sh
-sudo pacman -S xf86-video-intel
-#+end_src
+#+BEGIN_SRC sh
+  sudo pacman -S xf86-video-intel
+#+END_SRC
 + Install mouse driver
-#+begin_src sh
-sudo pacman -S xf86-input-synaptics
-#+end_src
+#+BEGIN_SRC sh
+  sudo pacman -S xf86-input-synaptics
+#+END_SRC
 
 * X window
 + Install X window system
-#+begin_src sh
-sudo pacman -S xorg-server xorg-xinit xorg-server-utils
-#+end_src
+#+BEGIN_SRC sh
+  sudo pacman -S xorg-server xorg-xinit xorg-server-utils
+#+END_SRC
 + Test default X environnement
-#+begin_src  sh
-sudo pacman -S xorg-twm xorg-xclock xterm
-startx
-#+end_src
+#+BEGIN_SRC sh
+  sudo pacman -S xorg-twm xorg-xclock xterm
+  startx
+#+END_SRC
 
 * Install and set Openbox
-#+begin_src sh
-sudo pacman -S openbox
-#+end_src
-#+begin_src sh
-mkdir -p ~/.config/openbox
-cp /etc/xdg/openbox/{rc.xml,menu.xml,autostart,environment}
-~/.config/openbox
-#+end_src
+#+BEGIN_SRC sh
+  sudo pacman -S openbox
+#+END_SRC
+#+BEGIN_SRC sh
+  mkdir -p ~/.config/openbox
+  cp /etc/xdg/openbox/{rc.xml,menu.xml,autostart,environment}
+  ~/.config/openbox
+#+END_SRC
 
 Add the following line to ~/.xinitrc
-#+begin_src sh
-echo "exec openbox-session" > ~/.xinitrc
-#+end_src
+#+BEGIN_SRC sh
+  echo "exec openbox-session" > ~/.xinitrc
+#+END_SRC
 
 Install yaourt : add the following line into /etc/pacman.conf
-#+begin_src sh
-[archlinuxfr]
-Server = http://repo.archlinux.fr/$arch
-#+end_src
+#+BEGIN_SRC sh
+  [archlinuxfr]
+  Server = http://repo.archlinux.fr/$arch
+#+END_SRC
 Then do
-#+begin_src sh
-sudo pacman -Sy yaourt
-#+end_src
+#+BEGIN_SRC sh
+  sudo pacman -Sy yaourt
+#+END_SRC
 
-#+begin_src sh
-yaourt -S openssh rsync
-#+end_src
+#+BEGIN_SRC sh
+  yaourt -S openssh rsync
+#+END_SRC
 
 Install obconf, tint2 and hsetroot (wallpaper)
-#+begin_src sh
-sudo pacman -S obconf tint2 hsetroot
-#+end_src
+#+BEGIN_SRC sh
+  sudo pacman -S obconf tint2 hsetroot
+#+END_SRC
 
 Install ubuntu-ttf font
-#+begin_src sh
-sudo pacman -S ttf-ubuntu-font-family
-#+end_src
+#+BEGIN_SRC sh
+  sudo pacman -S ttf-ubuntu-font-family
+#+END_SRC
 
 Install terminator
-#+begin_src sh
-sudo pacman -S terminator
-#+end_src
+#+BEGIN_SRC sh
+  sudo pacman -S terminator
+#+END_SRC
 
 Install emacs
-#+begin_src sh
-sudo pacman -S emacs
-#+end_src
+#+BEGIN_SRC sh
+  sudo pacman -S emacs
+#+END_SRC
 
 Install chromium
-#+begin_src sh
-sudo pacman -S chromium
-#+end_src
+#+BEGIN_SRC sh
+  sudo pacman -S chromium
+#+END_SRC
 
 Install xfce4 stuff
-#+begin_src sh
+#+BEGIN_SRC sh
 sudo pacman -S xfce4-notifyd thunar xfce4-volman file-roller
-#end_src
+#+END_SRC
 
 Install git and subversion
-#+begin_src sh
+#+BEGIN_SRC sh
 sudo pacman -S git subversion
-#end_src
+#+END_SRC
 
 Misc.
-#+begin_src sh
+#+BEGIN_SRC sh
 sudo pacman -S unzip mlocate flashplugin
-#end_src
+#+END_SRC
 
 * Openbox config
 * Zsh config
-#+begin_src sh
+#+BEGIN_SRC sh
 git clone https://github.com/zsh-users/antigen.git
-#+end_src
+#+END_SRC
