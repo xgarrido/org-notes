@@ -475,7 +475,7 @@ then execute the =make= command
 #+BEGIN_SRC sh
   make
 #+END_SRC
-*** Ports status [5/8]
+*** Ports status [7/8]
 
 - [X] patchelf
 - [X] GSL
@@ -483,12 +483,12 @@ then execute the =make= command
 - [X] boost
 - [X] camp
 - [X] xerces-c
-- [ ] Geant4
-  - [ ] =-Dport/geant4+gdml= will install Xerces-C
-  - [ ] =-Dport/geant4+data=
-- [ ] ROOT
-  - [ ] =-Dport/root+mathmore=
-  - [ ] =-Dport/root+opengl=
+- [X] Geant4
+  - [X] =-Dport/geant4+gdml= will install Xerces-C
+  - [X] =-Dport/geant4+data=
+- [X] ROOT
+  - [X] =-Dport/root+mathmore=
+  - [X] =-Dport/root+opengl=
 
 **** CLHEP test error
 *Need to have a look into the logs.*
