@@ -2,9 +2,7 @@
 #+AUTHOR: Xavier Garrido
 #+DATE:   2012-01-22
 #+EMAIL:  xavier.garrido@lal.in2p3.fr
-#+LATEX_HEADER: \setsansfont[Mapping=tex-text]{Myriad Pro}
-#+LATEX_HEADER: \setmonofont[Mapping=tex-text,Scale=MatchLowercase]{Inconsolata}
-#+LATEX_HEADER: \setromanfont[Mapping=tex-text, Numbers=OldStyle]{Minion Pro}
+#+DESCRIPTION: Notes on installing software for Ubuntu flavor distribution
 
 * Install Ubuntu flavor distribution
 - [[http://www.ubuntu.com/][Ubuntu]]
