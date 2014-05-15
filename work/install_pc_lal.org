@@ -282,5 +282,3 @@ your username. Something like
 
 should work. Then go back to your work and try again to commit through =git
 svn=.
-
-* Footnotes
