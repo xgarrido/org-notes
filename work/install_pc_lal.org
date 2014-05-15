@@ -83,7 +83,7 @@ by doing
 #+END_SRC
 or
 #+BEGIN_SRC sh :tangle no
-  $ relaunch_emacs_daemon && emacs
+  $ relaunch_emacs && emacs
 #+END_SRC
 In the latest case, a =emacs= daemon will be launched first and then all the new
 =emacs= instances will be opened from the daemon. The interest of such behavior
