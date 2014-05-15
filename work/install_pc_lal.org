@@ -37,7 +37,7 @@ time is greatly reduced.
   ./configure && make && sudo make install
 #+END_SRC
 
-You can already use ccache by setting
+You can already use =ccache= by setting
 #+BEGIN_SRC sh
   export CXX=ccache g++
   export CC=ccache gcc
@@ -161,9 +161,9 @@ between the subversion repository and git. The two next items describe the
 needed steps to achieve such configuration. Of course, if you do not care about
 git/svn paradigm, you can skip this part and got to next section.
 *** Install [[http://golang.org/][go]]
-Go is an open source programming environment that makes it easy to build simple,
-reliable, and efficient software. This is needed because we will use later the
-=go-svn2git= binary to handle svn trunk/tags/branch within =git= CVS.
+=go= is an open source programming environment that makes it easy to build
+simple, reliable, and efficient software. This is needed because we will use
+later the =go-svn2git= binary to handle svn trunk/tags/branch within =git= CVS.
 
 #+BEGIN_SRC sh
   sudo apt-get install golang
