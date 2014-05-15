@@ -9,7 +9,7 @@
 <meta  name="author" content="Xavier Garrido" />
 <link rel="stylesheet" href="css/styles.css" />
                <link rel="stylesheet" href="css/org-pygments.css" />
-               <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+               <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -56,29 +56,30 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script><script type="text/javascript">
-  function displayTOC() {
-      var first = document.getElementById("text-table-of-contents").innerHTML;
-      if (first != "") {
-          var maincontent = '<a class="button"><i class="fa fa-list"></i></a>'
-          maincontent += "<div>" + first + "</div>";
-          document.getElementById("toc").innerHTML = maincontent;
-      } else {
-          document.getElementById("toc").style.display = "none";
-      }
-     }
   function randomLinkColor() {
-      var colors = ['#67ad00', '#D5BC23', '#FF9927', '#FF2D27', '#AB0045', '#B81FC8'];
+      var colors = ['#f1c40f','#e74c3c','#3399cc','#e67e22','#67ad00','#8e44ad','#1abc9c','#003399'];
       var random_color = colors[Math.floor(Math.random() * colors.length)];
       var elements = document.querySelectorAll('a');
       [].slice.call(elements).forEach(function(elem) {
           //elem.style.color = random_color;
       });
   }
+  function displayTOC() {
+      var ttoc = document.getElementById("text-table-of-contents");
+      if (ttoc) {
+          var maincontent = '<a class="button"><i class="fa fa-list"></i></a>'
+          maincontent += "<div>" + ttoc.innerHTML + "</div>";
+          document.getElementById("toc").innerHTML = maincontent;
+      } else {
+          document.getElementById("toc").style.display = "none";
+          document.getElementById("preamble").style.top = "10px";
+      }
+     }
   </script>
 </head>
 <body onload="randomLinkColor();displayTOC();"><div id="toc"></div>
 <div id="preamble" class="status">
-
+ <a href="https://github.com/xgarrido/org-notes"><i class="fa fa-github"></i></a><br/> 
 </div>
 <div id="content">
 <h1 class="title">Org-notes</h1>
@@ -110,17 +111,21 @@ This repository contains several quick notes.
 </p>
 
 <p>
+<a href="./work/geiger_shp_comparison.html"> Test of time consumption of Geiger cell locators</a> 
+</p>
+
+<p>
 <a href="./work/install_new_snailware.html">  Install notes for SN@ilWare software</a>  Quick notes on how to install new SN@ilWare software on different machines
 </p>
 
 <p>
-<a href="./work/install_pc_lal.html">  Install PC from scratch</a> 
+<a href="./work/install_pc_lal.html">  Install PC from scratch</a>  Notes on installing software for Ubuntu flavor distribution
 </p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-File under <i class="fa fa-github-alt"></i> version control - commit <a href="https://github.com/xgarrido/org-notes/commit/3c879646b273d4fb0431f871b2bd8244b2b26374">3c87964</a> - 2014-04-29
+File under <i class="fa fa-github-alt"></i> version control - commit <a href="https://github.com/xgarrido/org-notes/commit/c83f63cf8b1931f73db7f78ce4c60cec9f3a855c">c83f63c</a> - 2014-05-15
 </div>
 </body>
 </html>
