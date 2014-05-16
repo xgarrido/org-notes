@@ -39,8 +39,8 @@ time is greatly reduced.
 
 You can already use =ccache= by setting
 #+BEGIN_SRC sh
-  export CXX=ccache g++
-  export CC=ccache gcc
+  export CXX='ccache g++'
+  export CC='ccache gcc'
 #+END_SRC
 ** cmake
 [[http://www.cmake.org/][cmake]] is quite deprecated in =apt-get= sources
