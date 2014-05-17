@@ -10,7 +10,7 @@
 - [[http://www.kubuntu.org/][Kubuntu]]
 - [[http://www.linuxmint.com/][Linux Mint]]
 
-* Basic apt packages
+* Basic =apt= packages
 ** Openssh
 To be able to remotely connect
 #+BEGIN_SRC sh
@@ -25,7 +25,7 @@ To be able to remotely connect
   sudo apt-get install build-essential gfortran
 #+END_SRC
 * Homemade compilation
-** ccache
+** =ccache=
 [[http://ccache.samba.org/][ccache]] is used to "cache" the result of =g++= compilation. The compilation
 time is greatly reduced.
 #+BEGIN_SRC sh
@@ -42,7 +42,7 @@ You can already use =ccache= by setting
   export CXX='ccache g++'
   export CC='ccache gcc'
 #+END_SRC
-** cmake
+** =cmake=                                                :notanymoreneeded:
 [[http://www.cmake.org/][cmake]] is quite deprecated in =apt-get= sources
 #+BEGIN_SRC sh
   export CMAKE_VERSION=2.8.10.2
@@ -53,7 +53,7 @@ You can already use =ccache= by setting
   ./configure && make && sudo make install
 #+END_SRC
 
-** emacs
+** =emacs=                                                :notanymoreneeded:
 [[http://www.gnu.org/software/emacs/][GNU Emacs]] is an extensible, customizable text editor—and more. At its core is an
 interpreter for Emacs Lisp, a dialect of the Lisp programming language with
 extensions to support text editing. Again, since =apt-get= packages are quite
@@ -74,7 +74,7 @@ Then go ahead by installing emacs.
   ./configure --with-jpeg=no --with-tiff=no && make && sudo make install
 #+END_SRC
 
-** git
+** =git=                                                          :noexport:
 If the bundled version of =git= provided by =apt-get= package is a bit old, you
 can try to install your own version by checking out the =git= repository.
 #+BEGIN_SRC sh
@@ -85,7 +85,7 @@ can try to install your own version by checking out the =git= repository.
   sudo make prefix=/usr/local install
 #+END_SRC
 
-* zsh shell
+* =zsh= shell
 This part can be *skipped* if you prefer and use a different shell.
 
 Zsh is a powerful shell with much better completion implementation
@@ -123,7 +123,7 @@ After that open a new terminal in order to get all the changes. Antigen will
 proceed by downloading different zsh bundle sources, especially plugins
 related to SuperNEMO software.
 
-* emacs configuration
+* =emacs= configuration
 To get a effective startup configuration for =emacs=, one can use the
 =starter-kit= setup initially started by [[https://github.com/technomancy/emacs-starter-kit][technomancy]] and ported to =org-mode= by
 [[https://github.com/eschulte/emacs24-starter-kit][Eric Schulte]]. We will use a slightly different version of the later that can be
@@ -210,11 +210,12 @@ later the =go-svn2git= binary to handle svn trunk/tags/branch within =git= CVS.
 
 *** Install go-svn2git
 =go-svn2git= is a tiny utility for migrating projects from Subversion to Git
-while keeping the trunk, branches and tags where they should be. It uses git-svn
-to clone an svn repository and does some clean-up to make sure branches and tags
-are imported in a meaningful way, and that the code checked into master ends up
-being what's currently in your svn trunk rather than whichever svn branch your
-last commit was in. It is developed by [[https://github.com/sbinet/go-svn2git][Sébastien Binet]].
+while keeping the trunk, branches and tags where they should be. It uses
+=git-svn= to clone an svn repository and does some clean-up to make sure
+branches and tags are imported in a meaningful way, and that the code checked
+into master ends up being what's currently in your svn trunk rather than
+whichever svn branch your last commit was in. It is developed by [[https://github.com/sbinet/go-svn2git][Sébastien
+Binet]].
 
 #+BEGIN_SRC sh
   export GOPATH=~/Development/go
