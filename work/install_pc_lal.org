@@ -144,18 +144,9 @@ everything working.
    minutes). At the end of the process, you will get a message on the =emacs=
    buffer
    #+BEGIN_SRC sh
-     Congrats, el-get is installed and ready to serve!
-   #+END_SRC
-2) Kill the =emacs= and run it again
-   #+BEGIN_SRC sh
-     $ \emacs
-   #+END_SRC
-   This second step will install =cask=. At the end of the process, you must get
-   a message saying
-   #+BEGIN_SRC sh
      cask installed: This package has been installed successfully by el-get.
    #+END_SRC
-3) Kill again =emacs= and run it again. Then, inside =emacs= frame, do =ALT-x=
+2) Kill again =emacs= and run it again. Then, inside =emacs= frame, do =ALT-x=
    and type =pallet-install=. This will install all the =emacs= libraries as
    defined in =starter-kit-cask.org= file. At the end of the process, finally
    kill =emacs= a last time. Everything has been installed.
