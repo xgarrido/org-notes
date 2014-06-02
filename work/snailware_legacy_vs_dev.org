@@ -1,0 +1,17 @@
+#+TITLE: SN@ilWare simulations : comparison between legacy and development branch
+
+* Introduction
+
+Since the switch to the new Cadfael/Bayeux/Falaise software suite, some time
+latency has been found when simulating SuperNEMO events. For instance,
+simulating 2\beta events on Lyon cluster was taking 20 minutes for 10 000 events
+when it takes now more than 2 hours.
+
+The purpose of this note is to investigate where the time processing is going by
+comparing on a basic simulation setup the =legacy= code with the =trunk=
+development branch.
+
+* Installation of =legacy= branch
+
+To install the =legacy= branch, we use the =aggregator= script file and its
+latest [[ https://github.com/xgarrido/zsh-aggregator/commit/1b2ed677e83e3548fa6812c19f1e4240adbdf6a7][revision]] to get Cadfael legacy version.
