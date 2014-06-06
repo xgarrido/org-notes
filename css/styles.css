@@ -178,6 +178,13 @@ img.hidden {
     padding-right: 3px;
 }
 
+.question {
+    border-left:2px solid #67ad00;
+    margin:0;
+    padding:0 0 0 20px;
+    /*font-style:italic;*/
+}
+
 #table-of-contents {
     margin-bottom: 40px;
 }
