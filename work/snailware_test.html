@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>SN@ilWare Summary Tests</title>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="description" content="Document holding some SuperNEMO software tests
+such as benchmark tests, version comparisons..."
+ />
+<link rel="stylesheet" href="../css/styles.css" />
+               <link rel="stylesheet" href="../css/org-pygments.css" />
+               <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script><script type="text/javascript">
+  function randomLinkColor() {
+      var colors = ['#f1c40f','#e74c3c','#3399cc','#e67e22','#67ad00','#8e44ad','#1abc9c','#003399'];
+      var random_color = colors[Math.floor(Math.random() * colors.length)];
+      var elements = document.querySelectorAll('a');
+      [].slice.call(elements).forEach(function(elem) {
+          //elem.style.color = random_color;
+      });
+  }
+  function displayTOC() {
+      var ttoc = document.getElementById("text-table-of-contents");
+      if (ttoc) {
+          var maincontent = '<a class="button"><i class="fa fa-list"></i></a>'
+          maincontent += "<div>" + ttoc.innerHTML + "</div>";
+          document.getElementById("toc").innerHTML = maincontent;
+      } else {
+          document.getElementById("toc").style.display = "none";
+          document.getElementById("preamble").style.top = "10px";
+      }
+     }
+  </script>
+</head>
+<body onload="randomLinkColor();displayTOC();"><div id="toc"></div>
+<div id="preamble" class="status">
+<a href="../index.html"><i class="fa fa-home"></i></a><br/> <a href="https://github.com/xgarrido/org-notes"><i class="fa fa-github"></i></a><br/> 
+</div>
+<div id="content">
+<h1 class="title">SN@ilWare Summary Tests</h1>
+<div id="table-of-contents">
+<h2></h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Test of time consumption of Geiger cell locators</a>
+<ul>
+<li><a href="#sec-1-1">1.1. Basic locators <i>i.e.</i> <code>geomtools::smart_id_locator</code></a></li>
+<li><a href="#sec-1-2">1.2. Fast locators <i>i.e.</i> <code>snemo::geometry::gg_locator</code></a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. SN@ilWare simulations : comparison between legacy and development branch</a>
+<ul>
+<li><a href="#sec-2-1">2.1. Introduction</a></li>
+<li><a href="#sec-2-2">2.2. Installation of <code>legacy</code> branch</a></li>
+<li><a href="#sec-2-3">2.3. Simulation setup</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Test of time consumption of Geiger cell locators</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+A very basic benchmark between Geiger step hit processors. It provides
+benchmarks for Geiger cell locators used through <code>gg_step_hit_processor</code>.
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Basic locators <i>i.e.</i> <code>geomtools::smart_id_locator</code></h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Test done over 10 &beta;&beta; events : <b>5,04s user 0,21s system 94% cpu 5,580
+total</b>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">[debug:virtual snemo::simulation::gg_step_hit_processor::~gg_step_hit_processor():86] CT1:
+|-- System dead time   : 0.02 us
+|-- Count(s)      : 3818
+|-- Sum time      : 0.67477 s
+|-- Min time      : 3.8e-05 s
+|-- Max time      : 0.022092 s
+|-- Sum squ. time : 0.00322718 s&#178;
+|-- Total time    : 0.674617 s
+|-- Mean time     : 0.000176734 s
+|-- Sigma time    : 0.000902231 s
+<span class="org-sh-quoted-exec">`-- Last elapsed time : 0.000632 s</span>
+<span class="org-sh-quoted-exec">[debug:virtual snemo::simulation::gg_step_hit_processor::~gg_step_hit_processor():88] CT2:</span>
+<span class="org-sh-quoted-exec">|-- System dead time   : 0.02 us</span>
+<span class="org-sh-quoted-exec">|-- Count(s)      : 3818</span>
+<span class="org-sh-quoted-exec">|-- Sum time      : 0.11833 s</span>
+<span class="org-sh-quoted-exec">|-- Min time      : 1.2e-05 s</span>
+<span class="org-sh-quoted-exec">|-- Max time      : 0.000174 s</span>
+<span class="org-sh-quoted-exec">|-- Sum squ. time : 4.73233e-06 s&#178;</span>
+<span class="org-sh-quoted-exec">|-- Total time    : 0.118177 s</span>
+<span class="org-sh-quoted-exec">|-- Mean time     : 3.09927e-05 s</span>
+<span class="org-sh-quoted-exec">|-- Sigma time    : 1.67013e-05 s</span>
+<span class="org-sh-quoted-exec">`</span>-- Last elapsed time : 2.8e-05 s
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Fast locators <i>i.e.</i> <code>snemo::geometry::gg_locator</code></h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Test done over 10 &beta;&beta; events : <b>4,91s user 0,21s system 92% cpu 5,526
+total</b>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">[debug:virtual snemo::simulation::gg_step_hit_processor::~gg_step_hit_processor():86] CT1:
+|-- System dead time   : 0.02 us
+|-- Count(s)      : 3818
+|-- Sum time      : 0.566923 s
+|-- Min time      : 3.8e-05 s
+|-- Max time      : 0.023215 s
+|-- Sum squ. time : 0.00409515 s&#178;
+|-- Total time    : 0.56677 s
+|-- Mean time     : 0.000148487 s
+|-- Sigma time    : 0.00102496 s
+<span class="org-sh-quoted-exec">`-- Last elapsed time : 9e-05 s</span>
+<span class="org-sh-quoted-exec">[debug:virtual snemo::simulation::gg_step_hit_processor::~gg_step_hit_processor():88] CT2:</span>
+<span class="org-sh-quoted-exec">|-- System dead time   : 0.02 us</span>
+<span class="org-sh-quoted-exec">|-- Count(s)      : 3818</span>
+<span class="org-sh-quoted-exec">|-- Sum time      : 0.136664 s</span>
+<span class="org-sh-quoted-exec">|-- Min time      : 1.3e-05 s</span>
+<span class="org-sh-quoted-exec">|-- Max time      : 0.000189 s</span>
+<span class="org-sh-quoted-exec">|-- Sum squ. time : 6.29567e-06 s&#178;</span>
+<span class="org-sh-quoted-exec">|-- Total time    : 0.136511 s</span>
+<span class="org-sh-quoted-exec">|-- Mean time     : 3.57947e-05 s</span>
+<span class="org-sh-quoted-exec">|-- Sigma time    : 1.91751e-05 s</span>
+<span class="org-sh-quoted-exec">`</span>-- Last elapsed time : 3.5e-05 s
+</pre>
+</div>
+
+<p>
+Test done over 100 &beta;&beta; events : <b>12,90s user 1,36s system 77% cpu 18,462
+total</b>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">[debug:virtual snemo::simulation::gg_step_hit_processor::~gg_step_hit_processor():86] CT1:
+|-- System dead time   : 0.02 us
+|-- Count(s)      : 31222
+|-- Sum time      : 5.60871 s
+|-- Min time      : 2e-05 s
+|-- Max time      : 0.029084 s
+|-- Sum squ. time : 0.0535734 s&#178;
+|-- Total time    : 5.60746 s
+|-- Mean time     : 0.00017964 s
+|-- Sigma time    : 0.00129754 s
+<span class="org-sh-quoted-exec">`-- Last elapsed time : 8.3e-05 s</span>
+<span class="org-sh-quoted-exec">[debug:virtual snemo::simulation::gg_step_hit_processor::~gg_step_hit_processor():88] CT2:</span>
+<span class="org-sh-quoted-exec">|-- System dead time   : 0.02 us</span>
+<span class="org-sh-quoted-exec">|-- Count(s)      : 31222</span>
+<span class="org-sh-quoted-exec">|-- Sum time      : 1.22921 s</span>
+<span class="org-sh-quoted-exec">|-- Min time      : 1.2e-05 s</span>
+<span class="org-sh-quoted-exec">|-- Max time      : 0.000322 s</span>
+<span class="org-sh-quoted-exec">|-- Sum squ. time : 6.07789e-05 s&#178;</span>
+<span class="org-sh-quoted-exec">|-- Total time    : 1.22796 s</span>
+<span class="org-sh-quoted-exec">|-- Mean time     : 3.93701e-05 s</span>
+<span class="org-sh-quoted-exec">|-- Sigma time    : 1.99164e-05 s</span>
+<span class="org-sh-quoted-exec">`</span>-- Last elapsed time : 2.9e-05 s
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> SN@ilWare simulations : comparison between legacy and development branch</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Introduction</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Since the switch to the new Cadfael/Bayeux/Falaise software suite, some time
+latency has been found when simulating SuperNEMO events. For instance,
+simulating 2&beta; events on Lyon cluster was taking 20 minutes for 10 000 events
+when it takes now more than 2 hours.
+</p>
+
+<p>
+The purpose of this note is to investigate where the time processing is going by
+comparing on a basic simulation setup the <code>legacy</code> code with the <code>trunk</code>
+development branch.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Installation of <code>legacy</code> branch</h3>
+<div class="outline-text-3" id="text-2-2">
+</div><div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> Cadfael</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+To install the <code>legacy</code> branch, we use the <code>aggregator</code> script file and its
+latest <a href="https://github.com/xgarrido/zsh-aggregator/commit/1b2ed677e83e3548fa6812c19f1e4240adbdf6a7">revision</a> to get Cadfael legacy version. This will install Cadfael within
+<code>~/Workdir/NEMO/supernemo/development</code> directory for the following software
+versions :
+</p>
+
+<ul class="org-ul">
+<li>GSL version 1.16
+</li>
+<li>Xerces-C version 3.1.1
+</li>
+<li>CAMP version 0.7.1
+</li>
+<li>CLHEP version 2.1.3.1
+</li>
+<li>Geant4 version 9.6p01
+</li>
+<li>Boost version 1.55.0
+</li>
+<li>ROOT version 5.34.14
+</li>
+</ul>
+
+<p>
+In order to properly setup Cadfael components, do
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">aggregator setup cadfael
+</pre>
+</div>
+
+<p>
+<b>You must be sure to run the <code>master</code> branch of the <code>aggregator</code> script,
+otherwise it will setup the new Cadfael configuration</b>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> Bayeux</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+To setup Bayeux as a standalone library, you should use the <code>snailware</code> script
+and do
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">snailware setup bayeux
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Simulation setup</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+For comparison we will use a very simple setup that we will work for both
+software version. The setup is stored <a href="https://github.com/xgarrido/bayeux_simulation_modules/tree/master/geant4_validation">here</a> : it defines a very basic geometry
+setup with a gas volume + a scintillator material. On this machine, the setup is
+installed
+<code>~/Workdir/NEMO/supernemo/simulations/bayeux_simulation_modules/geant4_validation</code>
+directory. Given the module + simulation setup have been installed, the
+processing is done by
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">dpp_processing                                                                                                                                   <span class="org-sh-escaped-newline">\</span>
+    --dlls-config ~/Workdir/NEMO/supernemo/simulations/bayeux_simulation_modules/geant4_validation/config/pipeline/dlls.conf                     <span class="org-sh-escaped-newline">\</span>
+    -l geomtools -l mctools_g4 -l mctools_bio                                                                                                                  <span class="org-sh-escaped-newline">\</span>
+    --module-manager-config ~/Workdir/NEMO/supernemo/simulations/bayeux_simulation_modules/geant4_validation/config/pipeline/module_manager.conf <span class="org-sh-escaped-newline">\</span>
+    --module geant4_simulation_module                                                                                                            <span class="org-sh-escaped-newline">\</span>
+    -M 100 --logging-priority trace
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+File under <i class="fa fa-github-alt"></i> version control - commit <a href="https://github.com/xgarrido/org-notes/commit/2bfc4a8232435f2164a116f38caa62f7dff6170a">2bfc4a8</a> - 2014-06-06
+</div>
+</body>
+</html>
