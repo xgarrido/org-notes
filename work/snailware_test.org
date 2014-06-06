@@ -1,4 +1,4 @@
-#+TITLE: SN@ilWare Summary Tests
+#+TITLE: SN@ilWare tests
 #+DESCRIPTION: Document holding some SuperNEMO software tests
 #+DESCRIPTION: such as benchmark tests, version comparisons...
 
