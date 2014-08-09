@@ -1,0 +1,11 @@
+#+TITLE: Inventaire des livres lus
+#+AUTHOR: Xavier Garrido
+#+DESCRIPTION: Document contenant les noms des auteurs, titres de livres lus dans un passé récent
+
+
+|---------------+----------------------------------+------------+------------|
+| Auteur        | Titre                            | Start      | Stop       |
+|---------------+----------------------------------+------------+------------|
+| Fred Vargas   | L'homme aux cercles bleus        | 30/07/2014 | 07/08/2014 |
+| Fred Vargas   | L'homme à l'envers               | 08/08/2014 |            |
+| Etienne Klein | Il était sept fois la révolution | 06/08/2014 |            |
