@@ -1,11 +1,15 @@
 #+TITLE: Inventaire des livres lus
 #+AUTHOR: Xavier Garrido
-#+DESCRIPTION: Document contenant les noms des auteurs, titres de livres lus dans un passé récent
+#+DESCRIPTION: Document contenant les noms des auteurs et
+#+DESCRIPTION: les titres de livres lus dans un passé \pm récent
 
 
-|---------------+----------------------------------+------------+------------|
-| Auteur        | Titre                            | Start      | Stop       |
-|---------------+----------------------------------+------------+------------|
-| Fred Vargas   | L'homme aux cercles bleus        | 30/07/2014 | 07/08/2014 |
-| Fred Vargas   | L'homme à l'envers               | 08/08/2014 |            |
-| Etienne Klein | Il était sept fois la révolution | 06/08/2014 |            |
+|------------------+----------------------------------+--------+------------+------------|
+| Auteur           | Titre                            | Format | Start      | Stop       |
+|------------------+----------------------------------+--------+------------+------------|
+| Fred Vargas      | L'homme aux cercles bleus        | epub   | 30/07/2014 | 07/08/2014 |
+| Fred Vargas      | L'homme à l'envers               | epub   | 08/08/2014 | 20/08/2014 |
+| Fred Vargas      | Pars vite et reviens tard        | epub   | 28/08/2014 | 11/09/2014 |
+| Etienne Klein    | Il était sept fois la révolution | epub   | 06/08/2014 | 13/08/2014 |
+| Brian Greene     | La réalité cachée                | epub   | 20/08/2014 |            |
+| Emmanuel Carrere | Le royaume                       | epub   | 11/09/2014 |            |
