@@ -1,6 +1,8 @@
 #+TITLE: Steven's thesis booknotes
 
-* TODO SN@ilWare simulation @ Lyon
+* TODO SN@ilWare simulation @ Lyon                               :28_09_2014:
+
+** Simulation enhancements
 
 Generate signal & backgrounds simulations for SuperNEMO demonstrator after
 having updated the following points :
