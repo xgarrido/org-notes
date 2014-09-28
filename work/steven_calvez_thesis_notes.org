@@ -10,15 +10,15 @@ having updated the following points :
 - [X] correct energy resolution and energy thresholds for calorimeter blocks in
   =mock_calorimeter_s2c_module= (see [[https://github.com/xgarrido/snemo_simulation_configuration/commit/41a4e035ff5e8d06c4e00f107987f5a70019f55a][commit 41a4e0]])
 - [ ] implement vertex generator for Radon within tracker using latest
-  developement of François (see [[https://nemo.lpc-caen.in2p3.fr/changeset/15140/genvtx/trunk][changeset 15140]])
+  developement of François (see [[https://nemo.lpc-caen.in2p3.fr/changeset/15140/genvtx/trunk][changeset 15140]]) : implemented in [[https://github.com/xgarrido/snemo_simulation_configuration/commit/49f94fadb4e62f9cb1a566c05d9ce0bce899b79b][commit 49f94f]]
 
 ** Simulation set
 
-|----------+-------------------------------------------+----------|
-| Isotope  |                          Number of events | Comments |
-| 0\nu     |                                      10^5 |          |
-| 2\nu     | > 10^7 all energy or > 10^6 for E > 2 MeV |          |
-| ^{208}Tl |                                      10^7 |          |
-| ^{214}Bi |                                      10^7 | foil     |
-| ^{214}Bi |                                      10^7 | tracker  |
-|----------+-------------------------------------------+----------|
+|----------+-------------------------------------------+---------+--------|
+| Isotope  |                          Number of events | Origin  | Status |
+| 0\nu     |                                      10^5 | foil    |        |
+| 2\nu     | > 10^7 all energy or > 10^6 for E > 2 MeV | foil    |        |
+| ^{208}Tl |                                      10^7 | foil    |        |
+| ^{214}Bi |                                      10^7 | foil    |        |
+| ^{214}Bi |                                      10^7 | tracker |        |
+|----------+-------------------------------------------+---------+--------|
