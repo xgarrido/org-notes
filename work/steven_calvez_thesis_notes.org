@@ -1,8 +1,11 @@
 #+TITLE: Steven's thesis booknotes
+#+DESCRIPTION: Notes relative to Steven Calvez's PhD thesis
+#+OPTIONS: toc:1
 
 * TODO SN@ilWare simulation @ Lyon                               :28_09_2014:
 
-** Simulation enhancements
+** DONE Simulation enhancements
+CLOSED: [2014-09-30 mar. 16:42]
 
 Generate signal & backgrounds simulations for SuperNEMO demonstrator after
 having updated the following points :
@@ -11,18 +14,19 @@ having updated the following points :
   algorithm (see [[https://github.com/xgarrido/snemo_simulation_configuration/commit/5839ed54d4d47ac2c700922004139750b2a9c790][commit 5839ed]])
 - [X] correct energy resolution and energy thresholds for calorimeter blocks in
   =mock_calorimeter_s2c_module= (see [[https://github.com/xgarrido/snemo_simulation_configuration/commit/41a4e035ff5e8d06c4e00f107987f5a70019f55a][commit 41a4e0]])
-- [ ] implement vertex generator for Radon within tracker using latest
-  developement of François (see [[https://nemo.lpc-caen.in2p3.fr/changeset/15140/genvtx/trunk][changeset 15140]]) : implemented in [[https://github.com/xgarrido/snemo_simulation_configuration/commit/49f94fadb4e62f9cb1a566c05d9ce0bce899b79b][commit 49f94f]]
+- [X] implement vertex generator for Radon within tracker using latest
+  developement of François (see [[https://nemo.lpc-caen.in2p3.fr/changeset/15140/genvtx/trunk][changeset 15140]] & [[https://nemo.lpc-caen.in2p3.fr/changeset/15244][changeset 15140]]) : implemented
+  in [[https://github.com/xgarrido/snemo_simulation_configuration/commit/49f94fadb4e62f9cb1a566c05d9ce0bce899b79b][commit 49f94f]]
 
-** Simulation set
+** TODO Simulation set
 
-|----------------+------------------+---------+--------|
-| Isotope        | Number of events | Origin  | Status |
-|----------------+------------------+---------+--------|
-| 0\nu             |              10^5 | foil    |        |
-| 2\nu (E > 2 MeV) |            > 10^6 | foil    |        |
-| 2\nu (\forall E)       |            > 10^7 | foil    |        |
-| \nbsp^{208}Tl         |              10^7 | foil    |        |
-| \nbsp^{214}Bi         |              10^7 | foil    |        |
-| \nbsp^{214}Bi         |              10^7 | tracker |        |
-|----------------+------------------+---------+--------|
+|------------------+------------------+---------+------------|
+| Isotope          | Number of events | Origin  | Status     |
+|------------------+------------------+---------+------------|
+| 0\nu             |             10^5 | foil    | \checkmark |
+| 2\nu (E > 2 MeV) |             10^7 | foil    | \checkmark |
+| 2\nu (\forall E) |           > 10^7 | foil    |            |
+| \nbsp^{208}Tl    |             10^7 | foil    | \checkmark |
+| \nbsp^{214}Bi    |             10^7 | foil    | \checkmark |
+| \nbsp^{214}Bi    |             10^7 | tracker | \checkmark |
+|------------------+------------------+---------+------------|
