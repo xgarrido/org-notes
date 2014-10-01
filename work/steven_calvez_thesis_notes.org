@@ -2,7 +2,8 @@
 #+DESCRIPTION: Notes relative to Steven Calvez's PhD thesis
 #+OPTIONS: toc:1
 
-* TODO SN@ilWare simulation @ Lyon                               :28_09_2014:
+* DONE SN@ilWare simulation @ Lyon                               :28_09_2014:
+CLOSED: [2014-10-01 mer. 22:52]
 
 ** DONE Simulation enhancements
 CLOSED: [2014-09-30 mar. 16:42]
@@ -18,7 +19,8 @@ having updated the following points :
   developement of François (see [[https://nemo.lpc-caen.in2p3.fr/changeset/15140/genvtx/trunk][changeset 15140]] & [[https://nemo.lpc-caen.in2p3.fr/changeset/15244][changeset 15140]]) : implemented
   in [[https://github.com/xgarrido/snemo_simulation_configuration/commit/49f94fadb4e62f9cb1a566c05d9ce0bce899b79b][commit 49f94f]]
 
-** TODO Simulation set
+** DONE Simulation set
+CLOSED: [2014-10-01 mer. 22:52]
 
 |------------------+------------------+---------+------------|
 | Isotope          | Number of events | Origin  | Status     |
@@ -30,3 +32,52 @@ having updated the following points :
 | \nbsp^{214}Bi    |             10^7 | foil    | \checkmark |
 | \nbsp^{214}Bi    |             10^7 | tracker | \checkmark |
 |------------------+------------------+---------+------------|
+
+* Analysis meeting                                               :01_10_2014:
+
+Present : SC, MB, FM, XG
+
+** Summary
+
+Steven first reminds results obtained during his training period basically the
+sensitivity of SuperNEMO demonstrator for\nbsp^{82}Se in 2.5 years. Simulations
+include\nbsp^{214}Bi and\nbsp^{208}Tl events due to *source foil
+contamination*. The presentation then focused on new background simulations of
+Radon in the tracking chamber. The set of events were simulated on the surface
+of *tracker field wires* given that daughter nuclei from Radon decay are
+positevely charged and then deposit on the surface of ground wires /i.e./ field
+wires. The study shows that a lot of 2\beta events are actually selected. Then,
+Steven shows that applying new cuts on vertex position and time-of-flight (TOF)
+may removed up to 63% of the Radon contamination.
+
+** Discussion
+
+The distribution of the internal probability exhibits a peak closed to 0 value
+for 2\beta events from the source foil. These events must have been well
+reconstructed from the TOF point of view. Visualization does not show any
+particular features for these events and energy distribution or \chi^2 of
+tracking fit are pretty closed to distribution from "good-events".
+
+For the time being, it is not understood why these nice-looking events do not
+have a "good" \chi^2 probability. It may be due to underestimation of the TOF
+uncertainties especially the track length uncertainty that are currently not
+taken into account. The calculation shows that the time error from track length
+estimation may be arround 50 ps which is much less than the ~100-200 ps error
+from calorimeter timing. Nevertheless this uncertainty coupled to the energy
+error + timing resolution that finally give a better estimation to time
+uncertainty when calculating TOF probability. This will need further
+investigation.
+
+Regarding cut selection for Radon events, MB suggests to also have a look on the
+angular distribution of the 2 electrons that may differ between 0\nu events and
+Radon.
+
+** TODO To be done
+
+- [ ] following Mathieu's suggestion, to have a look on the angular distribution
+  of electrons,
+- [ ] given the efficiency curve, estimate the number of events coming from
+  Radon contamination given the required activity ~150 µBq/m^3. The tracker
+  volume must be checked but it should be less than 20 m^3
+- [ ] determine the new sensitivity after having applied the new vertex position
+  cuts and the TOF selection
