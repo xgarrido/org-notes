@@ -81,3 +81,14 @@ Radon.
   volume must be checked but it should be less than 20 m^3
 - [ ] determine the new sensitivity after having applied the new vertex position
   cuts and the TOF selection
+* Analysis discussion                                            :03_10_2014:
+
+Studying E_{min} /vs./ E_{max} plot for Radon decay, Steven actually found a
+large fraction of 2\beta events with same E_{min} and E_{max}. After checking,
+it appears that these events had a non associated calorimeter corresponding to a
+\gamma. Since only 2 calorimeter blocks was required, the 2\beta were
+extrapolated within the same block : 2 electrons, 1 energy value.
+
+We implement then a new cut that only keep event with no non-associated
+calorimeter /i.e./ no \gamma in the event. [[https://nemo.lpc-caen.in2p3.fr/changeset/15256][Changeset 15256]] and [[https://github.com/xgarrido/snemo_simulation_configuration/commit/f5059b29a84e890ff1605b014fe04b12e74cd5d5][commit f5059b]]
+defines and applies this new selection.
