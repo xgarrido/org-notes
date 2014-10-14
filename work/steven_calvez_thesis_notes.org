@@ -91,4 +91,34 @@ extrapolated within the same block : 2 electrons, 1 energy value.
 
 We implement then a new cut that only keep event with no non-associated
 calorimeter /i.e./ no \gamma in the event. [[https://nemo.lpc-caen.in2p3.fr/changeset/15256][Changeset 15256]] and [[https://github.com/xgarrido/snemo_simulation_configuration/commit/f5059b29a84e890ff1605b014fe04b12e74cd5d5][commit f5059b]]
-defines and applies this new selection.
+implements and applies respectively this new selection.
+
+* Analysis discussion                                            :10_10_2014:
+
+During LAL/NEMO group meeting, Laurent asked if delayed Geiger cells were taken
+into account in the cut selection, especially for\nbsp^{222}Rn studies. I didn't
+get that in NEMO3 that even a sole delayed Geiger cell in the vicinity of the
+reconstructed vertex was enough to tag the event as\nbsp^{222}Rn decay. Since
+SuperNEMO trigger strategy must be the same as NEMO3, these events must be well
+built when detached triggers will rise. Steven checks visually how many events
+with a delayed alpha particle were found in a small set of 2\beta selected
+events from\nbsp^{222}Rn. It appears that this number was not *negligible at
+all*. Since the cut may only occur at calibration step, a new cut on
+=calibrated_data= was implemented to remove tracker hit given a trait bits (see
+[[https://nemo.lpc-caen.in2p3.fr/browser/Falaise/trunk/source/falaise/snemo/datamodels/calibrated_tracker_hit.h#L40][=calibrated_tracker_hit=]] class declaration for the bits definition).
+
+
+** DONE Simulation set
+CLOSED: [2014-10-14 mar. 08:39]
+
+|------------------+------------------+-------------+------------|
+| Isotope          | Number of events | Origin      | Status     |
+|------------------+------------------+-------------+------------|
+| 0\nu             |             10^5 | foil        | \checkmark |
+| 2\nu (E > 2 MeV) |             10^6 | foil        | \checkmark |
+| 2\nu (\forall E) |           > 10^7 | foil        | --         |
+| \nbsp^{208}Tl    |             10^7 | foil        | \checkmark |
+| \nbsp^{214}Bi    |             10^7 | foil        | \checkmark |
+| \nbsp^{222}Rn    |             10^8 | field wires | \checkmark |
+| \nbsp^{222}Rn    |             10^8 | tracker gas | \checkmark |
+|------------------+------------------+-------------+------------|
