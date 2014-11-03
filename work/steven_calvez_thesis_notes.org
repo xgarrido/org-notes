@@ -2,10 +2,9 @@
 #+DESCRIPTION: Notes relative to Steven Calvez's PhD thesis
 #+OPTIONS: toc:1
 
-* DONE SN@ilWare simulation @ Lyon                               :28_09_2014:
-CLOSED: [2014-10-01 mer. 22:52]
+* SN@ilWare simulation @ Lyon                                    :28_09_2014:
 
-** DONE Simulation enhancements
+** DONE Simulation enhancements [100%]
 CLOSED: [2014-09-30 mar. 16:42]
 
 Generate signal & backgrounds simulations for SuperNEMO demonstrator after
@@ -19,7 +18,7 @@ having updated the following points :
   developement of François (see [[https://nemo.lpc-caen.in2p3.fr/changeset/15140/genvtx/trunk][changeset 15140]] & [[https://nemo.lpc-caen.in2p3.fr/changeset/15244][changeset 15140]]) : implemented
   in [[https://github.com/xgarrido/snemo_simulation_configuration/commit/49f94fadb4e62f9cb1a566c05d9ce0bce899b79b][commit 49f94f]]
 
-** DONE Simulation set
+** DONE Simulation set [100%]
 CLOSED: [2014-10-01 mer. 22:52]
 
 |------------------+------------------+---------+------------|
@@ -72,14 +71,14 @@ Regarding cut selection for Radon events, MB suggests to also have a look on the
 angular distribution of the 2 electrons that may differ between 0\nu events and
 Radon.
 
-** TODO To be done
+** TODO To be done [66%]
 
-- [ ] following Mathieu's suggestion, to have a look on the angular distribution
-  of electrons,
-- [ ] given the efficiency curve, estimate the number of events coming from
+- [ ] following Mathieu's suggestion, to have a look at the angular distribution
+  of electrons as well as E_{min} /vs./ E_{max} plot
+- [X] given the efficiency curve, estimate the number of events coming from
   Radon contamination given the required activity ~150 µBq/m^3. The tracker
   volume must be checked but it should be less than 20 m^3
-- [ ] determine the new sensitivity after having applied the new vertex position
+- [X] determine the new sensitivity after having applied the new vertex position
   cuts and the TOF selection
 * Analysis discussion                                            :03_10_2014:
 
@@ -107,6 +106,8 @@ all*. Since the cut may only occur at calibration step, a new cut on
 =calibrated_data= was implemented to remove tracker hit given a trait bits (see
 [[https://nemo.lpc-caen.in2p3.fr/browser/Falaise/trunk/source/falaise/snemo/datamodels/calibrated_tracker_hit.h#L40][=calibrated_tracker_hit=]] class declaration for the bits definition).
 
+The cut was finally implemented in [[https://nemo.lpc-caen.in2p3.fr/changeset/15298][changeset 15298]] and a use case can be found
+in [[https://github.com/xgarrido/snemo_simulation_configuration/commit/f03b1f81a8151e252928f3daa751ec5ce35a1cb6][commit f03b1f]].
 
 ** DONE Simulation set
 CLOSED: [2014-10-14 mar. 08:39]
@@ -122,3 +123,34 @@ CLOSED: [2014-10-14 mar. 08:39]
 | \nbsp^{222}Rn    |             10^8 | field wires | \checkmark |
 | \nbsp^{222}Rn    |             10^8 | tracker gas | \checkmark |
 |------------------+------------------+-------------+------------|
+
+* Analysis discussion                                            :03_11_2014:
+
+Following latest HPGe measurements, we propose to study the 2\beta events
+contamination for different backgrounds. To the usual source foil backgrounds
+namely\nbsp^{208}Tl and\nbsp^{214}Bi and to the Radon contamination of the
+tracker gas, we study the following contamination :
+
+- [[http://nile.hep.utexas.edu/cgi-bin/DocDB/ut-nemo/private/ShowDocument?docid=3395][Document 3395]] shows the cathodic wires contamination
+  - \nbsp^{40}K : 5.6 mBq/kg
+  - \nbsp^{208}Tl : 0.41 mBq/kg
+  - \nbsp^{214}Bi : 0.85 mBq/kg
+
+  Given the total number of cathodic wires /i.e./ 114\times113, the length
+  2.92 m, the diameter 50 µm and the density 7.8, the total mass of cathodic
+  wires is 576 g (/vs./ 91 g for anodic wires). As stressed by the presentation,
+  this is a very important part of the radiopurity budget.
+
+- [[http://nile.hep.utexas.edu/cgi-bin/DocDB/ut-nemo/private/ShowDocument?docid=3441][Document 3441]] presents the radiopurity of 8" PMT glass
+  - \nbsp^{40}K : 850 mBq/kg
+  - \nbsp^{208}Tl : 60 -- 115 mBq/kg
+  - \nbsp^{214}Bi : 350 mBq/kg
+
+  Given the mass of of 8" PMT (800 g) and their number 20\times2\times11 = 440,
+  the above value may not be critical wrt NEMO3 values.
+
+- [[http://nile.hep.utexas.edu/cgi-bin/DocDB/ut-nemo/private/ShowDocument?docid=3442][Document 3442]] presents an overview of other radiopurity meas. The aluminized
+  Mylar covering calorimeter blocks have the following values
+  - \nbsp^{40}K : 33 -- 44 mBq/kg
+  - \nbsp^{208}Tl : 60 -- 115 mBq/kg
+  - \nbsp^{214}Bi : 1.7 mBq/kg
