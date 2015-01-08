@@ -80,6 +80,7 @@ Radon.
   volume must be checked but it should be less than 20 m^3
 - [X] determine the new sensitivity after having applied the new vertex position
   cuts and the TOF selection
+
 * Analysis discussion                                            :03_10_2014:
 
 Studying E_{min} /vs./ E_{max} plot for Radon decay, Steven actually found a

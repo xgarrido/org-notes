@@ -14,4 +14,5 @@
 | Brian Greene     | La réalité cachée                | mobi   | 20/08/2014 |            |
 | Emmanuel Carrere | Le royaume                       | mobi   | 11/09/2014 |            |
 | Fred Vargas      | Coule la seine                   | mobi   |            |            |
-| Michel Onfray    | Traité d'athéologie              | mobi   |            |            |
+| Michel Onfray    | Traité d'athéologie              | mobi   | 14/11/2014 | 04/01/2015 |
+| Lydie Salvayre   | Pas pleurer                      | mobi   |            |            |
