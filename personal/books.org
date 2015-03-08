@@ -4,17 +4,19 @@
 #+DESCRIPTION: les titres de livres lus dans un passé ± récent
 
 
-|------------------+----------------------------------+--------+------------+------------|
-| Auteur           | Titre                            | Format | Start      | Stop       |
-|------------------+----------------------------------+--------+------------+------------|
-| Fred Vargas      | L'homme aux cercles bleus        | mobi   | 30/07/2014 | 07/08/2014 |
-| Fred Vargas      | L'homme à l'envers               | mobi   | 08/08/2014 | 20/08/2014 |
-| Fred Vargas      | Pars vite et reviens tard        | mobi   | 28/08/2014 | 11/09/2014 |
-| Etienne Klein    | Il était sept fois la révolution | mobi   | 06/08/2014 | 13/08/2014 |
-| Brian Greene     | La réalité cachée                | mobi   | 20/08/2014 |            |
-| Emmanuel Carrere | Le royaume                       | mobi   | 11/09/2014 | 21/02/2015 |
-| Fred Vargas      | Coule la seine                   | mobi   |            |            |
-| Michel Onfray    | Traité d'athéologie              | mobi   | 14/11/2014 | 04/01/2015 |
-| Yannick Roudault | La nouvelle controverse          | papier | 19/12/2014 | 22/02/2015 |
-| Lydie Salvayre   | Pas pleurer                      | mobi   | 09/01/2014 | 24/01/2014 |
-|------------------+----------------------------------+--------+------------+------------|
+|-------------------+----------------------------------+--------+------------+------------|
+| Auteur            | Titre                            | Format | Start      | Stop       |
+|-------------------+----------------------------------+--------+------------+------------|
+| Fred Vargas       | L'homme aux cercles bleus        | mobi   | 30/07/2014 | 07/08/2014 |
+| Fred Vargas       | L'homme à l'envers               | mobi   | 08/08/2014 | 20/08/2014 |
+| Fred Vargas       | Pars vite et reviens tard        | mobi   | 28/08/2014 | 11/09/2014 |
+| Etienne Klein     | Il était sept fois la révolution | mobi   | 06/08/2014 | 13/08/2014 |
+| Brian Greene      | La réalité cachée                | mobi   | 20/08/2014 |            |
+| Emmanuel Carrere  | Le royaume                       | mobi   | 11/09/2014 | 21/02/2015 |
+| Fred Vargas       | Coule la seine                   | mobi   |            |            |
+| Michel Onfray     | Traité d'athéologie              | mobi   | 14/11/2014 | 04/01/2015 |
+| Yannick Roudault  | La nouvelle controverse          | papier | 19/12/2014 | 22/02/2015 |
+| Lydie Salvayre    | Pas pleurer                      | mobi   | 09/01/2014 | 24/01/2014 |
+| Vikram Chandra    | Geek sublime                     | papier | 22/02/2015 |            |
+| Michel Houellebcq | Plateforme                       | papier | 06/03/2015 |            |
+|-------------------+----------------------------------+--------+------------+------------|
