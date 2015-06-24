@@ -1,0 +1,728 @@
+#+TITLE:  Résultats Défi de Monte-Christo 2015 -- 5 kms sans palmes
+#+AUTHOR: Xavier Garrido
+#+DATE:   23/06/2015
+
+|------+-----+-----------------------+------------------+-------------------------------------------+------+----------+----------+------+----------|
+|  Pl. | Dos | Nom                   | Prénom           | Club                                      | Sx   | Cat      |    Temps | Moy  | Par cat. |
+|------+-----+-----------------------+------------------+-------------------------------------------+------+----------+----------+------+----------|
+|   1. | 912 | BOSCHER               | Guillaume        | stade clermont natation                   | M    | TCH      | 00:54:40 | 5,49 |        1 |
+|   2. | 918 | TANNIRES              | Robin            |                                           | M    | CADH     | 00:59:07 | 5,07 |        1 |
+|   3. | 603 | DISSIER               | Rudi             | Dauphins Pennes Mirabeau                  | M    | M1 H     | 00:59:10 | 5,07 |        1 |
+|   4. | 937 | CHIOTTI               | Enzo             | so milhaud                                | M    | CADH     | 01:00:39 | 4,95 |        2 |
+|   5. | 957 | HORTER                | Franck           |                                           | M    | M2 H     | 01:02:05 | 4,83 |        1 |
+|   6. | 732 | CASANOVA              | Lionel           | CN Salon                                  | M    | M2 H     | 01:02:41 | 4,79 |        2 |
+|   7. | 924 | WENZEL                | Lucas            |                                           | M    | TCH      | 01:03:27 | 4,73 |        2 |
+|   8. | 602 | ROUAULT               | Thomas           | Marmande Natation                         | M    | CADH     | 01:03:50 | 4,7  |        3 |
+|   9. | 629 | PADOVANI              | Didier           | Pays d'Aix Natation                       | M    | M2 H     | 01:03:53 | 4,7  |        3 |
+|  10. | 919 | BERNARD               | Laurent          |                                           | M    | M2 H     | 01:03:54 | 4,69 |        4 |
+|  11. | 920 | BERNARD               | Louise           |                                           | F    | CADF     | 01:03:57 | 4,69 |        1 |
+|  12. | 828 | BURGHGRAEVE           | Yannick          | CN Marseille                              | M    | M1 H     | 01:04:08 | 4,68 |        2 |
+|  13. | 931 | BARRUCAND             | Alain            |                                           | M    | M2 H     | 01:04:38 | 4,64 |        5 |
+|  14. | 816 | BLAS                  | Lionel           |                                           | M    | M1 H     | 01:05:02 | 4,61 |        3 |
+|  15. | 624 | ANNUNZIATA            | Alain            | Pays d'Aix Natation                       | M    | M1 H     | 01:06:08 | 4,54 |        4 |
+|  16. | 807 | PAGANINI              | Mathieu          | VITROLLES TRIATHLON                       | M    | M1 H     | 01:06:11 | 4,53 |        5 |
+|  17. | 733 | DORIS                 | Romain           | Marignane Natation                        | M    | M1 H     | 01:07:08 | 4,47 |        6 |
+|  18. | 586 | DIEBOLD               | Lea              | Istres Sport Natation                     | F    | CADF     | 01:07:17 | 4,46 |        2 |
+|  19. | 601 | GUILLEMAIN            | Yvan             | Gemenos Natation Maitres                  | M    | M2 H     | 01:07:35 | 4,44 |        6 |
+|  20. | 786 | LEVY                  | Laurent          |                                           | M    | M1 H     | 01:07:35 | 4,44 |        7 |
+|  21. | 768 | HILL                  | François         |                                           | M    | M1 H     | 01:07:52 | 4,42 |        8 |
+|  22. | 970 | PEYROTTE              | Ines             | cn st afrique                             | F    | CADF     | 01:08:07 | 4,4  |        3 |
+|  23. | 626 | CHEVALLOT             | Frederic         | Pays d'Aix Natation                       | M    | M2 H     | 01:08:18 | 4,39 |        7 |
+|  24. | 655 | TURPIN                | Vincent          | ASPTT MARSEILLE                           | M    | M1 H     | 01:08:20 | 4,39 |        9 |
+|  25. | 923 | LAURENT               | Marie            |                                           | F    | MIF      | 01:08:23 | 4,39 |        1 |
+|  26. | 684 | BOUISSET              | Vanessa          | Pays d'Aix Natation                       | F    | M1 F     | 01:08:28 | 4,38 |        1 |
+|  27. | 731 | PONSART               | Jérémie          | CN Salon                                  | M    | M1 H     | 01:08:34 | 4,38 |       10 |
+|  28. | 917 | DENISSON              | Ned              |                                           | M    |          | 01:08:44 | 4,36 |          |
+|  29. | 258 | NAUMANN               | César            | etoile sportive seynod nat                | M    | M1 H     | 01:08:44 | 4,36 |       11 |
+|  30. | 948 | BAUGER                | Pascal           | asptt nancy                               | M    | M2 H     | 01:08:53 | 4,36 |        8 |
+|  31. | 737 | BERMOND               | Alexandre        | Olympic Nice Natation                     | M    | M2 H     | 01:09:01 | 4,35 |        9 |
+|  32. | 641 | LAFFORE               | Mikaël           | Club AUCH                                 | M    | M1 H     | 01:09:29 | 4,32 |       12 |
+|  33. |  75 | VOSSART               | Stéphane         | triathlaix                                | M    | M1 H     | 01:09:43 | 4,3  |       13 |
+|  34. |   1 | DIGNE                 | Mathieu          |                                           | M    | M1 H     | 01:09:57 | 4,29 |       14 |
+|  35. | 423 | LAURENT               | Thomas           | ENC                                       | M    | TCH      | 01:10:02 | 4,28 |        3 |
+|  36. | 448 | CASTAGNAT             | Didier           | paray natation                            | M    | M2 H     | 01:10:46 | 4,24 |       10 |
+|  37. | 543 | TAA                   | Yassine          | Dauphins des pennes mirabeau              | M    | M1 H     | 01:11:01 | 4,22 |       15 |
+|  38. | 600 | GUILLEN               | Lionel           | Apt Natation                              | M    | M2 H     | 01:11:01 | 4,22 |       11 |
+|  39. | 660 | SAMB                  | Matar            | ASPTT MARSEILLE                           | M    | TCH      | 01:11:06 | 4,22 |        4 |
+|  40. | 690 | KRCALOVA              | Zdenka           | Marseille Dolfin                          | F    | M1 F     | 01:11:35 | 4,19 |        2 |
+|  41. | 291 | ANTOINE               | Philippe         |                                           | M    | M1 H     | 01:11:37 | 4,19 |       16 |
+|  42. | 809 | JOFFLE                | Marion           | PONT AUDEMER NAUTIC CLUB                  | F    | CADF     | 01:11:39 | 4,19 |        4 |
+|  43. | 787 | LATIFI                | Mandana          |                                           | F    | M1 F     | 01:12:05 | 4,16 |        3 |
+|  44. | 205 | BLANCHARD             | Véronique        | Schwimmklub Region Murten                 | F    | M1 F     | 01:12:08 | 4,16 |        4 |
+|  45. | 921 | BOSC                  | Albane           |                                           | F    | M1 F     | 01:12:43 | 4,13 |        5 |
+|  46. | 634 | SOTO                  | Christophe       | Police nationale                          | M    | M1 H     | 01:12:44 | 4,12 |       17 |
+|  47. | 739 | CHATILLON CHENEL      | Frédéric         | Olympic Nice Natation                     | M    | M2 H     | 01:12:48 | 4,12 |       12 |
+|  48. | 749 | DELIE                 | Olivier          | Club des Nageurs de Paris                 | M    | M1 H     | 01:13:19 | 4,09 |       18 |
+|  49. | 296 | RAYNAUD               | Stéphane         | Versailles Triathlon                      | M    | M2 H     | 01:13:25 | 4,09 |       13 |
+|  50. | 613 | NAUDIN                | Simon            | CSM Marseille                             | M    | M1 H     | 01:13:25 | 4,09 |       19 |
+|  51. | 949 | VASSEUR               | Mickael          |                                           | M    | M1 H     | 01:13:33 | 4,08 |       20 |
+|  52. | 341 | HERNANDEZ             | Julien           | Toulon Triathlon Mutuelle Verte           | M    | M1 H     | 01:13:42 | 4,07 |       21 |
+|  53. | 968 | GERENTE               | Isabelle         |                                           | F    | M1 F     | 01:13:45 | 4,07 |        6 |
+|  54. | 280 | OLLIER                | Stephane         | Club des Nageurs du Forez                 | M    | M1 H     | 01:13:47 | 4,07 |       22 |
+|  55. | 815 | COLOMBE               | Denis            | NAUTIC Club ISLOIS                        | M    | M2 H     | 01:13:48 | 4,07 |       14 |
+|  56. | 764 | PITOIS                | Gaetan           | olympique cabries calas                   | M    | M1 H     | 01:13:52 | 4,06 |       23 |
+|  57. | 916 | TUSET                 | Jacques          |                                           | M    |          | 01:13:53 | 4,06 |          |
+|  58. | 688 | CRANFORD              | Anaïs            | Marmande Natation                         | F    | CADF     | 01:13:56 | 4,06 |        5 |
+|  59. | 829 | HEBANT                | Pascal           | CN Marseille                              | M    | M2 H     | 01:13:56 | 4,06 |       15 |
+|  60. | 759 | BELOEIL               | Yann             | Club des Nageurs de Paris                 | M    | M1 H     | 01:13:58 | 4,06 |       24 |
+|  61. |  97 | SCOTTO DI FASANO      | Simon            | DAUPHINS ROMANAIS PEAGEOIS                | M    | M1 H     | 01:14:01 | 4,05 |       25 |
+|  62. | 741 | POURCHIER             | Frédéric         | Olympic Nice Natation                     | M    | M2 H     | 01:14:25 | 4,03 |       16 |
+|  63. | 262 | DEFOSSE               | Sebastien        | ASVEL TRIATHLON                           | M    | M1 H     | 01:14:43 | 4,02 |       26 |
+|  64. | 380 | GIBIER                | Olivier          | Gémenos Natation des Maîtres              | M    | M1 H     | 01:14:52 | 4,01 |       27 |
+|  65. | 566 | MICHEL                | Benjamin         | Triathlon Club Marseille 12eme            | M    | M1 H     | 01:15:09 | 3,99 |       28 |
+|  66. | 578 | MAYAUD                | Jerome           |                                           | M    | M1 H     | 01:15:11 | 3,99 |       29 |
+|  67. | 295 | BOUCHAUD              | Patrice          |                                           | M    | M2 H     | 01:15:24 | 3,98 |       17 |
+|  68. | 618 | JAUBERT               | Stanislas        | CSM Marseille                             | M    | M1 H     | 01:15:25 | 3,98 |       30 |
+|  69. | 909 | SALA                  | Marie            | as calluires                              | F    | TCF      | 01:15:25 | 3,98 |        1 |
+|  70. | 336 | SYRYN                 | Peter            |                                           | M    | M1 H     | 01:15:29 | 3,97 |       31 |
+|  71. | 964 | BEAUREPAIRE           | Susan            | nautic club rumilly                       | F    | M2 F     | 01:15:35 | 3,97 |        1 |
+|  72. | 108 | CARBONERO             | Coralie          | etoile sportive seynod nat                | F    | M1 F     | 01:15:42 | 3,96 |        7 |
+|  73. | 667 | VATIN                 | Eric             | ASPTT MARSEILLE                           | M    | M2 H     | 01:15:49 | 3,96 |       18 |
+|  74. | 738 | MONVOISIN             | Ludovic          | Olympic Nice Natation                     | M    | M1 H     | 01:15:50 | 3,96 |       32 |
+|  75. | 776 | BOUBLIL               | Thomas           |                                           | M    | M1 H     | 01:15:54 | 3,95 |       33 |
+|  76. | 777 | EDWARDS               | Patrice          | SEYNOD NATATION                           | M    | M2 H     | 01:15:55 | 3,95 |       19 |
+|  77. | 425 | TROUVÉ                | Fabrice          |                                           | M    | M2 H     | 01:16:03 | 3,94 |       20 |
+|  78. | 579 | BETTA                 | Mathieu          | TRISPIRIDON OYONNAX                       | M    | M1 H     | 01:16:04 | 3,94 |       34 |
+|  79. | 184 | ENAULT                | Pierre           | Amadeus Plongée                           | M    | M2 H     | 01:16:11 | 3,94 |       21 |
+|  80. | 642 | SERVIERES             | Yvan             | Club AUCH                                 | M    | M2 H     | 01:16:13 | 3,94 |       22 |
+|  81. |  82 | MUSCAT                | Remy             | CNA Antibes                               | M    | M1 H     | 01:16:34 | 3,92 |       35 |
+|  82. | 913 | BREL                  | Frederic         |                                           | M    |          | 01:16:37 | 3,92 |          |
+|  83. | 567 | DELEPOULLE            | Remy             | remy delepoulle                           | M    | M1 H     | 01:16:38 | 3,91 |       36 |
+|  84. | 636 | CHAMBONNEAU           | Thomas           | Police nationale                          | M    | M1 H     | 01:16:41 | 3,91 |       37 |
+|  85. | 659 | DIAGNE                | Yaye Diadou      | ASPTT MARSEILLE                           | F    | TCF      | 01:16:41 | 3,91 |        2 |
+|  86. | 200 | PAILLARD              | Clisthene        |                                           | M    | TCH      | 01:16:45 | 3,91 |        5 |
+|  87. |   6 | MALO                  | Gabriel          | PARIS AQUATIQUE                           | M    | M1 H     | 01:17:05 | 3,89 |       38 |
+|  88. | 800 | MEHANNA               | Mickaël          |                                           | M    | M2 H     | 01:17:05 | 3,89 |       23 |
+|  89. | 763 | MARX                  | Pierre           |                                           | M    | M1 H     | 01:17:13 | 3,89 |       39 |
+|  90. | 647 | TOMASI                | Jean Claude      | VILLE DE MARSEILLE                        | M    | M2 H     | 01:17:36 | 3,87 |       24 |
+|  91. | 820 | COUTURIER             | Alain            |                                           | M    | M1 H     | 01:17:45 | 3,86 |       40 |
+|  92. | 955 | NIZHANKOVSKI          | Roman            |                                           | M    | M1 H     | 01:17:47 | 3,86 |       41 |
+|  93. |  66 | STIVE                 | Jean-Jacques     | UK                                        | M    | M2 H     | 01:17:51 | 3,85 |       25 |
+|  94. | 269 | OLIVEIRA              | Daniel           |                                           | M    | M1 H     | 01:17:52 | 3,85 |       42 |
+|  95. | 393 | IMBEAULT              | Xabier           | Dauphins Pennes Mirabeau                  | M    | M1 H     | 01:17:57 | 3,85 |       43 |
+|  96. | 547 | GOUARIN               | Gildas           | Quiberon Atlantique Natation              | M    | M2 H     | 01:18:05 | 3,84 |       26 |
+|  97. | 214 | ANDRE                 | Frederic         |                                           | M    | M1 H     | 01:18:17 | 3,83 |       44 |
+|  98. |  54 | REMUSAT               | Thibaut          |                                           | M    | M1 H     | 01:18:36 | 3,82 |       45 |
+|  99. | 747 | MADEC                 | Frédéric         | Paris Aquatique                           | M    | M1 H     | 01:18:38 | 3,82 |       46 |
+| 100. | 589 | GABORIAU              | Alice            | CSM Marseille                             | F    | M1 F     | 01:18:40 | 3,81 |        8 |
+| 101. | 929 | PAPILLON              | Christophe       |                                           | M    | M1 H     | 01:18:47 | 3,81 |       47 |
+| 102. | 770 | MONDANGE              | Marc             |                                           | M    | M1 H     | 01:18:53 | 3,8  |       48 |
+| 103. | 444 | GUILLARD              | Isabelle         |                                           | F    | M2 F     | 01:18:55 | 3,8  |        2 |
+| 104. | 545 | FRADCOURT             | Jeremy           | etoile sportive seynod natation           | M    | M1 H     | 01:18:55 | 3,8  |       49 |
+| 105. |   7 | LE MOING              | Christophe       | GUC Triathlon                             | M    | M2 H     | 01:18:57 | 3,8  |       27 |
+| 106. | 507 | CARPENTER             | Timothy          | Club des nageurs de paris                 | M    | M1 H     | 01:19:00 | 3,8  |       50 |
+| 107. | 179 | QUINTANA              | Jean-Charles     | Triathlaix                                | M    | M1 H     | 01:19:01 | 3,8  |       51 |
+| 108. | 540 | PONIARD               | Simon            |                                           | M    | M1 H     | 01:19:04 | 3,79 |       52 |
+| 109. | 628 | OBIDIG                | Christophe       | Pays d'Aix Natation                       | M    | M1 H     | 01:19:10 | 3,79 |       53 |
+| 110. | 669 | CAUSSIN               | Pierre           | ASPTT MARSEILLE                           | M    | M1 H     | 01:19:12 | 3,79 |       54 |
+| 111. | 767 | ZALEJSKI              | Clément          | DAUPHINS ROMANAIS PEAGEOIS                | M    | TCH      | 01:19:12 | 3,79 |        6 |
+| 112. | 689 | CRANFORD              | Zoé              | Marmande Natation                         | F    | CADF     | 01:19:16 | 3,78 |        6 |
+| 113. | 933 | DEBONO                | Didier           |                                           | M    | M2 H     | 01:19:28 | 3,78 |       28 |
+| 114. | 156 | LABUSCHAGNE           | Conrad           |                                           | M    | M2 H     | 01:19:32 | 3,77 |       29 |
+| 115. | 455 | ALEVTINA              | Kokesnikova      |                                           | F    | TCF      | 01:19:33 | 3,77 |        3 |
+| 116. |  44 | MERLET                | Florian          |                                           | M    | M1 H     | 01:19:33 | 3,77 |       55 |
+| 117. | 418 | GRETTEN               | Daniel           | Trail Club Ollioulais                     | M    | M2 H     | 01:19:37 | 3,77 |       30 |
+| 118. | 596 | FORET                 | Ophélie          | Pays d'Aix Natation                       | F    | M1 F     | 01:19:48 | 3,76 |        9 |
+| 119. | 938 | LLOBERES              | Aranud           | cn etang berre                            | M    | M1 H     | 01:19:50 | 3,76 |       56 |
+| 120. | 497 | MALEY                 | Vincent          |                                           | M    | M1 H     | 01:19:50 | 3,76 |       57 |
+| 121. | 240 | CHAMPOUSSIN           | Thierry          | Antibes Triathlon                         | M    | M2 H     | 01:19:52 | 3,76 |       31 |
+| 122. | 663 | PARON                 | Christian        | ASPTT MARSEILLE                           | M    | M2 H     | 01:19:52 | 3,76 |       32 |
+| 123. | 966 | MOINE                 | Jean-Jacques     |                                           | M    | M2 H     | 01:19:54 | 3,75 |       33 |
+| 124. | 376 | VEYLON                | Guillaume        |                                           | M    | M1 H     | 01:19:56 | 3,75 |       58 |
+| 125. | 736 | KOHEL                 | David            | Marseille Dolfin                          | M    | M2 H     | 01:20:00 | 3,75 |       34 |
+| 126. | 333 | HEESE                 | Anton            |                                           | M    | M1 H     | 01:20:02 | 3,75 |       59 |
+| 127. | 746 | DARNER                | Julien           | 'Pays d''Aix Natation'                    | M    | M1 H     | 01:20:09 | 3,74 |       60 |
+| 128. |  48 | BRAUD                 | Pascal           |                                           | M    | M1 H     | 01:20:11 | 3,74 |       61 |
+| 129. | 129 | DUMONT                | Edouard          | TOBESPORT CORSICA                         | M    | M1 H     | 01:20:16 | 3,74 |       62 |
+| 130. | 187 | ROUIT                 | Bruno            |                                           | M    | M1 H     | 01:20:24 | 3,73 |       63 |
+| 131. |  29 | MAS                   | Cyril            |                                           | M    | M2 H     | 01:20:26 | 3,73 |       35 |
+| 132. | 772 | EYMARD                | Damien           |                                           | M    | M1 H     | 01:20:36 | 3,72 |       64 |
+| 133. | 825 | AMAR                  | Alain            | SC La Corniche Marseille                  | M    | M1 H     | 01:20:40 | 3,72 |       65 |
+| 134. | 565 | TECHER                | Matthias         | Girondins Natation                        | M    | M1 H     | 01:20:56 | 3,71 |       66 |
+| 135. | 462 | VIEILLEDENT           | Jérôme           | GRN - Rodez                               | M    | M2 H     | 01:20:56 | 3,71 |       36 |
+| 136. | 784 | BOUBLIL               | Constance        |                                           | F    | M1 F     | 01:21:00 | 3,7  |       10 |
+| 137. | 209 | GRIVEY                | Aurelien         |                                           | M    | M1 H     | 01:21:11 | 3,7  |       67 |
+| 138. |  12 | FIGUE                 | Sebastien        |                                           | M    | M1 H     | 01:21:13 | 3,69 |       68 |
+| 139. | 185 | LECLERC               | Michel           | Vitrolles Triathlon                       | M    | M2 H     | 01:21:17 | 3,69 |       37 |
+| 140. | 944 | FANTIN                | Lionel           |                                           | M    | M2 H     | 01:21:18 | 3,69 |       38 |
+| 141. | 255 | COSTAN                | Stéphane         |                                           | M    | M1 H     | 01:21:20 | 3,69 |       69 |
+| 142. | 327 | MILLEREAU             | Jean-Paul        |                                           | M    | M2 H     | 01:21:26 | 3,68 |       39 |
+| 143. | 422 | CHAALONS              | Olivier          |                                           | M    | M1 H     | 01:21:37 | 3,68 |       70 |
+| 144. | 169 | CAYROL                | Philippe         |                                           | M    | M1 H     | 01:21:45 | 3,67 |       71 |
+| 145. | 142 | CHEVALLIER            | François         |                                           | M    | M1 H     | 01:22:00 | 3,66 |       72 |
+| 146. | 666 | BOUDJADJA             | Rabah            | ASPTT MARSEILLE                           | M    | M1 H     | 01:22:09 | 3,65 |       73 |
+| 147. |  74 | BOURGEOIS             | Guillaume        |                                           | M    | M1 H     | 01:22:14 | 3,65 |       74 |
+| 148. | 778 | WILLEMS               | Peter            | Neptune Club de France                    | M    | M2 H     | 01:22:15 | 3,65 |       40 |
+| 149. | 939 |                       |                  | M                                         | M1 H | 01:22:16 |     3,65 | 75   |          |
+| 150. | 396 | LEFEVRE               | Fabienne         | TAC - Toulouse                            | F    | M1 F     | 01:22:18 | 3,65 |       11 |
+| 151. | 229 | AZOULAY               | Laurent          |                                           | M    | M1 H     | 01:22:23 | 3,64 |       76 |
+| 152. | 750 | TAILLEPIED            | Thomas           | BARREAU DE MARSEILLE                      | M    | M1 H     | 01:22:25 | 3,64 |       77 |
+| 153. | 245 | LOISELEUR             | Stéphane         | Tobesport                                 | M    | M2 H     | 01:22:42 | 3,63 |       41 |
+| 154. | 420 | ROBERT                | Arnaud           |                                           | M    | M1 H     | 01:22:55 | 3,62 |       78 |
+| 155. | 440 | CREANGE               | Chris            |                                           | M    | M1 H     | 01:22:55 | 3,62 |       79 |
+| 156. | 621 | PIEDALUE              | Richard          | CSM Marseille                             | M    | M1 H     | 01:22:59 | 3,62 |       80 |
+| 157. | 164 | CARRERE               | Christophe       |                                           | M    | M2 H     | 01:23:02 | 3,61 |       42 |
+| 158. | 734 | SACAGNA               | Gilles           | Rognac Natation                           | M    | M1 H     | 01:23:04 | 3,61 |       81 |
+| 159. | 753 | BEAUXIS               | Anne-Sophie      |                                           | F    | M1 F     | 01:23:10 | 3,61 |       12 |
+| 160. | 614 | RAFFO                 | Serge            | CSM Marseille                             | M    | M2 H     | 01:23:11 | 3,61 |       43 |
+| 161. | 201 | LEZAIS                | David            |                                           | M    | M1 H     | 01:23:20 | 3,6  |       82 |
+| 162. | 742 | MUNOZ ARENAS          | Camilo           | Olympic Nice Natation                     | M    | M1 H     | 01:23:21 | 3,6  |       83 |
+| 163. | 367 | PARET                 | Denis            | digne les bains triathlon                 | M    | M2 H     | 01:23:22 | 3,6  |       44 |
+| 164. | 644 | ELASRI                | Fabrice          | Club AUCH                                 | M    | M1 H     | 01:23:39 | 3,59 |       84 |
+| 165. | 735 | WALCZAK               | Florent          | Marseille Dolfin                          | M    | M1 H     | 01:23:44 | 3,58 |       85 |
+| 166. | 231 | QUINTIN               | Rémi             | S C Arles                                 | M    | M1 H     | 01:23:48 | 3,58 |       86 |
+| 167. | 564 | SARRADON              | Hugo             |                                           | M    | M1 H     | 01:23:54 | 3,58 |       87 |
+| 168. | 581 | NOIROT                | Roger            |                                           | M    | M2 H     | 01:23:56 | 3,57 |       45 |
+| 169. | 494 | BORNERT               | Jean-François    |                                           | M    | M1 H     | 01:23:56 | 3,57 |       88 |
+| 170. | 293 | CORNILLON             | Alexandre        |                                           | M    | M1 H     | 01:23:57 | 3,57 |       89 |
+| 171. |  43 | PONS                  | Bernard          |                                           | M    | M2 H     | 01:23:58 | 3,57 |       46 |
+| 172. | 321 | MISS                  | Pierre           | Les nageurs du Prado                      | M    | M2 H     | 01:23:59 | 3,57 |       47 |
+| 173. | 434 | COSSOU                | Florent          |                                           | M    | TCH      | 01:24:22 | 3,56 |        7 |
+| 174. | 383 | DECREUSEFOND          | Sébastien        |                                           | M    | M1 H     | 01:24:23 | 3,56 |       90 |
+| 175. | 664 | GENTEK                | Rebecca          | ASPTT MARSEILLE                           | F    | M1 F     | 01:24:27 | 3,55 |       13 |
+| 176. | 252 | CARRÉ                 | Patrice In       | VO2 triathlon montpellier                 | M    | M1 H     | 01:24:31 | 3,55 |       91 |
+| 177. | 619 | LE DAULT              | Erwan            | CSM Marseille                             | M    | M1 H     | 01:24:34 | 3,55 |       92 |
+| 178. |  39 | FOURNIER              | Guillaume        | UASG                                      | M    | M1 H     | 01:24:41 | 3,54 |       93 |
+| 179. | 783 | BELGUENDOUZ           | Amin             | RMA                                       | M    | M1 H     | 01:24:45 | 3,54 |       94 |
+| 180. | 395 | COUGARD               | Alexis           |                                           | M    | M1 H     | 01:24:47 | 3,54 |       95 |
+| 181. | 775 | NIVOIS                | Philippe         | Avenir Muret Natation                     | M    | M2 H     | 01:24:48 | 3,54 |       48 |
+| 182. | 155 | PIGNAULT              | Bertrand         | UA Societe Generale                       | M    | M1 H     | 01:24:48 | 3,54 |       96 |
+| 183. | 195 | ABIDI                 | Saïd             |                                           | M    | M1 H     | 01:24:49 | 3,54 |       97 |
+| 184. | 468 | CAPEAU                | Antoine          |                                           | M    | M1 H     | 01:24:49 | 3,54 |       98 |
+| 185. | 785 | ALTEYRAC              | Laurent          | AUBAGNE TRIATHLON                         | M    | M1 H     | 01:24:53 | 3,53 |       99 |
+| 186. | 780 | LORA-RUNCO            | Marc             | Seynod Natation                           | M    | M2 H     | 01:24:54 | 3,53 |       49 |
+| 187. | 665 | RODRIGUEZ             | Emmanuel         | ASPTT MARSEILLE                           | M    | M1 H     | 01:25:11 | 3,52 |      100 |
+| 188. | 934 | BASIBEI               | Dimitri          |                                           | M    | M1 H     | 01:25:21 | 3,51 |      101 |
+| 189. | 113 | FAURE                 | Vincent          |                                           | M    | M1 H     | 01:25:22 | 3,51 |      102 |
+| 190. | 172 | BOURGEOIS             | Timothée         |                                           | M    | M1 H     | 01:25:23 | 3,51 |      103 |
+| 191. | 308 | LUCIANI               | Philippe         |                                           | M    | M2 H     | 01:25:25 | 3,51 |       50 |
+| 192. | 550 | STREBELLE             | Theo             | RMA Paris                                 | M    | M1 H     | 01:25:29 | 3,51 |      104 |
+| 193. | 162 | CALLIER               | Philippe         | NOgent Solidarite Triathlo                | M    | M2 H     | 01:25:29 | 3,51 |       51 |
+| 194. | 234 | BON                   | Sebastien        |                                           | M    | M1 H     | 01:25:30 | 3,51 |      105 |
+| 195. | 125 | LEIJNS                | Willem           |                                           | M    | M1 H     | 01:25:34 | 3,51 |      106 |
+| 196. | 436 | VAN DRAVIK            | Jan              | CNP                                       | M    | M2 H     | 01:25:34 | 3,51 |       52 |
+| 197. | 466 | FIORI                 | Vincent          |                                           | M    | TCH      | 01:25:43 | 3,5  |        8 |
+| 198. | 612 | PHILIP                | Thomas           | CSM Marseille                             | M    | M1 H     | 01:25:45 | 3,5  |      107 |
+| 199. | 390 | KITTEL                | Jean Claude      | Antibes                                   | M    | M2 H     | 01:25:45 | 3,5  |       53 |
+| 200. | 247 | LI                    | Francois-Xavier  | Marseille Trail Club                      | M    | M2 H     | 01:25:45 | 3,5  |       54 |
+| 201. | 356 | GUILLERMIN            | Nicolas          |                                           | M    | TCH      | 01:25:52 | 3,49 |        9 |
+| 202. |  69 | ANTONAKAS             | Isabelle         | Marseille Trail Club                      | F    | M1 F     | 01:25:53 | 3,49 |       14 |
+| 203. | 529 | GABILLOT              | Olivier          | olivier gabillot                          | M    | M2 H     | 01:25:53 | 3,49 |       55 |
+| 204. | 959 | LOMBARDO              | Egidio           |                                           | M    | M2 H     | 01:25:53 | 3,49 |       56 |
+| 205. | 530 | VERGNE                | Frédérick        |                                           | M    | M1 H     | 01:25:56 | 3,49 |      108 |
+| 206. | 236 | CHEVEREAU             | Olivier          | Olivier Chevereau                         | M    | M1 H     | 01:25:58 | 3,49 |      109 |
+| 207. | 345 | GINOUX                | Franck           | beaucaire tarascon                        | M    | M1 H     | 01:26:01 | 3,49 |      110 |
+| 208. | 123 | GREZES                | Jean Michel      |                                           | M    | M2 H     | 01:26:03 | 3,49 |       57 |
+| 209. | 374 | HORVATH               | Olivier          | CAO ORSAY                                 | M    | M2 H     | 01:26:05 | 3,48 |       58 |
+| 210. | 662 | STARCK                | Jean-Charles     | ASPTT MARSEILLE                           | M    | M2 H     | 01:26:05 | 3,48 |       59 |
+| 211. | 911 | GENDRE                | Jean-Michel      |                                           | M    |          | 01:26:07 | 3,48 |          |
+| 212. |   2 | CANDEBAT              | Thibault         |                                           | M    | M1 H     | 01:26:09 | 3,48 |      111 |
+| 213. | 906 | ALDEGUIRI             | Alain            |                                           | M    |          | 01:26:10 | 3,48 |          |
+| 214. | 705 | VERSINI               | Loic             | CSM Marseille                             | M    | M1 H     | 01:26:15 | 3,48 |      112 |
+| 215. | 544 | ATTARD                | Christophe       | CNPP Bollène                              | M    | M2 H     | 01:26:20 | 3,47 |       60 |
+| 216. | 481 | BOURNAY               | Laurent          | Givors                                    | M    | M1 H     | 01:26:21 | 3,47 |      113 |
+| 217. | 943 | PONT                  | Cedric           |                                           | M    | M2 H     | 01:26:30 | 3,47 |       61 |
+| 218. | 452 | SARRAUTE              | Olivier          |                                           | M    | M2 H     | 01:26:32 | 3,47 |       62 |
+| 219. | 157 | MERLET                | Gwen             |                                           | M    | M1 H     | 01:26:33 | 3,47 |      114 |
+| 220. | 127 | THOREL                | François         | Mouettes De Paris                         | M    | M1 H     | 01:26:33 | 3,47 |      115 |
+| 221. | 571 | GARRIDO               | Xavier           |                                           | M    | M1 H     | 01:26:47 | 3,46 |      116 |
+| 222. | 482 | DEKEN                 | Olivier          |                                           | M    | M1 H     | 01:26:47 | 3,46 |      117 |
+| 223. | 537 | MARCO                 | Didier           |                                           | M    | M2 H     | 01:26:48 | 3,46 |       63 |
+| 224. | 691 | BERMOND               | Kate             | Olympic Nice Natation                     | F    | M1 F     | 01:26:49 | 3,46 |       15 |
+| 225. | 607 | SIMONEAU              | Sébastien        | CSM Marseille                             | M    | M1 H     | 01:26:49 | 3,46 |      118 |
+| 226. | 766 | PRIOLLAUD             | Claire           |                                           | F    | M2 F     | 01:26:49 | 3,46 |        3 |
+| 227. | 950 | STUDENIKINA           | Natacha          |                                           | F    | M1 F     | 01:26:53 | 3,45 |       16 |
+| 228. | 275 | DURAND                | Anne             |                                           | F    | M1 F     | 01:26:59 | 3,45 |       17 |
+| 229. | 632 | GALIANA               | Eric             | Police nationale                          | M    | M2 H     | 01:27:10 | 3,44 |       64 |
+| 230. | 527 | CADILHAC              | Laurent          | seynod natation                           | M    | M2 H     | 01:27:18 | 3,44 |       65 |
+| 231. | 373 | ROUVEYROL             | Jean Philippe    | tricastin                                 | M    | M2 H     | 01:27:21 | 3,43 |       66 |
+| 232. | 740 | JOUFFRAY              | Fabrice          | Olympic Nice Natation                     | M    | M1 H     | 01:27:25 | 3,43 |      119 |
+| 233. | 435 | SÉRIÈS                | Benjamin         |                                           | M    | M1 H     | 01:27:27 | 3,43 |      120 |
+| 234. | 431 | JARNO                 | Maeva            | PARIS AQUATIQUE                           | F    | M1 F     | 01:27:29 | 3,43 |       18 |
+| 235. |  90 | AMAUDRIC              | Benjamin         |                                           | M    | M1 H     | 01:27:29 | 3,43 |      121 |
+| 236. | 577 | CANTENOT              | Romain           |                                           | M    | M1 H     | 01:27:36 | 3,42 |      122 |
+| 237. | 217 | BERGER                | Thierry          | C NAUTIQUE DU GRÉSIVAUDAN                 | M    | M1 H     | 01:27:36 | 3,42 |      123 |
+| 238. | 314 | DURAND GASSELIN       | Jacques          | TOULON TRIATHLON MUTUELLE VERTE           | M    | M2 H     | 01:27:37 | 3,42 |       67 |
+| 239. | 591 | DREUX                 | Anouchka         | CSM Marseille                             | F    | TCF      | 01:27:38 | 3,42 |        4 |
+| 240. | 728 | AUGUSTE               | Brice            | CN Salon                                  | M    | M1 H     | 01:27:40 | 3,42 |      124 |
+| 241. | 902 | BONNET                | William          |                                           | M    |          | 01:27:45 | 3,42 |          |
+| 242. | 242 | JUPIN                 | Patrice          |                                           | M    | M2 H     | 01:27:46 | 3,42 |       68 |
+| 243. | 286 | PAILLARD              | Camille          |                                           | M    | M1 H     | 01:27:50 | 3,42 |      125 |
+| 244. | 583 | BAUDUIN               | Vincent          | Stade français                            | M    | M2 H     | 01:27:52 | 3,41 |       69 |
+| 245. |  36 | LOPEZ                 | Thierry          |                                           | M    | M1 H     | 01:28:03 | 3,41 |      126 |
+| 246. | 330 | PLACE                 | Sébastien        |                                           | M    | M1 H     | 01:28:06 | 3,41 |      127 |
+| 247. | 410 | RÉAU                  | Alexa            | etoile sportive seynod nat                | F    | M1 F     | 01:28:07 | 3,4  |       19 |
+| 248. | 165 | HUBAUT                | Thierry          | Club des Nageurs de Paris                 | M    | M2 H     | 01:28:07 | 3,4  |       70 |
+| 249. |  99 | VAN DEN HONDEL        | Harmen           |                                           | M    | M1 H     | 01:28:08 | 3,4  |      128 |
+| 250. | 806 | EL BEKRI              | Fedwa            | SFOC                                      | F    | M1 F     | 01:28:09 | 3,4  |       20 |
+| 251. | 477 | COTTIN                | Philippe         |                                           | M    | M2 H     | 01:28:09 | 3,4  |       71 |
+| 252. | 459 | MAIROT                | Lea              |                                           | F    | M1 F     | 01:28:13 | 3,4  |       21 |
+| 253. | 443 | MARGNAT               | Alexis           |                                           | M    | M1 H     | 01:28:15 | 3,4  |      129 |
+| 254. | 101 | PELLAN                | Frédéric         | Free Iron Team                            | M    | M1 H     | 01:28:18 | 3,4  |      130 |
+| 255. | 377 | COUGARD               | Jerome           | US Ivry triathlon                         | M    | M1 H     | 01:28:18 | 3,4  |      131 |
+| 256. | 261 | VINCENT               | Jean-Luc         |                                           | M    | M2 H     | 01:28:19 | 3,4  |       72 |
+| 257. | 206 | BARET                 | Olivier          |                                           | M    | M2 H     | 01:28:19 | 3,4  |       73 |
+| 258. | 364 | TALASSINOS            | Sébastien        |                                           | M    | M1 H     | 01:28:20 | 3,4  |      132 |
+| 259. | 117 | MASEK                 | Christopher      |                                           | M    | M2 H     | 01:28:21 | 3,4  |       74 |
+| 260. | 837 | RYAN                  | Úna Ann          |                                           | F    |          | 01:28:23 | 3,39 |          |
+| 261. | 285 | KEISER                | Luciana          |                                           | F    | M1 F     | 01:28:23 | 3,39 |       22 |
+| 262. | 427 | BEDOS                 | Pierre           | SEYNOD NATATION                           | M    | M2 H     | 01:28:23 | 3,39 |       75 |
+| 263. | 109 | FRANGIONI             | Philippe         |                                           | M    | M1 H     | 01:28:27 | 3,39 |      133 |
+| 264. | 575 | ANDRE                 | François         | François ANDRE                            | M    | M1 H     | 01:28:28 | 3,39 |      134 |
+| 265. | 620 | BERNEDO               | César            | CSM Marseille                             | M    | M1 H     | 01:28:33 | 3,39 |      135 |
+| 266. | 643 | LAGANNE               | Jacques          | Club AUCH                                 | M    | M2 H     | 01:28:34 | 3,39 |       76 |
+| 267. | 726 | SIRE                  | Olivier          | NC Crau                                   | M    | M1 H     | 01:28:39 | 3,38 |      136 |
+| 268. | 168 | TAYLOR                | Rick             |                                           | M    | M2 H     | 01:28:44 | 3,38 |       77 |
+| 269. | 779 | SMITH                 | Mike             | sTADE FRANÇAIS O COURBEVOIE               | M    | M2 H     | 01:28:50 | 3,38 |       78 |
+| 270. |  32 | DESCHATRES            | Fabrice          |                                           | M    | M1 H     | 01:28:50 | 3,38 |      137 |
+| 271. | 304 | DELORME               | Martial          | Castathlon                                | M    | M2 H     | 01:28:59 | 3,37 |       79 |
+| 272. | 310 | TAVARES DE MEDEIROS   | Evaldo           |                                           | M    | M1 H     | 01:29:01 | 3,37 |      138 |
+| 273. | 558 | ANNUNZIATA            | Pascal           | Muge Natation                             | M    | M1 H     | 01:29:03 | 3,37 |      139 |
+| 274. | 315 | BENTENAH              | Sarah            | Courbevoie triathlon                      | F    | M1 F     | 01:29:05 | 3,37 |       23 |
+| 275. | 514 | ROCQUET               | Ludovik          | COURBEVOIE TRIATHLON                      | M    | M1 H     | 01:29:05 | 3,37 |      140 |
+| 276. | 503 | THIBAULT              | Christophe       |                                           | M    | M1 H     | 01:29:11 | 3,36 |      141 |
+| 277. | 278 | CRESTIAN              | Cyril            | Vitrolles triathlon                       | M    | M1 H     | 01:29:11 | 3,36 |      142 |
+| 278. | 472 | ALLER                 | Philippe         | Toulon Triathlon                          | M    | M2 H     | 01:29:12 | 3,36 |       80 |
+| 279. | 801 | SCHETS                | Louise           | neptune club france                       | F    | M1 F     | 01:29:16 | 3,36 |       24 |
+| 280. | 174 | GARCIA LEUCONA        | Ana              |                                           | F    | M1 F     | 01:29:18 | 3,36 |       25 |
+| 281. | 233 | THEOLEYRE             | Benoit           |                                           | M    | M1 H     | 01:29:18 | 3,36 |      143 |
+| 282. | 409 | LAROQUE               | Thierry          | gta                                       | M    | M1 H     | 01:29:25 | 3,36 |      144 |
+| 283. | 671 | SEVAJOL               | Marion           | ASPTT MARSEILLE                           | F    | M1 F     | 01:29:25 | 3,36 |       26 |
+| 284. | 163 | COURTIAL              | Gregory          | so millau                                 | M    | M2 H     | 01:29:26 | 3,35 |       81 |
+| 285. | 348 | MOINE                 | Sébastien        |                                           | M    | M1 H     | 01:29:37 | 3,35 |      145 |
+| 286. | 405 | LAPRAS                | Victor           |                                           | M    | M1 H     | 01:29:39 | 3,35 |      146 |
+| 287. | 366 | MAZE                  | Carine           | sardines triathlon                        | F    | M2 F     | 01:29:45 | 3,34 |        4 |
+| 288. | 754 | LACAILLE              | Romain           | Romain Lacaille                           | M    | M1 H     | 01:29:48 | 3,34 |      147 |
+| 289. | 392 | BERENGIER             | Romain           |                                           | M    | TCH      | 01:29:48 | 3,34 |       10 |
+| 290. |  68 | AUDOUARD              | Marianne         | Tobesport                                 | F    | M1 F     | 01:29:56 | 3,34 |       27 |
+| 291. | 241 | COUERON               | Eric             |                                           | M    | M2 H     | 01:30:07 | 3,33 |       82 |
+| 292. | 965 | MOUGEL                | Dario            |                                           | M    | M2 H     | 01:30:15 | 3,32 |       83 |
+| 293. | 251 | MOTYKA                | Benjamin         |                                           | M    | M1 H     | 01:30:19 | 3,32 |      148 |
+| 294. | 526 | SICCARDI              | Thomas           |                                           | M    | M1 H     | 01:30:19 | 3,32 |      149 |
+| 295. | 953 | PREDEIN EUGUENY       | Viktoroich       |                                           | M    | M2 H     | 01:30:25 | 3,32 |       84 |
+| 296. | 362 | GUYOT                 | Cedric           | ASA (Royaume Uni)                         | M    | M1 H     | 01:30:28 | 3,32 |      150 |
+| 297. | 473 | FIORI                 | Eric             | Avignon Le Pontet Triathlon               | M    | M2 H     | 01:30:28 | 3,32 |       85 |
+| 298. | 317 | BONGRAND              | Mathieu          |                                           | M    | M1 H     | 01:30:36 | 3,31 |      151 |
+| 299. | 657 | ZUFFO                 | Jean-Philippe    | ASPTT MARSEILLE                           | M    | M2 H     | 01:30:38 | 3,31 |       86 |
+| 300. | 379 | SOULOT                | Marcel           | CERCLE DU MARAIS                          | M    | M1 H     | 01:30:46 | 3,31 |      152 |
+| 301. | 810 | LOCQUET               | Christophe       |                                           | M    | M2 H     | 01:30:46 | 3,31 |       87 |
+| 302. | 653 | CHEVALIER             | Jérôme           | VILLE DE MARSEILLE                        | M    | M2 H     | 01:31:05 | 3,29 |       88 |
+| 303. | 935 | BART                  | Anton            |                                           | M    | M2 H     | 01:31:10 | 3,29 |       89 |
+| 304. | 300 | MARTINEAU             | Veronique        | u.s saint pierre des corps                | F    | M1 F     | 01:31:14 | 3,29 |       28 |
+| 305. |  45 | PEUZIAT               | Loic             |                                           | M    | M1 H     | 01:31:21 | 3,28 |      153 |
+| 306. | 631 | SARKISSIAN            | Pascal           | Police nationale                          | M    | M1 H     | 01:31:40 | 3,27 |      154 |
+| 307. | 429 | COPPIN                | Christian        | triathlon port la nouvelle                | M    | M2 H     | 01:31:42 | 3,27 |       90 |
+| 308. | 426 | BOYER                 | Stéphane         |                                           | M    | M1 H     | 01:31:43 | 3,27 |      155 |
+| 309. | 769 | MAZZANTI              | Matteo           | Help4Hope                                 | M    | M2 H     | 01:31:46 | 3,27 |       91 |
+| 310. | 283 | GAUTIER               | Jean-Francois    |                                           | M    | M1 H     | 01:31:46 | 3,27 |      156 |
+| 311. | 375 | CARNEVALI             | Andres           |                                           | M    | M2 H     | 01:31:57 | 3,26 |       92 |
+| 312. |  81 | POLVANI               | Patrick          |                                           | M    | M2 H     | 01:31:57 | 3,26 |       93 |
+| 313. | 651 | PEZ                   | Gilles           | VILLE DE MARSEILLE                        | M    | M1 H     | 01:31:57 | 3,26 |      157 |
+| 314. |  49 | ROUX                  | Philippe         |                                           | M    | M1 H     | 01:31:59 | 3,26 |      158 |
+| 315. |  10 | GRAC                  | Thibault         | Club des Nageurs de Paris                 | M    | M1 H     | 01:32:07 | 3,26 |      159 |
+| 316. | 593 | VERSINI               | Marion           | CSM Marseille                             | F    | M1 F     | 01:32:11 | 3,25 |       29 |
+| 317. | 522 | ROULIOT               | Frederic         |                                           | M    | M1 H     | 01:32:11 | 3,25 |      160 |
+| 318. | 513 | DENIAU                | Sébastien        | Paris Aquatique                           | M    | M1 H     | 01:32:25 | 3,25 |      161 |
+| 319. | 622 | RODRIGUEZ             | Fabien           | CSM Marseille                             | M    | M1 H     | 01:32:25 | 3,25 |      162 |
+| 320. | 599 | LE MEUR               | Alan             | Apt Natation                              | M    | M1 H     | 01:32:28 | 3,24 |      163 |
+| 321. | 831 | DONOT                 | Christophe       | CN Marseille                              | M    | M1 H     | 01:32:28 | 3,24 |      164 |
+| 322. | 105 | DELATTRE              | Jerome           |                                           | M    | M2 H     | 01:32:43 | 3,24 |       94 |
+| 323. | 609 | NEFF                  | Jean Baptiste    | CSM Marseille                             | M    | TCH      | 01:33:01 | 3,23 |       11 |
+| 324. |  22 | GUITET                | Romain           |                                           | M    | M1 H     | 01:33:04 | 3,22 |      165 |
+| 325. | 674 | EL MADANI             | Hamid            |                                           | M    | M2 H     | 01:33:12 | 3,22 |       95 |
+| 326. | 332 | MORTIER               | Tom              |                                           | M    | M1 H     | 01:33:12 | 3,22 |      166 |
+| 327. |  59 | BRET                  | Cyril            |                                           | M    | M1 H     | 01:33:12 | 3,22 |      167 |
+| 328. | 822 | OUDIN                 | Didier           | CLUB NAUTIQUE ST CHAMOND                  | M    | M2 H     | 01:33:14 | 3,22 |       96 |
+| 329. | 339 | DUCLOS                | Gary             |                                           | M    | M1 H     | 01:33:15 | 3,22 |      168 |
+| 330. | 181 | GAMMELIN              | Cédric           |                                           | M    | M1 H     | 01:33:16 | 3,22 |      169 |
+| 331. | 359 | FRANCOIS              | Jimmy            |                                           | M    | M1 H     | 01:33:17 | 3,22 |      170 |
+| 332. | 211 | CHAMPAGNE             | Marc             | MARMANDE NATATION                         | M    | M2 H     | 01:33:19 | 3,21 |       97 |
+| 333. | 729 | DERANCOURT            | Nicolas          | CN Salon                                  | M    | M1 H     | 01:33:20 | 3,21 |      171 |
+| 334. |   3 | WEEGER                | Emmanuel         | Paris Aquatique                           | M    | M2 H     | 01:33:24 | 3,21 |       98 |
+| 335. | 167 | LAFONT                | Eric             | AUSG                                      | M    | M2 H     | 01:33:26 | 3,21 |       99 |
+| 336. | 323 | DEVOYON               | Laurent          | triathlon port la nouvelle                | M    | M1 H     | 01:33:33 | 3,21 |      172 |
+| 337. | 136 | MORENO                | Alex             |                                           | M    | M2 H     | 01:33:41 | 3,2  |      100 |
+| 338. | 111 | THOMAS                | Thierry          | Pays d'Aix Natation                       | M    | M2 H     | 01:33:44 | 3,2  |      101 |
+| 339. | 818 | BERCHAUD              | Jerome           |                                           | M    | M2 H     | 01:33:46 | 3,2  |      102 |
+| 340. | 896 | AYMONIER              | Gregoire         |                                           | M    | M2 H     | 01:33:49 | 3,2  |      103 |
+| 341. | 130 | HAYWARD               | David            |                                           | M    | M1 H     | 01:33:57 | 3,19 |      173 |
+| 342. | 415 | SEMIDEI               | Philippe         | Corsica Triathlon club d'ajaccio          | M    | M2 H     | 01:33:59 | 3,19 |      104 |
+| 343. |  85 | LASCOMBE              | Olivier          |                                           | M    | M1 H     | 01:34:00 | 3,19 |      174 |
+| 344. | 582 | SPINETTO              | Nicola           |                                           | M    | M1 H     | 01:34:01 | 3,19 |      175 |
+| 345. | 134 | VELAY                 | Laurent          |                                           | M    | M2 H     | 01:34:04 | 3,19 |      105 |
+| 346. | 476 | IZE                   | Sylvaine         |                                           | F    | M1 F     | 01:34:07 | 3,19 |       30 |
+| 347. |  83 | BOUCHARD              | Cédric           | CENTAURES PERTUIS                         | M    | M1 H     | 01:34:09 | 3,19 |      176 |
+| 348. | 495 | PROVENT               | Thierry          |                                           | M    | M2 H     | 01:34:12 | 3,18 |      106 |
+| 349. | 153 | DEMARET               | Eric             |                                           | M    | M2 H     | 01:34:18 | 3,18 |      107 |
+| 350. | 799 | MARX                  | Jean Luc         |                                           | M    | M2 H     | 01:34:21 | 3,18 |      108 |
+| 351. | 616 | PECHAYRE              | Thibault         | CSM Marseille                             | M    | M1 H     | 01:34:26 | 3,18 |      177 |
+| 352. | 692 | BRARD                 | Aude             | NC Islois                                 | F    | M1 F     | 01:34:27 | 3,18 |       31 |
+| 353. | 743 | NIER                  | Jean             | NC Islois                                 | M    | M2 H     | 01:34:27 | 3,18 |      109 |
+| 354. | 249 | SANZ                  | Henri            |                                           | M    | M2 H     | 01:34:33 | 3,17 |      110 |
+| 355. |  95 | DESPRETS              | Herve            |                                           | M    | M1 H     | 01:34:33 | 3,17 |      178 |
+| 356. | 437 | CONSALES              | Jean Marc        | massilia triathlon                        | M    | M2 H     | 01:34:37 | 3,17 |      111 |
+| 357. | 349 | FERNANDEZ             | José             |                                           | M    | M2 H     | 01:34:39 | 3,17 |      112 |
+| 358. | 152 | HARDOIN               | Pierre           |                                           | M    | M1 H     | 01:34:40 | 3,17 |      179 |
+| 359. | 198 | GALLO                 | Yannick          |                                           | M    | M1 H     | 01:34:42 | 3,17 |      180 |
+| 360. | 400 | BERNARD               | Philippe         |                                           | M    | M1 H     | 01:34:43 | 3,17 |      181 |
+| 361. | 299 | MILLECAMPS            | Sébastien        |                                           | M    | M1 H     | 01:34:44 | 3,17 |      182 |
+| 362. | 569 | PANNETIER             | Christopje       |                                           | M    | M2 H     | 01:34:45 | 3,17 |      113 |
+| 363. | 788 | FOURNIER MONTGIEUX    | Julien           |                                           | M    | M1 H     | 01:34:50 | 3,16 |      183 |
+| 364. | 371 | VIALLET               | Philippe         | TOULON TRIATHLON MUTUELLE VERTE           | M    | M2 H     | 01:34:51 | 3,16 |      114 |
+| 365. | 439 | GUEGAN                | Guillaume        |                                           | M    | M1 H     | 01:34:54 | 3,16 |      184 |
+| 366. | 329 | ROUX                  | Christian        | Usselles Haute Correze TRI                | M    | M2 H     | 01:34:54 | 3,16 |      115 |
+| 367. | 782 | TREMBLAY              | Francois-Bernard | Club Juvaqua                              | M    | M2 H     | 01:34:57 | 3,16 |      116 |
+| 368. | 121 | LAVAUD                | Romain           |                                           | M    | M1 H     | 01:34:58 | 3,16 |      185 |
+| 369. | 493 | BOUDA                 | Stephane         | rando raid trail 83                       | M    | M1 H     | 01:34:59 | 3,16 |      186 |
+| 370. | 812 | FRANCISCI             | Marc Paul        | C.C.VENCE.TRIATHLON                       | M    | M2 H     | 01:34:59 | 3,16 |      117 |
+| 371. | 447 | MAIROT                | Apolline         |                                           | F    | M1 F     | 01:35:05 | 3,16 |       32 |
+| 372. | 192 | PITARD                | Estelle          | MANUC                                     | F    | M1 F     | 01:35:09 | 3,15 |       33 |
+| 373. | 378 | FROGET-CLAUDET        | Laurence         | CSAM plongée toulon                       | F    | M1 F     | 01:35:12 | 3,15 |       34 |
+| 374. |  17 | ROBLIN                | Marie-Hélène     | TOBESPORT CORSICA                         | F    | M1 F     | 01:35:12 | 3,15 |       35 |
+| 375. |  93 | CECCALDI              | Philippe         | Istres Triathlon                          | M    | M1 H     | 01:35:16 | 3,15 |      187 |
+| 376. | 552 | ARNAUD                | Kevyn            | Le Charolais Sous L'eau                   | M    | TCH      | 01:35:17 | 3,15 |       12 |
+| 377. | 572 | TRUFFINET             | Pierre           |                                           | M    | M2 H     | 01:35:18 | 3,15 |      118 |
+| 378. | 218 | VERRIER               | Nicolas          | TUC triathlon                             | M    | M1 H     | 01:35:21 | 3,15 |      188 |
+| 379. | 536 | SYNAEGHEL             | Patrick          | TOBESPORT                                 | M    | M2 H     | 01:35:24 | 3,14 |      119 |
+| 380. | 592 | JAUBERT               | Dominique        | CSM Marseille                             | F    | M1 F     | 01:35:27 | 3,14 |       36 |
+| 381. | 154 | MARTIN                | Stefan           | CRV LYON                                  | M    | M2 H     | 01:35:29 | 3,14 |      120 |
+| 382. | 118 | BORDON BIZI           | Karine           | CNA                                       | F    | M2 F     | 01:35:29 | 3,14 |        5 |
+| 383. | 456 | MAZIERES              | Fred             |                                           | M    | M1 H     | 01:35:32 | 3,14 |      189 |
+| 384. |  77 | BELLOIR               | Gilles           |                                           | M    | M2 H     | 01:35:37 | 3,14 |      121 |
+| 385. | 115 | BRUNAND               | Jacques          |                                           | M    | M2 H     | 01:35:38 | 3,14 |      122 |
+| 386. | 281 | RODRIGUEZ             | Regis            | TEAM CHAMPSAUR TRIATHLON                  | M    | M1 H     | 01:35:41 | 3,14 |      190 |
+| 387. |  19 | GREGOIRE              | Paul             |                                           | M    | M1 H     | 01:35:43 | 3,13 |      191 |
+| 388. | 502 | HAVARD DUCLOS         | Eric             |                                           | M    | M2 H     | 01:35:43 | 3,13 |      123 |
+| 389. | 394 | MULLER                | Pascale          |                                           | F    | M2 F     | 01:35:45 | 3,13 |        6 |
+| 390. | 561 | LEFEBVRE              | Bruno            |                                           | M    | M2 H     | 01:35:46 | 3,13 |      124 |
+| 391. | 505 | MAYAUD                | Philippe         |                                           | M    | M2 H     | 01:35:48 | 3,13 |      125 |
+| 392. |  53 | DESCAMPS              | Bruno            |                                           | M    | M1 H     | 01:35:56 | 3,13 |      192 |
+| 393. | 128 | BOIS                  | Olivier          |                                           | M    | M2 H     | 01:35:59 | 3,13 |      126 |
+| 394. | 900 | PERNOT                | Olivier          |                                           | M    |          | 01:36:02 | 3,12 |          |
+| 395. | 146 | ARNAUD                | Jeran Paul       | generation grand bleu                     | M    | M2 H     | 01:36:08 | 3,12 |      127 |
+| 396. | 176 | BAUX                  | Cédric           |                                           | M    | M1 H     | 01:36:09 | 3,12 |      193 |
+| 397. | 926 | PONS                  | Laurent          |                                           | M    |          | 01:36:20 | 3,11 |          |
+| 398. | 120 | GUÉGAN                | Jildaz           |                                           | M    | M1 H     | 01:36:21 | 3,11 |      194 |
+| 399. |  86 | LAINE                 | Didier           | SARDINES TRIATHLON                        | M    | M2 H     | 01:36:24 | 3,11 |      128 |
+| 400. | 470 | EVGENY                | Leonov           | X-Fit                                     | M    | M2 H     | 01:36:26 | 3,11 |      129 |
+| 401. |  64 | DEWICK                | Donna            |                                           | F    | M2 F     | 01:36:27 | 3,11 |        7 |
+| 402. | 188 | NUNEZ                 | Eugenia          | Nunez                                     | F    | M2 F     | 01:36:28 | 3,11 |        8 |
+| 403. | 178 | LEPOIVRE              | Christophe       |                                           | M    | M2 H     | 01:36:33 | 3,11 |      130 |
+| 404. | 320 | NEGRI                 | Joel             |                                           | M    | M1 H     | 01:36:36 | 3,11 |      195 |
+| 405. | 190 | ALLEMAND              | Lucie            |                                           | F    | M1 F     | 01:36:37 | 3,11 |       37 |
+| 406. | 762 | BERTHOU               | Fabrice          | courbnevoie triathlon                     | M    | M1 H     | 01:36:40 | 3,1  |      196 |
+| 407. | 110 | FLAVENOT              | Laurent          | Club nageur de paris                      | M    | M2 H     | 01:36:58 | 3,09 |      131 |
+| 408. | 276 | LE FEVRE              | Fabrice          |                                           | M    | M1 H     | 01:37:05 | 3,09 |      197 |
+| 409. | 292 | KELLER                | Christophe       | Christophe KELLER                         | M    | M2 H     | 01:37:09 | 3,09 |      132 |
+| 410. | 196 | WOOD                  | Camilla          | UK                                        | F    | M1 F     | 01:37:20 | 3,08 |       38 |
+| 411. |  65 | HALL                  | Simon            | UK                                        | M    | M1 H     | 01:37:22 | 3,08 |      198 |
+| 412. | 549 | ARNAUD                | Jean Louis       | Le Charolais Sous L'eau                   | M    | M2 H     | 01:37:26 | 3,08 |      133 |
+| 413. | 355 | PRINS                 | Michiel          |                                           | M    | M1 H     | 01:37:32 | 3,08 |      199 |
+| 414. |  58 | ROMÉ                  | Voulhoux         |                                           | M    | M2 H     | 01:37:34 | 3,07 |      134 |
+| 415. | 895 | MOORE                 | Sandy            |                                           | F    | M1 F     | 01:37:44 | 3,07 |       39 |
+| 416. | 139 | VIGNAROLI             | Ludovic          |                                           | M    | M1 H     | 01:37:46 | 3,07 |      200 |
+| 417. | 149 | D'ELBREIL             | Anne             | celtic de marseille natation              | F    | M2 F     | 01:37:47 | 3,07 |        9 |
+| 418. | 346 | SEMPE                 | Anne Laure       | les ploufs                                | F    | M2 F     | 01:37:49 | 3,07 |       10 |
+| 419. | 557 | ANNUNZIATA            | Luc              | Chourmo FC                                | M    | M1 H     | 01:37:50 | 3,07 |      201 |
+| 420. | 914 | GUIEN                 | Jean-Alain       |                                           | M    |          | 01:37:52 | 3,07 |          |
+| 421. | 961 | COULOND               | Elisabeth        |                                           | F    | M1 F     | 01:37:52 | 3,07 |       40 |
+| 422. | 958 | CHARLES               | Xavier           |                                           | M    | M2 H     | 01:37:54 | 3,06 |      135 |
+| 423. |  24 | FERNANDEZ             | Mathieu          |                                           | M    | M1 H     | 01:37:55 | 3,06 |      202 |
+| 424. | 227 | SCHACHTELE            | Guillaume        | Triathl'Aix                               | M    | M1 H     | 01:37:58 | 3,06 |      203 |
+| 425. |   9 | MOUNE                 | Pascal           | pays d'AIX NATATION                       | M    | M2 H     | 01:37:59 | 3,06 |      136 |
+| 426. | 792 | LIENHARD              | Karine           |                                           | F    | M1 F     | 01:38:00 | 3,06 |       41 |
+| 427. | 524 | MATTE                 | Philippe         |                                           | M    | M1 H     | 01:38:02 | 3,06 |      204 |
+| 428. | 533 | MEURANT               | Jean-Luc         |                                           | M    | M2 H     | 01:38:03 | 3,06 |      137 |
+| 429. |  60 | COQUELIN              | Sébastien        |                                           | M    | M1 H     | 01:38:03 | 3,06 |      205 |
+| 430. | 511 | BERENGIER             | Frack            |                                           | M    | M2 H     | 01:38:06 | 3,06 |      138 |
+| 431. | 358 | NOYER                 | Gerard           |                                           | M    | M2 H     | 01:38:07 | 3,06 |      139 |
+| 432. | 515 | COMBALAT              | Frederi          | les nageurs du prado                      | M    | M2 H     | 01:38:07 | 3,06 |      140 |
+| 433. | 230 | ROBBE                 | Bertrand         |                                           | M    | M1 H     | 01:38:09 | 3,06 |      206 |
+| 434. | 531 | PELTRE                | Marc             |                                           | M    | M2 H     | 01:38:10 | 3,06 |      141 |
+| 435. |  61 | DELMAS                | Serge            | CAO St Cyr triathlon                      | M    | M1 H     | 01:38:13 | 3,05 |      207 |
+| 436. | 288 | GALLET                | Thomas           |                                           | M    | M1 H     | 01:38:16 | 3,05 |      208 |
+| 437. | 773 | LE TREQUESSER         | Pierre           |                                           | M    | M1 H     | 01:38:17 | 3,05 |      209 |
+| 438. | 584 | PORTES                | Marie-Laure      | CLUB NAUTIQUE CARCASSONNE                 | F    | M2 F     | 01:38:20 | 3,05 |       11 |
+| 439. | 483 | RAINIERI              | Julien           | Massilia Sub                              | M    | M1 H     | 01:38:27 | 3,05 |      210 |
+| 440. | 637 | TRICOIRE              | Philippe         | Police nationale                          | M    | M2 H     | 01:38:32 | 3,04 |      142 |
+| 441. |  16 | PORHEL                | Jean-Baptiste    |                                           | M    | M1 H     | 01:38:38 | 3,04 |      211 |
+| 442. | 546 | JEANSON               | Marco            |                                           | M    | M2 H     | 01:38:46 | 3,04 |      143 |
+| 443. | 907 | POLSKIY               | Vladimir         |                                           | M    |          | 01:38:46 | 3,04 |          |
+| 444. | 369 | DELORGE               | Stephane         | MAssilia sub                              | M    | M2 H     | 01:38:52 | 3,03 |      144 |
+| 445. | 270 | PY                    | Carine           |                                           | F    | M1 F     | 01:38:53 | 3,03 |       42 |
+| 446. | 576 | VAUX                  | Frederic         |                                           | M    | M1 H     | 01:39:03 | 3,03 |      212 |
+| 447. | 562 | BLOMART               | Thibaut          |                                           | M    | M1 H     | 01:39:06 | 3,03 |      213 |
+| 448. | 183 | MASSARY               | Patrick          | cfpasm                                    | M    | M2 H     | 01:39:18 | 3,02 |      145 |
+| 449. | 173 | BONNARD               | Matthieu         |                                           | M    | M1 H     | 01:39:18 | 3,02 |      214 |
+| 450. | 570 | PERTUSOT              | Camille          |                                           | M    | M1 H     | 01:39:34 | 3,01 |      215 |
+| 451. | 941 | CLEMENT               | Pascal           |                                           | M    | M1 H     | 01:39:35 | 3,01 |      216 |
+| 452. | 821 | FREIMANN              | Marc             |                                           | M    | M2 H     | 01:39:56 | 3    |      146 |
+| 453. | 274 | BOUVATIER             | Jean             |                                           | M    | M1 H     | 01:39:56 | 3    |      217 |
+| 454. | 277 | PAUL                  | Olivier          |                                           | M    | M2 H     | 01:39:58 | 3    |      147 |
+| 455. |  46 | PRADIER               | Jean-Pascal      | La Garde Triathlon                        | M    | M2 H     | 01:40:04 | 3    |      148 |
+| 456. | 311 | CRASSOUS              | Isabelle         | pierrelatte                               | F    | M1 F     | 01:40:23 | 2,99 |       43 |
+| 457. | 243 | JOLY                  | Sylvie           | CAO St Cyr triathlon                      | F    | M2 F     | 01:40:31 | 2,98 |       12 |
+| 458. | 824 | GUYOT SIONNEST        | Remi             |                                           | M    | M1 H     | 01:40:31 | 2,98 |      218 |
+| 459. | 246 | DUDART                | Guy              | Mach3 triathlon                           | M    | M2 H     | 01:40:32 | 2,98 |      149 |
+| 460. | 951 | MUHORTOV              | Egor             |                                           | M    | M1 H     | 01:40:35 | 2,98 |      219 |
+| 461. | 490 | YAKALIS               | Jean-Jacques     |                                           | M    | M2 H     | 01:40:43 | 2,98 |      150 |
+| 462. | 758 | FABRE                 | Magali           | RAC                                       | F    | M1 F     | 01:40:45 | 2,98 |       44 |
+| 463. | 897 | REY                   | Alain            |                                           | M    | M2 H     | 01:40:46 | 2,98 |      151 |
+| 464. | 175 | DMITRY                | Kovtun           |                                           | M    | M2 H     | 01:40:47 | 2,98 |      152 |
+| 465. |  91 | DESCHAMPS             | Frederic         |                                           | M    | M2 H     | 01:40:48 | 2,98 |      153 |
+| 466. | 588 | DAVID                 | Manon            | CSM Marseille                             | F    | M1 F     | 01:40:55 | 2,97 |       45 |
+| 467. | 899 | BERNAROYAT            | Frederic         |                                           | M    | M1 H     | 01:41:01 | 2,97 |      220 |
+| 468. | 594 | RONCA RANDIER         | Sophie           | Pays d'Aix Natation                       | F    | M1 F     | 01:41:02 | 2,97 |       46 |
+| 469. | 516 | HERNANDEZ             | Jean-Luc         | Durance Triathlon                         | M    | M2 H     | 01:41:04 | 2,97 |      154 |
+| 470. | 161 | VERLEY                | Lyonel           |                                           | M    | M2 H     | 01:41:09 | 2,97 |      155 |
+| 471. | 316 | CELINE                | Cagna            | PPA                                       | F    | M1 F     | 01:41:21 | 2,96 |       47 |
+| 472. | 219 | LATHOUD               | Ambroise         |                                           | M    | M1 H     | 01:41:22 | 2,96 |      221 |
+| 473. |  84 | BECQUART              | Bruno            |                                           | M    | M1 H     | 01:41:34 | 2,95 |      222 |
+| 474. | 451 | BESCOND               | Natacha          | Gemenos natation                          | F    | M2 F     | 01:41:41 | 2,95 |       13 |
+| 475. | 141 | MERET                 | Aurélie          | Cavaillon Triathlon Club                  | F    | M2 F     | 01:41:47 | 2,95 |       14 |
+| 476. | 180 | MORIN                 | Philippe         |                                           | M    | M2 H     | 01:41:51 | 2,95 |      156 |
+| 477. | 839 | SMITH                 | Tara             |                                           | F    | M1 F     | 01:41:52 | 2,95 |       48 |
+| 478. | 488 | ANGIBAUD              | Romuald          | Les sardines                              | M    | M1 H     | 01:41:53 | 2,94 |      223 |
+| 479. | 585 | THIBAULT              | Laurent          | salon triathlon                           | M    | M2 H     | 01:41:56 | 2,94 |      157 |
+| 480. | 263 | CARLAC                | Rémi             |                                           | M    | M1 H     | 01:42:00 | 2,94 |      224 |
+| 481. | 668 | MALLET                | Karine           | ASPTT MARSEILLE                           | F    | M2 F     | 01:42:05 | 2,94 |       15 |
+| 482. | 239 | SERVEAU               | Karine           |                                           | F    | M2 F     | 01:42:08 | 2,94 |       16 |
+| 483. |  14 | MARDIROSSIAN          | Alexis           | aquatic club allaudien                    | M    | M1 H     | 01:42:34 | 2,92 |      225 |
+| 484. | 135 | GUISSART              | Emmanuelle       |                                           | F    | M1 F     | 01:42:51 | 2,92 |       49 |
+| 485. | 797 | FARINELLA             | Alain            |                                           | M    | M2 H     | 01:42:58 | 2,91 |      158 |
+| 486. |  42 | PEREZ                 | Philippe         |                                           | M    | M2 H     | 01:43:00 | 2,91 |      159 |
+| 487. |  96 | CEBRIAN               | Hugo             |                                           | M    | M1 H     | 01:43:02 | 2,91 |      226 |
+| 488. | 397 | CLERY                 | Marc             | dauphins du toec                          | M    | M2 H     | 01:43:06 | 2,91 |      160 |
+| 489. |  21 | THOMAS                | Damien           | CN EPINETTES PARIS                        | M    | M1 H     | 01:43:06 | 2,91 |      227 |
+| 490. | 159 | THOMAS                | Arnaud           |                                           | M    | M2 H     | 01:43:08 | 2,91 |      161 |
+| 491. | 124 | FERON                 | Ingrid           |                                           | F    | M1 F     | 01:43:10 | 2,91 |       50 |
+| 492. | 956 | LANDELLE              | Vincent          |                                           | M    | M1 H     | 01:43:14 | 2,91 |      228 |
+| 493. | 353 | FOURNIER              | Eric             |                                           | M    | M2 H     | 01:43:16 | 2,91 |      162 |
+| 494. | 143 | PIACENTILE            | Marc             | CSPCG 13                                  | M    | M2 H     | 01:43:18 | 2,9  |      163 |
+| 495. |  31 | ZANARET               | Matthieu         | Archipel Plongée                          | M    | M1 H     | 01:43:22 | 2,9  |      229 |
+| 496. | 203 | FAGES                 | Jerome           | Les sardines                              | M    | M1 H     | 01:43:25 | 2,9  |      230 |
+| 497. | 936 | CARBANORO             | Lucas            |                                           | M    | M1 H     | 01:43:26 | 2,9  |      231 |
+| 498. | 486 | VERA                  | Bykova           |                                           | F    | M2 F     | 01:43:33 | 2,9  |       17 |
+| 499. | 484 | FARRÉ                 | Benoit           |                                           | M    | M1 H     | 01:43:34 | 2,9  |      232 |
+| 500. | 399 | NEUVILLE              | Jean-Philippe    |                                           | M    | M1 H     | 01:43:39 | 2,89 |      233 |
+| 501. | 840 | SMITH                 | Sharon           |                                           | F    | M1 F     | 01:43:43 | 2,89 |       51 |
+| 502. | 223 | DUTRUC                | Herve            | AILES SPORTIVES AIRBUS                    | M    | M2 H     | 01:43:43 | 2,89 |      164 |
+| 503. | 542 | CLEMENT               | Maxime           |                                           | M    | M1 H     | 01:43:45 | 2,89 |      234 |
+| 504. |  23 | MANSOUR               | Souheil          |                                           | M    | M2 H     | 01:43:49 | 2,89 |      165 |
+| 505. | 122 | MARQUET               | Marion           | Massilia triathlon                        | F    | M1 F     | 01:43:51 | 2,89 |       52 |
+| 506. | 963 | SEGUY                 | Jean-Pierre      |                                           | M    | M2 H     | 01:44:06 | 2,88 |      166 |
+| 507. |  72 | PROUTIERE             | Florent          |                                           | M    | M1 H     | 01:44:16 | 2,88 |      235 |
+| 508. | 903 | CHAUBEL               | Guy              |                                           | M    |          | 01:44:16 | 2,88 |          |
+| 509. | 441 | SALANIÉ               | Rémi             |                                           | M    | M1 H     | 01:44:18 | 2,88 |      236 |
+| 510. | 457 | CALLEDE               | Julien           |                                           | M    | M1 H     | 01:44:24 | 2,87 |      237 |
+| 511. | 639 | TISSERAND             | Anne             | Sporting Club Corniche Marseille          | F    | M1 F     | 01:44:24 | 2,87 |       53 |
+| 512. | 761 | RAMEL                 | Delphine         | CNSC                                      | F    | M1 F     | 01:44:28 | 2,87 |       54 |
+| 513. | 313 | TOBIN                 | Lara             | Paris Aquatique                           | F    | M1 F     | 01:44:33 | 2,87 |       55 |
+| 514. | 318 | LAVIGNE               | Charlotte        | Cahors triathlon                          | F    | M1 F     | 01:44:35 | 2,87 |       56 |
+| 515. |  20 | TAILLEFER             | Charlotte        | Villeurbanne Natation                     | F    | M1 F     | 01:44:36 | 2,87 |       57 |
+| 516. | 264 | BERDOU                | Philippe         |                                           | M    | M1 H     | 01:44:38 | 2,87 |      238 |
+| 517. | 617 | DELILLE               | Stéphane         | CSM Marseille                             | M    | M2 H     | 01:44:46 | 2,86 |      167 |
+| 518. | 104 | BEAUMONT              | Bruno            |                                           | M    | M1 H     | 01:44:52 | 2,86 |      239 |
+| 519. | 521 | FELTZ                 | Arnaud           |                                           | M    | M1 H     | 01:45:00 | 2,86 |      240 |
+| 520. | 301 | CHAUVEAU              | Sophie           | ASM Belfort Natation                      | F    | M2 F     | 01:45:02 | 2,86 |       18 |
+| 521. | 755 | KEMPYNCK              | Mickaël          | Paris Aquatique                           | M    | M2 H     | 01:45:03 | 2,86 |      168 |
+| 522. | 954 | STANILOVSKAIA         | Mana             |                                           | F    | M1 F     | 01:45:06 | 2,85 |       58 |
+| 523. |  57 | FRISON                | Anthony          | SALON TRIATHLON                           | M    | M1 H     | 01:45:15 | 2,85 |      241 |
+| 524. | 354 | ALEKSEI               | Kudachkin        | X-Fit                                     | M    | M1 H     | 01:45:29 | 2,84 |      242 |
+| 525. | 221 | CAMERON               | Laura            |                                           | F    | M1 F     | 01:45:29 | 2,84 |       59 |
+| 526. | 357 | MCMAHON               | Kate             |                                           | F    | M1 F     | 01:45:30 | 2,84 |       60 |
+| 527. | 347 | KIRILL                | Medvedev         | X-Fit                                     | M    | M1 H     | 01:45:39 | 2,84 |      243 |
+| 528. | 350 | FALLOT                | Guillaume        |                                           | M    | M1 H     | 01:45:45 | 2,84 |      244 |
+| 529. | 414 | KRUNG                 | Yann             | US Creteil Triathlon                      | M    | M1 H     | 01:45:46 | 2,84 |      245 |
+| 530. | 908 | MORAT                 | Etienne          |                                           | M    |          | 01:46:03 | 2,83 |          |
+| 531. | 793 | BURDEN                | David            |                                           | M    | M2 H     | 01:46:05 | 2,83 |      169 |
+| 532. |  55 | NOURRY                | Carine           | Nautil club Boucain                       | F    | M1 F     | 01:46:57 | 2,81 |       61 |
+| 533. | 145 | MAUDEMAIN             | Gael             |                                           | M    | M1 H     | 01:47:02 | 2,8  |      246 |
+| 534. |  63 | VENABLES              | Luke             |                                           | M    | M1 H     | 01:47:05 | 2,8  |      247 |
+| 535. | 504 | GONZALEZ              | David            |                                           | M    | M1 H     | 01:47:05 | 2,8  |      248 |
+| 536. |  18 | BORNERT               | Olivier          |                                           | M    | M1 H     | 01:47:06 | 2,8  |      249 |
+| 537. | 384 | CAMPIONI              | Andrea           |                                           | M    | M2 H     | 01:47:11 | 2,8  |      170 |
+| 538. | 106 | DE LARQUIER           | Aldric           |                                           | M    | M1 H     | 01:47:20 | 2,8  |      250 |
+| 539. | 419 | GURDJOGLOU            | Arnaud           | Durance triathlon                         | M    | M1 H     | 01:47:31 | 2,79 |      251 |
+| 540. | 449 | VILLEMAGNE            | Emilie           |                                           | F    | M1 F     | 01:47:32 | 2,79 |       62 |
+| 541. | 560 | CATZARAS              | Thomas           |                                           | M    | M1 H     | 01:47:34 | 2,79 |      252 |
+| 542. | 945 | TORDO                 | Jerome           |                                           | M    | M1 H     | 01:48:03 | 2,78 |      253 |
+| 543. | 795 | BRIDAULT              | Stéphane         | CSCG13                                    | M    | M2 H     | 01:48:18 | 2,77 |      171 |
+| 544. | 508 | PENEAU                | Fanny            | Fleury Méditerranée triathlon             | M    | M1 H     | 01:48:29 | 2,77 |      254 |
+| 545. | 351 | GREEN                 | Elena            | dunlin swimmin Club                       | F    | M2 F     | 01:48:44 | 2,76 |       19 |
+| 546. | 910 | BENQUE                | Bruno            |                                           | M    |          | 01:48:59 | 2,75 |          |
+| 547. | 138 | BULLIOT               | Benoit           |                                           | M    | M1 H     | 01:49:03 | 2,75 |      255 |
+| 548. |  50 | ROS                   | Mathias          |                                           | M    | M1 H     | 01:49:06 | 2,75 |      256 |
+| 549. | 309 | BOUSSOUNIAN           | Marc             | ACTION TRIATHLON PROVENCE                 | M    | M2 H     | 01:49:10 | 2,75 |      172 |
+| 550. | 485 | STEFANINI             | Serge            | Trathlète Club Narbonnais                 | M    | M2 H     | 01:49:16 | 2,75 |      173 |
+| 551. | 215 | BUNAN                 | Philippe         |                                           | M    | M1 H     | 01:49:17 | 2,75 |      257 |
+| 552. |  89 | HALMA                 | Marion           |                                           | F    | M1 F     | 01:49:17 | 2,75 |       63 |
+| 553. | 510 | HERMELIN              | Antoine          |                                           | M    | M1 H     | 01:49:27 | 2,74 |      258 |
+| 554. | 272 | RAISSIGUIER           | Michel           |                                           | M    | M2 H     | 01:49:57 | 2,73 |      174 |
+| 555. | 894 | MEMBERCARD            | Douglas          |                                           | M    | M1 H     | 01:50:10 | 2,72 |      259 |
+| 556. | 765 | BURDEN                | Joanne           |                                           | F    | M1 F     | 01:50:17 | 2,72 |       64 |
+| 557. | 475 | NYCOLLIN              | Jack             |                                           | M    | M1 H     | 01:50:29 | 2,72 |      260 |
+| 558. | 210 | MESNARD               | Daniel           |                                           | M    | M1 H     | 01:50:45 | 2,71 |      261 |
+| 559. | 363 | FLEURQUIN-BONNARD     | Thomas           |                                           | M    | M1 H     | 01:50:53 | 2,71 |      262 |
+| 560. | 222 | FAILLET               | Gilles           | Tobesport                                 | M    | M2 H     | 01:51:28 | 2,69 |      175 |
+| 561. | 453 | DELAPORTE             | Franck           | triathlon port la nouvelle                | M    | M2 H     | 01:51:49 | 2,68 |      176 |
+| 562. | 337 | TRIACCA               | Vincent          |                                           | M    | M2 H     | 01:51:52 | 2,68 |      177 |
+| 563. |  41 | COULON                | Michel           |                                           | M    | M2 H     | 01:52:00 | 2,68 |      178 |
+| 564. | 334 | DALIDEC               | Gael             | Mouettes de Paris                         | M    | M1 H     | 01:52:04 | 2,68 |      263 |
+| 565. |  98 | PROTHAIS              | David            |                                           | M    | M1 H     | 01:52:11 | 2,67 |      264 |
+| 566. | 940 | ***** DOSSARD INCONNU |                  | M                                         |      | 01:52:16 |     2,67 |      |          |
+| 567. | 687 | MIGLIERINA            | Joëlle           | NC Crau                                   | F    | M1 F     | 01:52:18 | 2,67 |       65 |
+| 568. | 413 | LUGAGNE DELPON        | Gregoire         |                                           | M    | M2 H     | 01:52:24 | 2,67 |      179 |
+| 569. | 194 | BOUILLOT              | Cecile           |                                           | F    | M1 F     | 01:52:25 | 2,67 |       66 |
+| 570. | 306 | MONCORGÉ              | Inouk            |                                           | M    | M1 H     | 01:52:30 | 2,67 |      265 |
+| 571. | 338 | PIEVE                 | Sebastien        |                                           | M    | M1 H     | 01:52:31 | 2,67 |      266 |
+| 572. | 182 | BAINGER               | Austin           |                                           | M    | M2 H     | 01:52:38 | 2,66 |      180 |
+| 573. | 259 | POTEL                 | Sandrine         | Courbevoie triathlon                      | F    | M1 F     | 01:52:38 | 2,66 |       67 |
+| 574. | 290 | SOGON                 | Stéphane         |                                           | M    | M1 H     | 01:52:50 | 2,66 |      267 |
+| 575. | 372 | TIMMERMANS            | Christophe       |                                           | M    | M1 H     | 01:52:51 | 2,66 |      268 |
+| 576. | 506 | VILLERS               | Frederic         |                                           | M    | M1 H     | 01:52:57 | 2,66 |      269 |
+| 577. |  26 | ROQUES                | Jean Francois    |                                           | M    | M2 H     | 01:53:07 | 2,65 |      181 |
+| 578. | 325 | MELIKIAN              | Roger            |                                           | M    | M1 H     | 01:53:14 | 2,65 |      270 |
+| 579. |  56 | CHUNG                 | Mr Kawai         |                                           | M    | M1 H     | 01:53:30 | 2,64 |      271 |
+| 580. | 331 | HAYANE                | Malika           |                                           | F    | M2 F     | 01:53:34 | 2,64 |       20 |
+| 581. | 838 | ROISIN                | Kelly            |                                           | F    | M1 F     | 01:53:47 | 2,64 |       68 |
+| 582. | 520 | HEURTEL               | Julien           |                                           | M    | M1 H     | 01:54:16 | 2,63 |      272 |
+| 583. |  76 | TREVOUX               | Elodie           |                                           | F    | M1 F     | 01:54:23 | 2,62 |       69 |
+| 584. | 471 | BARBAGLI              | Eric             |                                           | M    | M1 H     | 01:54:34 | 2,62 |      273 |
+| 585. | 942 | GUERIN                | Eric             |                                           | M    | M2 H     | 01:54:45 | 2,61 |      182 |
+| 586. | 730 | HENRIET               | Jean-Charles     | CN Salon                                  | M    | M2 H     | 01:54:49 | 2,61 |      183 |
+| 587. | 932 | PULTIN                | Thibault         |                                           | M    | M1 H     | 01:54:53 | 2,61 |      274 |
+| 588. | 460 | AYMONIER              | Marc             |                                           | M    | M2 H     | 01:54:59 | 2,61 |      184 |
+| 589. | 119 | DURAND-GASSELIN       | Remi             |                                           | M    | M1 H     | 01:55:00 | 2,61 |      275 |
+| 590. | 177 | FRANZINI              | Sebastien        |                                           | M    | M1 H     | 01:55:06 | 2,61 |      276 |
+| 591. | 523 | GAZEL                 | Thomas           |                                           | M    | M1 H     | 01:55:09 | 2,61 |      277 |
+| 592. | 492 | BENSA                 | Didier           |                                           | M    | M1 H     | 01:55:13 | 2,6  |      278 |
+| 593. | 112 | MEUNIER               | Jean-Charles     |                                           | M    | M2 H     | 01:55:40 | 2,59 |      185 |
+| 594. | 197 | AGENET                | Marc             |                                           | M    | M1 H     | 01:55:41 | 2,59 |      279 |
+| 595. | 186 | MERCERON              | Alexandre        |                                           | M    | M1 H     | 01:55:50 | 2,59 |      280 |
+| 596. | 901 | MAUREL                | Florent          |                                           | M    |          | 01:55:58 | 2,59 |          |
+| 597. | 672 | UZZO                  | Alexandre        | ASPTT MARSEILLE                           | M    |          | 01:56:51 | 2,57 |          |
+| 598. | 212 | WEIGEL                | Coralie          |                                           | F    | M1 F     | 01:56:53 | 2,57 |       70 |
+| 599. | 898 | CURTILLET             | Catherine        |                                           | F    | M1 F     | 01:57:20 | 2,56 |       71 |
+| 600. | 496 | BLANCHARD             | Pierre           |                                           | M    | M1 H     | 01:57:30 | 2,55 |      281 |
+| 601. | 368 | PORHEL                | Marc             |                                           | M    | M1 H     | 01:57:35 | 2,55 |      282 |
+| 602. | 102 | PIANA                 | Claude           |                                           | M    | M2 H     | 01:58:12 | 2,54 |      186 |
+| 603. | 193 | FOREST                | Katrina          |                                           | F    | M2 F     | 01:58:34 | 2,53 |       21 |
+| 604. | 207 | BRANDON               | Christian        | CNP triathlon                             | M    | M2 H     | 01:58:59 | 2,52 |      187 |
+| 605. | 553 | SCHROEDER             | Matthias         |                                           | M    | M1 H     | 01:59:19 | 2,51 |      283 |
+| 606. |  79 | BAUDRAND              | Matthieu         |                                           | M    | M1 H     | 01:59:22 | 2,51 |      284 |
+| 607. | 237 | LEUSINK               | Debbie           |                                           | F    | M1 F     | 01:59:28 | 2,51 |       72 |
+| 608. | 519 | ALAIN                 | Grando           | Canet 66 Natation                         | M    | M2 H     | 01:59:49 | 2,5  |      188 |
+| 609. | 464 | BLAYAC                | Alain            |                                           | M    | M2 H     | 01:59:56 | 2,5  |      189 |
+| 610. | 235 | LOISON                | Marc             |                                           | M    | M2 H     | 02:00:02 | 2,5  |      190 |
+| 611. | 450 | PIQUOT                | Romain           |                                           | M    | TCH      | 02:00:21 | 2,49 |       13 |
+| 612. | 947 | BRUNEL                | Nicolas          |                                           | M    | M1 H     | 02:00:29 | 2,49 |      285 |
+| 613. | 253 | LE BARON              | Antoine          |                                           | M    | M2 H     | 02:00:38 | 2,49 |      191 |
+| 614. | 279 | GERVAIS               | Isabelle         | ASR Natation                              | F    | M2 F     | 02:00:59 | 2,48 |       22 |
+| 615. | 326 | DUMAY                 | Philippe         |                                           | M    | M2 H     | 02:01:00 | 2,48 |      192 |
+| 616. | 282 | CLOUP                 | Paola            |                                           | F    | M1 F     | 02:01:20 | 2,47 |       73 |
+| 617. | 381 | BENSOUNA              | Mark             |                                           | M    | M1 H     | 02:01:33 | 2,47 |      286 |
+| 618. | 498 | TATIANA               | Borisova         | X-Fit                                     | F    | M2 F     | 02:01:57 | 2,46 |       23 |
+| 619. | 254 | GARETON               | Vincent          |                                           | M    | M1 H     | 02:02:19 | 2,45 |      287 |
+| 620. | 952 | MOKOGOV               | Sergey           |                                           | M    | M1 H     | 02:02:22 | 2,45 |      288 |
+| 621. | 905 | MARTIN                | Isabelle         |                                           | F    |          | 02:02:27 | 2,45 |          |
+| 622. | 248 | BARBRY                | Hélène           | OUEST PLONGEE DEVELOPPEMENT               | F    | M2 F     | 02:02:30 | 2,45 |       24 |
+| 623. | 580 | O'CONNELL             | Lyn              |                                           | F    | M2 F     | 02:02:38 | 2,45 |       25 |
+| 624. | 294 | CAMINA                | Patrick          |                                           | M    | M1 H     | 02:04:20 | 2,41 |      289 |
+| 625. | 401 | COSQUER               | Alain            |                                           | M    | M2 H     | 02:04:34 | 2,41 |      193 |
+| 626. | 273 | KHADHRAOUI            | Sabri            |                                           | M    | M1 H     | 02:04:45 | 2,4  |      290 |
+| 627. | 512 | WINIECKI              | Franck           |                                           | M    | M2 H     | 02:04:47 | 2,4  |      194 |
+| 628. | 238 | AUBERT                | Gaelle           |                                           | F    | M1 F     | 02:05:17 | 2,39 |       74 |
+| 629. | 289 | HALLEPEE              | Serge            |                                           | M    | M2 H     | 02:05:20 | 2,39 |      195 |
+| 630. |   5 | HURSTEL               | Olivier          |                                           | M    | M2 H     | 02:05:34 | 2,39 |      196 |
+| 631. | 100 | DENICOLAÏ             | Aurelie          |                                           | F    | M1 F     | 02:05:45 | 2,39 |       75 |
+| 632. |  78 | LOREAU                | Amance           |                                           | F    | M1 F     | 02:05:46 | 2,39 |       76 |
+| 633. | 967 | DUBOURDIEU            | Thierry          |                                           | M    | M2 H     | 02:05:59 | 2,38 |      197 |
+| 634. |  92 | CROSET                | Alain            |                                           | M    | M2 H     | 02:06:20 | 2,37 |      198 |
+| 635. | 140 | FRUGOLI               | Michel           | TRI CLUB ISLE SUR SORGUE                  | M    | M2 H     | 02:06:26 | 2,37 |      199 |
+| 636. | 158 | BOURGUIGNON           | Michael          | Dauphins du TOEC                          | M    | M2 H     | 02:06:34 | 2,37 |      200 |
+| 637. | 107 | DELACOURT             | Christine        | LE MÉE-SUR-SEINE NATATION                 | F    | M2 F     | 02:06:41 | 2,37 |       26 |
+| 638. | 267 | BOULOUDNINE           | Samuel           |                                           | M    | M1 H     | 02:07:07 | 2,36 |      291 |
+| 639. | 645 | FEYSSEL               | Anne Marie       | VILLE DE MARSEILLE                        | F    | M2 F     | 02:07:34 | 2,35 |       27 |
+| 640. | 656 | SIMON                 | Nathalie         | ASPTT MARSEILLE                           | F    | M2 F     | 02:07:42 | 2,35 |       28 |
+| 641. | 305 | ANDREY                | Kovtun           |                                           | M    | M2 H     | 02:07:44 | 2,35 |      201 |
+| 642. | 256 | CLÉMENT               | Pascal           |                                           | M    | M1 H     | 02:08:33 | 2,33 |      292 |
+| 643. |  52 | CICHOSZ               | Kevin            |                                           | M    | M1 H     | 02:09:16 | 2,32 |      293 |
+| 644. | 491 | COUPARD               | Vincent          | Givors                                    | M    | M1 H     | 02:09:22 | 2,32 |      294 |
+| 645. |  88 | HENRY                 | Sylvain          |                                           | M    | M1 H     | 02:09:47 | 2,31 |      295 |
+| 646. | 257 | MONTREER              | Sandra           | MASSILIA SUB                              | F    | M1 F     | 02:10:12 | 2,3  |       77 |
+| 647. | 458 | NATALIA               | Rutkevich        |                                           | F    | M1 F     | 02:10:32 | 2,3  |       78 |
+| 648. | 501 | ELENA                 | Bakhtina         | X-Fit                                     | F    | M2 F     | 02:11:39 | 2,28 |       29 |
+| 649. | 551 | SANTAMARIA            | Jacques Pierre   | stade laurentin triathlon                 | M    | M2 H     | 02:13:18 | 2,25 |      202 |
+| 650. | 287 | LE BEL                | Hugues           |                                           | M    | M2 H     | 02:13:20 | 2,25 |      203 |
+| 651. | 417 | PETIT JEAN            | Robert           |                                           | M    | M2 H     | 02:13:48 | 2,24 |      204 |
+| 652. | 803 | MAZODIER              | Laurent          | ASM Belfort Natation                      | M    | M2 H     | 02:14:10 | 2,24 |      205 |
+| 653. | 352 | DELHOMME              | Ludovic          |                                           | M    | M1 H     | 02:14:20 | 2,23 |      296 |
+| 654. | 406 | KELLER                | Pascale Claude   | sardines triathlon                        | F    | M2 F     | 02:14:24 | 2,23 |       30 |
+| 655. | 344 | LATHAM                | Laure            | ASA (Royaume Uni)                         | F    | M1 F     | 02:16:47 | 2,19 |       79 |
+| 656. | 148 | BOUKROUCHE            | Mohamed          |                                           | M    | M1 H     | 02:17:25 | 2,18 |      297 |
+| 657. | 365 | GUÉGAN                | Gilles           |                                           | M    | M2 H     | 02:18:54 | 2,16 |      206 |
+| 658. | 271 | MESNARD               | Patrick          |                                           | M    | M1 H     | 02:21:30 | 2,12 |      298 |
+| 659. | 424 | DUCROT                | Marc             | PARIS AQUATIQUE                           | M    | M2 H     | 02:22:26 | 2,11 |      207 |
+| 660. | 232 | BARBEROT              | David            | LA MEDUSE                                 | M    | M1 H     | 02:24:21 | 2,08 |      299 |
+| 661. | 360 | GUILLARD              | Evelyne          | Triathlon sport Carqueiranne              | F    | M2 F     | 02:24:37 | 2,07 |       31 |
+| 662. | 202 | HERBEAU               | Patrick          |                                           | M    | M2 H     | 02:25:47 | 2,06 |      208 |
+|      | 654 | PARMENTIER            | Antoine          | ASPTT MARSEILLE                           | M    | M1 H     |  Abandon |      |          |
+|      | 556 | PHAN                  | Dinh Cuong       |                                           | M    | M2 H     |  Abandon |      |          |
+|      | 922 | ROCHETTE              | Gaetan           |                                           | M    | CADH     |  Abandon |      |          |
+|      | 412 | CALAIS                | Céline           | O'TONIC                                   | F    | M1 F     |  Abandon |      |          |
+|      | 322 | BOUVATIER             | Pierre           |                                           | M    | M1 H     |  Abandon |      |          |
+|      | 568 | CARRILLO              | Christopher      | Cercle des Nageurs Sauveteurs Avignonnais | M    | TCH      |  Abandon |      |          |
+|      | 133 | MAUPRÉ                | Agnès            |                                           | F    | M1 F     |  Abandon |      |          |
+|      | 627 | FASENTIEUX            | Alexis           | Pays d'Aix Natation                       | M    | M1 H     |  Abandon |      |          |
+|      |  80 | GUIOT                 | Bertrand         |                                           | M    | M1 H     |  Abandon |      |          |
+|      | 744 | DESTREZ               | Alan             | 'L''Argentière EAC'                       | M    | CADH     |  Abandon |      |          |
+|      | 463 | CAVRINI               | Eric             |                                           | M    | M2 H     |  Abandon |      |          |
+|      | 774 | ROUSSELLE             | Christophe       | Paris Aquatique                           | M    | M1 H     |  Abandon |      |          |
+|      | 823 | FAUTECK               | Harald           |                                           | M    | M2 H     |  Abandon |      |          |
+|      | 151 | RUEFF                 | Thomas           | SALON TRIATHLON                           | M    | M1 H     |  Abandon |      |          |
+|      | 927 | HUBSCHWERLIN          | Nadege           |                                           | F    |          |  Abandon |      |          |
+|      | 228 | GRILLERE              | Paul             |                                           | M    | TCH      |  Abandon |      |          |
+|      | 438 | ALRIC                 | Renaud           |                                           | M    | M1 H     |  Abandon |      |          |
+|      |   4 | BERNARDET             | Karim            |                                           | M    | M1 H     |  Abandon |      |          |
+|      | 416 | VERNEAU               | Coline           | Les Dauphins de Meudon                    | F    | M1 F     |  Abandon |      |          |
+|      | 771 | MENDES ANTUNES        | Nelson           | ASM Dauphins de Meudon                    | M    | M1 H     |  Abandon |      |          |
+|      | 960 | KEMPYNCK              | Michael          |                                           | M    | M2 H     |  Abandon |      |          |
+|      | 969 | FRANGIONI             | Pierre           |                                           | M    | M1 H     |  Abandon |      |          |
+|      | 480 | DEKKER                | Laure            |                                           | F    | M1 F     |  Abandon |      |          |
+|      | 298 | DESCORPS              | Vincent          | Association Ornon Natation                | M    | M2 H     |  Abandon |      |          |
+|      | 559 | COSSA                 | Jeanluc          | miramas aqua sport club                   | M    | M2 H     |  Abandon |      |          |
+|      | 830 | GROHEUX               | David            | CN Marseille                              | M    | M1 H     |  Abandon |      |          |
+|      | 131 | MASSIERA              | Gladys           |                                           | F    | M1 F     |  Abandon |      |          |
+|      | 388 | HERKLOTS              | Hans             |                                           | M    | M2 H     |  Abandon |      |          |
+|      | 904 | BRUNEL                | Catherine        |                                           | F    |          |  Abandon |      |          |
+|      | 962 | CAILLEAUD             | Laurent          |                                           | M    | M2 H     |  Abandon |      |          |
+|      | 398 | THEVENET              | Fabien           |                                           | M    | M2 H     |  Abandon |      |          |
+|      | 635 | FILIPPINI             | Frédéric         | Police nationale                          | M    | M1 H     |  Abandon |      |          |
+|      | 925 | CAPDEVILLE            | Philippe         |                                           | M    | M2 H     |  Abandon |      |          |
+|      |  37 | METZGER               | Joachim          |                                           | M    | M1 H     |  Abandon |      |          |
+|      | 382 | BLANC                 | Emmanuel         |                                           | M    | M1 H     |  Abandon |      |          |
+|      |  13 | FRANZON               | Sebastien        |                                           | M    | M2 H     |  Abandon |      |          |
+|      | 126 | LEAVEY                | Chris            |                                           | M    | M2 H     |  Abandon |      |          |
+|      |  11 | GODFREY               | Duncan           |                                           | M    | M1 H     |  Abandon |      |          |
+|      | 407 | LUBOZ                 | Thomas           |                                           | M    | M1 H     |  Abandon |      |          |
+|      | 150 | PETIT                 | Christophe       | PARIS AQUATIQUE                           | M    | M1 H     |  Abandon |      |          |
+|      |  62 | GHIONDA               | Philippe         | Massilia Triathlon                        | M    | M1 H     |  Abandon |      |          |
+|      | 673 | LESECH                | Stéphanie        | ASPTT MARSEILLE                           | F    |          |  Abandon |      |          |
+|      | 630 | ISSA                  | Philippe         | CSM Marseille                             | M    | M2 H     |  Abandon |      |          |
+|      | 802 | ARLANDIS              | Geoffroy         |                                           | M    | M1 H     |  Abandon |      |          |
+|      | 403 | PLACIDOUX             | William          |                                           | M    | M2 H     |  Abandon |      |          |
+|      | 411 | BILLEREY              | Richard          | Nageurs du Prado                          | M    | M2 H     |  Abandon |      |          |
+|      | 465 | FURRI                 | Sarah            |                                           | F    | M2 F     |  Abandon |      |          |
+|      | 971 | FRAYSSE               | Vivien           | asptt montpellier                         | M    | M1 H     |  Abandon |      |          |
+|      | 661 | LORETO                | Federico         | ASPTT MARSEILLE                           | M    | M1 H     |  Abandon |      |          |
+|      | 421 | ANDREY                | Lebedev          | X-Fit                                     | M    | M1 H     |  Abandon |      |          |
+|      | 213 | LE DALL               | Olivier          |                                           | M    | M2 H     |  Abandon |      |          |
+|      | 260 | CONSTANCIN            | Gilles           |                                           | M    | M1 H     |  Abandon |      |          |
+|      | 160 | PORHEL                | Matthieu         |                                           | M    | M1 H     |  Abandon |      |          |
+|      | 268 | MARION                | Louis            | DECINES AQUATIQUE CLUB                    | M    | CADH     |  Abandon |      |          |
+|      | 528 | INGHILLERI            | Julien           |                                           | M    | M2 H     |  Abandon |      |          |
+|      |  38 | VIALA                 | Arnaud           |                                           | M    | M1 H     |  Abandon |      |          |
+|      | 244 | TRANIE                | Brice            |                                           | M    | M1 H     |  Abandon |      |          |
+|      |  94 | AYMONIER              | Gregoire         |                                           | M    | TCH      |  Abandon |      |          |
+|------+-----+-----------------------+------------------+-------------------------------------------+------+----------+----------+------+----------|
