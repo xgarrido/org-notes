@@ -108,7 +108,7 @@ development branch.
 ** Installation of =legacy= branch
 *** Cadfael
 To install the =legacy= branch, we use the =aggregator= script file and its
-latest [[ https://github.com/xgarrido/zsh-aggregator/commit/1b2ed677e83e3548fa6812c19f1e4240adbdf6a7][revision]] to get Cadfael legacy version. This will install Cadfael within
+latest [[https://github.com/xgarrido/zsh-aggregator/commit/1b2ed677e83e3548fa6812c19f1e4240adbdf6a7][revision]] to get Cadfael legacy version. This will install Cadfael within
 =~/Workdir/NEMO/supernemo/development= directory for the following software
 versions :
 
@@ -144,7 +144,7 @@ processing is done by
 #+BEGIN_SRC sh
   dpp_processing                                                                                                                                   \
       --dlls-config ~/Workdir/NEMO/supernemo/simulations/bayeux_simulation_modules/geant4_validation/config/pipeline/dlls.conf                     \
-      -l geomtools -l mctools_g4 -l mctools_bio                                                                                                                  \
+      -l geomtools -l mctools_g4 -l mctools_bio                                                                                                    \
       --module-manager-config ~/Workdir/NEMO/supernemo/simulations/bayeux_simulation_modules/geant4_validation/config/pipeline/module_manager.conf \
       --module geant4_simulation_module                                                                                                            \
       -M 100 --logging-priority trace
