@@ -4,27 +4,32 @@
 
 * After booting on archlinux ISO file
 Start loading the french keymap
-#+BEGIN_SRC sh
+#+BEGIN_SRC shell
   loadkeys fr
 #+END_SRC
 
 * Create and format the partitions :
 First look if any partition is already present
-#+BEGIN_SRC sh
+#+BEGIN_SRC shell
   fdisk -l
 #+END_SRC
-If yes, then either use them and go directly to the "Mounting" part
-or, format the disk using `fisk` or `cfdisk` utility.
-#+BEGIN_SRC sh
-  fdisk /dev/sda
-#+END_SRC
-Different strategies can then be adopted (see
-https://wiki.archlinux.org/index.php/Partitioning). For the time
-being, I have adopted the following and pretty simple one :
-- a 20 Gb root partition
-- all the other bytes for the /home partition
+If yes, then either use them and go directly to the "Mounting" part or, format
+the disk using =fisk= or =cfdisk= utility.
 
-Example of `fdisk` partition :
+Different strategies can then be adopted (see
+https://wiki.archlinux.org/index.php/Partitioning). For the time being, I have
+adopted the following and pretty simple one :
+- a 20 Gb root partition
+- all the other bytes for the =/home= partition
+
+To do a fresh install, enter into =fdisk= utility. Inside =fisk= prompt, delete
+all previous partition by typing =d= several times until there are no more
+partition. Then create a new one by typing =n=, use default number value as well
+as starting block and then set the 20 Gb size by writing =+20G=. Repeat the
+operation for the =/home= partition. Finally, write the new table partition
+using =w= letter.
+
+Example of =fdisk= partition :
 
 |-----------+------+----------+-----------+-----------+----+--------|
 | Device    | Boot |    Start |       End |    Blocks | Id | System |
@@ -32,135 +37,175 @@ Example of `fdisk` partition :
 | /dev/sda2 |      | 39063551 | 500118191 | 230527320 | 83 | Linux  |
 |-----------+------+----------+-----------+-----------+----+--------|
 
-Format partition is done with `mkfs` utility
-#+BEGIN_SRC sh
+Format partition is done with =mkfs= utility
+#+BEGIN_SRC shell
   mkfs.ext4 /dev/sda1
   mkfs.ext4 /dev/sda2
 #+END_SRC
 
 * Mount the partitions
-#+BEGIN_SRC sh
+#+BEGIN_SRC shell
   mount /dev/sda1 /mnt
   mkdir /mnt/home && mount /dev/sda2 /mnt/home
 #+END_SRC
 * Connect to the internet
-Use the `wifi-menu` utility, choose the wifi name and set the WPA key
-
+Use the =wifi-menu= utility, choose the wifi name and set the WPA key. To use
+=eduroam= network, first create a =wlp12s0-eduroam= file inside =/etc/netctl=
+directory. Edit it and add the following lines
+#+BEGIN_SRC shell
+  Interface=wlp12s0
+  Connection=wireless
+  Security=wpa-configsection
+  IP=dhcp
+  WPAConfigSection=(
+      'ssid="eduroam"'
+      'proto=RSN'
+      'key_mgmt=WPA-EAP'
+      'pairwise=CCMP'
+      'auth_alg=OPEN'
+      'eap=PEAP'
+      'identity="XXXX.XXXX@u-psud.fr"'
+      'password="XXXX"'
+  )
+#+END_SRC
+Finally, start the connection with the above profile by doing
+#+BEGIN_SRC shell
+  netctl start wlp12s0-eduroam
+#+END_SRC
 * Install the base system
 #+BEGIN_SRC sh
-  pacstrap /mnt base base_devel
+  pacstrap /mnt base base-devel
 #+END_SRC
+
+If you get errors like
+#+BEGIN_SRC shell
+  error: could not open file /mnt/var/lib/pacman/sync/core.db: Unrecognized archive format
+#+END_SRC
+just remove the corresponding file /i.e./
+=/mnt/var/lib/pacman/sync/core.d=. These errors mainly come from broken download
+links and thus corrupted database.
 
 * Configure the system
 ** Generate a fstab
-#+BEGIN_SRC sh
+#+BEGIN_SRC shell
   genfstab -p /mnt >> /mnt/etc/fstab
 #+END_SRC
-** Next `chroot` into our newly installed system
-#+BEGIN_SRC sh
+** Next =chroot= into our newly installed system
+#+BEGIN_SRC shell
   arch-chroot /mnt
 #+END_SRC
 ** Symlink /etc/localtime
-#+BEGIN_SRC sh
+#+BEGIN_SRC shell
   ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
   hwclock --systohc --utc
 #+END_SRC
-** Uncomment the 'fr' lines in /etc/locale.gen file and generate it
-#+BEGIN_SRC sh
+** Generate =locale-gen=
+Uncomment the lines starting with =fr_FR= in =/etc/locale.gen= and then do
+#+BEGIN_SRC shell
   locale-gen
 #+END_SRC
 ** Finally do
-#+BEGIN_SRC sh
+#+BEGIN_SRC shell
   echo LANG="fr_FR.UTF-8" > /etc/locale.conf
   export LANG=fr_FR.UTF-8
 #+END_SRC
-* Configuring the Console Keymap
-#+BEGIN_SRC sh
-  cd to /usr/share/kbd/keymaps/i386/azerty
+** Configuring the Console Keymap
+#+BEGIN_SRC shell
+  cd /usr/share/kbd/keymaps/i386/azerty
 #+END_SRC
-Copy your default keymap (fr-pc.map.gz) to a new file fr-pc-personal.map.gz
-Gunzip the new map file
-Edit fr-pc-personal.map using your favorite editor.
+Copy your default keymap (=fr-pc.map.gz=) to a new file =fr-pc-personal.map.gz=
+Gunzip the new map file. Edit =fr-pc-personal.map= using your favorite editor.
 - Swap CapsLock with Escape (Vim)
 make keycode 1 = Caps_Lock and keycode 58 = Escape
 Gzip the map file
 Change the default keyboard layout file that will be used by editing
-=/etc/vconsole.conf= and adding KEYMAP=fr-pc-personal
-* Create a user account
+=/etc/vconsole.conf= and adding =KEYMAP=fr-pc-personal=
+** Create a user account
 First set the root password
-#+BEGIN_SRC sh
+#+BEGIN_SRC shell
   passwd
 #+END_SRC
 and install =sudo= command
-#+BEGIN_SRC sh
+#+BEGIN_SRC shell
   pacman -S sudo
 #+END_SRC
 Once you've installed sudo, you can allow your new user to run it by
 editing your sudoers file:
-#+BEGIN_SRC sh
+#+BEGIN_SRC shell
   EDITOR=nano visudo
 #+END_SRC
 Scroll down until you find this line and uncomment it:
-#+BEGIN_SRC sh
+#+BEGIN_SRC shell
   %wheel ALL=(ALL) ALL
 #+END_SRC
 
 Before creating a user account, install zshell
-#+BEGIN_SRC sh
+#+BEGIN_SRC shell
   pacman -S zsh
 #+END_SRC
 Create a user account
-#+BEGIN_SRC sh
+#+BEGIN_SRC shell
   useradd -m -g users -G wheel,storage,power -s /bin/zsh garrido
   passwd garrido
 #+END_SRC
 
-* Install your GRUB bootloader
-#+BEGIN_SRC sh
+** Install your GRUB bootloader
+#+BEGIN_SRC shell
   pacman -S grub-bios
   grub-install --target=i386-pc --recheck /dev/sda
-  cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo
-  /boot/grub/locale/en.mo
+  cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
 #+END_SRC
 Target is always i386-pc even if the laptop/pc is a 64 bits machine
 
 Run
-#+BEGIN_SRC sh
-grub-mkconfig -o /boot/grub/grub.cfg
+#+BEGIN_SRC shell
+  grub-mkconfig -o /boot/grub/grub.cfg
 #+END_SRC
 
-* Setup your network
-#+BEGIN_SRC sh
-pacman -S wireless_tools wpa_supplicant wpa_actiond dialog
-wifi-menu
-systemctl enable net-auto-wireless.service
+** Setup your network
+  pacman -S wireless_tools wpa_supplicant wpa_actiond dialog
+  wifi-menu
+  systemctl enable net-auto-wireless.service
 #+END_SRC
 
-* Exit, unmount partitions and reboot
-#+BEGIN_SRC sh
-exit
-umount /mnt/home
-umount /mnt
-reboot
+** Exit, unmount partitions and reboot
+#+BEGIN_SRC shell
+  exit
+  umount /mnt/home
+  umount /mnt
+  reboot
 #+END_SRC
 
-* Sound, video and mouse drivers
-+ Get sound
-#+BEGIN_SRC sh
-  sudo pacman -S alsa-utils
-  alsamixer
-  speaker-test -c 2
-#+END_SRC
-+ Install video driver (Intel)
-#+BEGIN_SRC sh
-  sudo pacman -S xf86-video-intel
-#+END_SRC
-+ Install mouse driver
-#+BEGIN_SRC sh
-  sudo pacman -S xf86-input-synaptics
+* Setting sound, video, X window and package manager
+** Network setup
+Event if you generate a profile /via/ the [[Connect to the internet]] section, you
+may need to generate again your network profile. To do that just copy-paste the
+configuration given in [[Connect to the internet]] section into =/etc/netctl= (with
+root privilege /i.e./ using =sudo=) and then start the network by doing
+#+BEGIN_SRC shell
+  sudo netctl start wlp12s0-eduroam
 #+END_SRC
 
-* X window
+** Sound, video and mouse drivers
+- Get sound
+  #+BEGIN_SRC shell
+    sudo pacman -S alsa-utils
+    alsamixer
+    speaker-test -c 2
+  #+END_SRC
+  To deactivate the PC speaker beeps, you can do temporarly =sudo rmmod
+  pcspkr=. To apply it globally follow this [[https://wiki.archlinux.org/index.php/Disable_PC_speaker_beep][page]] and try one of the recommending
+  method.
+- Install video driver (Intel)
+  #+BEGIN_SRC shell
+    sudo pacman -S xf86-video-intel
+  #+END_SRC
+- Install mouse driver
+  #+BEGIN_SRC shell
+    sudo pacman -S xf86-input-synaptics
+  #+END_SRC
+
+** X window
 + Install X window system
 #+BEGIN_SRC sh
   sudo pacman -S xorg-server xorg-xinit xorg-server-utils
@@ -171,22 +216,10 @@ reboot
   startx
 #+END_SRC
 
-* Install and set Openbox
-#+BEGIN_SRC sh
-  sudo pacman -S openbox
-#+END_SRC
-#+BEGIN_SRC sh
-  mkdir -p ~/.config/openbox
-  cp /etc/xdg/openbox/{rc.xml,menu.xml,autostart,environment}
-  ~/.config/openbox
-#+END_SRC
-
-Add the following line to ~/.xinitrc
-#+BEGIN_SRC sh
-  echo "exec openbox-session" > ~/.xinitrc
-#+END_SRC
-
-Install yaourt : add the following line into /etc/pacman.conf
+** Package managers
+=yaourt= is a =pacman= front-end which support arch user repository /aka/
+[[https://aur.archlinux.org/][AUR]]. To use it as default package manager, add the following line into
+=/etc/pacman.conf=
 #+BEGIN_SRC sh
   [archlinuxfr]
   Server = http://repo.archlinux.fr/$arch
@@ -196,13 +229,40 @@ Then do
   sudo pacman -Sy yaourt
 #+END_SRC
 
-#+BEGIN_SRC sh
-  yaourt -S openssh rsync
+Some =python= applications can be installed through =pacman/yaourt= but others
+are easily installed using =pip= manager. To install =pip=, just do
+#+BEGIN_SRC shell
+  yaourt -S python-pip
+#+END_SRC
+By the way, this will automatically installed the latest version of =python=
+(currently the 3.5 version).
+
+* Install and set-up Openbox
+#+BEGIN_SRC shell
+  yaourt -S openbox
+#+END_SRC
+
+# #+BEGIN_SRC shell
+#   mkdir -p ~/.config/openbox
+#   cp /etc/xdg/openbox/{rc.xml,menu.xml,autostart,environment}
+#   ~/.config/openbox
+# #+END_SRC
+
+
+
+Add the following line to ~/.xinitrc
+#+BEGIN_SRC shell
+  echo "exec openbox-session" > ~/.xinitrc
 #+END_SRC
 
 Install obconf, tint2 and hsetroot (wallpaper)
+#+BEGIN_SRC shell
+  yaourt -S obconf tint2 hsetroot
+#+END_SRC
+
+* Packages
 #+BEGIN_SRC sh
-  sudo pacman -S obconf tint2 hsetroot
+  yaourt -S openssh rsync wget
 #+END_SRC
 
 Install ubuntu-ttf font
