@@ -149,6 +149,13 @@ Create a user account
   passwd garrido
 #+END_SRC
 
+** Set the hostname
+To set a hostname to the machine different from =localhost= (laptop machines are
+recognized as =garrido-laptop=, do
+#+BEGIN_SRC shell
+  echo "garrido-laptop" > /etc/hostname
+#+END_SRC
+
 ** Install your GRUB bootloader
 #+BEGIN_SRC shell
   pacman -S grub-bios
@@ -217,6 +224,7 @@ root privilege /i.e./ using =sudo=) and then start the network by doing
 #+END_SRC
 
 ** Package managers
+*** =yaourt=
 =yaourt= is a =pacman= front-end which support arch user repository /aka/
 [[https://aur.archlinux.org/][AUR]]. To use it as default package manager, add the following line into
 =/etc/pacman.conf=
@@ -229,6 +237,7 @@ Then do
   sudo pacman -Sy yaourt
 #+END_SRC
 
+*** =python-pip=
 Some =python= applications can be installed through =pacman/yaourt= but others
 are easily installed using =pip= manager. To install =pip=, just do
 #+BEGIN_SRC shell
@@ -237,71 +246,117 @@ are easily installed using =pip= manager. To install =pip=, just do
 By the way, this will automatically installed the latest version of =python=
 (currently the 3.5 version).
 
-* Install and set-up Openbox
+* Package installation
+#+BEGIN_SRC shell
+  yaourt -S openssh rsync wget
+#+END_SRC
+
+Install git and subversion
+#+BEGIN_SRC shell
+yaourt -S git subversion
+#+END_SRC
+
+Install ubuntu font
+#+BEGIN_SRC shell
+  yaourt -S ttf-ubuntu-font-family
+#+END_SRC
+
+Install terminator
+#+BEGIN_SRC shell
+  yaourt -S terminator
+#+END_SRC
+
+Install emacs
+#+BEGIN_SRC shell
+  yaourt -S emacs
+#+END_SRC
+
+Install chromium
+#+BEGIN_SRC shell
+  yaourt -S chromium
+#+END_SRC
+
+Install thunderbird
+#+BEGIN_SRC shell
+  yaourt -S thunderbird
+#+END_SRC
+
+Install xfce4 stuff
+#+BEGIN_SRC shell
+yaourt -S xfce4-notifyd thunar xfce4-volman file-roller
+#+END_SRC
+
+Misc.
+#+BEGIN_SRC shell
+yaourt -S unzip mlocate flashplugin
+#+END_SRC
+
+* Install Openbox and set-up the working environment
+** Openbox
+Openbox is a *lightweight* with respect to other window environment, powerful,
+and highly configurable stacking window manager with extensive standards
+support.
 #+BEGIN_SRC shell
   yaourt -S openbox
 #+END_SRC
 
-# #+BEGIN_SRC shell
-#   mkdir -p ~/.config/openbox
-#   cp /etc/xdg/openbox/{rc.xml,menu.xml,autostart,environment}
-#   ~/.config/openbox
-# #+END_SRC
-
-
-
-Add the following line to ~/.xinitrc
+In addition to =openbox=, =obconf= allows to easily configure the window
+manager. =tint2=, =hsetroot= and =dunst= are respectively used as
+windows/applications panel, desktop wallpaper and popup notification.
 #+BEGIN_SRC shell
-  echo "exec openbox-session" > ~/.xinitrc
+  yaourt -S obconf tint2 hsetroot dunst
 #+END_SRC
 
-Install obconf, tint2 and hsetroot (wallpaper)
+** dotfiles
+Most of the configuration parameters are stored through dotfiles that stay in
+the home directory. To handle this set of files, we use the [[https://pypi.python.org/pypi/dotfiles][=dotfiles=]] tool to
+sync a given repository of files with the home directory. To install =dotfiles=,
+you need to have =python-pip= installed (see [[Package managers]])
 #+BEGIN_SRC shell
-  yaourt -S obconf tint2 hsetroot
+  pip install --user dotfiles
+#+END_SRC
+=dotfiles= binary is installed within =~/.local/bin= directory. Either export
+this directory to your path and run =dotfiles= by typing
+=~/.local/bin/dotfiles=.
+
+Then, you need to checkout the repository of dotfiles that you can find
+https://github.com/xgarrido/dotfiles.
+#+BEGIN_SRC shell
+  mkdir -p ~/Development/dotfiles
+  git clone https://github.com/xgarrido/dotfiles ~/Development/dotfiles
 #+END_SRC
 
-* Packages
-#+BEGIN_SRC sh
-  yaourt -S openssh rsync wget
+Finally install dotfiles by doing
+#+BEGIN_SRC shell
+  ~/.local/bin/dotfiles -R ~/Development/dotfiles --sync
+#+END_SRC
+Some directories are not linked so you have to do it
+#+BEGIN_SRC shell
+  mkdir -p ~/.config
+  ln -sf ~/Development/dotfiles/openbox ~/.config/
+  ln -sf ~/Development/dotfiles/terminator ~/.config/
 #+END_SRC
 
-Install ubuntu-ttf font
-#+BEGIN_SRC sh
-  sudo pacman -S ttf-ubuntu-font-family
+** =myrepos=
+The [[https://github.com/joeyh/myrepos][=myrepos=]] application a tool to manage all your version control repositories
+given a =~/.mrconfig= file. To ensure everything will be checkout, you will need
+to install =subversion= VCS.
+#+BEGIN_SRC shell
+  yaourt -S subversion
 #+END_SRC
 
-Install terminator
-#+BEGIN_SRC sh
-  sudo pacman -S terminator
+Checkout the =myrepos= repository and install it
+#+BEGIN_SRC shell
+  git checkout https://github.com/joeyh/myrepos ~/Development/github/myrepos
+  cd ~/Development/github/myrepos && sudo make install
 #+END_SRC
 
-Install emacs
-#+BEGIN_SRC sh
-  sudo pacman -S emacs
+Finally run the =mr= binary within the home directory /i.e./
+#+BEGIN_SRC shell
+  cd ~ && mr checkout
 #+END_SRC
 
-Install chromium
-#+BEGIN_SRC sh
-  sudo pacman -S chromium
-#+END_SRC
+* Running =openbox=
 
-Install xfce4 stuff
-#+BEGIN_SRC sh
-sudo pacman -S xfce4-notifyd thunar xfce4-volman file-roller
-#+END_SRC
-
-Install git and subversion
-#+BEGIN_SRC sh
-sudo pacman -S git subversion
-#+END_SRC
-
-Misc.
-#+BEGIN_SRC sh
-sudo pacman -S unzip mlocate flashplugin
-#+END_SRC
-
-* Openbox config
-* Zsh config
-#+BEGIN_SRC sh
-git clone https://github.com/zsh-users/antigen.git
-#+END_SRC
+Given you have successfully fill the previous item, =openbox= can be run through
+tty terminal by typing =startx=.
