@@ -3,8 +3,9 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>Install PC from scratch</title>
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Install PC from scratch</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Xavier Garrido" />
 <meta  name="description" content="Notes on installing software for Ubuntu flavor distribution"
@@ -89,63 +90,65 @@ for the JavaScript code in this tag.
 <h2></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Install Ubuntu flavor distribution</a></li>
-<li><a href="#sec-2">2. Basic <code>apt</code> packages</a>
+<li><a href="#orgheadline1">1. Install Ubuntu flavor distribution</a></li>
+<li><a href="#orgheadline5">2. Basic <code>apt</code> packages</a>
 <ul>
-<li><a href="#sec-2-1">2.1. Openssh</a></li>
-<li><a href="#sec-2-2">2.2. CVS</a></li>
-<li><a href="#sec-2-3">2.3. g++, Makefile, gfortran</a></li>
+<li><a href="#orgheadline2">2.1. Openssh</a></li>
+<li><a href="#orgheadline3">2.2. CVS</a></li>
+<li><a href="#orgheadline4">2.3. g++, Makefile, gfortran</a></li>
 </ul>
 </li>
-<li><a href="#sec-3">3. Homemade compilation</a>
+<li><a href="#orgheadline9">3. Homemade compilation</a>
 <ul>
-<li><a href="#sec-3-1">3.1. <code>ccache</code></a></li>
-<li><a href="#sec-3-2">3.2. <code>cmake</code>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notanymoreneeded">notanymoreneeded</span></span></a></li>
-<li><a href="#sec-3-3">3.3. <code>emacs</code>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notanymoreneeded">notanymoreneeded</span></span></a></li>
+<li><a href="#orgheadline6">3.1. <code>ccache</code></a></li>
+<li><a href="#orgheadline7">3.2. <code>cmake</code>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notanymoreneeded">notanymoreneeded</span></span></a></li>
+<li><a href="#orgheadline8">3.3. <code>emacs</code>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notanymoreneeded">notanymoreneeded</span></span></a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4. <code>zsh</code> shell</a>
+<li><a href="#orgheadline13">4. <code>zsh</code> shell</a>
 <ul>
-<li><a href="#sec-4-1">4.1. Change default shell</a></li>
-<li><a href="#sec-4-2">4.2. Download antigen plugin manager</a></li>
+<li><a href="#orgheadline10">4.1. Change default shell</a></li>
+<li><a href="#orgheadline11">4.2. Download antigen plugin manager</a></li>
 <li><a href="#zshrc">4.3. Download the following <code>.zshrc</code> file</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">5. <code>emacs</code> configuration</a></li>
-<li><a href="#sec-6">6. SuperNEMO software</a>
+<li><a href="#orgheadline17">5. <code>emacs</code> configuration</a>
 <ul>
-<li><a href="#sec-6-1">6.1. Install required packages</a></li>
-<li><a href="#sec-6-2">6.2. Moving svn to git</a></li>
-<li><a href="#sec-6-3">6.3. Install aggregators</a></li>
-<li><a href="#sec-6-4">6.4. SN@ilWare development</a></li>
-<li><a href="#sec-6-5">6.5. Remarks</a></li>
+<li><a href="#orgheadline14">5.1. Install <code>emacs</code></a></li>
+<li><a href="#orgheadline15">5.2. Install <code>org-mode</code></a></li>
+<li><a href="#orgheadline16">5.3. Install <code>emacs</code> setup</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline25">6. SuperNEMO software</a>
+<ul>
+<li><a href="#orgheadline18">6.1. Install required packages</a></li>
+<li><a href="#orgheadline21">6.2. Moving svn to git</a></li>
+<li><a href="#orgheadline22">6.3. Install aggregators</a></li>
+<li><a href="#orgheadline23">6.4. SN@ilWare development</a></li>
+<li><a href="#orgheadline24">6.5. Remarks</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Install Ubuntu flavor distribution</h2>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> Install Ubuntu flavor distribution</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
-<li><a href="http://www.ubuntu.com/">Ubuntu</a>
-</li>
-<li><a href="http://xubuntu.org/">Xubuntu</a>
-</li>
-<li><a href="http://www.kubuntu.org/">Kubuntu</a>
-</li>
-<li><a href="http://www.linuxmint.com/">Linux Mint</a>
-</li>
+<li><a href="http://www.ubuntu.com/">Ubuntu</a></li>
+<li><a href="http://xubuntu.org/">Xubuntu</a></li>
+<li><a href="http://www.kubuntu.org/">Kubuntu</a></li>
+<li><a href="http://www.linuxmint.com/">Linux Mint</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Basic <code>apt</code> packages</h2>
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5"><span class="section-number-2">2</span> Basic <code>apt</code> packages</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Openssh</h3>
+</div><div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">2.1</span> Openssh</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 To be able to remotely connect
@@ -157,8 +160,8 @@ To be able to remotely connect
 </div>
 </div>
 </div>
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> CVS</h3>
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3"><span class="section-number-3">2.2</span> CVS</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
 
@@ -167,8 +170,8 @@ To be able to remotely connect
 </div>
 </div>
 </div>
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3"><span class="section-number-3">2.3</span> g++, Makefile, gfortran</h3>
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4"><span class="section-number-3">2.3</span> g++, Makefile, gfortran</h3>
 <div class="outline-text-3" id="text-2-3">
 <div class="org-src-container">
 
@@ -178,11 +181,11 @@ To be able to remotely connect
 </div>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Homemade compilation</h2>
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="orgheadline9"><span class="section-number-2">3</span> Homemade compilation</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> <code>ccache</code></h3>
+</div><div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><span class="section-number-3">3.1</span> <code>ccache</code></h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 <a href="http://ccache.samba.org/">ccache</a> is used to "cache" the result of <code>g++</code> compilation. The compilation
@@ -210,8 +213,8 @@ You can already use <code>ccache</code> by setting
 </div>
 </div>
 </div>
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> <code>cmake</code>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notanymoreneeded">notanymoreneeded</span></span></h3>
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><span class="section-number-3">3.2</span> <code>cmake</code>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notanymoreneeded">notanymoreneeded</span></span></h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 <a href="http://www.cmake.org/">cmake</a> is quite deprecated in <code>apt-get</code> sources
@@ -229,8 +232,8 @@ tar xzvf /tmp/cmake-${<span class="org-variable-name">CMAKE_VERSION</span>}.tar.
 </div>
 </div>
 
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3"><span class="section-number-3">3.3</span> <code>emacs</code>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notanymoreneeded">notanymoreneeded</span></span></h3>
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">3.3</span> <code>emacs</code>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notanymoreneeded">notanymoreneeded</span></span></h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 <a href="http://www.gnu.org/software/emacs/">GNU Emacs</a> is an extensible, customizable text editor—and more. At its core is an
@@ -265,8 +268,8 @@ tar xzvf emacs-${<span class="org-variable-name">EMACS_VERSION</span>}.tar.gz
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> <code>zsh</code> shell</h2>
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="orgheadline13"><span class="section-number-2">4</span> <code>zsh</code> shell</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 This part can be <b>skipped</b> if you prefer and use a different shell.
@@ -288,8 +291,8 @@ tar xzvf /tmp/zsh-${<span class="org-variable-name">ZSH_VERSION</span>}.tar.gz
 </div>
 </div>
 
-<div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Change default shell</h3>
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10"><span class="section-number-3">4.1</span> Change default shell</h3>
 <div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
 
@@ -298,8 +301,8 @@ tar xzvf /tmp/zsh-${<span class="org-variable-name">ZSH_VERSION</span>}.tar.gz
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Download antigen plugin manager</h3>
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11"><span class="section-number-3">4.2</span> Download antigen plugin manager</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 <a href="https://github.com/zsh-users/antigen">Antigen</a> is a small set of functions that help you easily manage your
@@ -313,8 +316,8 @@ bundles in a typical vim+pathogen setup.
 </div>
 </div>
 </div>
-<div id="outline-container-zshrc" class="outline-3">
-<h3 id="zshrc"><a id="sec-4-3"></a><span class="section-number-3">4.3</span> Download the following <code>.zshrc</code> file</h3>
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="zshrc"><a id="orgheadline12"></a><span class="section-number-3">4.3</span> Download the following <code>.zshrc</code> file</h3>
 <div class="outline-text-3" id="text-zshrc">
 <div class="org-src-container">
 
@@ -331,9 +334,18 @@ related to SuperNEMO software.
 </div>
 </div>
 
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> <code>emacs</code> configuration</h2>
+<div id="outline-container-orgheadline17" class="outline-2">
+<h2 id="orgheadline17"><span class="section-number-2">5</span> <code>emacs</code> configuration</h2>
 <div class="outline-text-2" id="text-5">
+</div><div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14"><span class="section-number-3">5.1</span> Install <code>emacs</code></h3>
+</div>
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15"><span class="section-number-3">5.2</span> Install <code>org-mode</code></h3>
+</div>
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16"><span class="section-number-3">5.3</span> Install <code>emacs</code> setup</h3>
+<div class="outline-text-3" id="text-5-3">
 <p>
 To get a effective startup configuration for <code>emacs</code>, one can use the
 <code>starter-kit</code> setup initially started by <a href="https://github.com/technomancy/emacs-starter-kit">technomancy</a> and ported to <code>org-mode</code> by
@@ -344,15 +356,12 @@ found <a href="https://github.com/xgarrido/emacs-starter-kit">https://github.com
 <p>
 Since version 24.x, <code>emacs</code> is bundled with a package manager that allows to
 download <code>emacs-lisp</code> libraries written from several places such as github, for
-examepl. First, we will need to download and install two package manager
-frontends, namely <a href="https://github.com/dimitri/el-get">el-get</a> and <a href="https://github.com/cask/cask">cask</a>, to automatically get some predefined <code>emacs</code>
-bundles from <code>emacs-starter-kit</code>. You will need to run <code>emacs</code> 3 times to get
-everything working.
+example.
 </p>
 
 <ol class="org-ol">
 <li><p>
-Run (do not forget the <code>\</code>)
+Run (<b>do not forget the <code>\</code></b>)
 </p>
 <div class="org-src-container">
 
@@ -360,23 +369,9 @@ Run (do not forget the <code>\</code>)
 </pre>
 </div>
 <p>
-and wait until <code>el-get</code> package gets installed (it can take 1 or 2
-minutes). At the end of the process, you will get a message on the <code>emacs</code>
-buffer
-</p>
-<div class="org-src-container">
-
-<pre class="src src-sh">cask installed: This package has been installed successfully by el-get.
-</pre>
-</div>
-</li>
-<li><p>
-Kill again <code>emacs</code> and run it again. Then, inside <code>emacs</code> frame, do <code>ALT-x</code>
-and type <code>pallet-install</code>. This will install all the <code>emacs</code> libraries as
-defined in <code>starter-kit-cask.org</code> file. At the end of the process, finally
-kill <code>emacs</code> a last time. Everything has been installed.
-</p>
-</li>
+and wait until packages get installed (it can take 1 or 2
+minutes depending on your internet connection).
+</p></li>
 </ol>
 
 <p>
@@ -406,9 +401,10 @@ been done only one time.
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> SuperNEMO software</h2>
+<div id="outline-container-orgheadline25" class="outline-2">
+<h2 id="orgheadline25"><span class="section-number-2">6</span> SuperNEMO software</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 To build SuperNEMO aggregators (i.e. Cadfael, Bayeux&#x2026;) you can either follow
@@ -419,8 +415,8 @@ lines describe the different steps.
 </p>
 </div>
 
-<div id="outline-container-sec-6-1" class="outline-3">
-<h3 id="sec-6-1"><span class="section-number-3">6.1</span> Install required packages</h3>
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="orgheadline18"><span class="section-number-3">6.1</span> Install required packages</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 You will need some additionnal packages to make everything working well. Below
@@ -435,8 +431,8 @@ you will find a list of packages to install.
 </div>
 </div>
 
-<div id="outline-container-sec-6-2" class="outline-3">
-<h3 id="sec-6-2"><span class="section-number-3">6.2</span> Moving svn to git</h3>
+<div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="orgheadline21"><span class="section-number-3">6.2</span> Moving svn to git</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 All SuperNEMO software is stored and versionned under <a href="http://subversion.apache.org/">subversion</a> centralized version
@@ -448,8 +444,8 @@ needed steps to achieve such configuration. Of course, if you do not care about
 git/svn paradigm, you can skip this part and got to next section.
 </p>
 </div>
-<div id="outline-container-sec-6-2-1" class="outline-4">
-<h4 id="sec-6-2-1"><span class="section-number-4">6.2.1</span> Install <a href="http://golang.org/">go</a></h4>
+<div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="orgheadline19"><span class="section-number-4">6.2.1</span> Install <a href="http://golang.org/">go</a></h4>
 <div class="outline-text-4" id="text-6-2-1">
 <p>
 <code>go</code> is an open source programming environment that makes it easy to build
@@ -465,8 +461,8 @@ later the <code>go-svn2git</code> binary to handle svn trunk/tags/branch within 
 </div>
 </div>
 
-<div id="outline-container-sec-6-2-2" class="outline-4">
-<h4 id="sec-6-2-2"><span class="section-number-4">6.2.2</span> Install go-svn2git</h4>
+<div id="outline-container-orgheadline20" class="outline-4">
+<h4 id="orgheadline20"><span class="section-number-4">6.2.2</span> Install go-svn2git</h4>
 <div class="outline-text-4" id="text-6-2-2">
 <p>
 <code>go-svn2git</code> is a tiny utility for migrating projects from Subversion to Git
@@ -493,8 +489,8 @@ overload this value by exporting it to somewhere else.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-6-3" class="outline-3">
-<h3 id="sec-6-3"><span class="section-number-3">6.3</span> Install aggregators</h3>
+<div id="outline-container-orgheadline22" class="outline-3">
+<h3 id="orgheadline22"><span class="section-number-3">6.3</span> Install aggregators</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 If you have passed the previous steps, you can now use <a href="https://github.com/xgarrido/zsh-aggregator">zsh-aggregator</a> utility
@@ -528,8 +524,8 @@ aggregator build all
 </div>
 </div>
 
-<div id="outline-container-sec-6-4" class="outline-3">
-<h3 id="sec-6-4"><span class="section-number-3">6.4</span> SN@ilWare development</h3>
+<div id="outline-container-orgheadline23" class="outline-3">
+<h3 id="orgheadline23"><span class="section-number-3">6.4</span> SN@ilWare development</h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
 Aggregators are fine but if you plan do develop some core or analysis programs
@@ -591,25 +587,22 @@ components.
 </div>
 </div>
 
-<div id="outline-container-sec-6-5" class="outline-3">
-<h3 id="sec-6-5"><span class="section-number-3">6.5</span> Remarks</h3>
+<div id="outline-container-orgheadline24" class="outline-3">
+<h3 id="orgheadline24"><span class="section-number-3">6.5</span> Remarks</h3>
 <div class="outline-text-3" id="text-6-5">
 <ol class="org-ol">
 <li>If you decide to use <code>git-svn</code>, you are supposed to know and "master" <code>git</code>
 command. If not a nice tutorial about <code>git</code> commands can be found at this
-address <a href="http://try.github.com/">http://try.github.com/</a>.
-</li>
+address <a href="http://try.github.com/">http://try.github.com/</a>.</li>
 
 <li>To locally commit you just have to <code>git commit</code> your change by stagging some
 of the modified files. If you want to commit back to the svn repository you
 should do <code>git svn rebase</code> to make sure nothing has been updated meanwhile
-and then do <code>git svn dcommit</code>.
-</li>
+and then do <code>git svn dcommit</code>.</li>
 
 <li>The first time you <code>dcommit</code>, you may be in trouble due to username mismatch
 between the svn username you use when checking out and the username you have
-when commiting. The error looks like
-</li>
+when commiting. The error looks like</li>
 </ol>
 <div class="org-src-container">
 
@@ -648,7 +641,7 @@ svn</code>.
 </div>
 </div>
 <div id="postamble" class="status">
-File under <i class="fa fa-github-alt"></i> version control - commit <a href="https://github.com/xgarrido/org-notes/commit/899af511de8a68ba1aab070045271e6b3875390c">899af51</a> - 2014-08-09
+File under <i class="fa fa-github-alt"></i> version control - commit <a href="https://github.com/xgarrido/org-notes/commit/a051d1e1c02647f7620ab959f1b3e22c1adce872">a051d1e</a> - 2015-10-17
 </div>
 </body>
 </html>

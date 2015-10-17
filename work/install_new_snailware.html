@@ -3,8 +3,9 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>Install notes for SN@ilWare software</title>
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Install notes for SN@ilWare software</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Xavier Garrido" />
 <meta  name="description" content="Quick notes on how to install new SN@ilWare software on different machines"
@@ -89,56 +90,56 @@ for the JavaScript code in this tag.
 <h2></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Install @ LAL</a>
+<li><a href="#orgheadline15">1. Install @ LAL</a>
 <ul>
-<li><a href="#sec-1-1">1.1. Preamble</a></li>
-<li><a href="#sec-1-2">1.2. Cadfael</a></li>
-<li><a href="#sec-1-3">1.3. Bayeux</a></li>
-<li><a href="#sec-1-4">1.4. Falaise</a></li>
+<li><a href="#orgheadline4">1.1. Preamble</a></li>
+<li><a href="#orgheadline8">1.2. Cadfael</a></li>
+<li><a href="#orgheadline11">1.3. Bayeux</a></li>
+<li><a href="#orgheadline14">1.4. Falaise</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">2. Install @ CC</a>
+<li><a href="#orgheadline32">2. Install @ CC</a>
 <ul>
-<li><a href="#sec-2-1">2.1. Preamble</a></li>
-<li><a href="#sec-2-2">2.2. Cadfael</a></li>
-<li><a href="#sec-2-3">2.3. Bayeux</a></li>
-<li><a href="#sec-2-4">2.4. Falaise</a></li>
+<li><a href="#orgheadline19">2.1. Preamble</a></li>
+<li><a href="#orgheadline23">2.2. Cadfael</a></li>
+<li><a href="#orgheadline27">2.3. Bayeux</a></li>
+<li><a href="#orgheadline31">2.4. Falaise</a></li>
 </ul>
 </li>
-<li><a href="#sec-3">3. Install @ laptop</a>
+<li><a href="#orgheadline46">3. Install @ laptop</a>
 <ul>
-<li><a href="#sec-3-1">3.1. Machine configuration</a></li>
-<li><a href="#sec-3-2">3.2. With <code>g++ (GCC) 4.8.2</code></a></li>
+<li><a href="#orgheadline33">3.1. Machine configuration</a></li>
+<li><a href="#orgheadline45">3.2. With <code>g++ (GCC) 4.8.2</code></a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4. Install @ pc-server</a>
+<li><a href="#orgheadline60">4. Install @ pc-server</a>
 <ul>
-<li><a href="#sec-4-1">4.1. Preamble</a></li>
-<li><a href="#sec-4-2">4.2. Cadfael</a></li>
-<li><a href="#sec-4-3">4.3. Bayeux</a></li>
+<li><a href="#orgheadline49">4.1. Preamble</a></li>
+<li><a href="#orgheadline54">4.2. Cadfael</a></li>
+<li><a href="#orgheadline59">4.3. Bayeux</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">5. Install @ VMWare</a>
+<li><a href="#orgheadline81">5. Install @ VMWare</a>
 <ul>
-<li><a href="#sec-5-1">5.1. Preamble</a></li>
-<li><a href="#sec-5-2">5.2. Cadfael</a></li>
-<li><a href="#sec-5-3">5.3. Bayeux</a></li>
-<li><a href="#sec-5-4">5.4. Falaise</a></li>
-<li><a href="#sec-5-5">5.5. Final tests</a></li>
+<li><a href="#orgheadline65">5.1. Preamble</a></li>
+<li><a href="#orgheadline70">5.2. Cadfael</a></li>
+<li><a href="#orgheadline75">5.3. Bayeux</a></li>
+<li><a href="#orgheadline79">5.4. Falaise</a></li>
+<li><a href="#orgheadline80">5.5. Final tests</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Install @ LAL</h2>
+<div id="outline-container-orgheadline15" class="outline-2">
+<h2 id="orgheadline15"><span class="section-number-2">1</span> Install @ LAL</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Preamble</h3>
+</div><div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4"><span class="section-number-3">1.1</span> Preamble</h3>
 <div class="outline-text-3" id="text-1-1">
-</div><div id="outline-container-sec-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Configuration of <code>cmake</code>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="deprecated">deprecated</span></span></h4>
+</div><div id="outline-container-orgheadline1" class="outline-4">
+<h4 id="orgheadline1"><span class="section-number-4">1.1.1</span> Configuration of <code>cmake</code>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="deprecated">deprecated</span></span></h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 First you should specify an alias to the latest version of <code>cmake</code> by executing
@@ -153,8 +154,8 @@ You will get version 2.8.9 of <code>cmake</code>.
 </p>
 </div>
 </div>
-<div id="outline-container-sec-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> Configuration of installation directory</h4>
+<div id="outline-container-orgheadline2" class="outline-4">
+<h4 id="orgheadline2"><span class="section-number-4">1.1.2</span> Configuration of installation directory</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <div class="org-src-container">
 
@@ -163,8 +164,8 @@ You will get version 2.8.9 of <code>cmake</code>.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> Machine configuration</h4>
+<div id="outline-container-orgheadline3" class="outline-4">
+<h4 id="orgheadline3"><span class="section-number-4">1.1.3</span> Machine configuration</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <div class="org-src-container">
 
@@ -182,11 +183,11 @@ Linux nemo3.lal.in2p3.fr 2.6.32-220.13.1.el6.x86_64 <span class="org-comment-del
 </div>
 </div>
 
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Cadfael</h3>
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">1.2</span> Cadfael</h3>
 <div class="outline-text-3" id="text-1-2">
-</div><div id="outline-container-sec-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Checking out</h4>
+</div><div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5"><span class="section-number-4">1.2.1</span> Checking out</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <div class="org-src-container">
 
@@ -196,8 +197,8 @@ Linux nemo3.lal.in2p3.fr 2.6.32-220.13.1.el6.x86_64 <span class="org-comment-del
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Configuration</h4>
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6"><span class="section-number-4">1.2.2</span> Configuration</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 To setup <code>Cadfael</code>, first create the following directory
@@ -245,63 +246,35 @@ then execute the <code>make</code> command
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> Ports status <code>[8/8]</code></h4>
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7"><span class="section-number-4">1.2.3</span> Ports status <code>[8/8]</code></h4>
 <div class="outline-text-4" id="text-1-2-3">
 <ul class="org-ul">
-<li class="on"> <p>
-patchelf
-</p>
-</li>
-<li class="on"> <p>
-GSL
-</p>
-</li>
-<li class="on"> <p>
-CLHEP
-</p>
-</li>
-<li class="on"> <p>
-boost
-</p>
-</li>
-<li class="on"> <p>
-camp
-</p>
-</li>
-<li class="on"> <p>
-xerces-c
-</p>
-</li>
-<li class="on"> <p>
-Geant4
-</p>
+<li class="on"> patchelf</li>
+<li class="on"> GSL</li>
+<li class="on"> CLHEP</li>
+<li class="on"> boost</li>
+<li class="on"> camp</li>
+<li class="on"> xerces-c</li>
+<li class="on"> Geant4
 <ul class="org-ul">
-<li class="on"> <code>-Dport/geant4+gdml</code> will install Xerces-C
-</li>
-<li class="on"> <code>-Dport/geant4+data</code>
-</li>
-</ul>
-</li>
-<li class="on"> <p>
-ROOT
-</p>
+<li class="on"> <code>-Dport/geant4+gdml</code> will install Xerces-C</li>
+<li class="on"> <code>-Dport/geant4+data</code></li>
+</ul></li>
+<li class="on"> ROOT
 <ul class="org-ul">
-<li class="on"> <code>-Dport/root+mathmore</code>
-</li>
-<li class="on"> <code>-Dport/root+opengl</code>
-</li>
-</ul>
-</li>
+<li class="on"> <code>-Dport/root+mathmore</code></li>
+<li class="on"> <code>-Dport/root+opengl</code></li>
+</ul></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Bayeux</h3>
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11"><span class="section-number-3">1.3</span> Bayeux</h3>
 <div class="outline-text-3" id="text-1-3">
-</div><div id="outline-container-sec-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> Configuration</h4>
+</div><div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9"><span class="section-number-4">1.3.1</span> Configuration</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 To setup <code>Bayeux</code>, execute the following code
@@ -327,8 +300,8 @@ To run the compilation process on several CPU cores do
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> Test programs <code>[10/10]</code></h4>
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10"><span class="section-number-4">1.3.2</span> Test programs <code>[10/10]</code></h4>
 <div class="outline-text-4" id="text-1-3-2">
 <p>
 Adding option <code>-DBayeux_ENABLE_TESTING=ON</code> to the <code>cmake</code> command will enable
@@ -337,36 +310,26 @@ the <b>237 test programs</b> and it will eventually shows some broken tests.
 </p>
 
 <ul class="org-ul">
-<li class="on"> datatools
-</li>
-<li class="on"> brio
-</li>
-<li class="on"> cuts
-</li>
-<li class="on"> genbb_help
-</li>
-<li class="on"> geomtools
-</li>
-<li class="on"> genvtx
-</li>
-<li class="on"> mygsl
-</li>
-<li class="on"> materials
-</li>
-<li class="on"> dpp
-</li>
-<li class="on"> mctools
-</li>
+<li class="on"> datatools</li>
+<li class="on"> brio</li>
+<li class="on"> cuts</li>
+<li class="on"> genbb_help</li>
+<li class="on"> geomtools</li>
+<li class="on"> genvtx</li>
+<li class="on"> mygsl</li>
+<li class="on"> materials</li>
+<li class="on"> dpp</li>
+<li class="on"> mctools</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Falaise</h3>
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14"><span class="section-number-3">1.4</span> Falaise</h3>
 <div class="outline-text-3" id="text-1-4">
-</div><div id="outline-container-sec-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Configuration</h4>
+</div><div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12"><span class="section-number-4">1.4.1</span> Configuration</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 To setup <code>Falaise</code> with an already version of <code>Bayeux</code> installed, do
@@ -393,8 +356,8 @@ To run the compilation process on several CPU cores do
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Basic tests</h4>
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13"><span class="section-number-4">1.4.2</span> Basic tests</h4>
 <div class="outline-text-4" id="text-1-4-2">
 <div class="org-src-container">
 
@@ -412,14 +375,14 @@ Tests successfully passed.
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Install @ CC</h2>
+<div id="outline-container-orgheadline32" class="outline-2">
+<h2 id="orgheadline32"><span class="section-number-2">2</span> Install @ CC</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Preamble</h3>
+</div><div id="outline-container-orgheadline19" class="outline-3">
+<h3 id="orgheadline19"><span class="section-number-3">2.1</span> Preamble</h3>
 <div class="outline-text-3" id="text-2-1">
-</div><div id="outline-container-sec-2-1-1" class="outline-4">
-<h4 id="sec-2-1-1"><span class="section-number-4">2.1.1</span> Configuration of <code>cmake</code></h4>
+</div><div id="outline-container-orgheadline16" class="outline-4">
+<h4 id="orgheadline16"><span class="section-number-4">2.1.1</span> Configuration of <code>cmake</code></h4>
 <div class="outline-text-4" id="text-2-1-1">
 <p>
 First you should use a more decent version of <code>cmake</code> by doing
@@ -435,8 +398,8 @@ You will get version 2.8.10.2 of <code>cmake</code>.
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2-1-2" class="outline-4">
-<h4 id="sec-2-1-2"><span class="section-number-4">2.1.2</span> Configuration of installation directory</h4>
+<div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="orgheadline17"><span class="section-number-4">2.1.2</span> Configuration of installation directory</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <div class="org-src-container">
 
@@ -445,8 +408,8 @@ You will get version 2.8.10.2 of <code>cmake</code>.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-2-1-3" class="outline-4">
-<h4 id="sec-2-1-3"><span class="section-number-4">2.1.3</span> Machine configuration</h4>
+<div id="outline-container-orgheadline18" class="outline-4">
+<h4 id="orgheadline18"><span class="section-number-4">2.1.3</span> Machine configuration</h4>
 <div class="outline-text-4" id="text-2-1-3">
 <div class="org-src-container">
 
@@ -464,11 +427,11 @@ Linux ccage031 2.6.32-358.14.1.el6.x86_64 <span class="org-comment-delimiter">#<
 </div>
 </div>
 
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Cadfael</h3>
+<div id="outline-container-orgheadline23" class="outline-3">
+<h3 id="orgheadline23"><span class="section-number-3">2.2</span> Cadfael</h3>
 <div class="outline-text-3" id="text-2-2">
-</div><div id="outline-container-sec-2-2-1" class="outline-4">
-<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> Checking out</h4>
+</div><div id="outline-container-orgheadline20" class="outline-4">
+<h4 id="orgheadline20"><span class="section-number-4">2.2.1</span> Checking out</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <div class="org-src-container">
 
@@ -478,8 +441,8 @@ Linux ccage031 2.6.32-358.14.1.el6.x86_64 <span class="org-comment-delimiter">#<
 </div>
 </div>
 </div>
-<div id="outline-container-sec-2-2-2" class="outline-4">
-<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> Configuration</h4>
+<div id="outline-container-orgheadline21" class="outline-4">
+<h4 id="orgheadline21"><span class="section-number-4">2.2.2</span> Configuration</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <p>
 To setup <code>Cadfael</code>, first create the following directory
@@ -527,64 +490,36 @@ then execute the <code>make</code> command
 </div>
 </div>
 </div>
-<div id="outline-container-sec-2-2-3" class="outline-4">
-<h4 id="sec-2-2-3"><span class="section-number-4">2.2.3</span> Ports status <code>[8/8]</code></h4>
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="orgheadline22"><span class="section-number-4">2.2.3</span> Ports status <code>[8/8]</code></h4>
 <div class="outline-text-4" id="text-2-2-3">
 <ul class="org-ul">
-<li class="on"> <p>
-patchelf
-</p>
-</li>
-<li class="on"> <p>
-GSL
-</p>
-</li>
-<li class="on"> <p>
-CLHEP
-</p>
-</li>
-<li class="on"> <p>
-boost
-</p>
-</li>
-<li class="on"> <p>
-camp
-</p>
-</li>
-<li class="on"> <p>
-xerces-c
-</p>
-</li>
-<li class="on"> <p>
-Geant4
-</p>
+<li class="on"> patchelf</li>
+<li class="on"> GSL</li>
+<li class="on"> CLHEP</li>
+<li class="on"> boost</li>
+<li class="on"> camp</li>
+<li class="on"> xerces-c</li>
+<li class="on"> Geant4
 <ul class="org-ul">
-<li class="on"> <code>-Dport/geant4+gdml</code> will install Xerces-C
-</li>
-<li class="on"> <code>-Dport/geant4+data</code>
-</li>
-</ul>
-</li>
-<li class="on"> <p>
-ROOT
-</p>
+<li class="on"> <code>-Dport/geant4+gdml</code> will install Xerces-C</li>
+<li class="on"> <code>-Dport/geant4+data</code></li>
+</ul></li>
+<li class="on"> ROOT
 <ul class="org-ul">
-<li class="on"> <code>-Dport/root+mathmore</code>
-</li>
-<li class="on"> <code>-Dport/root+opengl</code>
-</li>
-</ul>
-</li>
+<li class="on"> <code>-Dport/root+mathmore</code></li>
+<li class="on"> <code>-Dport/root+opengl</code></li>
+</ul></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Bayeux</h3>
+<div id="outline-container-orgheadline27" class="outline-3">
+<h3 id="orgheadline27"><span class="section-number-3">2.3</span> Bayeux</h3>
 <div class="outline-text-3" id="text-2-3">
-</div><div id="outline-container-sec-2-3-1" class="outline-4">
-<h4 id="sec-2-3-1"><span class="section-number-4">2.3.1</span> Checking out</h4>
+</div><div id="outline-container-orgheadline24" class="outline-4">
+<h4 id="orgheadline24"><span class="section-number-4">2.3.1</span> Checking out</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <div class="org-src-container">
 
@@ -594,8 +529,8 @@ ROOT
 </div>
 </div>
 </div>
-<div id="outline-container-sec-2-3-2" class="outline-4">
-<h4 id="sec-2-3-2"><span class="section-number-4">2.3.2</span> Configuration</h4>
+<div id="outline-container-orgheadline25" class="outline-4">
+<h4 id="orgheadline25"><span class="section-number-4">2.3.2</span> Configuration</h4>
 <div class="outline-text-4" id="text-2-3-2">
 <p>
 To setup <code>Bayeux</code>, first create the following directory
@@ -629,8 +564,8 @@ To run the compilation process on several CPU cores do
 </div>
 </div>
 </div>
-<div id="outline-container-sec-2-3-3" class="outline-4">
-<h4 id="sec-2-3-3"><span class="section-number-4">2.3.3</span> Test programs <code>[10/10]</code></h4>
+<div id="outline-container-orgheadline26" class="outline-4">
+<h4 id="orgheadline26"><span class="section-number-4">2.3.3</span> Test programs <code>[10/10]</code></h4>
 <div class="outline-text-4" id="text-2-3-3">
 <p>
 Adding option <code>-DBayeux_ENABLE_TESTING=ON</code> to the <code>cmake</code> command will enable
@@ -639,35 +574,25 @@ the <b>238 test programs</b> and it will eventually shows some broken tests.
 </p>
 
 <ul class="org-ul">
-<li class="on"> datatools
-</li>
-<li class="on"> brio
-</li>
-<li class="on"> cuts
-</li>
-<li class="on"> genbb_help
-</li>
-<li class="on"> geomtools
-</li>
-<li class="on"> genvtx
-</li>
-<li class="on"> mygsl
-</li>
-<li class="on"> materials
-</li>
-<li class="on"> dpp
-</li>
-<li class="on"> mctools
-</li>
+<li class="on"> datatools</li>
+<li class="on"> brio</li>
+<li class="on"> cuts</li>
+<li class="on"> genbb_help</li>
+<li class="on"> geomtools</li>
+<li class="on"> genvtx</li>
+<li class="on"> mygsl</li>
+<li class="on"> materials</li>
+<li class="on"> dpp</li>
+<li class="on"> mctools</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-2-4" class="outline-3">
-<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Falaise</h3>
+<div id="outline-container-orgheadline31" class="outline-3">
+<h3 id="orgheadline31"><span class="section-number-3">2.4</span> Falaise</h3>
 <div class="outline-text-3" id="text-2-4">
-</div><div id="outline-container-sec-2-4-1" class="outline-4">
-<h4 id="sec-2-4-1"><span class="section-number-4">2.4.1</span> Checking out</h4>
+</div><div id="outline-container-orgheadline28" class="outline-4">
+<h4 id="orgheadline28"><span class="section-number-4">2.4.1</span> Checking out</h4>
 <div class="outline-text-4" id="text-2-4-1">
 <div class="org-src-container">
 
@@ -677,8 +602,8 @@ the <b>238 test programs</b> and it will eventually shows some broken tests.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-2-4-2" class="outline-4">
-<h4 id="sec-2-4-2"><span class="section-number-4">2.4.2</span> Configuration</h4>
+<div id="outline-container-orgheadline29" class="outline-4">
+<h4 id="orgheadline29"><span class="section-number-4">2.4.2</span> Configuration</h4>
 <div class="outline-text-4" id="text-2-4-2">
 <p>
 To setup <code>Falaise</code> with an already version of <code>Bayeux</code> installed, first create
@@ -720,8 +645,8 @@ To run the compilation process on several CPU cores do
 </div>
 </div>
 
-<div id="outline-container-sec-2-4-3" class="outline-4">
-<h4 id="sec-2-4-3"><span class="section-number-4">2.4.3</span> Basic tests</h4>
+<div id="outline-container-orgheadline30" class="outline-4">
+<h4 id="orgheadline30"><span class="section-number-4">2.4.3</span> Basic tests</h4>
 <div class="outline-text-4" id="text-2-4-3">
 <div class="org-src-container">
 
@@ -739,11 +664,11 @@ Tests successfully passed.
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Install @ laptop</h2>
+<div id="outline-container-orgheadline46" class="outline-2">
+<h2 id="orgheadline46"><span class="section-number-2">3</span> Install @ laptop</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Machine configuration</h3>
+</div><div id="outline-container-orgheadline33" class="outline-3">
+<h3 id="orgheadline33"><span class="section-number-3">3.1</span> Machine configuration</h3>
 <div class="outline-text-3" id="text-3-1">
 <div class="org-src-container">
 
@@ -760,22 +685,21 @@ cmake version 2.8.12
 </div>
 </div>
 
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> With <code>g++ (GCC) 4.8.2</code></h3>
+<div id="outline-container-orgheadline45" class="outline-3">
+<h3 id="orgheadline45"><span class="section-number-3">3.2</span> With <code>g++ (GCC) 4.8.2</code></h3>
 <div class="outline-text-3" id="text-3-2">
-</div><div id="outline-container-sec-3-2-1" class="outline-4">
-<h4 id="sec-3-2-1"><span class="section-number-4">3.2.1</span> Cadfael</h4>
+</div><div id="outline-container-orgheadline39" class="outline-4">
+<h4 id="orgheadline39"><span class="section-number-4">3.2.1</span> Cadfael</h4>
 <div class="outline-text-4" id="text-3-2-1">
-</div><ul class="org-ul"><li>Checking out<br  /><div class="outline-text-5" id="text-3-2-1-1">
+</div><ul class="org-ul"><li><a id="orgheadline34"></a>Checking out<br  /><div class="outline-text-5" id="text-orgheadline34">
 <div class="org-src-container">
 
 <pre class="src src-sh">svn co https://nemo.lpc-caen.in2p3.fr/svn/Cadfael/trunk <span class="org-sh-escaped-newline">\</span>
     ~/Workdir/NEMO/supernemo/snware_test/cadfael/trunk
 </pre>
 </div>
-</div>
-</li>
-<li>Configuration<br  /><div class="outline-text-5" id="text-3-2-1-2">
+</div></li>
+<li><a id="orgheadline35"></a>Configuration<br  /><div class="outline-text-5" id="text-orgheadline35">
 <p>
 To setup <code>Cadfael</code> simply do
 </p>
@@ -812,31 +736,21 @@ then execute the <code>make</code> command
 <pre class="src src-sh">make
 </pre>
 </div>
-</div>
-</li>
-<li>Ports status <code>[7/8]</code><br  /><div class="outline-text-5" id="text-3-2-1-3">
+</div></li>
+<li><a id="orgheadline37"></a>Ports status <code>[7/8]</code><br  /><div class="outline-text-5" id="text-orgheadline37">
 <ul class="org-ul">
-<li class="on"> patchelf
-</li>
-<li class="on"> GSL
-</li>
-<li class="on"> CLHEP
-</li>
-<li class="on"> boost (see <a href="#sec-3-2-1-5">Boost test error</a> and fix)
-</li>
-<li class="on"> camp
-</li>
-<li class="trans"> xerces-c
-</li>
-<li class="on"> Geant4
-</li>
-<li class="on"> ROOT
-</li>
+<li class="on"> patchelf</li>
+<li class="on"> GSL</li>
+<li class="on"> CLHEP</li>
+<li class="on"> boost (see <a href="#orgheadline36">Boost test error</a> and fix)</li>
+<li class="on"> camp</li>
+<li class="trans"> xerces-c</li>
+<li class="on"> Geant4</li>
+<li class="on"> ROOT</li>
 </ul>
-</div>
-</li>
+</div></li>
 
-<li>Xerces-C test error<br  /><div class="outline-text-5" id="text-3-2-1-4">
+<li><a id="orgheadline38"></a>Xerces-C test error<br  /><div class="outline-text-5" id="text-orgheadline38">
 <div class="org-src-container">
 
 <pre class="src src-sh">Making check<span class="org-keyword"> in</span> samples
@@ -862,41 +776,36 @@ checks if 2 strings are "Xerces-C" equal. It fails at different place as <code>d
 exhibits. It is not clear what is going on. <b>Solution for the time being is to
 disable these tests and see if it may propagate to some other ports</b>
 </p>
-</div>
-</li>
-<li>Boost test error<br  /><div class="outline-text-5" id="text-3-2-1-5">
+</div></li>
+<li><a id="orgheadline36"></a>Boost test error<br  /><div class="outline-text-5" id="text-orgheadline36">
 <p>
 A fix will be to patch the <code>cstdint.hpp</code> file following this commit
 <a href="https://svn.boost.org/trac/boost/changeset/84950">https://svn.boost.org/trac/boost/changeset/84950</a>
 </p>
 
 <ul class="org-ul">
-<li>check in boost 1.55.0 and <b>fix already implemented</b>
-</li>
+<li>check in boost 1.55.0 and <b>fix already implemented</b></li>
 <li>but Cadfael uses boost 1.53.0 for which <b>fix is not implemented ! &rarr;
-  thiw works</b>
-</li>
+  thiw works</b></li>
 </ul>
 
 <p>
 <del>Fixed since Cadfael ahs moved to Boost 1.55.0</del>
 </p>
+</div></li></ul>
 </div>
-</li></ul>
-</div>
-<div id="outline-container-sec-3-2-2" class="outline-4">
-<h4 id="sec-3-2-2"><span class="section-number-4">3.2.2</span> Bayeux</h4>
+<div id="outline-container-orgheadline43" class="outline-4">
+<h4 id="orgheadline43"><span class="section-number-4">3.2.2</span> Bayeux</h4>
 <div class="outline-text-4" id="text-3-2-2">
-</div><ul class="org-ul"><li>Checking out<br  /><div class="outline-text-5" id="text-3-2-2-1">
+</div><ul class="org-ul"><li><a id="orgheadline40"></a>Checking out<br  /><div class="outline-text-5" id="text-orgheadline40">
 <div class="org-src-container">
 
 <pre class="src src-sh">svn co https://nemo.lpc-caen.in2p3.fr/svn/Bayeux/trunk <span class="org-sh-escaped-newline">\</span>
     ~/Workdir/NEMO/supernemo/new_snware/bayeux/repo
 </pre>
 </div>
-</div>
-</li>
-<li>Configuration<br  /><div class="outline-text-5" id="text-3-2-2-2">
+</div></li>
+<li><a id="orgheadline41"></a>Configuration<br  /><div class="outline-text-5" id="text-orgheadline41">
 <p>
 To setup <code>Bayeux</code> execute the following code
 </p>
@@ -911,48 +820,36 @@ To setup <code>Bayeux</code> execute the following code
     ~/Workdir/NEMO/supernemo/new_snware/bayeux/repo
 </pre>
 </div>
-</div>
-</li>
-<li>Test programs <code>[10/10]</code><br  /><div class="outline-text-5" id="text-3-2-2-3">
+</div></li>
+<li><a id="orgheadline42"></a>Test programs <code>[10/10]</code><br  /><div class="outline-text-5" id="text-orgheadline42">
 <ul class="org-ul">
-<li class="on"> datatools
-</li>
-<li class="on"> brio
-</li>
-<li class="on"> cuts
-</li>
-<li class="on"> genbb_help
-</li>
-<li class="on"> geomtools
-</li>
-<li class="on"> genvtx
-</li>
-<li class="on"> mygsl
-</li>
-<li class="on"> materials
-</li>
-<li class="on"> dpp
-</li>
-<li class="on"> mctools
-</li>
+<li class="on"> datatools</li>
+<li class="on"> brio</li>
+<li class="on"> cuts</li>
+<li class="on"> genbb_help</li>
+<li class="on"> geomtools</li>
+<li class="on"> genvtx</li>
+<li class="on"> mygsl</li>
+<li class="on"> materials</li>
+<li class="on"> dpp</li>
+<li class="on"> mctools</li>
 </ul>
-</div>
-</li></ul>
+</div></li></ul>
 </div>
 
-<div id="outline-container-sec-3-2-3" class="outline-4">
-<h4 id="sec-3-2-3"><span class="section-number-4">3.2.3</span> <span class="todo TODO">TODO</span> Falaise</h4>
+<div id="outline-container-orgheadline44" class="outline-4">
+<h4 id="orgheadline44"><span class="section-number-4">3.2.3</span> <span class="todo TODO">TODO</span> Falaise</h4>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Install @ pc-server</h2>
+<div id="outline-container-orgheadline60" class="outline-2">
+<h2 id="orgheadline60"><span class="section-number-2">4</span> Install @ pc-server</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Preamble</h3>
+</div><div id="outline-container-orgheadline49" class="outline-3">
+<h3 id="orgheadline49"><span class="section-number-3">4.1</span> Preamble</h3>
 <div class="outline-text-3" id="text-4-1">
-</div><div id="outline-container-sec-4-1-1" class="outline-4">
-<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> Configuration of installation directory</h4>
+</div><div id="outline-container-orgheadline47" class="outline-4">
+<h4 id="orgheadline47"><span class="section-number-4">4.1.1</span> Configuration of installation directory</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <div class="org-src-container">
 
@@ -961,8 +858,8 @@ To setup <code>Bayeux</code> execute the following code
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4-1-2" class="outline-4">
-<h4 id="sec-4-1-2"><span class="section-number-4">4.1.2</span> Machine configuration</h4>
+<div id="outline-container-orgheadline48" class="outline-4">
+<h4 id="orgheadline48"><span class="section-number-4">4.1.2</span> Machine configuration</h4>
 <div class="outline-text-4" id="text-4-1-2">
 <div class="org-src-container">
 
@@ -985,11 +882,11 @@ cmake version 2.8.11.2
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Cadfael</h3>
+<div id="outline-container-orgheadline54" class="outline-3">
+<h3 id="orgheadline54"><span class="section-number-3">4.2</span> Cadfael</h3>
 <div class="outline-text-3" id="text-4-2">
-</div><div id="outline-container-sec-4-2-1" class="outline-4">
-<h4 id="sec-4-2-1"><span class="section-number-4">4.2.1</span> Checking out</h4>
+</div><div id="outline-container-orgheadline50" class="outline-4">
+<h4 id="orgheadline50"><span class="section-number-4">4.2.1</span> Checking out</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <div class="org-src-container">
 
@@ -999,8 +896,8 @@ cmake version 2.8.11.2
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4-2-2" class="outline-4">
-<h4 id="sec-4-2-2"><span class="section-number-4">4.2.2</span> Configuration</h4>
+<div id="outline-container-orgheadline51" class="outline-4">
+<h4 id="orgheadline51"><span class="section-number-4">4.2.2</span> Configuration</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <p>
 To setup <code>Cadfael</code>, first create the following directory
@@ -1048,58 +945,30 @@ then execute the <code>make</code> command
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4-2-3" class="outline-4">
-<h4 id="sec-4-2-3"><span class="section-number-4">4.2.3</span> Ports status <code>[7/8]</code></h4>
+<div id="outline-container-orgheadline53" class="outline-4">
+<h4 id="orgheadline53"><span class="section-number-4">4.2.3</span> Ports status <code>[7/8]</code></h4>
 <div class="outline-text-4" id="text-4-2-3">
 <ul class="org-ul">
-<li class="on"> <p>
-patchelf
-</p>
-</li>
-<li class="on"> <p>
-GSL
-</p>
-</li>
-<li class="trans"> <p>
-CLHEP
-</p>
-</li>
-<li class="on"> <p>
-boost
-</p>
-</li>
-<li class="on"> <p>
-camp
-</p>
-</li>
-<li class="on"> <p>
-xerces-c
-</p>
-</li>
-<li class="on"> <p>
-Geant4
-</p>
+<li class="on"> patchelf</li>
+<li class="on"> GSL</li>
+<li class="trans"> CLHEP</li>
+<li class="on"> boost</li>
+<li class="on"> camp</li>
+<li class="on"> xerces-c</li>
+<li class="on"> Geant4
 <ul class="org-ul">
-<li class="on"> <code>-Dport/geant4+gdml</code> will install Xerces-C
-</li>
-<li class="on"> <code>-Dport/geant4+data</code>
-</li>
-</ul>
-</li>
-<li class="on"> <p>
-ROOT
-</p>
+<li class="on"> <code>-Dport/geant4+gdml</code> will install Xerces-C</li>
+<li class="on"> <code>-Dport/geant4+data</code></li>
+</ul></li>
+<li class="on"> ROOT
 <ul class="org-ul">
-<li class="on"> <code>-Dport/root+mathmore</code>
-</li>
-<li class="on"> <code>-Dport/root+opengl</code>
-</li>
-</ul>
-</li>
+<li class="on"> <code>-Dport/root+mathmore</code></li>
+<li class="on"> <code>-Dport/root+opengl</code></li>
+</ul></li>
 </ul>
 </div>
 
-<ul class="org-ul"><li>CLHEP test error<br  /><div class="outline-text-5" id="text-4-2-3-1">
+<ul class="org-ul"><li><a id="orgheadline52"></a>CLHEP test error<br  /><div class="outline-text-5" id="text-orgheadline52">
 <p>
 <b>Need to have a look into the logs.</b>
 </p>
@@ -1127,16 +996,15 @@ stopping the compilation of other ports. To remove test, I have commented two
 lines (line 38 &amp; 39) located in file
 <code>$SW_WORK_DIR/Cadfael/trunk/ports/clhep/CMakeLists.txt</code>.
 </p>
-</div>
-</li></ul>
+</div></li></ul>
 </div>
 </div>
 
-<div id="outline-container-sec-4-3" class="outline-3">
-<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Bayeux</h3>
+<div id="outline-container-orgheadline59" class="outline-3">
+<h3 id="orgheadline59"><span class="section-number-3">4.3</span> Bayeux</h3>
 <div class="outline-text-3" id="text-4-3">
-</div><div id="outline-container-sec-4-3-1" class="outline-4">
-<h4 id="sec-4-3-1"><span class="section-number-4">4.3.1</span> Checking out</h4>
+</div><div id="outline-container-orgheadline55" class="outline-4">
+<h4 id="orgheadline55"><span class="section-number-4">4.3.1</span> Checking out</h4>
 <div class="outline-text-4" id="text-4-3-1">
 <div class="org-src-container">
 
@@ -1146,8 +1014,8 @@ lines (line 38 &amp; 39) located in file
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4-3-2" class="outline-4">
-<h4 id="sec-4-3-2"><span class="section-number-4">4.3.2</span> Configuration</h4>
+<div id="outline-container-orgheadline56" class="outline-4">
+<h4 id="orgheadline56"><span class="section-number-4">4.3.2</span> Configuration</h4>
 <div class="outline-text-4" id="text-4-3-2">
 <p>
 To setup <code>Bayeux</code>, first create the following directory
@@ -1181,8 +1049,8 @@ To run the compilation process do
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4-3-3" class="outline-4">
-<h4 id="sec-4-3-3"><span class="section-number-4">4.3.3</span> Test programs <code>[0/10]</code></h4>
+<div id="outline-container-orgheadline58" class="outline-4">
+<h4 id="orgheadline58"><span class="section-number-4">4.3.3</span> Test programs <code>[0/10]</code></h4>
 <div class="outline-text-4" id="text-4-3-3">
 <p>
 Adding option <code>-DBayeux_ENABLE_TESTING=ON</code> to the <code>cmake</code> command will enable
@@ -1191,30 +1059,20 @@ the <b>238 test programs</b> and it will eventually shows some broken tests.
 </p>
 
 <ul class="org-ul">
-<li class="off"> datatools
-</li>
-<li class="off"> brio
-</li>
-<li class="off"> cuts
-</li>
-<li class="off"> genbb_help
-</li>
-<li class="off"> geomtools
-</li>
-<li class="off"> genvtx
-</li>
-<li class="off"> mygsl
-</li>
-<li class="off"> materials
-</li>
-<li class="off"> dpp
-</li>
-<li class="off"> mctools (see below)
-</li>
+<li class="off"> datatools</li>
+<li class="off"> brio</li>
+<li class="off"> cuts</li>
+<li class="off"> genbb_help</li>
+<li class="off"> geomtools</li>
+<li class="off"> genvtx</li>
+<li class="off"> mygsl</li>
+<li class="off"> materials</li>
+<li class="off"> dpp</li>
+<li class="off"> mctools (see below)</li>
 </ul>
 </div>
 
-<ul class="org-ul"><li><code>mctools</code> compilation error<br  /><div class="outline-text-5" id="text-4-3-3-1">
+<ul class="org-ul"><li><a id="orgheadline57"></a><code>mctools</code> compilation error<br  /><div class="outline-text-5" id="text-orgheadline57">
 <p>
 Compilation of <code>mctools</code> component generates the following error
 </p>
@@ -1242,19 +1100,18 @@ declaration line 376 to something like
 <pre class="src src-c++"><span class="org-type">G4ParticleDefinition</span> * <span class="org-variable-name">g4_particle</span> = particle_table-&gt;FindParticle ((<span class="org-type">G4String</span>)g4_particle_name);
 </pre>
 </div>
-</div>
-</li></ul>
-</div>
+</div></li></ul>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> Install @ VMWare</h2>
+</div>
+<div id="outline-container-orgheadline81" class="outline-2">
+<h2 id="orgheadline81"><span class="section-number-2">5</span> Install @ VMWare</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-sec-5-1" class="outline-3">
-<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Preamble</h3>
+</div><div id="outline-container-orgheadline65" class="outline-3">
+<h3 id="orgheadline65"><span class="section-number-3">5.1</span> Preamble</h3>
 <div class="outline-text-3" id="text-5-1">
-</div><div id="outline-container-sec-5-1-1" class="outline-4">
-<h4 id="sec-5-1-1"><span class="section-number-4">5.1.1</span> Connection to machine</h4>
+</div><div id="outline-container-orgheadline61" class="outline-4">
+<h4 id="orgheadline61"><span class="section-number-4">5.1.1</span> Connection to machine</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <div class="org-src-container">
 
@@ -1263,8 +1120,8 @@ declaration line 376 to something like
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5-1-2" class="outline-4">
-<h4 id="sec-5-1-2"><span class="section-number-4">5.1.2</span> Machine configuration</h4>
+<div id="outline-container-orgheadline62" class="outline-4">
+<h4 id="orgheadline62"><span class="section-number-4">5.1.2</span> Machine configuration</h4>
 <div class="outline-text-4" id="text-5-1-2">
 <div class="org-src-container">
 
@@ -1280,8 +1137,8 @@ g++ (GCC) 4.1.2 20080704 (Red Hat 4.1.2-50)
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5-1-3" class="outline-4">
-<h4 id="sec-5-1-3"><span class="section-number-4">5.1.3</span> Prerequisites</h4>
+<div id="outline-container-orgheadline63" class="outline-4">
+<h4 id="orgheadline63"><span class="section-number-4">5.1.3</span> Prerequisites</h4>
 <div class="outline-text-4" id="text-5-1-3">
 <p>
 Since the machine embeds a SL5.5 linux distribution, some third-party software
@@ -1294,19 +1151,19 @@ following table shows which external software have been (manually) installed
 <caption class="t-above"><span class="table-number">Table 1:</span> <b>Third-party software components installed</b></caption>
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="right" />
+<col  class="org-right" />
 </colgroup>
 <tbody>
 <tr>
-<td class="left">Software</td>
-<td class="right">Version</td>
+<td class="org-left">Software</td>
+<td class="org-right">Version</td>
 </tr>
 
 <tr>
-<td class="left">cmake</td>
-<td class="right">2.8.12.1</td>
+<td class="org-left">cmake</td>
+<td class="org-right">2.8.12.1</td>
 </tr>
 </tbody>
 </table>
@@ -1336,32 +1193,32 @@ the following table
 <caption class="t-above"><span class="table-number">Table 2:</span> <b>Missing software components installed through <code>yum install</code> commmand</b></caption>
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <tbody>
 <tr>
-<td class="left">Package</td>
-<td class="left">Required by</td>
+<td class="org-left">Package</td>
+<td class="org-left">Required by</td>
 </tr>
 
 <tr>
-<td class="left">patch</td>
-<td class="left">patchelf</td>
+<td class="org-left">patch</td>
+<td class="org-left">patchelf</td>
 </tr>
 
 <tr>
-<td class="left">expat-devel</td>
-<td class="left">geant4</td>
+<td class="org-left">expat-devel</td>
+<td class="org-left">geant4</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-sec-5-1-4" class="outline-4">
-<h4 id="sec-5-1-4"><span class="section-number-4">5.1.4</span> Configuration of installation directory</h4>
+<div id="outline-container-orgheadline64" class="outline-4">
+<h4 id="orgheadline64"><span class="section-number-4">5.1.4</span> Configuration of installation directory</h4>
 <div class="outline-text-4" id="text-5-1-4">
 <div class="org-src-container">
 
@@ -1372,11 +1229,11 @@ the following table
 </div>
 </div>
 
-<div id="outline-container-sec-5-2" class="outline-3">
-<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Cadfael</h3>
+<div id="outline-container-orgheadline70" class="outline-3">
+<h3 id="orgheadline70"><span class="section-number-3">5.2</span> Cadfael</h3>
 <div class="outline-text-3" id="text-5-2">
-</div><div id="outline-container-sec-5-2-1" class="outline-4">
-<h4 id="sec-5-2-1"><span class="section-number-4">5.2.1</span> Checking out</h4>
+</div><div id="outline-container-orgheadline66" class="outline-4">
+<h4 id="orgheadline66"><span class="section-number-4">5.2.1</span> Checking out</h4>
 <div class="outline-text-4" id="text-5-2-1">
 <div class="org-src-container">
 
@@ -1386,8 +1243,8 @@ the following table
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5-2-2" class="outline-4">
-<h4 id="sec-5-2-2"><span class="section-number-4">5.2.2</span> Configuration</h4>
+<div id="outline-container-orgheadline67" class="outline-4">
+<h4 id="orgheadline67"><span class="section-number-4">5.2.2</span> Configuration</h4>
 <div class="outline-text-4" id="text-5-2-2">
 <p>
 To setup <code>Cadfael</code>, first create the following directory
@@ -1435,73 +1292,44 @@ then execute the <code>make</code> command
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5-2-3" class="outline-4">
-<h4 id="sec-5-2-3"><span class="section-number-4">5.2.3</span> Ports status <code>[7/8]</code></h4>
+<div id="outline-container-orgheadline69" class="outline-4">
+<h4 id="orgheadline69"><span class="section-number-4">5.2.3</span> Ports status <code>[7/8]</code></h4>
 <div class="outline-text-4" id="text-5-2-3">
 <ul class="org-ul">
-<li class="on"> <p>
-patchelf
-</p>
-</li>
-<li class="on"> <p>
-GSL
-</p>
-</li>
-<li class="off"> <p>
-CLHEP (see below)
-</p>
-</li>
-<li class="on"> <p>
-boost
-</p>
-</li>
-<li class="on"> <p>
-camp
-</p>
-</li>
-<li class="on"> <p>
-xerces-c
-</p>
-</li>
-<li class="on"> <p>
-Geant4
-</p>
+<li class="on"> patchelf</li>
+<li class="on"> GSL</li>
+<li class="off"> CLHEP (see below)</li>
+<li class="on"> boost</li>
+<li class="on"> camp</li>
+<li class="on"> xerces-c</li>
+<li class="on"> Geant4
 <ul class="org-ul">
-<li class="on"> <code>-Dport/geant4+gdml</code> will install Xerces-C
-</li>
-<li class="on"> <code>-Dport/geant4+data</code>
-</li>
-</ul>
-</li>
-<li class="on"> <p>
-ROOT
-</p>
+<li class="on"> <code>-Dport/geant4+gdml</code> will install Xerces-C</li>
+<li class="on"> <code>-Dport/geant4+data</code></li>
+</ul></li>
+<li class="on"> ROOT
 <ul class="org-ul">
-<li class="on"> <code>-Dport/root+mathmore</code>
-</li>
-<li class="on"> <code>-Dport/root+opengl</code>
-</li>
-</ul>
-</li>
+<li class="on"> <code>-Dport/root+mathmore</code></li>
+<li class="on"> <code>-Dport/root+opengl</code></li>
+</ul></li>
 </ul>
 </div>
 
-<ul class="org-ul"><li>CLHEP test error<br  /><div class="outline-text-5" id="text-5-2-3-1">
+<ul class="org-ul"><li><a id="orgheadline68"></a>CLHEP test error<br  /><div class="outline-text-5" id="text-orgheadline68">
 <p>
 I had to disable the tests of CLHEP since one of them was failing and thus
 stopping the compilation of other ports. To remove test, I have commented two
 lines (line 38 &amp; 39) located in file
 <code>$SW_WORK_DIR/Cadfael/trunk/ports/clhep/CMakeLists.txt</code>.
 </p>
+</div></li></ul>
 </div>
-</li></ul>
 </div>
-</div>
-<div id="outline-container-sec-5-3" class="outline-3">
-<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Bayeux</h3>
+<div id="outline-container-orgheadline75" class="outline-3">
+<h3 id="orgheadline75"><span class="section-number-3">5.3</span> Bayeux</h3>
 <div class="outline-text-3" id="text-5-3">
-</div><div id="outline-container-sec-5-3-1" class="outline-4">
-<h4 id="sec-5-3-1"><span class="section-number-4">5.3.1</span> Checking out</h4>
+</div><div id="outline-container-orgheadline71" class="outline-4">
+<h4 id="orgheadline71"><span class="section-number-4">5.3.1</span> Checking out</h4>
 <div class="outline-text-4" id="text-5-3-1">
 <div class="org-src-container">
 
@@ -1511,8 +1339,8 @@ lines (line 38 &amp; 39) located in file
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5-3-2" class="outline-4">
-<h4 id="sec-5-3-2"><span class="section-number-4">5.3.2</span> Configuration</h4>
+<div id="outline-container-orgheadline72" class="outline-4">
+<h4 id="orgheadline72"><span class="section-number-4">5.3.2</span> Configuration</h4>
 <div class="outline-text-4" id="text-5-3-2">
 <p>
 To setup <code>Bayeux</code>, first create the following directory
@@ -1546,8 +1374,8 @@ To run the compilation process do
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5-3-3" class="outline-4">
-<h4 id="sec-5-3-3"><span class="section-number-4">5.3.3</span> Test programs <code>[9/10]</code></h4>
+<div id="outline-container-orgheadline74" class="outline-4">
+<h4 id="orgheadline74"><span class="section-number-4">5.3.3</span> Test programs <code>[9/10]</code></h4>
 <div class="outline-text-4" id="text-5-3-3">
 <p>
 Adding option <code>-DBayeux_ENABLE_TESTING=ON</code> to the <code>cmake</code> command will enable
@@ -1556,30 +1384,20 @@ the <b>238 test programs</b> and it will eventually shows some broken tests.
 </p>
 
 <ul class="org-ul">
-<li class="on"> datatools
-</li>
-<li class="on"> brio
-</li>
-<li class="on"> cuts
-</li>
-<li class="on"> genbb_help
-</li>
-<li class="on"> geomtools
-</li>
-<li class="on"> genvtx
-</li>
-<li class="on"> mygsl
-</li>
-<li class="on"> materials
-</li>
-<li class="on"> dpp
-</li>
-<li class="off"> mctools (see below)
-</li>
+<li class="on"> datatools</li>
+<li class="on"> brio</li>
+<li class="on"> cuts</li>
+<li class="on"> genbb_help</li>
+<li class="on"> geomtools</li>
+<li class="on"> genvtx</li>
+<li class="on"> mygsl</li>
+<li class="on"> materials</li>
+<li class="on"> dpp</li>
+<li class="off"> mctools (see below)</li>
 </ul>
 </div>
 
-<ul class="org-ul"><li><code>mctools</code> compilation error<br  /><div class="outline-text-5" id="text-5-3-3-1">
+<ul class="org-ul"><li><a id="orgheadline73"></a><code>mctools</code> compilation error<br  /><div class="outline-text-5" id="text-orgheadline73">
 <p>
 Compilation of <code>mctools</code> component generates the following error
 </p>
@@ -1607,15 +1425,14 @@ declaration line 376 to something like
 <pre class="src src-c++"><span class="org-type">G4ParticleDefinition</span> * <span class="org-variable-name">g4_particle</span> = particle_table-&gt;FindParticle ((<span class="org-type">G4String</span>)g4_particle_name);
 </pre>
 </div>
+</div></li></ul>
 </div>
-</li></ul>
 </div>
-</div>
-<div id="outline-container-sec-5-4" class="outline-3">
-<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Falaise</h3>
+<div id="outline-container-orgheadline79" class="outline-3">
+<h3 id="orgheadline79"><span class="section-number-3">5.4</span> Falaise</h3>
 <div class="outline-text-3" id="text-5-4">
-</div><div id="outline-container-sec-5-4-1" class="outline-4">
-<h4 id="sec-5-4-1"><span class="section-number-4">5.4.1</span> Checking out</h4>
+</div><div id="outline-container-orgheadline76" class="outline-4">
+<h4 id="orgheadline76"><span class="section-number-4">5.4.1</span> Checking out</h4>
 <div class="outline-text-4" id="text-5-4-1">
 <div class="org-src-container">
 
@@ -1625,8 +1442,8 @@ declaration line 376 to something like
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5-4-2" class="outline-4">
-<h4 id="sec-5-4-2"><span class="section-number-4">5.4.2</span> Configuration</h4>
+<div id="outline-container-orgheadline77" class="outline-4">
+<h4 id="orgheadline77"><span class="section-number-4">5.4.2</span> Configuration</h4>
 <div class="outline-text-4" id="text-5-4-2">
 <p>
 To setup <code>Falaise</code> with an already version of <code>Bayeux</code> installed, first create
@@ -1663,8 +1480,8 @@ To run the compilation process do
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-3" class="outline-4">
-<h4 id="sec-5-4-3"><span class="section-number-4">5.4.3</span> Basic tests</h4>
+<div id="outline-container-orgheadline78" class="outline-4">
+<h4 id="orgheadline78"><span class="section-number-4">5.4.3</span> Basic tests</h4>
 <div class="outline-text-4" id="text-5-4-3">
 <div class="org-src-container">
 
@@ -1680,8 +1497,8 @@ Tests successfully passed.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5-5" class="outline-3">
-<h3 id="sec-5-5"><span class="section-number-3">5.5</span> Final tests</h3>
+<div id="outline-container-orgheadline80" class="outline-3">
+<h3 id="orgheadline80"><span class="section-number-3">5.5</span> Final tests</h3>
 <div class="outline-text-3" id="text-5-5">
 <p>
 Every binaries have been placed within
@@ -1733,7 +1550,7 @@ Bayeux components but for the 2 interesting Falaise binaries, namely
 within these binaries. For example, if I moved the former binaries to the
 <code>$HOME</code> directory, then running <code>$HOME/flsimulate --help</code> command gives the
 following error
- <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara"> rpath is a term in programming which refers to a run-time search path hard-coded in an executable file or library, used during dynamic linking to find the libraries the executable or library requires. </p><br/></div>
+ <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara"> rpath is a term in programming which refers to a run-time search path hard-coded in an executable file or library, used during dynamic linking to find the libraries the executable or library requires. </p></div><br/></div>
 </p>
 <div class="org-src-container">
 
@@ -1758,7 +1575,7 @@ used.
 </div>
 </div></div>
 <div id="postamble" class="status">
-File under <i class="fa fa-github-alt"></i> version control - commit <a href="https://github.com/xgarrido/org-notes/commit/899af511de8a68ba1aab070045271e6b3875390c">899af51</a> - 2014-08-09
+File under <i class="fa fa-github-alt"></i> version control - commit <a href="https://github.com/xgarrido/org-notes/commit/a051d1e1c02647f7620ab959f1b3e22c1adce872">a051d1e</a> - 2015-10-17
 </div>
 </body>
 </html>
