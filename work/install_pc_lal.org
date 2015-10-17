@@ -124,6 +124,9 @@ proceed by downloading different zsh bundle sources, especially plugins
 related to SuperNEMO software.
 
 * =emacs= configuration
+** Install =emacs=
+** Install =org-mode=
+** Install =emacs= setup
 To get a effective startup configuration for =emacs=, one can use the
 =starter-kit= setup initially started by [[https://github.com/technomancy/emacs-starter-kit][technomancy]] and ported to =org-mode= by
 [[https://github.com/eschulte/emacs24-starter-kit][Eric Schulte]]. We will use a slightly different version of the later that can be
@@ -131,25 +134,14 @@ found [[https://github.com/xgarrido/emacs-starter-kit]].
 
 Since version 24.x, =emacs= is bundled with a package manager that allows to
 download =emacs-lisp= libraries written from several places such as github, for
-examepl. First, we will need to download and install two package manager
-frontends, namely [[https://github.com/dimitri/el-get][el-get]] and [[https://github.com/cask/cask][cask]], to automatically get some predefined =emacs=
-bundles from =emacs-starter-kit=. You will need to run =emacs= 3 times to get
-everything working.
+example.
 
-1) Run (do not forget the =\=)
+1) Run (*do not forget the =\=*)
    #+BEGIN_SRC sh
      $ \emacs
    #+END_SRC
-   and wait until =el-get= package gets installed (it can take 1 or 2
-   minutes). At the end of the process, you will get a message on the =emacs=
-   buffer
-   #+BEGIN_SRC sh
-     cask installed: This package has been installed successfully by el-get.
-   #+END_SRC
-2) Kill again =emacs= and run it again. Then, inside =emacs= frame, do =ALT-x=
-   and type =pallet-install=. This will install all the =emacs= libraries as
-   defined in =starter-kit-cask.org= file. At the end of the process, finally
-   kill =emacs= a last time. Everything has been installed.
+   and wait until packages get installed (it can take 1 or 2
+   minutes depending on your internet connection).
 
 If you are using all the =zsh= plugins downloaded by =antigen=, then you
 got a problem when you launch =emacs= which tells you that no emacs server are
