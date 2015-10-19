@@ -76,6 +76,11 @@ then execute the =make= command
   - [X] =-Dport/root+mathmore=
   - [X] =-Dport/root+opengl=
 ** Bayeux
+*** Checking out
+#+BEGIN_SRC sh
+  svn co https://nemo.lpc-caen.in2p3.fr/svn/Bayeux/trunk \
+      ${SW_WORK_DIR}/Bayeux/trunk
+#+END_SRC
 *** Configuration
 To setup =Bayeux=, execute the following code
 #+BEGIN_SRC sh
@@ -108,6 +113,11 @@ the *237 test programs* and it will eventually shows some broken tests.
 - [X] mctools
 
 ** Falaise
+*** Checking out
+#+BEGIN_SRC sh
+  svn co https://nemo.lpc-caen.in2p3.fr/svn/Falaise/trunk \
+      ${SW_WORK_DIR}/Falaise/trunk
+#+END_SRC
 *** Configuration
 To setup =Falaise= with an already version of =Bayeux= installed, do
 #+BEGIN_SRC sh
