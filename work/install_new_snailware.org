@@ -137,11 +137,23 @@ To run the compilation process on several CPU cores do
 *** Basic tests
 #+BEGIN_SRC sh
   cd ${SW_WORK_DIR}/Falaise/build
-  ./BuildProducts/bin/flsimulate -n 10 -o /tmp/${USER}/snemo_tc_muons_roof.xml
-  ./BuildProducts/bin/flreconstruct -i /tmp/${USER}/snemo_tc_muons_roof.xml
+  ./BuildProducts/bin/flsimulate -n 10 -o /tmp/${USER}/io_output_simulation.brio
+  ./BuildProducts/bin/flreconstruct -i /tmp/${USER}/io_output_simulation.brio -o /tmp/${USER}/io_output_reconstruction.brio
+  ./BuildProducts/bin/flvisualize -i /tmp/${USER}/io_output_reconstruction.brio
 #+END_SRC
 
 Tests successfully passed.
+** Full configuration
+Given that the previous installation steps have been successfully passed, the
+final setup only needs to export the =PATH= environment variable to give access
+to Cadfael executables such as =root= as well as Bayeux and Falaise binaries
+/i.e./ =bxdpp_processing=, =flsimulate=... Users just need to execute or to add
+the following lines in theirs =.bashrc=
+#+BEGIN_SRC sh
+  export PATH=${SW_WORK_DIR}/Cadfael/install/bin:$PATH
+  export PATH=${SW_WORK_DIR}/Bayeux/install/bin:$PATH
+  export PATH=${SW_WORK_DIR}/Falaise/install/bin:$PATH
+#+END_SRC
 
 * Install @ CC
 ** Preamble
