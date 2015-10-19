@@ -8,12 +8,6 @@
 
 * Install @ LAL
 ** Preamble
-*** Configuration of =cmake=                                   :deprecated:
-First you should specify an alias to the latest version of =cmake= by executing
-#+BEGIN_SRC sh
-  alias cmake=cmake28
-#+END_SRC
-You will get version 2.8.9 of =cmake=.
 *** Configuration of installation directory
 #+BEGIN_SRC sh
   export SW_WORK_DIR=/exp/nemo/garrido/tmp
