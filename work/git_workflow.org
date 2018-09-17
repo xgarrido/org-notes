@@ -1,0 +1,113 @@
+#+TITLE: Git workflow : cloning, branching, pulling and merging
+#+AUTHOR: Xavier Garrido
+
+This short tutorial explains how to deal and to work efficiently with =git=. The used project for this
+tutorial is CAMEL but the current tutorial is enough general to work with other =git= projects.
+
+* At the beginning, the clone
+
+To get a local copy of CAMEL's repository, you first need to *clone* the remote repository. Within
+your terminal, type the following command
+#+BEGIN_SRC sh
+  $ git clone git@gitlab.in2p3.fr:cosmotools/CAMEL.git
+#+END_SRC
+
+You will get a new directory named CAMEL. You can check which branch is currently active
+#+BEGIN_SRC sh
+  $ git branch
+  * master
+#+END_SRC
+
+The =master= branch is a local version of the remote =master= branch. It means that any changes within
+your local =master= will not change the remote repository until you pushed your changes. You can view
+all the available branches with
+#+BEGIN_SRC sh
+  $ git branch -a
+#+END_SRC
+
+Most of them are not local and are prefixed by =remotes/origin/=. If you want to take a quick peek,
+you can do
+#+BEGIN_SRC sh
+  $ git checkout origin/branch_name
+#+END_SRC
+but if you want to modify it, you need to create a local tracking branch, you do
+#+BEGIN_SRC sh
+  $ git checkout branch_name
+#+END_SRC
+and you will see
+#+BEGIN_SRC sh
+  Branch branch_name set up to track remote branch branch_name from origin.
+  Switched to a new branch 'branch_name'
+#+END_SRC
+
+* First change, first commit
+
+Now you find a small typo inside the source code and want to modify it. You first edit the file, for
+instance the =README.md= file. You local =master= branch is now dirty since the =README.md= file has local
+changes. You can view which files are currently modified by doing
+#+BEGIN_SRC sh
+  $ git status
+#+END_SRC
+and you can watch the differences between your local file and its previous state by typing
+#+BEGIN_SRC sh
+  $ git diff README.md
+#+END_SRC
+
+If you think your changes is good enough, you need now to add it to the commit list
+#+BEGIN_SRC sh
+  $ git add README.md
+  $ git commit -m "my very important change"
+#+END_SRC
+If you do =git status=, there are no more unmodified files and your local repository is clean
+again. Last, you want now to share your changes with the rest of the world and thus you want to
+update the remote repository located at =gitlab.in2p3.fr/cosmotools=
+#+BEGIN_SRC sh
+  $ git push
+#+END_SRC
+
+* Branching git
+
+You want now not only to debug typo but you also want to fix more stuff or to add a new feature. =git=
+workflow suggests to create a dedicated *branch* where you will add all the new code related to your
+new feature. For instance, we want to add modified gravity within CAMEL, a huge job actually. To
+preserve the =master= branch (you local repository as well as the remote one) with a Work In Progress
+task, you surely want to create a dedicated branch with a self-explanatory name
+#+BEGIN_SRC sh
+  $ git branch feature-modified-gravity
+  $ git checkout feature-modified-gravity
+#+END_SRC
+or in one step
+#+BEGIN_SRC sh
+  $ git checkout -b feature-modified-gravity
+#+END_SRC
+
+The very important point is to start your new branch from an updated starting point (in our case
+from an updated version of the =master= branch). To do that, make sure to do =git pull= inside the
+=master= branch before creating your new local branch.
+
+So far, so good. Now you can work within the =feature-modified-gravity= branch like we do in the
+previous section (adding, commiting). To push your change the remote =feature-modified-gravity=
+branch, you will need to set the upstream /i.e./ where you want your changes to be pushed. Most of the
+time, you will need to do
+#+BEGIN_SRC sh
+  $ git push --set-upstream origin feature-modified-gravity
+#+END_SRC
+Note that you only need to do it for the very first push.
+
+If you go to the gitlab web interface /via/ your browser https://gitlab.in2p3.fr/cosmotools/CAMEL, you
+will see in the branch list your new branch. Actually, if you just pushed your branch, you will also
+see at the top of the project webpage, a suggestion to create a merge request..
+
+* Merging your job into the =master= or any branch
+
+Now that your are quite confident that the modified gravity feature is fully implemented, you want
+this feature into the main branch namely =master= or =develop=. You then need to merge your changes. The
+easiest way (from my point-of-view) is to use the gitlab web interface. Go to the CAMEL project in
+gitlab and on the left sidebar, you can click on Merge Requests. Choose a New merge request and then
+select which branch you want to merge (source branch) and where you want the merge to be done
+(target branch). You can then compare branches, make sure everything is fine, assign a reviewer that
+will be able to do the merge. You can also change the merge request label and ask for the deletion
+of the branch when the merge is done. Creating a merge request does not mean the merge will be
+done. The reviewer and even you, want to improve further your code and the good point with merge
+request is that every new commits done inside your branch will be automatically added to the merge
+request.
