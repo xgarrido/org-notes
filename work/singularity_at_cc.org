@@ -1,0 +1,71 @@
+#+TITLE: Docker, Singularity & co
+#+AUTHOR: Xavier Garrido
+
+This note explains how the CMB software (=planck/clik=, =CLASS=, =CAMEL=,...) have been built /via/ a
+[[https://www.docker.com/][=docker=]] container, tested and run through [[https://www.sylabs.io/][=singularity=]] at CC, Lyon.
+
+* Building CMB software suite
+
+CMB software have been installed and tested on two different machine setup :
+1) An [[http://releases.ubuntu.com/16.04.5/][ubuntu 16.04]] machine
+2) A [[https://www.centos.org/download/][CentOS 7]] machine
+
+Actually all the code has been compiled without errors on the ubuntu machine but the =camb= software
+fails to install on the CentOS 7 machine. For the time being and within this note, we will use the
+ubuntu docker image.
+
+** Dockerfile repository
+
+To create the docker image containing all the software pieces, we need to create a recipe named a
+/Dockerfile/ which hold all the needed commands such as installing system libraries (=blas=,
+=g++/gfortran= compilers...). The =Dockerfile= can be found [[https://github.com/xgarrido/dockerfiles/tree/master/cmb/ubuntu/16.04][here]].
+
+If you have a proper installation of =docker=, you can build the image with the following command
+after having cloned the =git= repository with the =Dockerfile=
+#+BEGIN_SRC shell
+  $ git clone https://github.com/xgarrido/dockerfiles ~/dockerfiles
+  $ cd ~/dockerfiles/cmb/ubuntu/16.04
+  $ docker build -t cmb/ubuntu16.04 .
+#+END_SRC
+where =cmb/ubuntu16.04= is the tag of your image. Depending of your host machine, the installation
+process can take few minutes. At the end, you can see you new docker image with =$ docker images=
+command.
+
+** Running the =cmb/ubuntu16.04= image
+
+If the everything gets fine during the previous section, you now have a container that can run all
+the CMB software. To get into your =cmb/ubuntu16.04= image you can do (from everywhere and not anymore
+into the =Dockerfile= directory)
+#+BEGIN_SRC shell
+  $ docker run --rm -it cmb/ubuntu16:latest /bin/zsh
+#+END_SRC
+
+This will start the latest =cmb/ubuntu16.04= image in interactive mode (=-i=) with TTY allocation (=-t=)
+and set a =zsh= shell. You are currently logged as =cmb= user. When you will leave the image (by typing
+=exit= for instance), the container (not the image) will be removed (=--rm=). You should now see a
+colored prompt with time, shell and the current hash tag of the =docker= image.
+
+Setting CMB software suite needs to source environment variables. You can do it *within your
+container* in two different ways
+#+BEGIN_SRC shell
+  $ source ~/software/cmb_setup.sh
+#+END_SRC
+of using the =pkgman= utilities
+#+BEGIN_SRC shell
+  $ pkgman setup @cmb
+#+END_SRC
+
+You will get all the binaries such as =CAMEL= binaries (=writeChi2=, =Profile=, =mcmc=) and you can also
+start =ipython= and import =camel= or =matplotlib= libraries. Nevertheless, X11 emulation is disabled. You
+can [[https://github.com/xgarrido/dockerfiles/blob/master/README.org][read]] how to achieve X11 forward.
+
+** Binding the =data= directory
+
+To reduce the image size (in order to push it into a "server", see [[Docker Hub]] section), the Planck,
+=pico= or =CAMEL= data have not been pushed into the image. To use the code, you need a local version of
+the data and you need to bind this local version with the =/home/cmb/data= directory in the
+container. Your installation of data must look like that
+#+BEGIN_SRC
+#+END_SRC
+
+* Docker Hub
