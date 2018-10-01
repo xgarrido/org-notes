@@ -43,7 +43,8 @@ into the =Dockerfile= directory)
 This will start the latest =cmb/ubuntu16.04= image in interactive mode (=-i=) with TTY allocation (=-t=)
 and set a =zsh= shell. You are currently logged as =cmb= user. When you will leave the image (by typing
 =exit= for instance), the container (not the image) will be removed (=--rm=). You should now see a
-colored prompt with time, shell and the current hash tag of the =docker= image.
+colored prompt with time, shell and the current hash tag of the =docker= image. Be careful with =docker=
+options since their respective positions matters.
 
 Setting CMB software suite needs to source environment variables. You can do it *within your
 container* in two different ways
@@ -88,3 +89,13 @@ modify their content from your =docker= container (try to do =$ touch dummy= in 
 directory and the =dummy= file will be instantanously created on your computer).
 
 * Docker Hub
+
+Building from scratch all the CMB software is a nice exercice but you may wonder how can I get only
+the image that someone else has already built to just use it. Actually, the image is available on
+the [[https://hub.docker.com/][docker hub]] which serves as a kind of server for docker images. You can then just pull the image
+from https://hub.docker.com/r/xgarrido/cmb_ubuntu1604 and get a working copy of all CMB software
+without needing to reconstruct the whole chain. Pulling can be done by the following command
+#+BEGIN_SRC shell
+  $ docker pull xgarrido/cmb_ubuntu1604
+#+END_SRC
+Then, you can play with the image just like before by using its name =xgarrido/cmb_ubuntu1604=.
