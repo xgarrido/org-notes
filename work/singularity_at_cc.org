@@ -65,7 +65,26 @@ To reduce the image size (in order to push it into a "server", see [[Docker Hub]
 =pico= or =CAMEL= data have not been pushed into the image. To use the code, you need a local version of
 the data and you need to bind this local version with the =/home/cmb/data= directory in the
 container. Your installation of data must look like that
-#+BEGIN_SRC
+#+BEGIN_SRC shell
+$ ls /where/data/is/located/on/your/computer/*
+data/camel_data:
+BAO  HighEll  Hillipop  JLA  Lollipop  bbn
+
+data/pico_data:
+pico3_tailmonty_v34.dat
+
+data/planck_data:
+PLC_2.0  hi_l  lensing  low_l
 #+END_SRC
+
+You can now bind your local data directory with the one inside your =docker= container
+#+BEGIN_SRC shell
+  $ docker run --rm -it -v /where/data/is/located/on/your/computer:/home/cmb/data cmb/ubuntu16.04:latest /bin/zsh
+#+END_SRC
+If you go inside the =/home/cmb/data= directory, you will get the same directories as in your
+computer. The =-v= option is pretty self-explanatory and we will use a similar technique when dealing
+with =singularity= software. An important point is the fact that binding directories allow you to
+modify their content from your =docker= container (try to do =$ touch dummy= in the =/home/cmb/data=
+directory and the =dummy= file will be instantanously created on your computer).
 
 * Docker Hub
