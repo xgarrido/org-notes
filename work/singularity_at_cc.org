@@ -102,12 +102,13 @@ without needing to reconstruct the whole chain. Pulling can be done by the follo
 #+END_SRC
 Then, you can play with the image just like before by using its name =xgarrido/cmb_ubuntu1604=.
 * Singularity
+** Pulling and running image from =docker=
 
 =Singularity= is another service of containers but dedicated to scientific applications (support for
 MPI for instance). In the same way as =docker=, user can create a recipe to build a =singularity=
 image. Since we already have a working =docker= image and since =singularity= can import and load
 =docker= images, we will stay with our CMB =docker= image and investigate how we can handle =singularity=
-at CC.
+at CC. A short description of =singularity= at CC can be found [[https://indico.in2p3.fr/event/17209/contributions/60585/attachments/48733/61680/singularity-journees-plateforme-v0.1.pdf][here]].
 
 *Disclaimer* : =singularity= binary has been installed by Lyon staff and should be available as soon as
 you have the =/bin= directory within your =PATH= environment. One issue you may face is =singularity= use
@@ -127,6 +128,17 @@ can now run this =singularity= image /via/
 #+BEGIN_SRC shell
   $ singularity run $SINGULARITY_CACHEDIR/cmb_ubuntu1604.simg
 #+END_SRC
+You are now within the =cmb_ubuntu1604.simg= image where you can source the
+=/home/cmb/software/cmb_setup.sh= file to load all requirements for CMB analysis.
+
+When running the previous command you should get the following warning
+#+BEGIN_SRC shell
+  WARNING: Could not chdir to home: $HOME
+#+END_SRC
+where =$HOME= should point to your home directory. As far as I can understand how =singularity= is used
+at CC Lyon, the =HOME= directory at Lyon is automatically mount in the =singularity= =/home= path but
+since we use within the docker image another username namely =cmb=, the mount just fails. As we will
+see the warning does not hurt and CMB software can be run safely.
 
 As explained before, to reduce image file, the data needed by CMB software have not been pulled into
 the =docker/singularity= image. You need to bind the =/home/cmb/data= directory from your =singularity=
@@ -135,3 +147,31 @@ directory binding
 #+BEGIN_SRC shell
   $ singularity run -B /sps/planck/camel/CentOS7/data:/home/cmb/data $SINGULARITY_CACHEDIR/cmb_ubuntu1604.simg
 #+END_SRC
+
+** Creating a script and sending it to CC farm /via/ =qsub=
+
+We now have a =singularity= image that can be used in standalone mode. We also have seen how to bind
+directories in order to exchange files between the host and the =singularity= container. We will use
+this technique to create a bash script + a =CAMEL= parameter file and to share it between your local
+directory at Lyon and the =singularity= container.
+
+To do the test, let's create a new directory
+#+BEGIN_SRC shell
+  $ mkdir $TMPDIR/singularity.d && cd $TMPDIR/singularity.d
+#+END_SRC
+Let's get and download a =CAMEL= parameter file
+#+BEGIN_SRC shell
+  $ wget https://gitlab.in2p3.fr/cosmotools/CAMEL/uploads/d717ac3b074d5cad8e18b578a739e87a/class_issue.par
+#+END_SRC
+and finally, let's create a script file named =class_issue.sh= with the following commands
+#+BEGIN_SRC shell
+  $ echo -ne "#\!/bin/bash\nsource /home/cmb/software/cmb_setup.sh; writeChi2 /mnt/singularity.d/class_issue.par" > class_issue.sh
+  $ chmod u+x class_issue.sh
+#+END_SRC
+To execute the =singularity= image, we need to bind our local tmp directory =$TMPDIR= with the =/mnt=
+directory in the =singularity= container (that's explain why the path to the =class_issue.par= file is
+=/mnt/singularity.d/class_issue.par= in the shell script). The new =singularity= command look likes that
+#+BEGIN_SRC shell
+  $ singularity exec -B /sps/planck/camel/CentOS7/data:/home/cmb/data -B $TMPDIR:/mnt $SINGULARITY_CACHEDIR/cmb_ubuntu1604.simg /mnt/singularity.d/class_issue.sh
+#+END_SRC
+and the =writeChi2= binary should start. The =exec= option of =singularity= just run a command
