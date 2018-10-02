@@ -174,4 +174,16 @@ directory in the =singularity= container (that's explain why the path to the =cl
 #+BEGIN_SRC shell
   $ singularity exec -B /sps/planck/camel/CentOS7/data:/home/cmb/data -B $TMPDIR:/mnt $SINGULARITY_CACHEDIR/cmb_ubuntu1604.simg /mnt/singularity.d/class_issue.sh
 #+END_SRC
-and the =writeChi2= binary should start. The =exec= option of =singularity= just run a command
+and the =writeChi2= binary should start. The =exec= option of =singularity= just run a command inside the
+container and without any kind of interaction with the user (no interface, no prompt).
+
+Finally, let's try to do the same thing with a =qsub= script
+#+BEGIN_SRC shell
+  $ echo -ne "#\!/bin/bash\nsingularity exec -B /sps/planck/camel/CentOS7/data:/home/cmb/data -B $TMPDIR:/mnt $SINGULARITY_CACHEDIR/cmb_ubuntu1604.simg /mnt/singularity.d/class_issue.sh" > job_singularity.sh
+#+END_SRC
+send it to CC farm /via/ =qsub= command
+#+BEGIN_SRC shell
+  $ qsub -P P_planck -q long -l os=cl7 job_singularity.sh
+#+END_SRC
+and wait... I don't know if that works since my job is still waiting for being run by CC
+computer. To be continued...
