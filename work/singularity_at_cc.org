@@ -2,7 +2,9 @@
 #+AUTHOR: Xavier Garrido
 
 This note explains how the CMB software (=planck/clik=, =CLASS=, =CAMEL=,...) have been built /via/ a
-[[https://www.docker.com/][=docker=]] container, tested and run through [[https://www.sylabs.io/][=singularity=]] at CC, Lyon.
+[[https://www.docker.com/][=docker=]] container, tested and run through [[https://www.sylabs.io/][=singularity=]] at CC, Lyon. If you just want to learn how
+to use =singularity= @ Lyon, you can go directly to section [[Singularity]] and skip the two first
+sections.
 
 * Building CMB software suite
 
@@ -99,3 +101,37 @@ without needing to reconstruct the whole chain. Pulling can be done by the follo
   $ docker pull xgarrido/cmb_ubuntu1604
 #+END_SRC
 Then, you can play with the image just like before by using its name =xgarrido/cmb_ubuntu1604=.
+* Singularity
+
+=Singularity= is another service of containers but dedicated to scientific applications (support for
+MPI for instance). In the same way as =docker=, user can create a recipe to build a =singularity=
+image. Since we already have a working =docker= image and since =singularity= can import and load
+=docker= images, we will stay with our CMB =docker= image and investigate how we can handle =singularity=
+at CC.
+
+*Disclaimer* : =singularity= binary has been installed by Lyon staff and should be available as soon as
+you have the =/bin= directory within your =PATH= environment. One issue you may face is =singularity= use
+a cache directory which by default is located into your home directory /i.e./
+=$HOME/.singularity=. Given the space limitation in =$HOME= at Lyon, I recommand to change the
+=singularity= cache path to some place where you have more space. You should do
+#+BEGIN_SRC shell
+  $ export SINGULARITY_CACHEDIR=/place/where/you/have/enough/space
+#+END_SRC
+
+First we need to pull our =docker= image into =singularity=. Just do
+#+BEGIN_SRC shell
+  $ singularity pull docker://xgarrido/cmb_ubuntu1604
+#+END_SRC
+The previous command should create a =cmb_ubuntu1604.simg= file located in =SINGULARITY_CACHEDIR=. You
+can now run this =singularity= image /via/
+#+BEGIN_SRC shell
+  $ singularity run $SINGULARITY_CACHEDIR/cmb_ubuntu1604.simg
+#+END_SRC
+
+As explained before, to reduce image file, the data needed by CMB software have not been pulled into
+the =docker/singularity= image. You need to bind the =/home/cmb/data= directory from your =singularity=
+container to some local directory. For instance, you can run =singularity= with the following
+directory binding
+#+BEGIN_SRC shell
+  $ singularity run -B /sps/planck/camel/CentOS7/data:/home/cmb/data $SINGULARITY_CACHEDIR/cmb_ubuntu1604.simg
+#+END_SRC
