@@ -185,5 +185,7 @@ send it to CC farm /via/ =qsub= command
 #+BEGIN_SRC shell
   $ qsub -P P_planck -q long -l os=cl7 job_singularity.sh
 #+END_SRC
-and wait... I don't know if that works since my job is still waiting for being run by CC
-computer. To be continued...
+
+*Erratum* : actually the =TMPDIR= is a bad choice since this directory is not mounted when a =qjob= is
+ sent. Everything should work fine as far as you mount/bind a visible directory. For instance you
+ can move the =singularity.d= directory into =/sps/planck/Temp= and try again.
