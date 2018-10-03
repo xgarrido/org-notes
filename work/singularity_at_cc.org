@@ -165,7 +165,7 @@ Let's get and download a =CAMEL= parameter file
 #+END_SRC
 and finally, let's create a script file named =class_issue.sh= with the following commands
 #+BEGIN_SRC shell
-  $ echo -ne "#\!/bin/bash\nsource /home/cmb/software/cmb_setup.sh; writeChi2 /mnt/singularity.d/class_issue.par" > class_issue.sh
+  $ echo -n "#!/bin/bash\nsource /home/cmb/software/cmb_setup.sh; writeChi2 /mnt/singularity.d/class_issue.par" > class_issue.sh
   $ chmod u+x class_issue.sh
 #+END_SRC
 To execute the =singularity= image, we need to bind our local tmp directory =$TMPDIR= with the =/mnt=
@@ -179,7 +179,7 @@ container and without any kind of interaction with the user (no interface, no pr
 
 Finally, let's try to do the same thing with a =qsub= script
 #+BEGIN_SRC shell
-  $ echo -ne "#\!/bin/bash\nsingularity exec -B /sps/planck/camel/CentOS7/data:/home/cmb/data -B $TMPDIR:/mnt $SINGULARITY_CACHEDIR/cmb_ubuntu1604.simg /mnt/singularity.d/class_issue.sh" > job_singularity.sh
+  $ echo -n "#!/bin/bash\nsingularity exec -B /sps/planck/camel/CentOS7/data:/home/cmb/data -B $TMPDIR:/mnt $SINGULARITY_CACHEDIR/cmb_ubuntu1604.simg /mnt/singularity.d/class_issue.sh" > job_singularity.sh
 #+END_SRC
 send it to CC farm /via/ =qsub= command
 #+BEGIN_SRC shell
