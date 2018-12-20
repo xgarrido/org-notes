@@ -13,7 +13,7 @@ CMB software have been installed and tested on two different machine setup :
 2) A [[https://www.centos.org/download/][CentOS 7]] machine
 
 Actually all the code has been compiled without errors on the ubuntu machine but the =camb= software
-fails to install on the CentOS 7 machine. For the time being and within this note, we will use the
+fails to install on the CentOS 7 machine[fn:143e6c0f2a0fbbe8]. For the time being and within this note, we will use the
 ubuntu docker image.
 
 ** Dockerfile repository
@@ -189,3 +189,8 @@ send it to CC farm /via/ =qsub= command
 *Erratum* : actually the =TMPDIR= is a bad choice since this directory is not mounted when a =qjob= is
  sent. Everything should work fine as far as you mount/bind a visible directory. For instance you
  can move the =singularity.d= directory into =/sps/planck/Temp= and try again.
+
+* Footnotes
+
+[fn:143e6c0f2a0fbbe8] actually the error comes from on older version of =gfortran= as explained in
+this [[https://github.com/cmbant/CAMB/issues/18][issue]].
