@@ -1,0 +1,63 @@
+#+TITLE: Using MINUIT within cobaya sampler code
+#+AUTHOR: Xavier Garrido
+#+EMAIL: xavier.garrido@lal.in2p3.fr
+
+This tutorial will go through the different steps to install a [[https://github.com/xgarrido/cobaya-minuit-sampler][MINUIT sampler for cobaya]] and to make
+use of it and its options. In a first part, we will see how to install everything from scratch
+(assuming =python= is correctly installed) and then we will see how to use the MINUIT minimizer to get
+the best cosmological values given a CMB power spectrum.
+
+* Installing MINUIT sampler
+** Creating a virtual environment
+We first create virtual environment to encapsulate all the =python= work we will do. If you use a
+version of =python= greater than 2.7 then you just have to do
+#+BEGIN_SRC shell
+  $ python -m venv /tmp/python.d
+#+END_SRC
+
+where =/tmp/python.d= will be our working directory. Change it to whatever you want. You should now
+have a =/tmp/python.d= directory holding a typical unix filesystem with =bin=, =lib= and =include=
+directories within. If you have a version of =python= smaller than 3, then you have to create your
+virtual env. with the =virtualenv= command as follow
+#+BEGIN_SRC shell
+  $ virtualenv /tmp/python.d
+#+END_SRC
+
+If the =virtualenv= command does not exist and you do not have admin permissions to install it /via/ a
+package manager, you can install with =pip= and put it in your home directory by doing
+#+BEGIN_SRC shell
+  $ pip install --user virtualenv
+#+END_SRC
+
+After the creation of your virtual env., you will need *to load it every time you open a new
+terminal* :
+#+BEGIN_SRC shell
+  $ source /tmp/python.d/bin/activate
+#+END_SRC
+
+To make sure you are now using the =python= binary from your virtual env., you can try
+#+BEGIN_SRC shell
+  $ which python
+#+END_SRC
+which should point to =/tmp/python.d/bin/python=.
+
+** Installing MINUIT sampler for cobaya
+Now that you have a virtual env., you can download and install all python modules you want. There
+will be stored in the =/tmp/python.d/lib/pythonX.X/site-packages= where =X.X= refers to your =python=
+version.
+
+Installing the MINUIT sampler for cobaya and all its dependencies should be as easy as
+#+BEGIN_SRC shell
+  $ pip install git+https://github.com/xgarrido/cobaya-minuit-sampler.git
+#+END_SRC
+
+For plotting purpose, we will also installed =matplotlib= [fn:14e29ff327b6f345]
+#+BEGIN_SRC shell
+  $ pip install matplotlib
+#+END_SRC
+
+
+* Footnotes
+
+[fn:14e29ff327b6f345] this should be a dependency of =cobaya= /via/ =GetDist= package but it seems not to
+be installed by =pip=.
