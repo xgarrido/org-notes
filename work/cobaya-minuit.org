@@ -2,7 +2,6 @@
 #+AUTHOR: Xavier Garrido
 #+EMAIL: xavier.garrido@lal.in2p3.fr
 
-* Using MINUIT within cobaya sampler code
 This tutorial will go through the different steps to install a [[https://github.com/xgarrido/cobaya-minuit-sampler][MINUIT sampler for cobaya]] and to make
 use of it and its options. In a first part, we will see how to install everything from scratch
 (assuming =python= is correctly installed) and then we will see how to use the MINUIT minimizer to get
@@ -13,7 +12,7 @@ the best cosmological values given a CMB power spectrum.
 We first create virtual environment to encapsulate all the =python= work we will do. If you use a
 version of =python= greater than 2.7 then you just have to do
 #+BEGIN_SRC
-  $ python -m venv /tmp/python.d
+  $ python -m venv /tmp/tutorial.d/env
 #+END_SRC
 
 where =/tmp/python.d= will be our working directory. Change it to whatever you want. You should now
@@ -21,7 +20,7 @@ have a =/tmp/python.d= directory holding a typical unix filesystem with =bin=, =
 directories within. If you have a version of =python= smaller than 3, then you have to create your
 virtual env. with the =virtualenv= command as follow
 #+BEGIN_SRC
-  $ virtualenv /tmp/python.d
+  $ virtualenv /tmp/tutorial.d/env
 #+END_SRC
 
 If the =virtualenv= command does not exist and you do not have admin permissions to install it /via/ a
@@ -33,29 +32,125 @@ package manager, you can install with =pip= and put it in your home directory by
 After the creation of your virtual env., you will need *to load it every time you open a new
 terminal* :
 #+BEGIN_SRC
-  $ source /tmp/python.d/bin/activate
+  $ source /tmp/tutorial.d/env/bin/activate
 #+END_SRC
 
 To make sure you are now using the =python= binary from your virtual env., you can try
 #+BEGIN_SRC
   $ which python
 #+END_SRC
-which should point to =/tmp/python.d/bin/python=.
+which should point to =/tmp/tutorial.d/env/bin/python=.
 
 ** Installing MINUIT sampler for cobaya
 Now that you have a virtual env., you can download and install all python modules you want. There
-will be stored in the =/tmp/python.d/lib/pythonX.X/site-packages= where =X.X= refers to your =python=
-version.
+will be stored in the =/tmp/tutorial.d/env/lib/pythonX.X/site-packages= where =X.X= refers to your
+=python= version.
 
 Installing the MINUIT sampler for cobaya and all its dependencies should be as easy as
 #+BEGIN_SRC
   $ pip install git+https://github.com/xgarrido/cobaya-minuit-sampler.git
 #+END_SRC
 
+This should install all the =cobaya= software framework with all =python= scientific library such as
+=numpy=, =scipy= and other CMB related stuff like [[https://github.com/cmbant/getdist][=GetDist=]].
+
 For plotting purpose, we will also install =matplotlib=[fn:b729dfbd8fec208]
 #+BEGIN_SRC
   $ pip install matplotlib
 #+END_SRC
+and =ipython= for interactive shell[fn:15b0838a7a383daf]
+#+BEGIN_SRC
+  $ pip install ipython
+#+END_SRC
 
 [fn:b729dfbd8fec208] this should be a dependency of =cobaya= /via/ =GetDist= package but it seems not to
 be installed by =pip=
+
+[fn:15b0838a7a383daf] you may need to rerun the =source= command line to make sure the proper =ipython=
+binary is used (and not the system wide one)
+
+* First try with cobaya
+** Simulating a CMB power spectrum
+We will first try to simulate a fictitious CMB power spectrum to make use of =coabaya='s theory
+block. =cobaya= can use [[https://github.com/cmbant/CAMB][CAMB]] as well as [[http://class-code.net/][CLASS]] and has a common interface to both of them /via/ the
+=theory= block that we will use here. Nevertheless, the cosmological parameters syntax has not been
+uniformized so defining CMB variable names may change from one code to the other. For the time
+being, we will use CAMB and we will follow the following =cobaya='s [[https://cobaya.readthedocs.io/en/latest/cosmo_external_likelihood.html][tutorial]].
+
+Let's first declare the CAMB variables at a given values and let's get the output CMB power spectrum
+up to a decent $\ell_\text{max}$ value
+#+BEGIN_SRC ipython :session :results none
+  params = {
+      "ombh2": 0.022, "omch2": 0.12, "H0": 68, "tau": 0.07,
+      "As": 2.2e-9, "ns": 0.96,
+      "mnu": 0.06, "nnu": 3.046, "num_massive_neutrinos": 1}
+
+  l_max = 1000
+#+END_SRC
+
+Let's put this dictionary of values into =cobaya= internal system of configuration
+#+BEGIN_SRC ipython :session :results none
+  info = {
+      "params": params,
+      "likelihood": {"one": None},
+      "theory": {"camb": None}
+  }
+#+END_SRC
+
+=cobaya= is built upon different blocks which are so far a =params=, =likelihood= and =theory= blocks. Each
+of them belong to a special =python= class that can be overloaded. For instance, the =theory= class will
+instantiante =camb= but using CLASS is as simple as changing =camb= into =classy=. We will see later how
+to define our own likelihood and we will also adress how all these parameters can be pushed into a
+=yaml= file to be parsed by =cobaya=.
+
+We will now get the model given the above parameters
+#+BEGIN_SRC ipython :session :results none
+  from cobaya.model import get_model
+  model = get_model(info)
+#+END_SRC
+You should now get a =ModuleNotFoundError= exception given that CAMB has not been found.
+#+BEGIN_SRC
+No sampled parameters requested! This will fail for non-mock samplers.
+Importing *global* CAMB.
+Couldn't find the CAMB python interface.
+Make sure that you have compiled it, and that you either
+ (a) specify a path (you didn't) or
+ (b) install the Python interface globally with
+     '/path/to/camb/pycamb/python setup.py install --user'
+#+END_SRC
+
+As the exception will tell you you can either define a =path= within the =theory= block above which
+points to =python= interface to CAMB or install =pycamb=. We will use the latter and we will first =git=
+clone CAMB and then install =pycamb= (you will need a recent version of =gfortran= /i.e./ greater than
+4.8)
+#+BEGIN_SRC
+  $ git clone https://github.com/cmbant/CAMB.git /tmp/tutorial.d/modules/camb
+
+  $ cd /tmp/tutorial.d/modules/camb/pycamb
+
+  $ python setup.py install
+#+END_SRC
+
+Now loading the =cobaya= model should work without any exception. We then have to tell =cobaya's theory=
+that we will need the computation of $C_\ell$ up to $\ell_\text{max}$
+#+BEGIN_SRC ipython :session :results none
+  model.likelihood.theory.needs(cl={"tt": l_max})
+#+END_SRC
+and compute the CMB power spectrum (=ell_factor=True= means normalization by $\ell(\ell+1)/(2\pi)$)
+#+BEGIN_SRC ipython :session :results none
+  model.logposterior({})
+  cls = model.likelihood.theory.get_cl(ell_factor=True)
+  cl_tt = cls["tt"][:l_max]
+#+END_SRC
+The first line, the empty dictionary of posteriors, actually means the parameters are all fixed.
+
+Finally, let's plot things
+#+BEGIN_SRC ipython :session :results raw drawer
+  import numpy as np
+  import matplotlib.pyplot as plt
+
+  l = np.arange(l_max) + 1
+  plt.plot(l, cl_tt)
+  plt.xlabel(r"$\ell$")
+  plt.ylabel(r"$D_\ell$")
+#+END_SRC
