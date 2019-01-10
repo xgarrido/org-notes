@@ -209,26 +209,21 @@ Let's plot everything together
   main.plot(l, Dl_tt, "red")
   main.errorbar(lb, Db_obs, yerr=err_Db, fmt="ok")
   main.set_ylabel(r"$D_\ell$")
+  chi2 = np.sum(((Db_obs - Db)/err_Db)**2)/np.alen(lb)
+  main.text(0.75, 0.9, r"$\chi^2$/ndf = {:.3f}".format(chi2),
+            transform=main.transAxes)
 
   dev = plt.subplot(grid[3], ylim=[-5,5])
   dev.plot(lb, (Db_obs - Db)/err_Db, "ok")
   dev.axhline(0, color="red")
-  dev.set_ylabel(r"$\Delta D_\ell [\sigma]$")
+  dev.set_ylabel(r"$\Delta D_\ell\;[\sigma]$")
   dev.set_xlabel(r"$\ell$")
+
 #+END_SRC
 
 #+RESULTS:
 :results:
-# Out[134]:
+# Out[156]:
 : Text(0.5, 0, '$\\ell$')
-[[file:./obipy-resources/nAyIB1.png]]
+[[file:./obipy-resources/voSh0M.png]]
 :end:
-
-and let's compute the \(\chi^2\)/ndf
-#+BEGIN_SRC ipython :session venv
-  np.sum(((Db_obs - Db)/err_Db)**2)/np.alen(lb)
-#+END_SRC
-
-#+RESULTS:
-: # Out[133]:
-: : 1.1712397601953435
