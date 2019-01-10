@@ -176,7 +176,7 @@ configuration.
 
 * Using MINUIT sampler within cobaya
 Given the previous simulated spectrum, we will now bin it and slightly disturbed it to apply the
-MINUIT sampler and get back the best cosmological parameters.
+MINUIT sampler and get back the best cosmological parameters from minimization.
 
 Let's define a function =bin_spectrum= that will compute the mean and its error on $D_\ell$ value
 given a =delta_l= sample size
@@ -207,19 +207,28 @@ Let's plot everything together
   grid = plt.GridSpec(4, 1, hspace=0, wspace=0)
   main = plt.subplot(grid[0:3], xticklabels=[])
   main.plot(l, Dl_tt, "red")
-  main.errorbar(lb, Db_obs, yerr=err_db, fmt="ok")
+  main.errorbar(lb, Db_obs, yerr=err_Db, fmt="ok")
   main.set_ylabel(r"$D_\ell$")
 
-  dev = plt.subplot(grid[3])
-  dev.errorbar(lb, Db_obs - Db, yerr=err_db, fmt="ok")
+  dev = plt.subplot(grid[3], ylim=[-5,5])
+  dev.plot(lb, (Db_obs - Db)/err_Db, "ok")
   dev.axhline(0, color="red")
-  dev.set_ylabel(r"$\Delta D_\ell$")
+  dev.set_ylabel(r"$\Delta D_\ell [\sigma]$")
   dev.set_xlabel(r"$\ell$")
 #+END_SRC
 
 #+RESULTS:
 :results:
-# Out[113]:
+# Out[134]:
 : Text(0.5, 0, '$\\ell$')
-[[file:./obipy-resources/GtmCpe.png]]
+[[file:./obipy-resources/nAyIB1.png]]
 :end:
+
+and let's compute the \(\chi^2\)/ndf
+#+BEGIN_SRC ipython :session venv
+  np.sum(((Db_obs - Db)/err_Db)**2)/np.alen(lb)
+#+END_SRC
+
+#+RESULTS:
+: # Out[133]:
+: : 1.1712397601953435
