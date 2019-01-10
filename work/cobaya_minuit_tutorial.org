@@ -1,6 +1,7 @@
 #+TITLE: Using MINUIT within cobaya sampler code
 #+AUTHOR: Xavier Garrido
 #+EMAIL: xavier.garrido@lal.in2p3.fr
+#+STARTUP: inlineimages
 
 This tutorial will go through the different steps to install a [[https://github.com/xgarrido/cobaya-minuit-sampler][MINUIT sampler for cobaya]] and to make
 use of it and its options. In a first part, we will see how to install everything from scratch
@@ -70,6 +71,12 @@ be installed by =pip=
 binary is used (and not the system wide one)
 
 * First try with cobaya
+** Emacs config                                                   :noexport:
+
+#+BEGIN_SRC elisp :session venv :results none
+  (pyvenv-workon "cobaya-tutorial")
+#+END_SRC
+
 ** Simulating a CMB power spectrum
 We will first try to simulate a fictitious CMB power spectrum to make use of =coabaya='s theory
 block. =cobaya= can use [[https://github.com/cmbant/CAMB][CAMB]] as well as [[http://class-code.net/][CLASS]] and has a common interface to both of them /via/ the
@@ -79,7 +86,7 @@ being, we will use CAMB and we will follow the following =cobaya='s [[https://co
 
 Let's first declare the CAMB variables at a given values and let's get the output CMB power spectrum
 up to a decent $\ell_\text{max}$ value
-#+BEGIN_SRC ipython :session :results none
+#+BEGIN_SRC ipython :session venv :results none
   params = {
       "ombh2": 0.022, "omch2": 0.12, "H0": 68, "tau": 0.07,
       "As": 2.2e-9, "ns": 0.96,
@@ -89,7 +96,7 @@ up to a decent $\ell_\text{max}$ value
 #+END_SRC
 
 Let's put this dictionary of values into =cobaya= internal system of configuration
-#+BEGIN_SRC ipython :session :results none
+#+BEGIN_SRC ipython :session venv :results none
   info = {
       "params": params,
       "likelihood": {"one": None},
@@ -104,7 +111,7 @@ to define our own likelihood and we will also adress how all these parameters ca
 =yaml= file to be parsed by =cobaya=.
 
 We will now get the model given the above parameters
-#+BEGIN_SRC ipython :session :results none
+#+BEGIN_SRC ipython :session venv :results none
   from cobaya.model import get_model
   model = get_model(info)
 #+END_SRC
@@ -133,24 +140,86 @@ clone CAMB and then install =pycamb= (you will need a recent version of =gfortra
 
 Now loading the =cobaya= model should work without any exception. We then have to tell =cobaya's theory=
 that we will need the computation of $C_\ell$ up to $\ell_\text{max}$
-#+BEGIN_SRC ipython :session :results none
+#+BEGIN_SRC ipython :session venv :results none
   model.likelihood.theory.needs(cl={"tt": l_max})
 #+END_SRC
 and compute the CMB power spectrum (=ell_factor=True= means normalization by $\ell(\ell+1)/(2\pi)$)
-#+BEGIN_SRC ipython :session :results none
+#+BEGIN_SRC ipython :session venv :results none
   model.logposterior({})
-  cls = model.likelihood.theory.get_cl(ell_factor=True)
-  cl_tt = cls["tt"][:l_max]
+  Dls = model.likelihood.theory.get_cl(ell_factor=True)
+  Dl_tt = Dls["tt"]
 #+END_SRC
 The first line, the empty dictionary of posteriors, actually means the parameters are all fixed.
 
 Finally, let's plot things
-#+BEGIN_SRC ipython :session :results raw drawer
+#+BEGIN_SRC ipython :session venv :results raw drawer
+  %matplotlib inline
   import numpy as np
   import matplotlib.pyplot as plt
 
-  l = np.arange(l_max) + 1
-  plt.plot(l, cl_tt)
+  l = np.arange(2, l_max)
+  Dl_tt = Dl_tt[2:np.alen(l)+2]
+  plt.plot(l, Dl_tt)
   plt.xlabel(r"$\ell$")
   plt.ylabel(r"$D_\ell$")
 #+END_SRC
+
+#+RESULTS:
+:results:
+# Out[103]:
+: Text(0, 0.5, '$D_\\ell$')
+[[file:./obipy-resources/fRBCi8.png]]
+:end:
+
+As we wil see later the =info= dictionary can be all declared within a =yaml= file to ease the =cobaya='s
+configuration.
+
+* Using MINUIT sampler within cobaya
+Given the previous simulated spectrum, we will now bin it and slightly disturbed it to apply the
+MINUIT sampler and get back the best cosmological parameters.
+
+Let's define a function =bin_spectrum= that will compute the mean and its error on $D_\ell$ value
+given a =delta_l= sample size
+#+BEGIN_SRC ipython :session venv :results none
+  def bin_spectrum(Dl, l, lmin, lmax, delta_l):
+      nbin = np.int(lmax/delta_l)
+      lb = np.zeros(nbin)
+      db = np.zeros(nbin)
+      err_db = np.zeros(nbin)
+      for i in range(nbin):
+          idx = np.where((l>i*delta_l) & (l<(i+1)*delta_l))
+          db[i] = np.mean(Dl[idx])
+          lb[i] = np.mean(l[idx])
+          err_db[i] = np.std(Dl[idx])/np.sqrt(np.alen(idx))
+      idx = np.where(lb>lmin)
+      lb, db, err_db = lb[idx], db[idx], err_db[idx]
+      return lb, db, err_db
+#+END_SRC
+
+Bin the spectrum and disturb it given the error bar
+#+BEGIN_SRC ipython :session venv :results none
+  lb, Db, err_Db = bin_spectrum(Dl_tt, l, lmin=2, lmax=l_max, delta_l=30)
+  Db_obs = Db + err_Db * np.random.randn(np.alen(err_Db))
+#+END_SRC
+
+Let's plot everything together
+#+BEGIN_SRC ipython :session venv :results raw drawer
+  grid = plt.GridSpec(4, 1, hspace=0, wspace=0)
+  main = plt.subplot(grid[0:3], xticklabels=[])
+  main.plot(l, Dl_tt, "red")
+  main.errorbar(lb, Db_obs, yerr=err_db, fmt="ok")
+  main.set_ylabel(r"$D_\ell$")
+
+  dev = plt.subplot(grid[3])
+  dev.errorbar(lb, Db_obs - Db, yerr=err_db, fmt="ok")
+  dev.axhline(0, color="red")
+  dev.set_ylabel(r"$\Delta D_\ell$")
+  dev.set_xlabel(r"$\ell$")
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[113]:
+: Text(0.5, 0, '$\\ell$')
+[[file:./obipy-resources/GtmCpe.png]]
+:end:
