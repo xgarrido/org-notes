@@ -355,17 +355,54 @@ We can plot the best $A_\text{s}$ value found by MINUIT
   # Fit with a 2nd order polynomial
   p = np.poly1d(np.polyfit(As, chi2s, 2))
   x = np.linspace(As[0], As[-1], 100)
-  plt.plot(x, p(x), "-r")
+  plt.plot(x, p(x), "-r", label="polynomial fit")
 
   minAs = products["OptimizeResult"].x
   minChi2 = products["OptimizeResult"].fun
-  plt.plot(minAs, minChi2, "or", label="min value")
+  plt.plot(minAs, minChi2, "sr", label="min value")
   plt.legend()
 #+END_SRC
 
 #+RESULTS:
 :results:
-# Out[228]:
-: <matplotlib.legend.Legend at 0x7fa4fa2d0470>
-[[file:./obipy-resources/uk9vQw.png]]
+# Out[237]:
+: <matplotlib.legend.Legend at 0x7fa4f802d860>
+[[file:./obipy-resources/LKp4Ni.png]]
 :end:
+
+Next steps will be to relax other cosmological parameters...
+
+** Putting everything into =yaml= file
+=cobaya= configuration can be done as in the example above, through the generation of dictionary that
+must respect some name convention and other syntax rules (for instance, you can not name
+cosmological parameters other than =params=). As your projet will grow, it may be useful to use a =yaml=
+configuration file to tell =cobaya= which parameters, samplers or theory code you want to use. The
+minimization configuration can be written as
+#+BEGIN_SRC yaml
+  params:
+    # Fixed
+    ombh2: 0.022
+    omch2: 0.12
+    H0: 68
+    tau: 0.07
+    ns: 0.96
+    mnu: 0.06
+    nnu: 3.046
+    num_massive_neutrinos: 1
+    # Sampled
+    As:
+      prior:
+        min: 2.0e-9
+        max: 2.2e-9
+
+    likelihood:
+      chi2: import_module("my_chi2").chi2
+
+    theory:
+      camb:
+        stop_at_error: False
+
+    sampler:
+      minuit:
+#+END_SRC
+where =my_chi2= refers to a =my_chi2.py= file holding the =chi2= function.
