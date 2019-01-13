@@ -1,8 +1,0 @@
-name: cobaya-minuit-tutorial
-channels:
-  - defaults
-dependencies:
-  - python
-  - matplotlib
-  - pip:
-      - git+https://github.com/xgarrido/cobaya-minuit-sampler.git#egg=cobaya-minuit-sampler
