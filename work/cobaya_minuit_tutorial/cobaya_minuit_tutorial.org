@@ -82,7 +82,7 @@ binary is used (and not the system wide one)
 #+END_SRC
 
 *** Simulating a CMB power spectrum
-We will first try to simulate a fictitious CMB power spectrum to make use of =coabaya='s theory
+We will first try to simulate a fictitious CMB power spectrum to make use of =cobaya='s theory
 block. =cobaya= can use [[https://github.com/cmbant/CAMB][CAMB]] as well as [[http://class-code.net/][CLASS]] and has a common interface to both of them /via/ the
 =theory= block that we will use here. Nevertheless, the cosmological parameters syntax has not been
 uniformized so defining CMB variable names may change from one code to the other. For the time
