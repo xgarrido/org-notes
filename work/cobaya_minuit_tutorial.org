@@ -136,9 +136,9 @@ clone CAMB and then install =pycamb= (you will need a recent version of =gfortra
 #+END_SRC
 
 Now loading the =cobaya= model should work without any exception. We then have to tell =cobaya's theory=
-that we will need the computation of $C_\ell$ up to $\ell_\text{max}$
+that we will need the computation of $C_\ell$ up to $\ell_\text{max} = 1000$
 #+BEGIN_SRC ipython :session venv :results none
-  model.likelihood.theory.needs(cl={"tt": lmax})
+  model.likelihood.theory.needs(cl={"tt": 1000})
 #+END_SRC
 and compute the CMB power spectrum (=ell_factor=True= means normalization by $\ell(\ell+1)/(2\pi)$)
 #+BEGIN_SRC ipython :session venv :results none
@@ -164,9 +164,9 @@ Finally, let's plot things between $(\ell_\text{min}, \ell_\text{max})$
 
 #+RESULTS:
 :results:
-# Out[170]:
+# Out[190]:
 : Text(0, 0.5, '$D_\\ell$')
-[[file:./obipy-resources/3aHJfZ.png]]
+[[file:./obipy-resources/B0Bt4X.png]]
 :end:
 
 As we wil see later the =info= dictionary can be all declared within a =yaml= file to ease the =cobaya='s
@@ -222,9 +222,9 @@ Let's plot everything together
 
 #+RESULTS:
 :results:
-# Out[173]:
+# Out[193]:
 : Text(0.5, 0, '$\\ell$')
-[[file:./obipy-resources/gm1gdy.png]]
+[[file:./obipy-resources/SU1O1M.png]]
 :end:
 
 ** Setting-up the minimization program
@@ -237,8 +237,135 @@ First we will define our likelihood
 #+BEGIN_SRC ipython :session venv :results none
   def chi2(_theory={"cl": {"tt": lmax}}):
           ls = np.arange(lmin, lmax)
-          Dl_theo = _theory.get_cl(ell_factor=True)["tt"][lmin:len(ls)+lmin]
-          lb, Db_theo = utils.bin_spectrum(Dl_theo, ls, lmin, lmax, delta_l)
+          Dl_theo = _theory.get_cl(ell_factor=True)["tt"][lmin:lmax]
+          lb, Db_theo, _ = bin_spectrum(Dl_theo, ls, lmin, lmax, delta_l)
           chi2 = np.sum(((Db_obs - Db_theo)/err_Db)**2)
           return -chi2
 #+END_SRC
+
+Our $\chi^2$ function will need to get the binned $D_\ell$ for every new set of cosmological
+parameters. =cobaya= provides the =theory= block as a parameter of the function with name =_theory= that
+must be respected. Since =cobaya= only deals with likelihood, we must return the negative value of
+$\chi^2$ to make sure we maximize it over parameters (minimization process will minimize minus
+likelihood). We should now tell =cobaya= to use our likelihood function
+#+BEGIN_SRC ipython :session venv :results none
+  info["likelihood"] = {"chi2": chi2}
+#+END_SRC
+and that $A_\text{s}$ may vary given a flat prior on its value
+#+BEGIN_SRC ipython :session venv
+  info["params"]["As"] = {"prior": {"min": 1e-9, "max": 4e-9}}
+  info
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+# Out[212]:
+,#+BEGIN_EXAMPLE
+  {'params': {'ombh2': 0.022,
+  'omch2': 0.12,
+  'H0': 68,
+  'tau': 0.07,
+  'As': {'prior': {'min': 1e-09, 'max': 4e-09}},
+  'ns': 0.96,
+  'mnu': 0.06,
+  'nnu': 3.046,
+  'num_massive_neutrinos': 1},
+  'likelihood': {'chi2': <function __main__.chi2(_theory={'cl': {'tt': 1000}})>},
+  'theory': {'camb': None}}
+,#+END_EXAMPLE
+#+end_example
+
+To make sure everything has been set properly, we can slice our likelihood function along different
+$A_\text{s}$ values
+#+BEGIN_SRC ipython :session venv :results raw drawer
+  model = get_model(info)
+  As = np.linspace(1e-9, 4e-9, 10)
+  chi2s = [-model.loglike({"As": A})[0] for A in As]
+
+  plt.plot(As, chi2s)
+  plt.xlabel(r"$A_\mathrm{s}$")
+  plt.ylabel(r"$\chi^2$")
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[222]:
+: Text(0, 0.5, '$\\chi^2$')
+[[file:./obipy-resources/VFDHOV.png]]
+:end:
+
+** Running MINUIT
+Now that everything is set-up, we can run MINUIT. We still have to set the =sampler= method to =cobaya=
+#+BEGIN_SRC ipython :session venv :results none
+  info["sampler"] = {"minuit": None}
+#+END_SRC
+with its default settings and do the minimization
+#+BEGIN_SRC ipython :session venv :results raw
+    from cobaya.run import run
+    updated_info, products = run(info)
+#+END_SRC
+
+#+RESULTS:
+# Out[220]:
+
+The results of minimization are stored within the =products= variable which is a dictionary holding
+the =cobaya= formated results
+#+BEGIN_SRC ipython :session venv :results raw drawer
+  products["maximum"]
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[225]:
+#+BEGIN_EXAMPLE
+  weight  minuslogpost            As  minuslogprior  minuslogprior__0  \
+  0     1.0     16.983315  2.198691e-09     -19.624654        -19.624654
+
+  chi2  chi2__chi2
+  0  73.215938   73.215938
+#+END_EXAMPLE
+:end:
+
+as well as the [[https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.OptimizeResult.html][=scipy.optimize.OptimizeResult=]]
+#+BEGIN_SRC ipython :session venv :results raw drawer
+  products["OptimizeResult"]
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[226]:
+#+BEGIN_EXAMPLE
+  fun: 36.60796900562487
+  hess_inv: array([[3.09735377e-23]])
+  message: 'Optimization terminated successfully.'
+  minuit: <iminuit._libiminuit.Minuit object at 0x563b2d51b758>
+  nfev: 17
+  njev: 0
+  success: True
+  x: array([2.19869086e-09])
+#+END_EXAMPLE
+:end:
+
+We can plot the best $A_\text{s}$ value found by MINUIT
+#+BEGIN_SRC ipython :session venv :results raw drawer
+  plt.plot(As, chi2s, "ok")
+  plt.xlabel(r"$A_\mathrm{s}$")
+  plt.ylabel(r"$\chi^2$")
+
+  # Fit with a 2nd order polynomial
+  p = np.poly1d(np.polyfit(As, chi2s, 2))
+  x = np.linspace(As[0], As[-1], 100)
+  plt.plot(x, p(x), "-r")
+
+  minAs = products["OptimizeResult"].x
+  minChi2 = products["OptimizeResult"].fun
+  plt.plot(minAs, minChi2, "or", label="min value")
+  plt.legend()
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[228]:
+: <matplotlib.legend.Legend at 0x7fa4fa2d0470>
+[[file:./obipy-resources/uk9vQw.png]]
+:end:
