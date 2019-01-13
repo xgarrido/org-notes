@@ -405,4 +405,5 @@ minimization configuration can be written as
     sampler:
       minuit:
 #+END_SRC
-where =my_chi2= refers to a =my_chi2.py= file holding the =chi2= function.
+where =my_chi2= refers to a =my_chi2.py= file holding the =chi2= function. More information on =yaml= syntax
+can be found [[https://pyyaml.org/wiki/PyYAMLDocumentation][here]].
