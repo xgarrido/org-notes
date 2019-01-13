@@ -164,9 +164,9 @@ Finally, let's plot things between $(\ell_\text{min}, \ell_\text{max})$
 
 #+RESULTS:
 :results:
-# Out[190]:
+# Out[246]:
 : Text(0, 0.5, '$D_\\ell$')
-[[file:./obipy-resources/B0Bt4X.png]]
+[[file:./obipy-resources/bIlro8.png]]
 :end:
 
 As we wil see later the =info= dictionary can be all declared within a =yaml= file to ease the =cobaya='s
@@ -222,9 +222,9 @@ Let's plot everything together
 
 #+RESULTS:
 :results:
-# Out[193]:
+# Out[249]:
 : Text(0.5, 0, '$\\ell$')
-[[file:./obipy-resources/SU1O1M.png]]
+[[file:./obipy-resources/1TDb0k.png]]
 :end:
 
 ** Setting-up the minimization program
@@ -259,7 +259,7 @@ and that $A_\text{s}$ may vary given a flat prior on its value
 
 #+RESULTS:
 #+begin_example
-# Out[212]:
+# Out[252]:
 ,#+BEGIN_EXAMPLE
   {'params': {'ombh2': 0.022,
   'omch2': 0.12,
@@ -289,9 +289,9 @@ $A_\text{s}$ values
 
 #+RESULTS:
 :results:
-# Out[222]:
+# Out[253]:
 : Text(0, 0.5, '$\\chi^2$')
-[[file:./obipy-resources/VFDHOV.png]]
+[[file:./obipy-resources/ll5xno.png]]
 :end:
 
 ** Running MINUIT
@@ -300,31 +300,16 @@ Now that everything is set-up, we can run MINUIT. We still have to set the =samp
   info["sampler"] = {"minuit": None}
 #+END_SRC
 with its default settings and do the minimization
-#+BEGIN_SRC ipython :session venv :results raw
+#+BEGIN_SRC ipython :session venv :results none :async t
     from cobaya.run import run
     updated_info, products = run(info)
 #+END_SRC
-
-#+RESULTS:
-# Out[220]:
 
 The results of minimization are stored within the =products= variable which is a dictionary holding
 the =cobaya= formated results
 #+BEGIN_SRC ipython :session venv :results raw drawer
   products["maximum"]
 #+END_SRC
-
-#+RESULTS:
-:results:
-# Out[225]:
-#+BEGIN_EXAMPLE
-  weight  minuslogpost            As  minuslogprior  minuslogprior__0  \
-  0     1.0     16.983315  2.198691e-09     -19.624654        -19.624654
-
-  chi2  chi2__chi2
-  0  73.215938   73.215938
-#+END_EXAMPLE
-:end:
 
 as well as the [[https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.OptimizeResult.html][=scipy.optimize.OptimizeResult=]]
 #+BEGIN_SRC ipython :session venv :results raw drawer
@@ -333,16 +318,16 @@ as well as the [[https://docs.scipy.org/doc/scipy/reference/generated/scipy.opti
 
 #+RESULTS:
 :results:
-# Out[226]:
+# Out[258]:
 #+BEGIN_EXAMPLE
-  fun: 36.60796900562487
-  hess_inv: array([[3.09735377e-23]])
+  fun: 30.39736787747739
+  hess_inv: array([[3.0972107e-23]])
   message: 'Optimization terminated successfully.'
-  minuit: <iminuit._libiminuit.Minuit object at 0x563b2d51b758>
-  nfev: 17
+  minuit: <iminuit._libiminuit.Minuit object at 0x563b322a8fc8>
+  nfev: 25
   njev: 0
   success: True
-  x: array([2.19869086e-09])
+  x: array([2.20091268e-09])
 #+END_EXAMPLE
 :end:
 
@@ -365,14 +350,14 @@ We can plot the best $A_\text{s}$ value found by MINUIT
 
 #+RESULTS:
 :results:
-# Out[237]:
-: <matplotlib.legend.Legend at 0x7fa4f802d860>
-[[file:./obipy-resources/LKp4Ni.png]]
+# Out[259]:
+: <matplotlib.legend.Legend at 0x7fa4f3dc0b70>
+[[file:./obipy-resources/j6q4bw.png]]
 :end:
 
 Next steps will be to relax other cosmological parameters...
 
-** Putting everything into =yaml= file
+** Putting everything into yaml file
 =cobaya= configuration can be done as in the example above, through the generation of dictionary that
 must respect some name convention and other syntax rules (for instance, you can not name
 cosmological parameters other than =params=). As your projet will grow, it may be useful to use a =yaml=
