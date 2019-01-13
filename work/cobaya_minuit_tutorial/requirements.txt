@@ -1,2 +1,2 @@
 matplotlib
--e git://github.com/xgarrido/cobaya-minuit-sampler.git#egg=cobaya-minuit-sampler
+-e git+https://github.com/xgarrido/cobaya-minuit-sampler.git#egg=cobaya-minuit-sampler
