@@ -6,4 +6,3 @@ dependencies:
   - pip:
       - cobaya
       - iminuit
-      - git+https://github.com/xgarrido/cobaya-minuit-sampler.git#egg=cobaya-minuit-sampler
