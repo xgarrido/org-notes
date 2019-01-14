@@ -14,9 +14,9 @@ the best cosmological values given a CMB power spectrum.
 
 *If you plan to try =cobaya= @ Lyon, you can get a working =python= environment by doing*
 #+BEGIN_SRC
-$ source /pbs/home/g/garrido/.virtualenvs/cobaya-tutorial/bin/activate
+  $ source /sps/planck/Temp/garrido.d/virtualenv.d/cobaya-tutorial/bin/activate
 #+END_SRC
-*and go directly to section [[#first_try]].*
+*and skip all the installation steps (even the =CAMB= installation).*
 
 ** Installing MINUIT sampler
 *** Creating a virtual environment
