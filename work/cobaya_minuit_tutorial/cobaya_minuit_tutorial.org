@@ -10,7 +10,13 @@ use of it and its options. In a first part, we will see how to install everythin
 (assuming =python= is correctly installed) and then we will see how to use the MINUIT minimizer to get
 the best cosmological values given a CMB power spectrum.
 
-You can interactively run this notebook /via/ [[https://mybinder.org/v2/gh/xgarrido/org-notes/master?filepath=work%2Fcobaya_minuit_tutorial%2Fcobaya_minuit_tutorial.ipynb][https://mybinder.org/badge_logo.svg]]
+# You can interactively run this notebook /via/ [[https://mybinder.org/v2/gh/xgarrido/org-notes/master?filepath=work%2Fcobaya_minuit_tutorial%2Fcobaya_minuit_tutorial.ipynb][https://mybinder.org/badge_logo.svg]].
+
+*If you plan to try =cobaya= @ Lyon, you can get a working =python= environment by doing*
+#+BEGIN_SRC
+$ source /pbs/home/g/garrido/.virtualenvs/cobaya-tutorial/bin/activate
+#+END_SRC
+*and go directly to section [[#first_try]].*
 
 ** Installing MINUIT sampler
 *** Creating a virtual environment
@@ -75,6 +81,9 @@ be installed by =pip=
 binary is used (and not the system wide one)
 
 ** First try with cobaya
+:PROPERTIES:
+:CUSTOM_ID: first_try
+:END:
 *** Emacs config                                                 :noexport:
 
 #+BEGIN_SRC elisp :session venv :results none
