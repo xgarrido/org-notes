@@ -1,7 +1,9 @@
 name: cobaya-minuit-tutorial
 channels:
-  - defaults
+  - conda-forge
 dependencies:
   - matplotlib
   - pip:
+      - cobaya
+      - iminuit
       - git+https://github.com/xgarrido/cobaya-minuit-sampler.git#egg=cobaya-minuit-sampler
