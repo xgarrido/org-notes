@@ -1,0 +1,3 @@
+git clone https://github.com/cmbant/CAMB.git /tmp/camb
+cd /tmp/camb/pycamb
+python setup.py install
