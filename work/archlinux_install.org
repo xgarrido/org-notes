@@ -2,6 +2,13 @@
 #+AUTHOR: Xavier Garrido
 #+DESCRIPTION: In this note, we describe the different operations for installing archlinux
 
+* Download latest iso file
+Grab the latest iso file from https://www.archlinux.org/download/. Then copy it to a USB stick and
+make it bootable with the following command
+#+BEGIN_SRC shell
+  sudo dd bs=4M if=archlinux-${latest}-x86_64.iso of=/dev/sda conv=fsync
+#+END_SRC
+
 * After booting on archlinux ISO file
 Start loading the french keymap
 #+BEGIN_SRC shell
@@ -31,22 +38,32 @@ using =w= letter.
 
 Example of =fdisk= partition :
 
-|-----------+------+----------+-----------+-----------+----+--------|
-| Device    | Boot |    Start |       End |    Blocks | Id | System |
-| /dev/sda1 | *    |     2048 |  39063551 |  19530752 | 83 | Linux  |
-| /dev/sda2 |      | 39063551 | 500118191 | 230527320 | 83 | Linux  |
-|-----------+------+----------+-----------+-----------+----+--------|
+|----------------+------+------------------|
+| Device         | Size | Type             |
+| /dev/nvme0n1p1 | 512M | EFI System       |
+| /dev/nvme0n1p2 | 1G   | Linux swap       |
+| /dev/nvme0n1p3 | 50G  | Linux filesystem |
+| /dev/nvme0n1p4 | 425G | Linux filesystem |
+|----------------+------+------------------|
 
 Format partition is done with =mkfs= utility
 #+BEGIN_SRC shell
-  mkfs.ext4 /dev/sda1
-  mkfs.ext4 /dev/sda2
+  mkfs.fat -F32 /dev/nvme0n1p1
+  mkfs.ext4 /dev/nvme0n1p3
+  mkfs.ext4 /dev/nvme0n1p4
+  mkswap /dev/nvme0n1p2
+  swapon /dev/nvme0n1p2
 #+END_SRC
 
 * Mount the partitions
 #+BEGIN_SRC shell
-  mount /dev/sda1 /mnt
-  mkdir /mnt/home && mount /dev/sda2 /mnt/home
+  mount /dev/nvme0n1p3 /mnt
+  mkdir /mnt/home && mount /dev/nvme0n1p4 /mnt/home
+#+END_SRC
+
+Mount also the EFI partition
+#+BEGIN_SRC shell
+  mount /dev/nvme0n1p1 /mnt/efi
 #+END_SRC
 * Connect to the internet
 Use the =wifi-menu= utility, choose the wifi name and set the WPA key. To use
@@ -74,21 +91,20 @@ Finally, start the connection with the above profile by doing
 #+END_SRC
 * Install the base system
 #+BEGIN_SRC sh
-  pacstrap /mnt base base-devel
+  pacstrap /mnt base base-devel linux linux-firmware
 #+END_SRC
 
 If you get errors like
 #+BEGIN_SRC shell
   error: could not open file /mnt/var/lib/pacman/sync/core.db: Unrecognized archive format
 #+END_SRC
-just remove the corresponding file /i.e./
-=/mnt/var/lib/pacman/sync/core.d=. These errors mainly come from broken download
-links and thus corrupted database.
+just remove the corresponding file /i.e./ =/mnt/var/lib/pacman/sync/core.d=. These errors mainly come
+from broken download links and thus corrupted database.
 
 * Configure the system
 ** Generate a fstab
 #+BEGIN_SRC shell
-  genfstab -p /mnt >> /mnt/etc/fstab
+  genfstab -U /mnt >> /mnt/etc/fstab
 #+END_SRC
 ** Next =chroot= into our newly installed system
 #+BEGIN_SRC shell
@@ -102,14 +118,16 @@ links and thus corrupted database.
 ** Generate =locale-gen=
 Uncomment the lines starting with =fr_FR= in =/etc/locale.gen= and then do
 #+BEGIN_SRC shell
+  sed -i -e 's/#\(fr_FR.*UTF\)/\1/' /etc/locale.gen
   locale-gen
 #+END_SRC
 ** Finally do
 #+BEGIN_SRC shell
   echo LANG="fr_FR.UTF-8" > /etc/locale.conf
+  echo KEYMAP="fr-latin1" > /etc/vconsole.conf
   export LANG=fr_FR.UTF-8
 #+END_SRC
-** Configuring the Console Keymap
+** Configuring the Console Keymap                               :deprecated:
 #+BEGIN_SRC shell
   cd /usr/share/kbd/keymaps/i386/azerty
 #+END_SRC
@@ -120,17 +138,29 @@ make keycode 1 = Caps_Lock and keycode 58 = Escape
 Gzip the map file
 Change the default keyboard layout file that will be used by editing
 =/etc/vconsole.conf= and adding =KEYMAP=fr-pc-personal=
+** Set the hostname
+To set a hostname to the machine different from =localhost= (laptop machines are
+recognized as =garrido-laptop=, do
+#+BEGIN_SRC shell
+  echo "garrido-laptop" > /etc/hostname
+#+END_SRC
+
+** Sort mirrorlist
+#+BEGIN_SRC shell
+  pacman -S pacman-contrib
+  curl -s "https://www.archlinux.org/mirrorlist/?country=FR&country=GB&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist
+#+END_SRC
+
 ** Create a user account
 First set the root password
 #+BEGIN_SRC shell
   passwd
 #+END_SRC
-and install =sudo= command
+and install =sudo= command with =nano= editor
 #+BEGIN_SRC shell
-  pacman -S sudo
+  pacman -Sy sudo nano
 #+END_SRC
-Once you've installed sudo, you can allow your new user to run it by
-editing your sudoers file:
+Once you've installed sudo, you can allow your new user to run it by editing your sudoers file:
 #+BEGIN_SRC shell
   EDITOR=nano visudo
 #+END_SRC
@@ -149,37 +179,34 @@ Create a user account
   passwd garrido
 #+END_SRC
 
-** Set the hostname
-To set a hostname to the machine different from =localhost= (laptop machines are
-recognized as =garrido-laptop=, do
-#+BEGIN_SRC shell
-  echo "garrido-laptop" > /etc/hostname
-#+END_SRC
-
 ** Install your GRUB bootloader
 #+BEGIN_SRC shell
-  pacman -S grub-bios
-  grub-install --target=i386-pc --recheck /dev/sda
-  cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
-#+END_SRC
-Target is always i386-pc even if the laptop/pc is a 64 bits machine
-
-Run
-#+BEGIN_SRC shell
+  pacman -Sy grub efibootmgr
+  grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
   grub-mkconfig -o /boot/grub/grub.cfg
 #+END_SRC
+Target is EFI bootloader (see
+https://wiki.archlinux.org/index.php/Installation_guide#Mount_the_file_systems and https://wiki.archlinux.org/index.php/GRUB#Installation_2)
 
-** Setup your network
-  pacman -S wireless_tools wpa_supplicant wpa_actiond dialog
-  wifi-menu
-  systemctl enable net-auto-wireless.service
+** Install gnome
+#+BEGIN_SRC shell
+  pacman -Sy gnome gnome-extra chrome-gnome-shell
+#+END_SRC
+
+** Set GDM to graphically connect
+#+BEGIN_SRC shell
+  systemctl enable gdm.service
+#+END_SRC
+
+** Enable network manager
+#+BEGIN_SRC shell
+  systemctl enable NetworkManager
 #+END_SRC
 
 ** Exit, unmount partitions and reboot
 #+BEGIN_SRC shell
   exit
-  umount /mnt/home
-  umount /mnt
+  umount -R /mnt
   reboot
 #+END_SRC
 
