@@ -119,6 +119,7 @@ from broken download links and thus corrupted database.
 Uncomment the lines starting with =fr_FR= in =/etc/locale.gen= and then do
 #+BEGIN_SRC shell
   sed -i -e 's/#\(fr_FR.*UTF\)/\1/' /etc/locale.gen
+  sed -i -e 's/#\(en_US.*UTF\)/\1/' /etc/locale.gen
   locale-gen
 #+END_SRC
 ** Finally do
