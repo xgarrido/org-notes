@@ -1,0 +1,266 @@
+# -*- org-export-babel-evaluate: nil -*-
+#+TITLE: Using CC machines from scratch
+#+AUTHOR: Xavier Garrido
+#+OPTIONS: num:t
+#+PROPERTY: header-args:sh :dir /ssh:garrido@cca.in2p3.fr: :session cc :exports both :results output
+#+LATEX_HEADER: \setmonofont[Mapping=tex-text,Scale=MatchLowercase]{Inconsolata}
+#+LATEX_HEADER: \setlength\parindent{0pt}
+#+LATEX_HEADER: \setlength{\parskip}{0.2\baselineskip}
+
+* Using the right and updated tools
+
+By default CC is based on Scientific Linux version 7 and thus comes from outdated software (=gcc=,
+=python 2.7=). To get more recent version of software, CC staff offers the =ccenv= binary that
+allows to load different version of software. To get a list of software supported by =ccenv=, you
+can do
+
+#+BEGIN_SRC sh :results output :exports code
+  ccenv --list
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+Software:
+- Nag_C
+- Nag_Fortran
+- R
+- anaconda
+- bbftp
+- boost
+- cctools
+- clhep
+- cmake
+- curl
+- ecat
+- emacs
+- f95
+- fs4
+- g95
+- garfield
+- gate
+- gcc
+- geant4
+- ghc
+- git
+- gmake
+- gnuparallel
+- gnuplot
+- golang
+- hdf5
+- healpix
+- heasoft
+- idl
+- intel
+- irods
+- julia
+- lapack
+- lhapdf
+- lmf
+- logon
+- maple
+- matlab
+- mono
+- mpich2
+- ninja
+- ocaml
+- octave
+- openmpi
+- openstack
+- oracle
+- perl
+- pgi
+- pgplot
+- plotutils
+- pythia
+- python
+- rivet
+- root
+- sage
+- samtools
+- shift
+- silvaco
+- singularity
+- tau
+- totalview
+- treqsc
+- xerces
+- xrootd
+- rfio-hpss
+#+end_example
+
+You can also check which version of a software is offered
+#+BEGIN_SRC sh
+  ccenv gcc --list
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+Software:
+  Version:
+    gcc:
+    - 3.4.6
+    - 4.4.7
+    - 5.2.0
+    - 5.3.0
+    - 5.5.0
+    - 6.4.0
+    - 7.3.0
+#+end_example
+
+For instance, to load a decent version of =gcc/gfortran= as well as Python 3, you should do
+#+BEGIN_SRC sh :results none
+  ccenv gcc 7.3.0
+  ccenv python 3.6.7
+#+END_SRC
+
+* Installing =python= software
+
+Installing =python= software is pretty simple but two things must be considered :
+1) if the plan is to latter use the software on CC farms then user must "compiled/installed" the
+   software on an equivalent machines at CC. Basically, interactive machines and the ones used in
+   the farm are not exactly the same in terms of hardware and then it is better to install software
+   components on a machine as close as possible to the ones which will run the code.
+2) even if a recent =python= version is used (see above), it is always better to encapsulate your
+   code within a =python= virtual environment to make sure you have a full control on what is
+   installed and on what your software will use.
+
+** Login on an interactive machine
+Regarding point 1), you have to login on an interactive CC farm machine by doing (change the =-P=
+option with your current group
+#+BEGIN_SRC sh :exports code
+  qlogin -P P_planck
+#+END_SRC
+
+We do not need a lot of resources to compile/install the code so the above command is enough and no
+need to allocate special memory or CPU resources.
+
+*Given that you are now login, you have to redo the =ccenv= commands to load the proper software
+versions.*
+
+** Creating and using a =python= virtual environment
+
+Virtual environment in =python= allows you to install your =python= scripts/modules in a special
+place with no interaction with previous installation of other =python= modules. Virtual env. are
+then useful to have a full control over the different libraries versions and to make sure external
+and even oldest or newest version of a library pollutes your software.
+
+If you have loaded =python= at least version 3 of =python= with =ccenv python 3.6.7=, you can create
+a virtual env. by doing
+#+BEGIN_SRC sh :results none
+  python -m venv /tmp/venv_test
+#+END_SRC
+where =/tmp/venv_test= relates to a directory where modules will be installed.
+
+You can check that everything goes right by typing
+#+BEGIN_SRC sh
+  ls /tmp/venv_test
+#+END_SRC
+
+#+RESULTS:
+: bin  include  lib  lib64  pyvenv.cfg
+
+=lib= directory will host your =python= library. The other directories are just a "minimal"
+installation with only =python/pip= binaries.
+
+To activate your environment, you have to do
+#+BEGIN_SRC sh
+  source /tmp/venv_test/bin/activate
+#+END_SRC
+
+#+RESULTS:
+
+If you check which =python= binaries you are now using, you can do
+#+BEGIN_SRC sh
+  which python pip
+#+END_SRC
+
+#+RESULTS:
+: /tmp/venv_test/bin/python
+: /tmp/venv_test/bin/pip
+
+*You must activate your environment for every new sessions otherwise you will use the default
+=python= binaries.* You can deactivate your environment and switch to another by typing
+#+BEGIN_SRC sh :export code
+deactivate
+#+END_SRC
+
+Now that you have a working environment, you can do within all the installation commands you
+need. For instance, to install =numpy= libraries, you can do
+#+BEGIN_SRC sh
+  pip install numpy
+#+END_SRC
+
+#+RESULTS:
+: Collecting numpy
+:   Using cached https://files.pythonhosted.org/packages/07/08/a549ba8b061005bb629b76adc000f3caaaf881028b963c2e18f811c6edc1/numpy-1.18.2-cp36-cp36m-manylinux1_x86_64.whl
+: Installing collected packages: numpy
+: Successfully installed numpy-1.18.2
+
+To make sure you are using the right =numpy= libraries, you can try
+#+BEGIN_SRC sh
+  python -c "import numpy as np; print(np.__version__, np.__file__)"
+#+END_SRC
+
+#+RESULTS:
+: 1.18.2 /tmp/venv_test/lib/python3.6/site-packages/numpy/__init__.py
+
+* Putting all together
+
+The easiest way to load the right CC software + the =python= virtual environment is to write a
+=setup.sh= file and to source it whenever you need it (for instance, when your job will start in the
+CC farm).
+
+#+BEGIN_SRC shell
+  ccenv gcc 7.3.0
+  ccenv python 3.6.7
+  source /tmp/venv_test/bin/activate
+#+END_SRC
+
+* Running jobs at CC
+
+Starting a job is prettty simple since you need to use the =qsub= command with a shell script
+holding the different commands and steps needed by your program. Let's take an example of running a
+very simple python script that will print the version of =numpy=
+#+BEGIN_SRC python
+  import numpy as np
+  print(np.__version__)
+#+END_SRC
+We write these lines into =my_script.py= file.
+
+We need to embed the =python my_script.py= command into a shell script called =my_script.sh=
+#+BEGIN_SRC text
+  #$ -pe multicores 4
+  #$ -q mc_long
+  #$ -t 1-4
+  #$ -l sps=1
+  #$ -j y
+  #$ -R y
+  #$ -N mcmc_ede
+
+  export OMP_NUM_THREADS=4
+
+  main_dir=/sps/planck/Users/tlouis/development/test_adrien/scripts
+  source ${main_dir}/setup.sh
+  python ${main_dir}/my_script.py > ${main_dir}/my_script_${SGE_TASK_ID}.log
+
+#+END_SRC
+
+The commmented lines at the beginning are options for the CC farm scheduler:
+- requiring a machine with 4 cores (*do not forget the =export OMP_NUM_THREADS=4= otherwise the CC
+  staff will shout at you*)
+- on a queue =mc_long= meaning 48 hours long job (see
+  https://cctools.in2p3.fr/mrtguser/info_sge_queue.php)
+- from this unique script, 4 jobs (each with 4 cores) will be generated (option =-t 1-4= see
+  https://doc.cc.in2p3.fr/fr/Computing/job-types/job-array.html)
+- the job needs access to =/sps= disks
+- the job will be shortnamed =mcmc_ede=
+- output and error messages will be joined (=-j y=) into one file.
+
+You can then submit the job with
+#+BEGIN_SRC shell
+  qsub -P P_planck my_script.sh
+#+END_SRC
+and check its status with
+#+BEGIN_SRC shell
+  qstat
+#+END_SRC
